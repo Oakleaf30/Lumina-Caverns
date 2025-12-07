@@ -4,6 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    public Vector2 MoveInput { get; private set; }
+
     public float moveSpeed = 5f;
 
     public float horizontalInput { get; private set; }
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        MoveInput = new Vector2(horizontalInput, verticalInput);
     }
 
     void FixedUpdate()
