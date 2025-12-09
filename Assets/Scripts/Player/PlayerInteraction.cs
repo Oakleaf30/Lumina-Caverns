@@ -1,15 +1,16 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public Grid grid;
+    [SerializeField] private Grid grid;
+    [SerializeField] private Tilemap interactionTilemap;
+
+    [SerializeField] private float verticalOffset = -0.5f;
 
     private PlayerMovement playerMovement;
 
     private Vector2 lastDirection = Vector2.right;
-
-    [SerializeField]
-    private float verticalOffset = -0.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,6 @@ public class PlayerInteraction : MonoBehaviour
         // Calculate movement direction
         Vector2 currentInput = new Vector2(playerMovement.horizontalInput, playerMovement.verticalInput);
 
-        // 2. FIX: Determine the facing direction more strictly
         Vector3Int facingOffset;
 
         if (currentInput.sqrMagnitude > 0.1f) // If we are moving
@@ -37,9 +37,6 @@ public class PlayerInteraction : MonoBehaviour
             // Update last direction
             lastDirection = normalized;
 
-            // 3. FORCE CARDINAL INTERACTION: 
-            // If X pull is stronger than Y, face Horizontal. Otherwise face Vertical.
-            // This prevents the "Diagonal Miss" problem.
             if (Mathf.Abs(normalized.x) > Mathf.Abs(normalized.y))
             {
                 facingOffset = new Vector3Int(Mathf.RoundToInt(Mathf.Sign(normalized.x)), 0, 0);
@@ -51,7 +48,6 @@ public class PlayerInteraction : MonoBehaviour
         }
         else
         {
-            // If not moving, use the last stored direction (also enforcing cardinal)
             if (Mathf.Abs(lastDirection.x) > Mathf.Abs(lastDirection.y))
             {
                 facingOffset = new Vector3Int(Mathf.RoundToInt(Mathf.Sign(lastDirection.x)), 0, 0);
@@ -64,9 +60,34 @@ public class PlayerInteraction : MonoBehaviour
 
         Vector3Int targetCell = playerCell + facingOffset;
 
-        // 4. VISUAL DEBUG: Draw a line in the Scene View to show where you are aiming
+        // VISUAL DEBUG: Draw a line in the Scene View to show where you are aiming
         Vector3 debugStart = grid.CellToWorld(playerCell) + new Vector3(0.5f, 0.5f, 0);
         Vector3 debugEnd = grid.CellToWorld(targetCell) + new Vector3(0.5f, 0.5f, 0);
         Debug.DrawLine(debugStart, debugEnd, Color.red);
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            CheckInteraction(targetCell);
+        }
+    }
+
+    private void CheckInteraction(Vector3Int targetCell)
+    {
+        // A. Get the TileBase object from the specified Tilemap
+        TileBase tile = interactionTilemap.GetTile(targetCell);
+
+        // B. Attempt to cast the generic TileBase object to our custom InteractableTile type
+        InteractableTile interactable = tile as InteractableTile;
+
+        // C. If the cast succeeds (it's an actual InteractableTile asset)
+        if (interactable != null)
+        {
+            // D. Tell the tile to execute its own logic!
+            interactable.Interact();
+            // The tile's Interact() method will broadcast the specific event (OnAnvilUsed.Raise(), etc.)
+        }
+
+        // You can add an 'else' block here for audio feedback 
+        // (e.g., playing a 'thunk' sound if the player interacts with a non-interactable wall).
     }
 }

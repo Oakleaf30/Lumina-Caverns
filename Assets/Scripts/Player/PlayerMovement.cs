@@ -6,10 +6,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveInput { get; private set; }
 
-    public float moveSpeed = 5f;
-
     public float horizontalInput { get; private set; }
     public float verticalInput { get; private set; }
+
+    [SerializeField] private float moveSpeed = 5f;
 
     void Awake()
     {

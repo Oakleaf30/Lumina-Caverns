@@ -20,10 +20,9 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-        // 1. Get the data from the movement script
         Vector2 input = movement.MoveInput;
 
-        // 2. Determine if we are moving
+        // Determine if we are moving
         bool isMoving = input.sqrMagnitude > 0.1f;
 
         if (input.x > 0.01f) // Moving Right
@@ -35,11 +34,8 @@ public class PlayerAnimations : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
-        // 3. Update the Animator Parameters
         if (isMoving)
         {
-            // Only update the facing direction when we are actually moving.
-            // This prevents the character from snapping to "Default" when you stop.
             animator.SetFloat(MoveX, input.x);
             animator.SetFloat(MoveY, input.y);
         }
