@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 11500000, guid: c8a2180ec795eff4cb0d624db09bba05, type: 3}
   m_Name: Ladder
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -1980159389, guid: 22d1217704cf1d84cbf68a298a136aca, type: 3}
@@ -33,4 +33,5 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 1
+  m_ColliderType: 2
+  interactionEvent: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}

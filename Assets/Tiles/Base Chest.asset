@@ -18,10 +18,10 @@ MonoBehaviour:
   - {fileID: 8697056784646014935, guid: 39b3d34c75e697e468e50cbf500c0923, type: 3}
   - {fileID: -7493301247945722963, guid: 39b3d34c75e697e468e50cbf500c0923, type: 3}
   - {fileID: 5607698275024897286, guid: 39b3d34c75e697e468e50cbf500c0923, type: 3}
-  m_MinSpeed: 5
-  m_MaxSpeed: 5
+  m_MinSpeed: 4
+  m_MaxSpeed: 4
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 1
   m_TileAnimationFlags: 2
-  interactionEvent: {fileID: 0}
+  interactionEvent: {fileID: 11400000, guid: df551034976a78847bb8bf79814b492e, type: 2}
