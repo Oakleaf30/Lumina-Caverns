@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5208e0990271f43428817254b0e15b50, type: 3}
   m_Name: Base Chest
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
@@ -24,3 +24,4 @@ MonoBehaviour:
   m_AnimationStartFrame: 0
   m_TileColliderType: 1
   m_TileAnimationFlags: 2
+  interactionEvent: {fileID: 0}

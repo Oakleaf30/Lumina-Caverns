@@ -73,21 +73,14 @@ public class PlayerInteraction : MonoBehaviour
 
     private void CheckInteraction(Vector3Int targetCell)
     {
-        // A. Get the TileBase object from the specified Tilemap
+        // 1. Get the generic TileBase
         TileBase tile = interactionTilemap.GetTile(targetCell);
 
-        // B. Attempt to cast the generic TileBase object to our custom InteractableTile type
-        InteractableTile interactable = tile as InteractableTile;
-
-        // C. If the cast succeeds (it's an actual InteractableTile asset)
-        if (interactable != null)
+        // 2. Check if this tile has the 'IInteractable' contract
+        // (This works for BOTH EventTile and AnimatedEventTile)
+        if (tile is IInteractable interactable)
         {
-            // D. Tell the tile to execute its own logic!
-            interactable.Interact();
-            // The tile's Interact() method will broadcast the specific event (OnAnvilUsed.Raise(), etc.)
+            interactable.Interact(targetCell, interactionTilemap);
         }
-
-        // You can add an 'else' block here for audio feedback 
-        // (e.g., playing a 'thunk' sound if the player interacts with a non-interactable wall).
     }
 }
