@@ -1654,9 +1654,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasTopDoor: 0
-  hasBottomDoor: 0
-  hasLeftDoor: 0
-  hasRightDoor: 0
+  hasBottomDoor: 1
+  hasLeftDoor: 1
+  hasRightDoor: 1
 --- !u!114 &3769960437055704406
 MonoBehaviour:
   m_ObjectHideFlags: 0
