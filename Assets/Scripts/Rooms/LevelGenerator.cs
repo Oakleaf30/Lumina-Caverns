@@ -3,127 +3,133 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [Header("Settings")]
-    public Room[] roomPrefabs; // Drag all your room variants here
-    public int minRooms = 4;
-    public int maxRooms = 8;
-    public int roomSize = 20; // 20x20
+    public Room[] roomPrefabs;
+    public int maxRooms = 12;
+    public float roomSize = 50f;
 
-    // Internal grid to track where we decided to put rooms
-    private HashSet<Vector2Int> occupiedPositions = new HashSet<Vector2Int>();
-    private List<Vector2Int> pathOrder = new List<Vector2Int>();
+    // This tracks exactly what doors each grid coordinate NEEDS
+    private Dictionary<Vector2Int, RoomRequirements> layout = new Dictionary<Vector2Int, RoomRequirements>();
 
-    void Start()
+    private class RoomRequirements
     {
-        GenerateLevel();
+        public bool top, bottom, left, right;
     }
 
-    void GenerateLevel()
+    void Start() => Generate();
+
+    void Generate()
     {
-        // 1. Generate the Abstract Path (The "Snake")
-        Vector2Int currentPos = Vector2Int.zero;
-        pathOrder.Add(currentPos);
-        occupiedPositions.Add(currentPos);
+        Vector2Int startPos = Vector2Int.zero;
+        layout.Add(startPos, new RoomRequirements());
+        Queue<Vector2Int> checkQueue = new Queue<Vector2Int>();
+        checkQueue.Enqueue(startPos);
 
-        int targetCount = Random.Range(minRooms, maxRooms);
+        int roomsPlaced = 1;
 
-        for (int i = 0; i < targetCount - 1; i++)
+        while (checkQueue.Count > 0 && roomsPlaced < maxRooms)
         {
-            // Pick a random neighbor that isn't occupied
-            Vector2Int nextPos = GetValidNeighbor(currentPos);
+            Vector2Int currentPos = checkQueue.Dequeue();
 
-            // If we get stuck (boxed in), stop generation or restart
-            if (nextPos == currentPos) break;
+            foreach (Vector2Int dir in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right })
+            {
+                Vector2Int neighborPos = currentPos + dir;
 
-            pathOrder.Add(nextPos);
-            occupiedPositions.Add(nextPos);
-            currentPos = nextPos;
+                if (roomsPlaced < maxRooms && !layout.ContainsKey(neighborPos) && Random.value < 0.5f)
+                {
+                    // Isaac Rule: Only place if it has exactly 1 neighbor (prevents clumping)
+                    if (CountNeighbors(neighborPos) == 1)
+                    {
+                        layout.Add(neighborPos, new RoomRequirements());
+                        Connect(currentPos, neighborPos, dir);
+                        checkQueue.Enqueue(neighborPos);
+                        roomsPlaced++;
+                    }
+                }
+            }
+            // If we run out of steam, re-add a random room to keep growing
+            if (checkQueue.Count == 0 && roomsPlaced < maxRooms)
+                checkQueue.Enqueue(new List<Vector2Int>(layout.Keys)[Random.Range(0, layout.Count)]);
         }
 
-        // 2. Place the actual Rooms based on connections
-        foreach (Vector2Int pos in pathOrder)
+        SpawnRooms();
+    }
+
+    void Connect(Vector2Int a, Vector2Int b, Vector2Int dir)
+    {
+        if (dir == Vector2Int.up) { layout[a].top = true; layout[b].bottom = true; }
+        if (dir == Vector2Int.down) { layout[a].bottom = true; layout[b].top = true; }
+        if (dir == Vector2Int.right) { layout[a].right = true; layout[b].left = true; }
+        if (dir == Vector2Int.left) { layout[a].left = true; layout[b].right = true; }
+    }
+
+    int CountNeighbors(Vector2Int pos)
+    {
+        int count = 0;
+        foreach (Vector2Int d in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right })
+            if (layout.ContainsKey(pos + d)) count++;
+        return count;
+    }
+
+    void SpawnRooms()
+    {
+        foreach (var kvp in layout)
         {
-            PlaceBestRoom(pos);
+            PlaceBestRoom(kvp.Key, kvp.Value);
         }
     }
 
-    Vector2Int GetValidNeighbor(Vector2Int current)
+    void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
     {
-        // Try all 4 directions randomly
-        List<Vector2Int> neighbors = new List<Vector2Int> {
-            current + Vector2Int.up,
-            current + Vector2Int.down,
-            current + Vector2Int.left,
-            current + Vector2Int.right
-        };
-
-        // Shuffle list for randomness
-        for (int i = 0; i < neighbors.Count; i++)
+        foreach (Room prefab in roomPrefabs)
         {
-            Vector2Int temp = neighbors[i];
-            int r = Random.Range(i, neighbors.Count);
-            neighbors[i] = neighbors[r];
-            neighbors[r] = temp;
-        }
-
-        // Return the first one that hasn't been visited
-        foreach (var n in neighbors)
-        {
-            if (!occupiedPositions.Contains(n)) return n;
-        }
-
-        return current; // Return self if stuck
-    }
-
-    void PlaceBestRoom(Vector2Int gridPos)
-    {
-        // Determine required doors based on neighbors in the path
-        bool needTop = occupiedPositions.Contains(gridPos + Vector2Int.up);
-        bool needBottom = occupiedPositions.Contains(gridPos + Vector2Int.down);
-        bool needLeft = occupiedPositions.Contains(gridPos + Vector2Int.left);
-        bool needRight = occupiedPositions.Contains(gridPos + Vector2Int.right);
-
-        // Find a prefab + rotation that matches needs
-        // We shuffle the prefabs so we don't always pick the first one in the list
-        List<Room> shuffledPrefabs = new List<Room>(roomPrefabs);
-
-        // Simple shuffle
-        for (int i = 0; i < shuffledPrefabs.Count; i++)
-        {
-            Room temp = shuffledPrefabs[i];
-            int r = Random.Range(i, shuffledPrefabs.Count);
-            shuffledPrefabs[i] = shuffledPrefabs[r];
-            shuffledPrefabs[r] = temp;
-        }
-
-        foreach (Room prefab in shuffledPrefabs)
-        {
-            // Try all 4 rotations (0, 90, 180, 270)
-            // 0=0deg, 1=-90deg, 2=-180deg, 3=-270deg
             for (int rot = 0; rot < 4; rot++)
             {
-                // Strict check: Does this rotation have ALL the doors we need?
-                // (You can add logic here to allow EXTRA doors if you want branching)
-                bool valid = true;
-
-                if (needTop && !prefab.HasDoor("Top", rot)) valid = false;
-                if (needBottom && !prefab.HasDoor("Bottom", rot)) valid = false;
-                if (needLeft && !prefab.HasDoor("Left", rot)) valid = false;
-                if (needRight && !prefab.HasDoor("Right", rot)) valid = false;
-
-                if (valid)
+                // MATCHING LOGIC: Prefab must have DOORS where layout says YES
+                // and NO DOORS where layout says NO.
+                if (prefab.HasDoor("Top", rot) == req.top &&
+                    prefab.HasDoor("Bottom", rot) == req.bottom &&
+                    prefab.HasDoor("Left", rot) == req.left &&
+                    prefab.HasDoor("Right", rot) == req.right)
                 {
-                    // Found a match! Instantiate it.
-                    Vector3 worldPos = new Vector3(gridPos.x * roomSize, gridPos.y * roomSize, 0);
-                    Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity);
-
-                    // Apply rotation (negative because Unity rotates Counter-Clockwise, but our logic stepped Clockwise)
-                    newRoom.transform.rotation = Quaternion.Euler(0, 0, -90 * rot);
-                    return; // Done with this room
+                    Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
+                    Room spawned = Instantiate(prefab, worldPos, Quaternion.Euler(0, 0, -90 * rot));
+                    return;
                 }
             }
         }
-
-        Debug.LogWarning("No room fit the requirements for " + gridPos);
     }
+
+    //void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
+    //{
+    //    // 1. Shuffle the prefabs so we get visual variety if multiple rooms have the same door layout
+    //    List<Room> shuffledPrefabs = new List<Room>(roomPrefabs);
+    //    for (int i = 0; i < shuffledPrefabs.Count; i++)
+    //    {
+    //        Room temp = shuffledPrefabs[i];
+    //        int r = Random.Range(i, shuffledPrefabs.Count);
+    //        shuffledPrefabs[i] = shuffledPrefabs[r];
+    //        shuffledPrefabs[r] = temp;
+    //    }
+
+    //    // 2. Find the perfect match
+    //    foreach (Room prefab in shuffledPrefabs)
+    //    {
+    //        // MATCHING LOGIC: Check the default door booleans directly, NO rotation math
+    //        if (prefab.hasTopDoor == req.top &&
+    //            prefab.hasBottomDoor == req.bottom &&
+    //            prefab.hasLeftDoor == req.left &&
+    //            prefab.hasRightDoor == req.right)
+    //        {
+    //            Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
+
+    //            // Instantiate with default rotation (Quaternion.identity)
+    //            Instantiate(prefab, worldPos, Quaternion.identity);
+    //            return; // We found our room, exit the function
+    //        }
+    //    }
+
+    //    // 3. Fallback warning
+    //    // If you forget to make one of the 15 possible door combinations, this will tell you exactly which one is missing!
+    //    Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right}");
+    //}
 }
