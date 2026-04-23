@@ -9,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
 
     // This tracks exactly what doors each grid coordinate NEEDS
     private Dictionary<Vector2Int, RoomRequirements> layout = new Dictionary<Vector2Int, RoomRequirements>();
+    private Dictionary<Vector2Int, Room> spawnedRooms = new Dictionary<Vector2Int, Room>();
 
     private class RoomRequirements
     {
@@ -52,6 +53,45 @@ public class LevelGenerator : MonoBehaviour
         }
 
         SpawnRooms();
+
+        LinkAllDoors();
+    }
+
+    void LinkAllDoors()
+    {
+        foreach (var kvp in spawnedRooms)
+        {
+            Vector2Int pos = kvp.Key;
+            Room current = kvp.Value;
+
+            // Link North neighbor
+            if (spawnedRooms.TryGetValue(pos + Vector2Int.up, out Room northNeighbor))
+            {
+                if (current.topDoor != null && northNeighbor.bottomDoor != null)
+                    current.topDoor.connectedDoor = northNeighbor.bottomDoor;
+            }
+
+            // Link South neighbor
+            if (spawnedRooms.TryGetValue(pos + Vector2Int.down, out Room southNeighbor))
+            {
+                if (current.bottomDoor != null && southNeighbor.topDoor != null)
+                    current.bottomDoor.connectedDoor = southNeighbor.topDoor;
+            }
+
+            // Link East neighbor
+            if (spawnedRooms.TryGetValue(pos + Vector2Int.right, out Room eastNeighbor))
+            {
+                if (current.rightDoor != null && eastNeighbor.leftDoor != null)
+                    current.rightDoor.connectedDoor = eastNeighbor.leftDoor;
+            }
+
+            // Link West neighbor
+            if (spawnedRooms.TryGetValue(pos + Vector2Int.left, out Room westNeighbor))
+            {
+                if (current.leftDoor != null && westNeighbor.rightDoor != null)
+                    current.leftDoor.connectedDoor = westNeighbor.rightDoor;
+            }
+        }
     }
 
     void Connect(Vector2Int a, Vector2Int b, Vector2Int dir)
@@ -78,58 +118,60 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
-    {
-        foreach (Room prefab in roomPrefabs)
-        {
-            for (int rot = 0; rot < 4; rot++)
-            {
-                // MATCHING LOGIC: Prefab must have DOORS where layout says YES
-                // and NO DOORS where layout says NO.
-                if (prefab.HasDoor("Top", rot) == req.top &&
-                    prefab.HasDoor("Bottom", rot) == req.bottom &&
-                    prefab.HasDoor("Left", rot) == req.left &&
-                    prefab.HasDoor("Right", rot) == req.right)
-                {
-                    Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
-                    Room spawned = Instantiate(prefab, worldPos, Quaternion.Euler(0, 0, -90 * rot));
-                    return;
-                }
-            }
-        }
-    }
-
     //void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
     //{
-    //    // 1. Shuffle the prefabs so we get visual variety if multiple rooms have the same door layout
-    //    List<Room> shuffledPrefabs = new List<Room>(roomPrefabs);
-    //    for (int i = 0; i < shuffledPrefabs.Count; i++)
+    //    foreach (Room prefab in roomPrefabs)
     //    {
-    //        Room temp = shuffledPrefabs[i];
-    //        int r = Random.Range(i, shuffledPrefabs.Count);
-    //        shuffledPrefabs[i] = shuffledPrefabs[r];
-    //        shuffledPrefabs[r] = temp;
-    //    }
-
-    //    // 2. Find the perfect match
-    //    foreach (Room prefab in shuffledPrefabs)
-    //    {
-    //        // MATCHING LOGIC: Check the default door booleans directly, NO rotation math
-    //        if (prefab.hasTopDoor == req.top &&
-    //            prefab.hasBottomDoor == req.bottom &&
-    //            prefab.hasLeftDoor == req.left &&
-    //            prefab.hasRightDoor == req.right)
+    //        for (int rot = 0; rot < 4; rot++)
     //        {
-    //            Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
-
-    //            // Instantiate with default rotation (Quaternion.identity)
-    //            Instantiate(prefab, worldPos, Quaternion.identity);
-    //            return; // We found our room, exit the function
+    //            // MATCHING LOGIC: Prefab must have DOORS where layout says YES
+    //            // and NO DOORS where layout says NO.
+    //            if (prefab.HasDoor("Top", rot) == req.top &&
+    //                prefab.HasDoor("Bottom", rot) == req.bottom &&
+    //                prefab.HasDoor("Left", rot) == req.left &&
+    //                prefab.HasDoor("Right", rot) == req.right)
+    //            {
+    //                Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
+    //                Room spawned = Instantiate(prefab, worldPos, Quaternion.Euler(0, 0, -90 * rot));
+    //                return;
+    //            }
     //        }
     //    }
-
-    //    // 3. Fallback warning
-    //    // If you forget to make one of the 15 possible door combinations, this will tell you exactly which one is missing!
-    //    Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right}");
     //}
+
+    void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
+    {
+        // 1. Shuffle the prefabs so we get visual variety if multiple rooms have the same door layout
+        List<Room> shuffledPrefabs = new List<Room>(roomPrefabs);
+        for (int i = 0; i < shuffledPrefabs.Count; i++)
+        {
+            Room temp = shuffledPrefabs[i];
+            int r = Random.Range(i, shuffledPrefabs.Count);
+            shuffledPrefabs[i] = shuffledPrefabs[r];
+            shuffledPrefabs[r] = temp;
+        }
+
+        // 2. Find the perfect match
+        foreach (Room prefab in shuffledPrefabs)
+        {
+            if (prefab.hasTopDoor == req.top &&
+                prefab.hasBottomDoor == req.bottom &&
+                prefab.hasLeftDoor == req.left &&
+                prefab.hasRightDoor == req.right)
+            {
+                Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
+                Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity);
+
+                // NEW: Save the reference to the room we just made
+                spawnedRooms.Add(pos, newRoom);
+                return;
+            }
+        }
+
+
+
+        // 3. Fallback warning
+        // If you forget to make one of the 15 possible door combinations, this will tell you exactly which one is missing!
+        Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right}");
+    }
 }
