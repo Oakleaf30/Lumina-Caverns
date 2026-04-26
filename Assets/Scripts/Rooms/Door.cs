@@ -14,6 +14,10 @@ public class Door : MonoBehaviour
 
             // Optional: Handle camera transition here
             Debug.Log("Teleported to " + connectedDoor.gameObject.name);
+
+            Vector3 newRoomPos = connectedDoor.transform.parent.position;
+
+            Camera.main.GetComponent<RoomCamera>().MoveToRoom(newRoomPos);
         }
     }
 }

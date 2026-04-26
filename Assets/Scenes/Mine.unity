@@ -4790,6 +4790,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4909,7 +4910,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4939,6 +4940,18 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e257df949f8d34d871476b322c6c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523133776
 GameObject:
   m_ObjectHideFlags: 0
@@ -6835,17 +6848,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902847857}
   m_CullTransparentMesh: 1
---- !u!114 &1065114854 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3579302726650113298, guid: 3233cb731bb065a41b73e073baa5b386, type: 3}
-  m_PrefabInstance: {fileID: 275894861}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e62673dd6154f94e8fc4806ab885ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1065114856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1163025989120804572, guid: 3233cb731bb065a41b73e073baa5b386, type: 3}
@@ -7451,17 +7453,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106071098}
   m_CullTransparentMesh: 1
---- !u!114 &1167260574 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8298982260194166566, guid: a14b0b70901afe44d82ab46ab09e99d9, type: 3}
-  m_PrefabInstance: {fileID: 1443573981}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e62673dd6154f94e8fc4806ab885ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1167260576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3676007439339214251, guid: a14b0b70901afe44d82ab46ab09e99d9, type: 3}
@@ -8221,7 +8212,7 @@ Transform:
   m_GameObject: {fileID: 1412364422}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10387,8 +10378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefabs:
-  - {fileID: 1065114854}
-  - {fileID: 1167260574}
+  - {fileID: 5445048937391416824, guid: fc5509da6d049c24eb3474f801cb4f49, type: 3}
+  - {fileID: 8100108444406874278, guid: 94603331a95591d469ca663455b5a986, type: 3}
   maxRooms: 2
   roomSize: 20
 --- !u!4 &1736561151
