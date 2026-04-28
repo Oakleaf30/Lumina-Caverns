@@ -1,9 +1,24 @@
 using UnityEngine;
 using System.Collections;
 
-public class SceneFader : MonoBehaviour
+public class ScreenFader : MonoBehaviour
 {
-    public CanvasGroup group; // Attach a CanvasGroup component to the black panel
+    public static ScreenFader Instance;
+
+    private CanvasGroup group; // Attach a CanvasGroup component to the black panel
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(transform.root.gameObject);
+
+        group = GetComponent<CanvasGroup>();
+    }
 
     public IEnumerator FadeRoutine(System.Action onBlack)
     {
