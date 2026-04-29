@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private GameEvent onTeleportStart;
+    [SerializeField] private GameEvent onTeleportEnd;
+
     private Rigidbody2D rb;
+
+    private bool isFrozen = false;
 
     public Vector2 MoveInput { get; private set; }
 
@@ -25,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isFrozen) return;
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         MoveInput = new Vector2(horizontalInput, verticalInput);
@@ -34,10 +41,32 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isFrozen) return;
+
         Vector2 moveVector = new Vector2(horizontalInput, verticalInput);
         moveVector.Normalize();
         rb.linearVelocity = moveVector * moveSpeed;
     }
+
+    private void OnEnable()
+    {
+        onTeleportStart.Subscribe(DisableMovement);
+        onTeleportEnd.Subscribe(EnableMovement);
+    }
+
+    private void OnDisable()
+    {
+        onTeleportStart.Unsubscribe(DisableMovement);
+        onTeleportEnd.Unsubscribe(EnableMovement);
+    }
+
+    private void DisableMovement()
+    {
+        isFrozen = true;
+        rb.linearVelocity = Vector2.zero; // Stops the sliding 
+    }
+
+    private void EnableMovement() => isFrozen = false;
 
     // CRUMBLE TILE LOGIC ----------------------------------------------------------------------------------------
 

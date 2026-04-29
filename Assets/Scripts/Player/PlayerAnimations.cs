@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
+    [SerializeField] private GameEvent onTeleportStart;
+    [SerializeField] private GameEvent onTeleportEnd;
+
     private Animator animator;
     private PlayerMovement movement;
     private SpriteRenderer spriteRenderer;
@@ -42,4 +45,20 @@ public class PlayerAnimations : MonoBehaviour
 
         animator.SetBool(IsMoving, isMoving);
     }
+
+    private void OnEnable()
+    {
+        onTeleportStart.Subscribe(PauseAnimation);
+        onTeleportEnd.Subscribe(ResumeAnimation);
+    }
+
+    private void OnDisable()
+    {
+        onTeleportStart.Unsubscribe(PauseAnimation);
+        onTeleportEnd.Unsubscribe(ResumeAnimation);
+    }
+
+    private void PauseAnimation() => animator.speed = 0;
+
+    private void ResumeAnimation() => animator.speed = 1;
 }
