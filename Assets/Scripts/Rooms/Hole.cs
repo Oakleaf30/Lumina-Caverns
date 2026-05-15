@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerColliders : MonoBehaviour
+public class Hole : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,13 +12,5 @@ public class PlayerColliders : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Void"))
-        {
-            Debug.Log("Hi");
-        }
     }
 }

@@ -3674,6 +3674,8 @@ MonoBehaviour:
   roomPrefabs:
   - {fileID: 5445048937391416824, guid: fc5509da6d049c24eb3474f801cb4f49, type: 3}
   - {fileID: 8100108444406874278, guid: 94603331a95591d469ca663455b5a986, type: 3}
+  - {fileID: 8559720579487282352, guid: ac02965c1d9f1c94dbf75a62a313c5a8, type: 3}
+  - {fileID: 9035433876493958916, guid: db83a5689372f6346b287668e4ab7e93, type: 3}
   maxRooms: 2
   roomSize: 20
 --- !u!4 &1736561151

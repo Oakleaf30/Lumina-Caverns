@@ -547,6 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6988f22a226aa46a95ad26349a290d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTeleportStart: {fileID: 11400000, guid: c9208f4c82431134abbe2fe2a6c88830, type: 2}
+  onTeleportEnd: {fileID: 11400000, guid: e68b86272a9b66542857919fab0032ab, type: 2}
   connectedDoor: {fileID: 0}
   exitPoint: {fileID: 1837807730068141282}
 --- !u!1 &1237524440200996475
@@ -1621,6 +1623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6988f22a226aa46a95ad26349a290d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTeleportStart: {fileID: 0}
+  onTeleportEnd: {fileID: 0}
   connectedDoor: {fileID: 0}
   exitPoint: {fileID: 660408633948615998}
 --- !u!1 &2900608183055023107
@@ -3569,6 +3573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6988f22a226aa46a95ad26349a290d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTeleportStart: {fileID: 0}
+  onTeleportEnd: {fileID: 0}
   connectedDoor: {fileID: 0}
   exitPoint: {fileID: 6732195202986757929}
 --- !u!1 &7627486481577073789
@@ -6924,6 +6930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6988f22a226aa46a95ad26349a290d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTeleportStart: {fileID: 0}
+  onTeleportEnd: {fileID: 0}
   connectedDoor: {fileID: 0}
   exitPoint: {fileID: 8197038519391087478}
 --- !u!1 &8913686799763630856

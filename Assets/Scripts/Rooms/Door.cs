@@ -8,16 +8,16 @@ public class Door : MonoBehaviour
     [HideInInspector] public Door connectedDoor;
     public Transform exitPoint;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player") && connectedDoor != null)
+        if (other.CompareTag("Player") && connectedDoor != null)
 {
             onTeleportStart.Raise();
 
             // Start screen fade
             StartCoroutine(ScreenFader.Instance.FadeRoutine(() =>
             {
-                collision.transform.position = connectedDoor.exitPoint.position;
+                other.transform.position = connectedDoor.exitPoint.position;
                 Vector3 newRoomPos = connectedDoor.transform.parent.position;
                 Camera.main.GetComponent<RoomCamera>().MoveToRoom(newRoomPos);
 

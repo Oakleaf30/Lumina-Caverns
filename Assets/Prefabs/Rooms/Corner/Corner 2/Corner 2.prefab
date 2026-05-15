@@ -645,6 +645,10 @@ MonoBehaviour:
   hasBottomDoor: 0
   hasLeftDoor: 0
   hasRightDoor: 1
+  topDoor: {fileID: 0}
+  bottomDoor: {fileID: 0}
+  leftDoor: {fileID: 0}
+  rightDoor: {fileID: 0}
 --- !u!114 &378182901260467358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4221,6 +4225,8 @@ Tilemap:
     m_Data: {fileID: -775434087, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 425147564, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 139
     m_Data:
