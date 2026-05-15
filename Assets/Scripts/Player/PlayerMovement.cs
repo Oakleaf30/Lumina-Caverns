@@ -1,13 +1,18 @@
 using UnityEngine;
+using Lumina.VisualFX;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private GameEvent onTeleportStart;
     [SerializeField] private GameEvent onTeleportEnd;
 
+    [SerializeField] private GameEvent onHoleFell;
+
     private Rigidbody2D rb;
 
     private bool isFrozen = false;
+
+    private bool isFalling = false;
 
     public Vector2 MoveInput { get; private set; }
 
@@ -36,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         MoveInput = new Vector2(horizontalInput, verticalInput);
 
-        CheckPlayerStep();
+        //CheckPlayerStep();
     }
 
     void FixedUpdate()
@@ -52,47 +57,78 @@ public class PlayerMovement : MonoBehaviour
     {
         onTeleportStart.Subscribe(DisableMovement);
         onTeleportEnd.Subscribe(EnableMovement);
+
+        onHoleFell.Subscribe(HoleFell);
     }
 
     private void OnDisable()
     {
         onTeleportStart.Unsubscribe(DisableMovement);
         onTeleportEnd.Unsubscribe(EnableMovement);
+
+        onHoleFell.Unsubscribe(HoleFell);
     }
 
     private void DisableMovement()
     {
         isFrozen = true;
-        rb.linearVelocity = Vector2.zero; // Stops the sliding 
+        rb.linearVelocity = Vector2.zero;
     }
 
     private void EnableMovement() => isFrozen = false;
 
+    private void HoleFell()
+    {
+        if (isFalling) return;
+
+        isFalling = true;
+
+        float duration = 2;
+        float spins = 2;
+        float direction = -1f;
+
+        if (MoveInput.x < -0.1f) direction = 1f;
+
+        float finalSpins = spins * direction;
+
+        bool isBackFall = MoveInput.y < -0.1f;
+        if (isBackFall)
+        {
+            float fallDistance = 1;
+            Vector3 targetPos = transform.position + (Vector3.down * fallDistance);
+            StartCoroutine(VFX.MoveToTarget(transform, targetPos, 2));
+        }
+
+        DisableMovement();
+        StartCoroutine(VFX.ChangeSize(transform, duration, transform.localScale, Vector3.zero));
+        StartCoroutine(VFX.Spin(transform, duration, finalSpins));
+    }
+
     // CRUMBLE TILE LOGIC ----------------------------------------------------------------------------------------
 
-    private CrumbleManager activeCrumbleManager;
-    private Grid activeGrid;
-    private Vector3Int previousCell;
+    //private CrumbleManager activeCrumbleManager;
+    //private Grid activeGrid;
+    //private Vector3Int previousCell;
 
-    void CheckPlayerStep()
-    {
-        if (activeGrid != null && activeCrumbleManager != null)
-        {
-            Vector3Int currentCell = activeGrid.WorldToCell(transform.position);
+    //void CheckPlayerStep()
+    //{
+    //    if (activeGrid != null && activeCrumbleManager != null)
+    //    {
+    //        Vector3Int currentCell = activeGrid.WorldToCell(transform.position);
 
-            if (currentCell != previousCell)
-            {
-                activeCrumbleManager.ProcessPlayerStep(currentCell);
-                previousCell = currentCell;
+    //        if (currentCell != previousCell)
+    //        {
+    //            activeCrumbleManager.ProcessPlayerStep(currentCell);
+    //            previousCell = currentCell;
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // When we enter a room boundary, store its components
-        activeGrid = other.GetComponent<Grid>();
-        activeCrumbleManager = other.GetComponent<CrumbleManager>();
-    }
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    // When we enter a room boundary, store its components
+    //    activeGrid = other.GetComponent<Grid>();
+    //    activeCrumbleManager = other.GetComponent<CrumbleManager>();
+    //}
 }

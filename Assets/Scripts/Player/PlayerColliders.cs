@@ -13,12 +13,4 @@ public class PlayerColliders : MonoBehaviour
     {
         
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Void"))
-        {
-            Debug.Log("Hi");
-        }
-    }
 }
