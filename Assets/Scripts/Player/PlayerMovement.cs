@@ -1,5 +1,6 @@
 using UnityEngine;
 using Lumina.VisualFX;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameEvent onTeleportEnd;
 
     [SerializeField] private GameEvent onHoleFell;
+    [SerializeField] private GameEvent onRespawn;
 
     private Rigidbody2D rb;
 
     private bool isFrozen = false;
-
     private bool isFalling = false;
+
+    private Vector3 spawnPoint;
 
     public Vector2 MoveInput { get; private set; }
 
@@ -81,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFalling) return;
 
+        StartCoroutine(FallAndRespawn());
+    }
+
+    IEnumerator FallAndRespawn()
+    {
         isFalling = true;
 
         float duration = 2;
@@ -102,6 +110,31 @@ public class PlayerMovement : MonoBehaviour
         DisableMovement();
         StartCoroutine(VFX.ChangeSize(transform, duration, transform.localScale, Vector3.zero));
         StartCoroutine(VFX.Spin(transform, duration, finalSpins));
+
+        yield return new WaitForSeconds(duration);
+
+        Respawn();
+    }
+
+    public void SetRespawnPoint(Vector3 newSpawnPoint)
+    {
+        spawnPoint = newSpawnPoint;
+    }
+
+    void Respawn()
+    {
+        StartCoroutine(ScreenFader.Instance.FadeRoutine(() =>
+        {
+            transform.position = spawnPoint;
+            transform.localScale = Vector3.one;
+
+            onRespawn.Raise();
+
+            isFalling = false;
+            EnableMovement();
+        }));
+
+        
     }
 
     // CRUMBLE TILE LOGIC ----------------------------------------------------------------------------------------

@@ -3365,6 +3365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTeleportStart: {fileID: 11400000, guid: c9208f4c82431134abbe2fe2a6c88830, type: 2}
   onTeleportEnd: {fileID: 11400000, guid: e68b86272a9b66542857919fab0032ab, type: 2}
+  onHoleFell: {fileID: 11400000, guid: ee49f34f2126454448a747c9e30594be, type: 2}
+  onRespawn: {fileID: 11400000, guid: 80d72dda13c54d44e801ed659901d536, type: 2}
   moveSpeed: 3
 --- !u!212 &1412364424
 SpriteRenderer:
@@ -3514,6 +3516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTeleportStart: {fileID: 11400000, guid: c9208f4c82431134abbe2fe2a6c88830, type: 2}
   onTeleportEnd: {fileID: 11400000, guid: e68b86272a9b66542857919fab0032ab, type: 2}
+  onHoleFell: {fileID: 11400000, guid: ee49f34f2126454448a747c9e30594be, type: 2}
+  onRespawn: {fileID: 11400000, guid: 80d72dda13c54d44e801ed659901d536, type: 2}
 --- !u!58 &1412364430
 CircleCollider2D:
   m_ObjectHideFlags: 0

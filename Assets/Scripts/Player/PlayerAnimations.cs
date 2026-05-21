@@ -6,6 +6,7 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] private GameEvent onTeleportEnd;
 
     [SerializeField] private GameEvent onHoleFell;
+    [SerializeField] private GameEvent onRespawn;
 
     private Animator animator;
     private PlayerMovement movement;
@@ -54,6 +55,7 @@ public class PlayerAnimations : MonoBehaviour
         onTeleportEnd.Subscribe(ResumeAnimation);
 
         onHoleFell.Subscribe(HoleFell);
+        onRespawn.Subscribe(ResumeAnimation);
     }
 
     private void OnDisable()
@@ -62,6 +64,7 @@ public class PlayerAnimations : MonoBehaviour
         onTeleportEnd.Unsubscribe(ResumeAnimation);
 
         onHoleFell.Unsubscribe(HoleFell);
+        onRespawn.Unsubscribe(ResumeAnimation);
     }
 
     private void PauseAnimation() => animator.speed = 0;
