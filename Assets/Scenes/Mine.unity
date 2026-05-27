@@ -3518,6 +3518,8 @@ MonoBehaviour:
   onTeleportEnd: {fileID: 11400000, guid: e68b86272a9b66542857919fab0032ab, type: 2}
   onHoleFell: {fileID: 11400000, guid: ee49f34f2126454448a747c9e30594be, type: 2}
   onRespawn: {fileID: 11400000, guid: 80d72dda13c54d44e801ed659901d536, type: 2}
+  onWaterEnter: {fileID: 11400000, guid: 92779f78f6b81434388e8f44adbb5fb4, type: 2}
+  onWaterExit: {fileID: 11400000, guid: b51f70236b991324a8e7b8a7b1070b5c, type: 2}
 --- !u!58 &1412364430
 CircleCollider2D:
   m_ObjectHideFlags: 0

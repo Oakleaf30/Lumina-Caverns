@@ -1,61 +1,61 @@
 fileFormatVersion: 2
-guid: daaf0cc732b82474aa289886e323ce34
+guid: fdb4aca88c0f1f842827fbfa295249f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4671039597062408225
-    second: swim - idle_0
+      213: 5788706493461594763
+    second: swim - move_0
   - first:
-      213: -5554225134268831620
-    second: swim - idle_1
+      213: 8485195410464714886
+    second: swim - move_1
   - first:
-      213: 1262479974444020918
-    second: swim - idle_2
+      213: -8898379548076150453
+    second: swim - move_2
   - first:
-      213: 7387488745124117872
-    second: swim - idle_3
+      213: 6266645556179028753
+    second: swim - move_3
   - first:
-      213: -7884323386105867305
-    second: swim - idle_4
+      213: -5515239008925914163
+    second: swim - move_4
   - first:
-      213: -5140563002754336690
-    second: swim - idle_5
+      213: 4228948737798434498
+    second: swim - move_5
   - first:
-      213: -2604810827124503658
-    second: swim - idle_6
+      213: 5687508408895700315
+    second: swim - move_6
   - first:
-      213: 448245044150410922
-    second: swim - idle_7
+      213: -4044146558440370316
+    second: swim - move_7
   - first:
-      213: 6118847579550058848
-    second: swim - idle_8
+      213: 3610475457933482386
+    second: swim - move_8
   - first:
-      213: 6716037179562181055
-    second: swim - idle_9
+      213: -1919394523655687441
+    second: swim - move_9
   - first:
-      213: 3609910920237281498
-    second: swim - idle_10
+      213: -4152069324852839289
+    second: swim - move_10
   - first:
-      213: 7371811593948671971
-    second: swim - idle_11
+      213: 1240747569878201412
+    second: swim - move_11
   - first:
-      213: -5002409752712267529
-    second: swim - idle_12
+      213: -7306286572647638939
+    second: swim - move_12
   - first:
-      213: -8405867012051350844
-    second: swim - idle_13
+      213: -3095875869348903596
+    second: swim - move_13
   - first:
-      213: -5733388322945453867
-    second: swim - idle_14
+      213: 2814902565681605943
+    second: swim - move_14
   - first:
-      213: 6930664046540809198
-    second: swim - idle_15
+      213: -1723796726088602080
+    second: swim - move_15
   - first:
-      213: -3488709866570621296
-    second: swim - idle_16
+      213: -7811256711902506780
+    second: swim - move_16
   - first:
-      213: -9053026398923717763
-    second: swim - idle_17
+      213: 3244652688097018943
+    second: swim - move_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -151,12 +151,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: swim - idle_0
+      name: swim - move_0
       rect:
         serializedVersion: 2
-        x: 28
+        x: 31
+        y: 188
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8286cbc2ed955050800000000000000
+      internalID: 5788706493461594763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swim - move_1
+      rect:
+        serializedVersion: 2
+        x: 112
         y: 187
-        width: 24
+        width: 21
         height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,20 +188,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12840bae3cdd2d040800000000000000
-      internalID: 4671039597062408225
+      spriteID: 6803682f44871c570800000000000000
+      internalID: 8485195410464714886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_1
+      name: swim - move_2
       rect:
         serializedVersion: 2
-        x: 107
+        x: 192
         y: 186
-        width: 26
-        height: 20
+        width: 20
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,41 +210,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c782c5dfaad6be2b0800000000000000
-      internalID: -5554225134268831620
+      spriteID: b41f15852fa928480800000000000000
+      internalID: -8898379548076150453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_2
+      name: swim - move_3
       rect:
         serializedVersion: 2
-        x: 186
-        y: 185
-        width: 28
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6b4b7cc09da358110800000000000000
-      internalID: 1262479974444020918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swim - idle_3
-      rect:
-        serializedVersion: 2
-        x: 269
+        x: 270
         y: 187
-        width: 22
+        width: 20
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -232,42 +232,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 07db1538fd1a58660800000000000000
-      internalID: 7387488745124117872
+      spriteID: 11bc4556ee897f650800000000000000
+      internalID: 6266645556179028753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_4
+      name: swim - move_4
       rect:
         serializedVersion: 2
         x: 349
-        y: 186
-        width: 22
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7d3dadc37a1459290800000000000000
-      internalID: -7884323386105867305
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swim - idle_5
-      rect:
-        serializedVersion: 2
-        x: 428
         y: 188
-        width: 24
-        height: 17
+        width: 19
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,20 +254,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e48ff435f2d09a8b0800000000000000
-      internalID: -5140563002754336690
+      spriteID: dcbe795a75fe573b0800000000000000
+      internalID: -5515239008925914163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_6
+      name: swim - move_5
       rect:
         serializedVersion: 2
-        x: 26
-        y: 109
-        width: 27
-        height: 17
+        x: 430
+        y: 188
+        width: 19
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,63 +276,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69b07268a5ad9dbd0800000000000000
-      internalID: -2604810827124503658
+      spriteID: 2ceefc9987e30ba30800000000000000
+      internalID: 4228948737798434498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_7
+      name: swim - move_6
       rect:
         serializedVersion: 2
-        x: 105
+        x: 30
         y: 108
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aae1ae42e7c783600800000000000000
-      internalID: 448245044150410922
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swim - idle_8
-      rect:
-        serializedVersion: 2
-        x: 183
-        y: 107
-        width: 33
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 06907dd54738ae450800000000000000
-      internalID: 6118847579550058848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swim - idle_9
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 107
-        width: 27
+        width: 19
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -364,20 +298,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb1ce125b38243d50800000000000000
-      internalID: 6716037179562181055
+      spriteID: b5d7641a3c61eee40800000000000000
+      internalID: 5687508408895700315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_10
+      name: swim - move_7
       rect:
         serializedVersion: 2
-        x: 346
+        x: 112
+        y: 107
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47f0b84c12e40e7c0800000000000000
+      internalID: -4044146558440370316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swim - move_8
+      rect:
+        serializedVersion: 2
+        x: 192
         y: 106
-        width: 27
-        height: 18
+        width: 15
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,20 +342,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad0fb871bdaf81230800000000000000
-      internalID: 3609910920237281498
+      spriteID: 2991464cc4cfa1230800000000000000
+      internalID: 3610475457933482386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_11
+      name: swim - move_9
       rect:
         serializedVersion: 2
-        x: 426
+        x: 269
+        y: 107
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe23ca1a9d0fc55e0800000000000000
+      internalID: -1919394523655687441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swim - move_10
+      rect:
+        serializedVersion: 2
+        x: 348
         y: 108
-        width: 27
-        height: 17
+        width: 23
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -408,20 +386,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3efaa60569fed4660800000000000000
-      internalID: 7371811593948671971
+      spriteID: 78cb95992f2e066c0800000000000000
+      internalID: -4152069324852839289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_12
+      name: swim - move_11
       rect:
         serializedVersion: 2
-        x: 26
+        x: 429
+        y: 108
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 444f48e4755083110800000000000000
+      internalID: 1240747569878201412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swim - move_12
+      rect:
+        serializedVersion: 2
+        x: 30
         y: 29
-        width: 27
-        height: 17
+        width: 19
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,19 +430,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f8b2a475ded39ab0800000000000000
-      internalID: -5002409752712267529
+      spriteID: 5689122921bda9a90800000000000000
+      internalID: -7306286572647638939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_13
+      name: swim - move_13
       rect:
         serializedVersion: 2
-        x: 105
+        x: 112
         y: 28
-        width: 29
+        width: 15
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -452,85 +452,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ca418d1d7c585b80800000000000000
-      internalID: -8405867012051350844
+      spriteID: 45541caac4d3905d0800000000000000
+      internalID: -3095875869348903596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swim - idle_14
+      name: swim - move_14
       rect:
         serializedVersion: 2
-        x: 183
-        y: 27
-        width: 33
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d0b67372b9ee60b0800000000000000
-      internalID: -5733388322945453867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swim - idle_15
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 27
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ee3e2a7ea3aae2060800000000000000
-      internalID: 6930664046540809198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swim - idle_16
-      rect:
-        serializedVersion: 2
-        x: 346
-        y: 26
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09e58ae3cdc959fc0800000000000000
-      internalID: -3488709866570621296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swim - idle_17
-      rect:
-        serializedVersion: 2
-        x: 426
+        x: 192
         y: 28
-        width: 27
+        width: 15
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -540,8 +474,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d730be584703d5280800000000000000
-      internalID: -9053026398923717763
+      spriteID: 73da9c038fa801720800000000000000
+      internalID: 2814902565681605943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swim - move_15
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 29
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ee18cb208d318e0800000000000000
+      internalID: -1723796726088602080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swim - move_16
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 29
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e05aa50867d89390800000000000000
+      internalID: -7811256711902506780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swim - move_17
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 30
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f340a8dcd62570d20800000000000000
+      internalID: 3244652688097018943
       vertices: []
       indices: 
       edges: []
@@ -560,24 +560,24 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      swim - idle_0: 4671039597062408225
-      swim - idle_1: -5554225134268831620
-      swim - idle_10: 3609910920237281498
-      swim - idle_11: 7371811593948671971
-      swim - idle_12: -5002409752712267529
-      swim - idle_13: -8405867012051350844
-      swim - idle_14: -5733388322945453867
-      swim - idle_15: 6930664046540809198
-      swim - idle_16: -3488709866570621296
-      swim - idle_17: -9053026398923717763
-      swim - idle_2: 1262479974444020918
-      swim - idle_3: 7387488745124117872
-      swim - idle_4: -7884323386105867305
-      swim - idle_5: -5140563002754336690
-      swim - idle_6: -2604810827124503658
-      swim - idle_7: 448245044150410922
-      swim - idle_8: 6118847579550058848
-      swim - idle_9: 6716037179562181055
+      swim - move_0: 5788706493461594763
+      swim - move_1: 8485195410464714886
+      swim - move_10: -4152069324852839289
+      swim - move_11: 1240747569878201412
+      swim - move_12: -7306286572647638939
+      swim - move_13: -3095875869348903596
+      swim - move_14: 2814902565681605943
+      swim - move_15: -1723796726088602080
+      swim - move_16: -7811256711902506780
+      swim - move_17: 3244652688097018943
+      swim - move_2: -8898379548076150453
+      swim - move_3: 6266645556179028753
+      swim - move_4: -5515239008925914163
+      swim - move_5: 4228948737798434498
+      swim - move_6: 5687508408895700315
+      swim - move_7: -4044146558440370316
+      swim - move_8: 3610475457933482386
+      swim - move_9: -1919394523655687441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
