@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections; // Required for IEnumerator and Coroutines
+using System.Collections;
 
 public class PlayerAnimations : MonoBehaviour
 {

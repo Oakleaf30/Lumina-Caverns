@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private bool isFrozen = false;
+    public bool isFrozen = false;
     private bool isFalling = false;
 
     private Vector3 spawnPoint;
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         onHoleFell.Unsubscribe(HoleFell);
     }
 
-    private void DisableMovement()
+    public void DisableMovement()
     {
         isFrozen = true;
         rb.linearVelocity = Vector2.zero;

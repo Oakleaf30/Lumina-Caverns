@@ -83,4 +83,10 @@ public class PlayerInteraction : MonoBehaviour
             interactable.Interact(targetCell, interactionTilemap);
         }
     }
+
+    // Add this anywhere inside your PlayerInteraction class
+    public Vector2 GetLastDirection()
+    {
+        return lastDirection;
+    }
 }
