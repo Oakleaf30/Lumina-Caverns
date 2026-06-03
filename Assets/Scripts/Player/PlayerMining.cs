@@ -8,7 +8,12 @@ public class PlayerMining : MonoBehaviour
     private PlayerInteraction playerInteraction;
     private PlayerMovement playerMovement;
 
+    [Header("Mining Mechanics")]
     [SerializeField] private float swingCooldown = 0.4f;
+    [SerializeField] private float strikeRadius = 0.4f;
+    [SerializeField] private LayerMask resourceLayer;
+    [SerializeField] private int pickaxeDamage = 1;
+
     private float lastSwingTime;
 
     private void Awake()
@@ -16,11 +21,6 @@ public class PlayerMining : MonoBehaviour
         anim = GetComponent<Animator>();
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
-    }
-
-    void Start()
-    {
-        
     }
 
     void Update()
@@ -36,19 +36,28 @@ public class PlayerMining : MonoBehaviour
         }
     }
 
-    private void SwingPickaxe()
+    void SwingPickaxe()
     {
         lastSwingTime = Time.time;
 
         Vector2 lookDir = playerInteraction.GetLastDirection();
-
         anim.SetFloat("MoveX", lookDir.x);
         anim.SetFloat("MoveY", lookDir.y);
 
         anim.SetTrigger("Swing");
-
         playerMovement.DisableMovement();
 
         onPickaxeSwing.Raise();
+    }
+
+    void DamageNode()
+    {
+        Vector3 targetWorldPosition = playerInteraction.GetTargetCellCenterWorld();
+        Collider2D hit = Physics2D.OverlapCircle(targetWorldPosition, strikeRadius, resourceLayer);
+
+        if (hit != null && hit.TryGetComponent<OreNode>(out OreNode node))
+        {
+            node.TakeDamage(pickaxeDamage);
+        }
     }
 }

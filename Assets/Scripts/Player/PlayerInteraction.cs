@@ -12,6 +12,15 @@ public class PlayerInteraction : MonoBehaviour
 
     private Vector2 lastDirection = Vector2.right;
 
+    // ADD THIS: A public property so your Mining script can read the target cell!
+    public Vector3Int TargetCell { get; private set; }
+
+    // ADD THIS: A public helper so your Mining script can easily get the world center of that cell
+    public Vector3 GetTargetCellCenterWorld()
+    {
+        return grid.GetCellCenterWorld(TargetCell);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,16 +67,16 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        Vector3Int targetCell = playerCell + facingOffset;
+        TargetCell = playerCell + facingOffset;
 
         // VISUAL DEBUG: Draw a line in the Scene View to show where you are aiming
         Vector3 debugStart = grid.CellToWorld(playerCell) + new Vector3(0.5f, 0.5f, 0);
-        Vector3 debugEnd = grid.CellToWorld(targetCell) + new Vector3(0.5f, 0.5f, 0);
+        Vector3 debugEnd = grid.CellToWorld(TargetCell) + new Vector3(0.5f, 0.5f, 0);
         Debug.DrawLine(debugStart, debugEnd, Color.red);
 
         if (Input.GetMouseButtonDown(1))
         {
-            CheckInteraction(targetCell);
+            CheckInteraction(TargetCell);
         }
     }
 
