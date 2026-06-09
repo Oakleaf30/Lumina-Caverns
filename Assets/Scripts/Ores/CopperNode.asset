@@ -15,4 +15,4 @@ MonoBehaviour:
   primaryItemYieldID: Copper
   oreDisplayName: Copper
   maxHitPoints: 3
-  nodeSprite: {fileID: 631623507490633193, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
+  nodeSprite: {fileID: 4312774026939199897, guid: 913763288ff55114392c8d85d847f1a8, type: 3}

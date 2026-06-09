@@ -7,6 +7,8 @@ public class LevelGenerator : MonoBehaviour
     public int maxRooms = 12;
     public float roomSize = 50f;
 
+    [SerializeField] private InteractiveGenerator itemGenerator;
+
     // This tracks exactly what doors each grid coordinate NEEDS
     private Dictionary<Vector2Int, RoomRequirements> layout = new Dictionary<Vector2Int, RoomRequirements>();
     private Dictionary<Vector2Int, Room> spawnedRooms = new Dictionary<Vector2Int, Room>();
@@ -116,6 +118,8 @@ public class LevelGenerator : MonoBehaviour
         {
             PlaceBestRoom(kvp.Key, kvp.Value);
         }
+
+        itemGenerator.GenerateLevelInteractivity();
     }
 
     //void PlaceBestRoom(Vector2Int pos, RoomRequirements req)

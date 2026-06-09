@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Trap
+  m_Name: Interactive Marker
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2299687460360013530, guid: 933b24d34fdac854f81afa26b6a8c310, type: 3}
+  m_Sprite: {fileID: 4664390653206715891, guid: 731997e9460a4de4cb822c151af578bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

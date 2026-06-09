@@ -214,7 +214,6 @@ GameObject:
   - component: {fileID: 4491617590029470439}
   - component: {fileID: 7225370206897908255}
   - component: {fileID: 9035433876493958916}
-  - component: {fileID: 7971392103382403835}
   - component: {fileID: 6932437923615158098}
   m_Layer: 0
   m_Name: Right
@@ -282,22 +281,6 @@ MonoBehaviour:
   bottomDoor: {fileID: 0}
   leftDoor: {fileID: 0}
   rightDoor: {fileID: 2514766713632200037}
---- !u!114 &7971392103382403835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372993774143532015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df51cc12735bc3843baf84400542a677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnTime: 5
-  tileIntact: {fileID: 11400000, guid: 15d700a480d5feb4a99d02dbb3d1c96b, type: 2}
-  markerCrumble: {fileID: 11400000, guid: d62035ea782d2ce43b721128302f7c7c, type: 2}
-  crumbleAnimPrefab: {fileID: 9031509145422837722, guid: 4e1b74eac719f29468362f348211bd2f, type: 3}
 --- !u!61 &6932437923615158098
 BoxCollider2D:
   m_ObjectHideFlags: 0
