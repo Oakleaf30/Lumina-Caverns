@@ -32,7 +32,7 @@ public class PlayerMining : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            anim.ResetTrigger("Swing");
+            anim.ResetTrigger("Pickaxe");
         }
     }
 
@@ -44,7 +44,7 @@ public class PlayerMining : MonoBehaviour
         anim.SetFloat("MoveX", lookDir.x);
         anim.SetFloat("MoveY", lookDir.y);
 
-        anim.SetTrigger("Swing");
+        anim.SetTrigger("Pickaxe");
         playerMovement.DisableMovement();
 
         onPickaxeSwing.Raise();
