@@ -22,11 +22,13 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalInput { get; private set; }
     public float verticalInput { get; private set; }
 
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float baseMoveSpeed = 5.0f;
+    private float currentMoveSpeed;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentMoveSpeed = baseMoveSpeed;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 moveVector = new Vector2(horizontalInput, verticalInput);
         moveVector.Normalize();
-        rb.linearVelocity = moveVector * moveSpeed;
+        rb.linearVelocity = moveVector * currentMoveSpeed;
     }
 
     private void OnEnable()
@@ -133,8 +135,16 @@ public class PlayerMovement : MonoBehaviour
             isFalling = false;
             EnableMovement();
         }));
+    }
 
-        
+    public void ApplySpeedMultiplier(float multiplier)
+    {
+        currentMoveSpeed = baseMoveSpeed * multiplier;
+    }
+
+    public void RemoveSpeedMultiplier(float multiplier)
+    {
+        currentMoveSpeed = baseMoveSpeed;
     }
 
     // CRUMBLE TILE LOGIC ----------------------------------------------------------------------------------------
