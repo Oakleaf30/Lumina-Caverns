@@ -40,9 +40,7 @@ public class PlayerMining : MonoBehaviour
     {
         lastSwingTime = Time.time;
 
-        Vector2 lookDir = playerInteraction.GetLastDirection();
-        anim.SetFloat("MoveX", lookDir.x);
-        anim.SetFloat("MoveY", lookDir.y);
+        playerInteraction.SyncAnimatorDirection();
 
         anim.SetTrigger("Pickaxe");
         playerMovement.DisableMovement();

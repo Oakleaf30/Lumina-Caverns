@@ -1,101 +1,92 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField] private Grid grid;
-    [SerializeField] private Tilemap interactionTilemap;
-
-    [SerializeField] private float verticalOffset = -0.5f;
+    [Header("Interaction Settings")]
+    [SerializeField] private float interactRadius = 0.4f;
+    [SerializeField] private float interactDistance = 1.0f; // How far the line stretches
+    [SerializeField] private float verticalOffset = -0.5f;  // Down to the player's feet
+    [SerializeField] private LayerMask interactableLayer;
 
     private PlayerMovement playerMovement;
+    private Vector2 lastDirection = Vector2.down; // Default facing direction
 
-    private Vector2 lastDirection = Vector2.right;
+    private Animator animator;
 
-    // ADD THIS: A public property so your Mining script can read the target cell!
-    public Vector3Int TargetCell { get; private set; }
+    public Vector3 TargetCentre { get; private set; }
 
     // ADD THIS: A public helper so your Mining script can easily get the world center of that cell
     public Vector3 GetTargetCellCenterWorld()
     {
-        return grid.GetCellCenterWorld(TargetCell);
+        return TargetCentre;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 feetPosition = transform.position + new Vector3(0, verticalOffset, 0);
-        Vector3Int playerCell = grid.WorldToCell(feetPosition);
-
-        // Calculate movement direction
+        // 1. Track direction (simplified)
         Vector2 currentInput = new Vector2(playerMovement.horizontalInput, playerMovement.verticalInput);
-
-        Vector3Int facingOffset;
-
-        if (currentInput.sqrMagnitude > 0.1f) // If we are moving
+        if (currentInput.sqrMagnitude > 0.1f)
         {
-            // Normalize to handle diagonals gracefully for movement
-            Vector2 normalized = currentInput.normalized;
-
-            // Update last direction
-            lastDirection = normalized;
-
-            if (Mathf.Abs(normalized.x) > Mathf.Abs(normalized.y))
-            {
-                facingOffset = new Vector3Int(Mathf.RoundToInt(Mathf.Sign(normalized.x)), 0, 0);
-            }
+            // Lock it to 4 directions just like your old script did!
+            if (Mathf.Abs(currentInput.x) > Mathf.Abs(currentInput.y))
+                lastDirection = new Vector2(Mathf.Sign(currentInput.x), 0);
             else
-            {
-                facingOffset = new Vector3Int(0, Mathf.RoundToInt(Mathf.Sign(normalized.y)), 0);
-            }
-        }
-        else
-        {
-            if (Mathf.Abs(lastDirection.x) > Mathf.Abs(lastDirection.y))
-            {
-                facingOffset = new Vector3Int(Mathf.RoundToInt(Mathf.Sign(lastDirection.x)), 0, 0);
-            }
-            else
-            {
-                facingOffset = new Vector3Int(0, Mathf.RoundToInt(Mathf.Sign(lastDirection.y)), 0);
-            }
+                lastDirection = new Vector2(0, Mathf.Sign(currentInput.y));
         }
 
-        TargetCell = playerCell + facingOffset;
+        // 2. Calculate the exact point in space (Feet + Direction)
+        Vector3 feetPosition = transform.position + new Vector3(0, verticalOffset, 0);
+        TargetCentre = feetPosition + (Vector3)(lastDirection * interactDistance);
 
-        // VISUAL DEBUG: Draw a line in the Scene View to show where you are aiming
-        Vector3 debugStart = grid.CellToWorld(playerCell) + new Vector3(0.5f, 0.5f, 0);
-        Vector3 debugEnd = grid.CellToWorld(TargetCell) + new Vector3(0.5f, 0.5f, 0);
-        Debug.DrawLine(debugStart, debugEnd, Color.red);
+        // 3. YOUR VISUAL DEBUG LINE
+        Debug.DrawLine(feetPosition, TargetCentre, Color.red);
 
-        if (Input.GetMouseButtonDown(1))
+        // 4. Fire the interaction exactly at the end of the red line
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            CheckInteraction(TargetCell);
+            CheckInteraction(TargetCentre);
         }
     }
 
-    private void CheckInteraction(Vector3Int targetCell)
+    private void CheckInteraction(Vector3 targetPosition)
     {
-        // 1. Get the generic TileBase
-        TileBase tile = interactionTilemap.GetTile(targetCell);
+        // Cast the circle exactly where the red line ends
+        Collider2D hit = Physics2D.OverlapCircle(targetPosition, interactRadius, interactableLayer);
 
-        // 2. Check if this tile has the 'IInteractable' contract
-        // (This works for BOTH EventTile and AnimatedEventTile)
-        if (tile is IInteractable interactable)
+        if (hit != null && hit.TryGetComponent(out Station station))
         {
-            interactable.Interact(targetCell, interactionTilemap);
+            station.Interact();
         }
     }
 
-    // Add this anywhere inside your PlayerInteraction class
+    // BONUS: Draws the actual circle in the editor so you can perfectly size it
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 feetPosition = transform.position + new Vector3(0, verticalOffset, 0);
+
+        // Use lastDirection if playing, otherwise default to down so you can see it in the editor
+        Vector3 direction = Application.isPlaying ? (Vector3)lastDirection : Vector3.down;
+        Vector3 targetCenter = feetPosition + (direction * interactDistance);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(targetCenter, interactRadius);
+    }
+
     public Vector2 GetLastDirection()
     {
         return lastDirection;
+    }
+
+    public void SyncAnimatorDirection()
+    {
+        Vector2 lookDir = GetLastDirection().normalized;
+        animator.SetFloat("MoveX", lookDir.x);
+        animator.SetFloat("MoveY", lookDir.y);
     }
 }

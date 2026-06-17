@@ -1,64 +1,19 @@
 using UnityEngine;
 
-public class WorkbenchUI : MonoBehaviour
+public class WorkbenchUI : StationUI
 {
-    [Header("UI Elements")]
-    [SerializeField] private GameObject workbenchPanel;
-
-    [Header("Event Listeners")]
-    [SerializeField] private GameEvent OnWorkbenchUsed;
-    [SerializeField] private GameEvent OnWorkbenchClosed;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void OpenMenu()
     {
+        // 1. Run the base code first (Sets panel active, pauses Time.timeScale)
+        base.OpenMenu();
 
+        // 2. Run your unique Anvil logic
+        UpdateWorkbenchDisplay();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateWorkbenchDisplay()
     {
-
-    }
-
-    private void OnEnable()
-    {
-        if (OnWorkbenchUsed != null)
-        {
-            OnWorkbenchUsed.Subscribe(OpenWorkbenchPanel);
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (OnWorkbenchUsed != null)
-        {
-            OnWorkbenchUsed.Unsubscribe(OpenWorkbenchPanel);
-        }
-
-        CloseWorkbenchPanel();
-    }
-
-    private void OpenWorkbenchPanel()
-    {
-        // Set the panel active
-        workbenchPanel.SetActive(true);
-
-        // Unlock the mouse cursor (if a PC game) and pause player input
-        Time.timeScale = 0; // Example: Pause the game time
-    }
-
-    public void CloseWorkbenchPanel() // Public so it can be assigned to an 'X' button
-    {
-        workbenchPanel.SetActive(false);
-
-        // Resume game time and player input
-        Time.timeScale = 1;
-
-        // Announce the closure via event for any other system (like InputManager) to react
-        if (OnWorkbenchClosed != null)
-        {
-            OnWorkbenchClosed.Raise();
-        }
+        Debug.Log("Checking player inventory for Iron Bars...");
+        // Code to populate upgrades or tool repair costs goes here
     }
 }

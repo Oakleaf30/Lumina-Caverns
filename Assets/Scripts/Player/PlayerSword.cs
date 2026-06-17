@@ -44,10 +44,7 @@ public class PlayerSword : MonoBehaviour
     {
         lastSwingTime = Time.time;
 
-        // Get directional look vector from your interaction system
-        Vector2 lookDir = playerInteraction.GetLastDirection().normalized;
-        anim.SetFloat("MoveX", lookDir.x);
-        anim.SetFloat("MoveY", lookDir.y);
+        playerInteraction.SyncAnimatorDirection();
 
         anim.SetTrigger("Sword");
         playerMovement.DisableMovement();
