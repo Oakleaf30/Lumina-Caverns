@@ -488,9 +488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cead1b76a893539478d3b76c25832526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anvilPanel: {fileID: 1209821154}
-  OnAnvilUsed: {fileID: 11400000, guid: 9bf91183a48335d469ebe153787f2bb6, type: 2}
-  OnAnvilClosed: {fileID: 0}
+  menuPanel: {fileID: 0}
+  onStationUsed: {fileID: 0}
+  onStationClosed: {fileID: 0}
 --- !u!114 &141485981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &207786863
 Transform:
   m_ObjectHideFlags: 0
@@ -2261,9 +2261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2bb89bd925a62458a2a90b8d591192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnacePanel: {fileID: 2116805966}
-  OnFurnaceUsed: {fileID: 11400000, guid: 292e13860c86a984b8895ae284e56ad3, type: 2}
-  OnFurnaceClosed: {fileID: 0}
+  menuPanel: {fileID: 0}
+  onStationUsed: {fileID: 0}
+  onStationClosed: {fileID: 0}
 --- !u!114 &833173472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3881,9 +3881,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8acb4eb0543cc8449993d3f5203af35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workbenchPanel: {fileID: 1334288907}
-  OnWorkbenchUsed: {fileID: 11400000, guid: 270b796692d15da49880346c78ddbcd3, type: 2}
-  OnWorkbenchClosed: {fileID: 0}
+  menuPanel: {fileID: 0}
+  onStationUsed: {fileID: 0}
+  onStationClosed: {fileID: 0}
 --- !u!114 &1768235568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4215,6 +4215,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3552447602973476430, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4363688841941322429, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4227,6 +4231,10 @@ PrefabInstance:
       propertyPath: interactionTilemap
       value: 
       objectReference: {fileID: 246832828}
+    - target: {fileID: 7608455994137816967, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5

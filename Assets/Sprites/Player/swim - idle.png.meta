@@ -154,12 +154,12 @@ TextureImporter:
       name: swim - idle_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 187
-        width: 24
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 160
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: swim - idle_1
       rect:
         serializedVersion: 2
-        x: 107
-        y: 186
-        width: 26
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 160
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: swim - idle_2
       rect:
         serializedVersion: 2
-        x: 186
-        y: 185
-        width: 28
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 160
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -220,12 +220,12 @@ TextureImporter:
       name: swim - idle_3
       rect:
         serializedVersion: 2
-        x: 269
-        y: 187
-        width: 22
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 240
+        y: 160
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -242,12 +242,12 @@ TextureImporter:
       name: swim - idle_4
       rect:
         serializedVersion: 2
-        x: 349
-        y: 186
-        width: 22
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 320
+        y: 160
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -264,12 +264,12 @@ TextureImporter:
       name: swim - idle_5
       rect:
         serializedVersion: 2
-        x: 428
-        y: 188
-        width: 24
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 400
+        y: 160
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -286,12 +286,12 @@ TextureImporter:
       name: swim - idle_6
       rect:
         serializedVersion: 2
-        x: 26
-        y: 109
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 80
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -308,12 +308,12 @@ TextureImporter:
       name: swim - idle_7
       rect:
         serializedVersion: 2
-        x: 105
-        y: 108
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 80
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -330,12 +330,12 @@ TextureImporter:
       name: swim - idle_8
       rect:
         serializedVersion: 2
-        x: 183
-        y: 107
-        width: 33
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 80
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -352,12 +352,12 @@ TextureImporter:
       name: swim - idle_9
       rect:
         serializedVersion: 2
-        x: 266
-        y: 107
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 240
+        y: 80
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -374,12 +374,12 @@ TextureImporter:
       name: swim - idle_10
       rect:
         serializedVersion: 2
-        x: 346
-        y: 106
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 320
+        y: 80
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -396,12 +396,12 @@ TextureImporter:
       name: swim - idle_11
       rect:
         serializedVersion: 2
-        x: 426
-        y: 108
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 400
+        y: 80
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -418,12 +418,12 @@ TextureImporter:
       name: swim - idle_12
       rect:
         serializedVersion: 2
-        x: 26
-        y: 29
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -440,12 +440,12 @@ TextureImporter:
       name: swim - idle_13
       rect:
         serializedVersion: 2
-        x: 105
-        y: 28
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 0
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -462,12 +462,12 @@ TextureImporter:
       name: swim - idle_14
       rect:
         serializedVersion: 2
-        x: 183
-        y: 27
-        width: 33
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 0
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -484,12 +484,12 @@ TextureImporter:
       name: swim - idle_15
       rect:
         serializedVersion: 2
-        x: 266
-        y: 27
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 240
+        y: 0
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -506,12 +506,12 @@ TextureImporter:
       name: swim - idle_16
       rect:
         serializedVersion: 2
-        x: 346
-        y: 26
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 320
+        y: 0
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -528,12 +528,12 @@ TextureImporter:
       name: swim - idle_17
       rect:
         serializedVersion: 2
-        x: 426
-        y: 28
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 400
+        y: 0
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -550,7 +550,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ba83be5da63157f46b6a59880a8d0a28
     internalID: 0
     vertices: []
     indices: 
