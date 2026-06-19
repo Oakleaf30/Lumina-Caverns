@@ -16,6 +16,7 @@ public class PlayerSword : MonoBehaviour
     [Header("Hitbox Geometry")]
     [SerializeField] private float attackRadius = 0.5f;
     [SerializeField] private float attackOffset = 0.4f; // Distance pushed in front of the player
+    [SerializeField] private float verticalCenterOffset = 0.5f; // NEW: Vertically shifts origin from feet to waist/chest
     [SerializeField] private float knockbackForce = 5f;
 
     private float lastSwingTime;
@@ -53,18 +54,23 @@ public class PlayerSword : MonoBehaviour
         onSwordSwing.Raise();
     }
 
+    // Call this from your Animation Event timeline at the peak of your swing!
     void CalculateMeleeHitbox()
     {
         Vector2 lookDirection = playerInteraction.GetLastDirection().normalized;
-        Vector2 attackOrigin = (Vector2)transform.position + (lookDirection * attackOffset);
+
+        // Fix: Establish the pivot core offset from the feet up to the waist/chest before pushing outward
+        Vector2 centerOrigin = (Vector2)transform.position + new Vector2(0f, verticalCenterOffset);
+        Vector2 attackOrigin = centerOrigin + (lookDirection * attackOffset);
+
         Collider2D[] hitTargets = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, enemyLayer);
 
         foreach (Collider2D targetCollider in hitTargets)
         {
             if (targetCollider.TryGetComponent(out EnemyBase enemy))
             {
-                // Calculate the angle away from the player
-                Vector2 knockbackDir = (enemy.transform.position - transform.position).normalized;
+                // Fix: Calculate knockback away from the player's actual shift center point, not their feet
+                Vector2 knockbackDir = ((Vector2)enemy.transform.position - centerOrigin).normalized;
                 Vector2 totalForce = knockbackDir * knockbackForce;
 
                 // Pass the damage AND the force vector
@@ -76,11 +82,13 @@ public class PlayerSword : MonoBehaviour
     // Draws the hitbox radius in the Scene View for easy visual tuning
     private void OnDrawGizmosSelected()
     {
-        if (playerInteraction == null) playerInteraction = GetComponent<PlayerInteraction>();
         if (playerInteraction == null) return;
 
         Vector2 lookDir = playerInteraction.GetLastDirection().normalized;
-        Vector2 attackOrigin = (Vector2)transform.position + (lookDir * attackOffset);
+
+        // Mirror the updated logic here so the visual representation in the inspector is 100% accurate
+        Vector2 centerOrigin = (Vector2)transform.position + new Vector2(0f, verticalCenterOffset);
+        Vector2 attackOrigin = centerOrigin + (lookDir * attackOffset);
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackOrigin, attackRadius);

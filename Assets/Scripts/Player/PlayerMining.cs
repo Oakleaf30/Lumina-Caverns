@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMining : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class PlayerMining : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (Input.GetMouseButton(0) && Time.time >= lastSwingTime + swingCooldown && !anim.GetBool("IsSwimming"))
         {
             SwingPickaxe();

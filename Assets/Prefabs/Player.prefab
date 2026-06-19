@@ -237,8 +237,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackRadius: 0.8
+  attackRadius: 0.7
   attackOffset: 0.5
+  verticalCenterOffset: 0.2
   knockbackForce: 10
 --- !u!114 &3552447602973476430
 MonoBehaviour:

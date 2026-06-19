@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScreenFader : MonoBehaviour
 {
@@ -37,5 +38,13 @@ public class ScreenFader : MonoBehaviour
             group.alpha -= Time.deltaTime * 2;
             yield return null;
         }
+    }
+
+    public void TransitionToScene(string sceneName)
+    {
+        StartCoroutine(FadeRoutine(() =>
+        {
+            SceneManager.LoadScene(sceneName);
+        }));
     }
 }

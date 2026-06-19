@@ -48,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
         Debug.DrawLine(feetPosition, TargetCentre, Color.red);
 
         // 4. Fire the interaction exactly at the end of the red line
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(1))
         {
             CheckInteraction(TargetCentre);
         }
@@ -59,9 +59,9 @@ public class PlayerInteraction : MonoBehaviour
         // Cast the circle exactly where the red line ends
         Collider2D hit = Physics2D.OverlapCircle(targetPosition, interactRadius, interactableLayer);
 
-        if (hit != null && hit.TryGetComponent(out Station station))
+        if (hit != null && hit.TryGetComponent(out Interactable interactable))
         {
-            station.Interact();
+            interactable.Interact();
         }
     }
 

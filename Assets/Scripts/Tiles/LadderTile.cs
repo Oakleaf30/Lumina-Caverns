@@ -35,6 +35,7 @@ public class LadderTile : MonoBehaviour
 
     private void LoadMines()
     {
-        SceneManager.LoadScene("Mine");
+        ScreenFader.Instance.TransitionToScene("Mine");
     }
 }
+
