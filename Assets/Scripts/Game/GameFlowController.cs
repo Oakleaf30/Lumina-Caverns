@@ -17,9 +17,6 @@ public class GameFlowController : MonoBehaviour
 
     private void HandlePlayerDeathSequence()
     {
-        SceneLoader.Instance.StartCoroutine(ScreenFader.Instance.FadeRoutine(() =>
-        {
-            SceneManager.LoadScene("Base");
-        }));
+        ScreenFader.Instance.TransitionToScene("Base");
     }
 }

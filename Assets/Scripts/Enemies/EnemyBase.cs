@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] private EnemyData data; // Assign your custom SO asset here
+    [SerializeField] private EnemyData data;
 
     private int currentHealth;
     private SpriteRenderer spriteRenderer;

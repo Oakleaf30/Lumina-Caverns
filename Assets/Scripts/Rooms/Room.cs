@@ -15,13 +15,10 @@ public class Room : MonoBehaviour
     public Door leftDoor;
     public Door rightDoor;
 
-    // You can keep this helper if you want to check door status in other scripts!
-    public bool HasDoor(string direction)
+    public int RoomID { get; private set; }
+
+    public void InitializeRoom(int id)
     {
-        if (direction == "Top") return hasTopDoor;
-        if (direction == "Bottom") return hasBottomDoor;
-        if (direction == "Left") return hasLeftDoor;
-        if (direction == "Right") return hasRightDoor;
-        return false;
+        RoomID = id;
     }
 }

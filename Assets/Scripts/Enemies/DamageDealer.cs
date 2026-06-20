@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
-    [SerializeField] private int baseDamage = 1;
+    [SerializeField] private EnemyData data;
     [SerializeField] private StatusEffectData effectToApply; // Optional! Can be null.
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -13,7 +13,7 @@ public class DamageDealer : MonoBehaviour
             PlayerHealth health = collision.GetComponent<PlayerHealth>();
             if (health != null)
             {
-                health.TakeDamage(baseDamage);
+                health.TakeDamage(data.contactDamage);
             }
 
             // 2. If this enemy has a status effect, hand it to the player's status handler

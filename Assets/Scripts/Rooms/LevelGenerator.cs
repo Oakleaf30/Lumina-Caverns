@@ -16,6 +16,13 @@ public class LevelGenerator : MonoBehaviour
     private class RoomRequirements
     {
         public bool top, bottom, left, right;
+
+        public int RoomID;
+
+        public RoomRequirements(int id)
+        {
+            RoomID = id;
+        }
     }
 
     void Start() => Generate();
@@ -23,11 +30,17 @@ public class LevelGenerator : MonoBehaviour
     void Generate()
     {
         Vector2Int startPos = Vector2Int.zero;
-        layout.Add(startPos, new RoomRequirements());
+
+        // Start our counter at 0. This will serve as both our ID and our maxRooms limiter.
+        int roomsPlaced = 0;
+
+        // Assign ID 0 to the starting room
+        layout.Add(startPos, new RoomRequirements(roomsPlaced));
         Queue<Vector2Int> checkQueue = new Queue<Vector2Int>();
         checkQueue.Enqueue(startPos);
 
-        int roomsPlaced = 1;
+        // Increment immediately so the next room placed gets ID 1
+        roomsPlaced++;
 
         while (checkQueue.Count > 0 && roomsPlaced < maxRooms)
         {
@@ -42,9 +55,12 @@ public class LevelGenerator : MonoBehaviour
                     // Isaac Rule: Only place if it has exactly 1 neighbor (prevents clumping)
                     if (CountNeighbors(neighborPos) == 1)
                     {
-                        layout.Add(neighborPos, new RoomRequirements());
+                        // Pass the current counter value as the unique ID for this new room
+                        layout.Add(neighborPos, new RoomRequirements(roomsPlaced));
                         Connect(currentPos, neighborPos, dir);
                         checkQueue.Enqueue(neighborPos);
+
+                        // Increment the counter/ID for the next iteration
                         roomsPlaced++;
                     }
                 }
@@ -166,13 +182,14 @@ public class LevelGenerator : MonoBehaviour
                 Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
                 Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity);
 
-                // NEW: Save the reference to the room we just made
+                // --- NEW: Stamp the physical room with the ID from your data graph! ---
+                newRoom.InitializeRoom(req.RoomID);
+
+                // Save the reference to the room we just made
                 spawnedRooms.Add(pos, newRoom);
                 return;
             }
         }
-
-
 
         // 3. Fallback warning
         // If you forget to make one of the 15 possible door combinations, this will tell you exactly which one is missing!
