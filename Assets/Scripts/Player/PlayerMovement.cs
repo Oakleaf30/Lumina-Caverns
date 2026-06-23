@@ -25,6 +25,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseMoveSpeed = 5.0f;
     private float currentMoveSpeed;
 
+    public int CurrentRoomID { get; private set; } = -1;
+
+    public void UpdateCurrentRoom(int newRoomID)
+    {
+        CurrentRoomID = newRoomID;
+    }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

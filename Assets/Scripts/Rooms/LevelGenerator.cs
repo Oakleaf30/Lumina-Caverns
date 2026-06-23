@@ -8,6 +8,7 @@ public class LevelGenerator : MonoBehaviour
     public float roomSize = 50f;
 
     [SerializeField] private InteractiveGenerator itemGenerator;
+    [SerializeField] private EnemyGenerator enemyGenerator;
 
     // This tracks exactly what doors each grid coordinate NEEDS
     private Dictionary<Vector2Int, RoomRequirements> layout = new Dictionary<Vector2Int, RoomRequirements>();
@@ -134,30 +135,7 @@ public class LevelGenerator : MonoBehaviour
         {
             PlaceBestRoom(kvp.Key, kvp.Value);
         }
-
-        itemGenerator.GenerateLevelInteractivity();
     }
-
-    //void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
-    //{
-    //    foreach (Room prefab in roomPrefabs)
-    //    {
-    //        for (int rot = 0; rot < 4; rot++)
-    //        {
-    //            // MATCHING LOGIC: Prefab must have DOORS where layout says YES
-    //            // and NO DOORS where layout says NO.
-    //            if (prefab.HasDoor("Top", rot) == req.top &&
-    //                prefab.HasDoor("Bottom", rot) == req.bottom &&
-    //                prefab.HasDoor("Left", rot) == req.left &&
-    //                prefab.HasDoor("Right", rot) == req.right)
-    //            {
-    //                Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
-    //                Room spawned = Instantiate(prefab, worldPos, Quaternion.Euler(0, 0, -90 * rot));
-    //                return;
-    //            }
-    //        }
-    //    }
-    //}
 
     void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
     {
@@ -181,9 +159,10 @@ public class LevelGenerator : MonoBehaviour
             {
                 Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
                 Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity);
-
-                // --- NEW: Stamp the physical room with the ID from your data graph! ---
                 newRoom.InitializeRoom(req.RoomID);
+
+                itemGenerator.GenerateInteractivity(newRoom);
+                enemyGenerator.GenerateEnemies(newRoom);
 
                 // Save the reference to the room we just made
                 spawnedRooms.Add(pos, newRoom);
@@ -195,4 +174,25 @@ public class LevelGenerator : MonoBehaviour
         // If you forget to make one of the 15 possible door combinations, this will tell you exactly which one is missing!
         Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right}");
     }
+
+    //void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
+    //{
+    //    foreach (Room prefab in roomPrefabs)
+    //    {
+    //        for (int rot = 0; rot < 4; rot++)
+    //        {
+    //            // MATCHING LOGIC: Prefab must have DOORS where layout says YES
+    //            // and NO DOORS where layout says NO.
+    //            if (prefab.HasDoor("Top", rot) == req.top &&
+    //                prefab.HasDoor("Bottom", rot) == req.bottom &&
+    //                prefab.HasDoor("Left", rot) == req.left &&
+    //                prefab.HasDoor("Right", rot) == req.right)
+    //            {
+    //                Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
+    //                Room spawned = Instantiate(prefab, worldPos, Quaternion.Euler(0, 0, -90 * rot));
+    //                return;
+    //            }
+    //        }
+    //    }
+    //}
 }

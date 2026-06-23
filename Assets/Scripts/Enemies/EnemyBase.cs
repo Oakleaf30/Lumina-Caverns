@@ -9,26 +9,47 @@ public class EnemyBase : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
 
+    private PlayerMovement playerScript;
+
+    private int roomID;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
     }
 
-    private void Start()
+    void Update()
     {
-        InitializeEnemy();
+        if (playerScript.CurrentRoomID != roomID)
+        {
+            FreezeEnemy();
+        } else
+        {
+            UnfreezeEnemy();
+        }
     }
 
-    private void InitializeEnemy()
+    void FreezeEnemy()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+    }
+
+    void UnfreezeEnemy()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void InitializeEnemy(int roomID)
     {
         if (data == null) return;
 
-        // Apply data from the ScriptableObject asset
         currentHealth = data.maxHealth;
         spriteRenderer.sprite = data.defaultSprite;
         anim.runtimeAnimatorController = data.animatorController;
+        this.roomID = roomID;
     }
 
     public void TakeDamage(int amount, Vector2 knockbackVector)
