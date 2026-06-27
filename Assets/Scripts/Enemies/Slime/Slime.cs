@@ -1,16 +1,17 @@
 using UnityEngine;
 
-// Inherit from EnemyBase instead of MonoBehaviour
 public class Slime : EnemyBase
 {
-    void FixedUpdate()
+    protected override void Update()
     {
-        if (knockbackTimer > 0)
+        base.Update();
+
+        if (frozen)
         {
             return;
         }
 
-        Vector2 direction = (player.transform.position - transform.position).normalized;
-        rb.linearVelocity = direction * data.movementSpeed;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        transform.position += direction * data.movementSpeed * Time.deltaTime;
     }
 }

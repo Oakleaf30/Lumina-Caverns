@@ -13,8 +13,7 @@ public class EnemyBase : MonoBehaviour
     protected PlayerMovement player;
     protected int roomID;
 
-    protected float knockbackTimer;
-    [SerializeField] protected float knockbackDuration;
+    protected bool frozen = false;
 
     // 2. Changed to protected virtual so Slime can run its own Awake code if needed
     protected virtual void Awake()
@@ -30,17 +29,11 @@ public class EnemyBase : MonoBehaviour
     {
         if (player.CurrentRoomID != roomID)
         {
-            FreezeEnemy();
+            frozen = true;
         }
         else
         {
-            UnfreezeEnemy();
-            // Children scripts can handle their custom movement if they override this!
-        }
-
-        if (knockbackTimer > 0)
-        {
-            knockbackTimer -= Time.deltaTime;
+            frozen = false;
         }
     }
 
@@ -78,8 +71,6 @@ public class EnemyBase : MonoBehaviour
 
     void ApplyKnockback(Vector2 knockbackVector)
     {
-        knockbackTimer = knockbackDuration;
-
         float forceModifier = 1f - data.knockbackResistance;
         Vector2 finalForce = knockbackVector * forceModifier;
 

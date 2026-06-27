@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5266319837671352425}
   - component: {fileID: 1749215366215954150}
   m_Layer: 7
-  m_Name: Green Slime
+  m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 184178f5d22505d47bdc8fe6807fe95a, type: 2}
-  knockbackDuration: 1
 --- !u!50 &3420840714700737486
 Rigidbody2D:
   serializedVersion: 5
