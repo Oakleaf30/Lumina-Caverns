@@ -219,6 +219,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   pickaxeDamage: 1
+  strikeOffset: 0.5
+  verticalCenterOffset: 0.5
 --- !u!114 &6002291323248252633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +242,7 @@ MonoBehaviour:
   attackRadius: 0.7
   attackOffset: 0.5
   verticalCenterOffset: 0.2
-  knockbackForce: 10
+  knockbackForce: 5
 --- !u!114 &3552447602973476430
 MonoBehaviour:
   m_ObjectHideFlags: 0

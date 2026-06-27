@@ -2,33 +2,45 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] private EnemyData data;
+    // 1. Changed to protected so Slime can read its speed, health, etc.
+    [SerializeField] protected EnemyData data;
 
-    private int currentHealth;
-    private SpriteRenderer spriteRenderer;
-    private Animator anim;
-    private Rigidbody2D rb;
+    protected int currentHealth;
+    protected SpriteRenderer spriteRenderer;
+    protected Animator anim;
+    protected Rigidbody2D rb;
 
-    private PlayerMovement playerScript;
+    protected PlayerMovement player;
+    protected int roomID;
 
-    private int roomID;
+    protected float knockbackTimer;
+    [SerializeField] protected float knockbackDuration;
 
-    private void Awake()
+    // 2. Changed to protected virtual so Slime can run its own Awake code if needed
+    protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
     }
 
-    void Update()
+    // 3. Changed to protected virtual so Slime can have its own movement logic in Update/FixedUpdate
+    protected virtual void Update()
     {
-        if (playerScript.CurrentRoomID != roomID)
+        if (player.CurrentRoomID != roomID)
         {
             FreezeEnemy();
-        } else
+        }
+        else
         {
             UnfreezeEnemy();
+            // Children scripts can handle their custom movement if they override this!
+        }
+
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
         }
     }
 
@@ -56,22 +68,22 @@ public class EnemyBase : MonoBehaviour
     {
         currentHealth -= amount;
 
-        // Flash effects, knockback calculation, etc.
-
         if (currentHealth <= 0)
         {
             Die();
         }
 
-        // 2. Direct pure physics knockback check
-        if (rb != null && data != null && data.knockbackResistance < 1f)
-        {
-            // Read straight from the SO asset without any local caching variables
-            float forceModifier = 1f - data.knockbackResistance;
-            Vector2 finalForce = knockbackVector * forceModifier;
+        ApplyKnockback(knockbackVector);
+    }
 
-            rb.AddForce(finalForce, ForceMode2D.Impulse);
-        }
+    void ApplyKnockback(Vector2 knockbackVector)
+    {
+        knockbackTimer = knockbackDuration;
+
+        float forceModifier = 1f - data.knockbackResistance;
+        Vector2 finalForce = knockbackVector * forceModifier;
+
+        rb.AddForce(finalForce, ForceMode2D.Impulse);
     }
 
     private void Die()

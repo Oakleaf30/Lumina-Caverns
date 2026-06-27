@@ -14,6 +14,8 @@ public class PlayerMining : MonoBehaviour
     [SerializeField] private float strikeRadius = 0.4f;
     [SerializeField] private LayerMask resourceLayer;
     [SerializeField] private int pickaxeDamage = 1;
+    [SerializeField] private float strikeOffset = 0.5f;        // Distance projected forward
+    [SerializeField] private float verticalCenterOffset = 0.5f; // Shifts origin from feet to waist
 
     private float lastSwingTime;
 
@@ -56,12 +58,38 @@ public class PlayerMining : MonoBehaviour
 
     void DamageNode()
     {
-        Vector3 targetWorldPosition = playerInteraction.GetTargetCellCenterWorld();
-        Collider2D hit = Physics2D.OverlapCircle(targetWorldPosition, strikeRadius, resourceLayer);
+        // 1. Calculate the center origin (waist height instead of feet pivot)
+        Vector3 centerOrigin = transform.position + new Vector3(0, verticalCenterOffset, 0);
+
+        // 2. Get player look direction and project the strike position forward smoothly
+        Vector2 lookDir = playerMovement != null ? playerInteraction.GetLastDirection() : Vector2.down;
+        Vector3 strikeWorldPosition = centerOrigin + (Vector3)(lookDir * strikeOffset);
+
+        // 3. Fluid overlap check (completely detached from the grid)
+        Collider2D hit = Physics2D.OverlapCircle(strikeWorldPosition, strikeRadius, resourceLayer);
 
         if (hit != null && hit.TryGetComponent<OreNode>(out OreNode node))
         {
             node.TakeDamage(pickaxeDamage);
         }
+    }
+
+    // Draws the interactive mining field in the Unity Scene View
+    private void OnDrawGizmosSelected()
+    {
+        // Mirror the exact math used in DamageNode()
+        Vector3 centerOrigin = transform.position + new Vector3(0, verticalCenterOffset, 0);
+
+        // Grab look direction safely if the game isn't running yet, fallback to down
+        Vector2 lookDir = playerMovement != null ? playerInteraction.GetLastDirection() : Vector2.down;
+        Vector3 strikeWorldPosition = centerOrigin + (Vector3)(lookDir * strikeOffset);
+
+        // Draw the look origin (waist point)
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(centerOrigin, 0.05f);
+
+        // Draw the actual hit detection circle
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(strikeWorldPosition, strikeRadius);
     }
 }

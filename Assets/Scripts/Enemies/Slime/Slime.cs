@@ -1,25 +1,16 @@
 using UnityEngine;
 
-public class Slime : MonoBehaviour
+// Inherit from EnemyBase instead of MonoBehaviour
+public class Slime : EnemyBase
 {
-    [SerializeField] private EnemyData data;
-    private Transform player;
-    private Rigidbody2D rb;
-
-    private void Awake()
+    void FixedUpdate()
     {
-        player = GameObject.FindWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
-    }
+        if (knockbackTimer > 0)
+        {
+            return;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // 1. Calculate direction exactly like you did
-        Vector3 direction = (player.position - transform.position).normalized;
-
-        // 2. Feed it into the Rigidbody's velocity instead of transform.position
-        // Note: In newer Unity versions, use '.linearVelocity'. In older versions, use '.velocity'.
+        Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.linearVelocity = direction * data.movementSpeed;
     }
 }
