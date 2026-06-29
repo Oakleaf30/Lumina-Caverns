@@ -1751,8 +1751,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d83438b4c0cf449904eb7f8555b9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactiveMarker: {fileID: 11400000, guid: 8c793e1d700d2d642b12e8a17d90ddc5, type: 2}
-  OrePrefab: {fileID: 7697395271067775740, guid: 65d834af5cabf044eb5653c7cccfe8c5, type: 3}
+  SpawnPool:
+  - resourceName: Copper
+    smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
+    largeVariant: {fileID: 11400000, guid: 3d8d90d0e0a861647986df59c4f538f7, type: 2}
+    selectionWeight: 0
+    largeSizeChance: 0
+  InteractablePrefab: {fileID: 8889572035499357333, guid: 239ed3ccc6794c241bffe33a48625672, type: 3}
+  maxActiveAnchors: 4
+  minNodesPerAnchor: 2
+  maxNodesPerAnchor: 4
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  maxSpawnAttempts: 10
 --- !u!4 &1376388036
 Transform:
   m_ObjectHideFlags: 0
@@ -1889,8 +1901,6 @@ MonoBehaviour:
   roomPrefabs:
   - {fileID: 5445048937391416824, guid: fc5509da6d049c24eb3474f801cb4f49, type: 3}
   - {fileID: 8100108444406874278, guid: 94603331a95591d469ca663455b5a986, type: 3}
-  - {fileID: 8559720579487282352, guid: ac02965c1d9f1c94dbf75a62a313c5a8, type: 3}
-  - {fileID: 9035433876493958916, guid: db83a5689372f6346b287668e4ab7e93, type: 3}
   maxRooms: 2
   roomSize: 20
   itemGenerator: {fileID: 1376388035}

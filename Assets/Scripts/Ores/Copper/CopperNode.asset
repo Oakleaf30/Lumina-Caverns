@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryItemYieldID: Copper
   oreDisplayName: Copper
+  hitboxSize: 0.25
+  spaceRequired: 0.3
   maxHitPoints: 3
-  nodeSprite: {fileID: 4312774026939199897, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
+  nodeSprites:
+  - {fileID: -4673536048321637515, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
+  - {fileID: 631623507490633193, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
+  - {fileID: 9185080709387706225, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
+  - {fileID: 8930431889640237112, guid: 913763288ff55114392c8d85d847f1a8, type: 3}

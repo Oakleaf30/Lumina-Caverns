@@ -2,34 +2,27 @@ using UnityEngine;
 
 public class OreNode : MonoBehaviour
 {
-    [SerializeField] private OreData oreData;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-
-    // Global event architecture reference
+    public OreData oreData;
     [SerializeField] private GameEvent onOreMined;
+
+    private CircleCollider2D circleCollider;
+    private SpriteRenderer spriteRenderer;
 
     private int currentHitPoints;
 
-    private void Start()
+    private void Awake()
     {
-        InitializeNode();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
-    public void Initialize(OreData data)
-    {
-        oreData = data;
-        InitializeNode();
-    }
-
-    private void InitializeNode()
+    public void InitialiseImmediate()
     {
         if (oreData == null) return;
 
         currentHitPoints = oreData.maxHitPoints;
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.sprite = oreData.nodeSprite;
-        }
+        spriteRenderer.sprite = oreData.nodeSprites[Random.Range(0, oreData.nodeSprites.Length)];
+        circleCollider.radius = oreData.hitboxSize;
     }
 
     public void TakeDamage(int damageAmount)

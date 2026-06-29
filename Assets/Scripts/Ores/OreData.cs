@@ -4,13 +4,14 @@ using UnityEngine;
 public class OreData : ScriptableObject
 {
     [Header("Identity & Drops")]
-    public string primaryItemYieldID; // e.g., "biome_1_scrap"
-    public string oreDisplayName;      // e.g., "Rough Copper Crags"
+    public string primaryItemYieldID;
+    public string oreDisplayName;
+    public float hitboxSize;
+    public float spaceRequired;
 
     [Header("Mining Stats")]
     public int maxHitPoints = 3;
 
     [Header("Visuals")]
-    public Sprite nodeSprite;
-    // You could also add visual particles or sparkle effects here
+    public Sprite[] nodeSprites;
 }
