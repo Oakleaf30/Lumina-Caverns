@@ -76,12 +76,9 @@ public class InteractiveGenerator : MonoBehaviour
                         // Grab the OreNode component
                         OreNode nodeScript = interactable.GetComponent<OreNode>();
 
-                        // Pass the data asset
-                        nodeScript.oreData = data;
-
                         // FIX 1: Tell the node to update its physical collider/scale RIGHT NOW
                         // (Ensure you implement this Initialize method in your OreNode script!)
-                        nodeScript.InitialiseImmediate();
+                        nodeScript.InitialiseImmediate(data);
 
                         // FIX 2: Force Unity to register this new collider into the physics world space mid-frame
                         Physics2D.SyncTransforms();

@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class OreNode : MonoBehaviour
 {
-    public OreData oreData;
     [SerializeField] private GameEvent onOreMined;
+    [SerializeField] private GameObject dropPrefab;
 
     private CircleCollider2D circleCollider;
     private SpriteRenderer spriteRenderer;
+    private OreData oreData;
 
     private int currentHitPoints;
 
@@ -16,9 +17,9 @@ public class OreNode : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
-    public void InitialiseImmediate()
+    public void InitialiseImmediate(OreData data)
     {
-        if (oreData == null) return;
+        oreData = data;
 
         currentHitPoints = oreData.maxHitPoints;
         spriteRenderer.sprite = oreData.nodeSprites[Random.Range(0, oreData.nodeSprites.Length)];
@@ -37,15 +38,8 @@ public class OreNode : MonoBehaviour
 
     private void BreakNode()
     {
-        // 1. Handle own destruction / spawn visual particles locally
-        Debug.Log($"{oreData.oreDisplayName} broken!");
-
-        // 2. Fire decoupled event passing details to UI or Inventory
-        if (onOreMined != null)
-        {
-            // You can pass the primaryItemYieldID through your event system
-            //onOreMined.Raise(oreData.primaryItemYieldID);
-        }
+        GameObject drop = Instantiate(dropPrefab, transform.position, transform.rotation);
+        drop.GetComponent<ItemDrop>().Initialize(oreData.dropData);
 
         Destroy(gameObject);
     }

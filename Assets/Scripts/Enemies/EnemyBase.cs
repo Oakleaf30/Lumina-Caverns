@@ -1,9 +1,11 @@
+using TreeEditor;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
     // 1. Changed to protected so Slime can read its speed, health, etc.
     [SerializeField] protected EnemyData data;
+    [SerializeField] protected GameObject dropPrefab;
 
     protected int currentHealth;
     protected SpriteRenderer spriteRenderer;
@@ -35,16 +37,6 @@ public class EnemyBase : MonoBehaviour
         {
             frozen = false;
         }
-    }
-
-    void FreezeEnemy()
-    {
-        rb.constraints = RigidbodyConstraints2D.FreezePosition;
-    }
-
-    void UnfreezeEnemy()
-    {
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void InitializeEnemy(int roomID)
@@ -79,13 +71,9 @@ public class EnemyBase : MonoBehaviour
 
     private void Die()
     {
-        // Drop items based on data guidelines
-        if (data.dropItemPrefab != null && Random.value <= data.dropChance)
-        {
-            Instantiate(data.dropItemPrefab, transform.position, Quaternion.identity);
-        }
+        GameObject drop = Instantiate(dropPrefab, transform.position, transform.rotation);
+        drop.GetComponent<ItemDrop>().Initialize(data.dropData);
 
-        // Fire a game event to notify rooms/managers an enemy died if needed
         Destroy(gameObject);
     }
 }

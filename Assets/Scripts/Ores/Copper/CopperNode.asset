@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af51d3ae9291ca47892dd053561d096, type: 3}
   m_Name: CopperNode
   m_EditorClassIdentifier: 
-  primaryItemYieldID: Copper
   oreDisplayName: Copper
   hitboxSize: 0.25
   spaceRequired: 0.3
   maxHitPoints: 3
+  dropData: {fileID: 11400000, guid: 26e5aee9210022b44876494c5a413a7e, type: 2}
+  minDropCount: 1
+  maxDropCount: 3
   nodeSprites:
   - {fileID: -4673536048321637515, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
   - {fileID: 631623507490633193, guid: 913763288ff55114392c8d85d847f1a8, type: 3}

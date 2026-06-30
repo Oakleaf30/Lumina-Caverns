@@ -16,6 +16,6 @@ public class EnemyData : ScriptableObject
     public float knockbackResistance;
 
     [Header("Drop Tables")]
-    public GameObject dropItemPrefab; // e.g., Lumen Shard or Monster Essence
+    public ItemData dropData;
     [Range(0f, 1f)] public float dropChance;
 }

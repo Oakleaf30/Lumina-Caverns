@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 184178f5d22505d47bdc8fe6807fe95a, type: 2}
+  dropPrefab: {fileID: 3943490826253954512, guid: e9b3ded8042f33547a5fbe33d72ca958, type: 3}
 --- !u!50 &3420840714700737486
 Rigidbody2D:
   serializedVersion: 5
