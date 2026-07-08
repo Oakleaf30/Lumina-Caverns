@@ -9,12 +9,12 @@ public class OreData : ScriptableObject
     public float spaceRequired;
 
     [Header("Mining Stats")]
-    public int maxHitPoints = 3;
+    public int maxHitPoints;
 
     [Header("Drops Configuration")]
     public ItemData dropData;
-    public int minDropCount = 1;
-    public int maxDropCount = 3;
+    public int minDropCount;
+    public int maxDropCount;
 
     [Header("Visuals")]
     public Sprite[] nodeSprites;

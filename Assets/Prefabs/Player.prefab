@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3552447602973476430}
   - component: {fileID: 4823664196062340702}
   - component: {fileID: 2355928638980333209}
+  - component: {fileID: 8664313142872284355}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -160,6 +161,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
+  onInventoryOpen: {fileID: 0}
 --- !u!114 &6419296583060460920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,13 +216,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPickaxeSwing: {fileID: 11400000, guid: a7f389e2b1868274e8ee3364c41d83d0, type: 2}
   swingCooldown: 0.35
-  strikeRadius: 0.4
+  strikeRadius: 0.2
   resourceLayer:
     serializedVersion: 2
     m_Bits: 64
   pickaxeDamage: 1
   strikeOffset: 0.5
-  verticalCenterOffset: 0.5
+  verticalCenterOffset: 0.1
 --- !u!114 &6002291323248252633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +244,7 @@ MonoBehaviour:
   attackRadius: 0.7
   attackOffset: 0.5
   verticalCenterOffset: 0.2
-  knockbackForce: 5
+  knockbackForce: 10
 --- !u!114 &3552447602973476430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,3 +309,15 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.04}
   m_Radius: 0.1528229
+--- !u!114 &8664313142872284355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363688841941322429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dc85c9b6d6ec847afd33cf3a1a7e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
