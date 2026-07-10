@@ -15,10 +15,10 @@ MonoBehaviour:
   oreDisplayName: CopperL
   hitboxSize: 0.4
   spaceRequired: 0.4
-  maxHitPoints: 6
+  maxHitPoints: 5
   dropData: {fileID: 11400000, guid: 26e5aee9210022b44876494c5a413a7e, type: 2}
-  minDropCount: 1
-  maxDropCount: 3
+  minDropCount: 2
+  maxDropCount: 6
   nodeSprites:
   - {fileID: -3304253531636517484, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
   - {fileID: 4312774026939199897, guid: 913763288ff55114392c8d85d847f1a8, type: 3}

@@ -39,14 +39,16 @@ public class InteractiveGenerator : MonoBehaviour
         for (int a = 0; a < anchorsToActivate; a++)
         {
             SpawnAnchor chosenAnchor = anchorPool[a];
+            SpawnPool clumpType = SelectWeightedPool();
             int numberOfNodes = Random.Range(minNodesPerAnchor, maxNodesPerAnchor + 1);
+            bool guaranteedSpawned = false;
 
             // 5. Spawn the exact maximum number of nodes dedicated to this specific anchor radius
             for (int n = 0; n < numberOfNodes; n++)
             {
                 Vector2 validSpawnPosition = Vector2.zero;
                 bool foundSpot = false;
-                OreData data = DetermineInteractable();
+                OreData data = ResolveVariant(clumpType, ref guaranteedSpawned);
 
                 for (int attempt = 0; attempt < maxSpawnAttempts; attempt++)
                 {
@@ -88,14 +90,36 @@ public class InteractiveGenerator : MonoBehaviour
         }
     }
 
-    private OreData DetermineInteractable()
+    private SpawnPool SelectWeightedPool()
     {
-        if (Random.value < 0.1f)
+        float totalWeight = 0f;
+        foreach (var pool in SpawnPool)
+            totalWeight += pool.selectionWeight;
+
+        float roll = Random.Range(0f, totalWeight);
+        float cumulative = 0f;
+
+        foreach (var pool in SpawnPool)
         {
-            return SpawnPool[0].largeVariant;
+            cumulative += pool.selectionWeight;
+            if (roll <= cumulative)
+                return pool;
+        }
+
+        // Fallback in case of floating point rounding at the boundary
+        return SpawnPool[SpawnPool.Count - 1];
+    }
+
+    private OreData ResolveVariant(SpawnPool pool, ref bool guaranteedSpawned)
+    {
+        if (guaranteedSpawned == false && pool.guaranteedVariant != null)
+        {
+            guaranteedSpawned = true;
+            return pool.guaranteedVariant;
         } else
         {
-            return SpawnPool[0].smallVariant;
+            bool spawnLarge = Random.value < pool.largeSizeChance;
+            return spawnLarge ? pool.largeVariant : pool.smallVariant;
         }
     }
 

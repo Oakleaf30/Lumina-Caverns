@@ -42,7 +42,8 @@ public class OreNode : MonoBehaviour
 
         for (int i  = 0; i < amount; i++ )
         {
-            Vector3 spawnLocation = RandomDropLocation();
+            Vector2 offset = Random.insideUnitCircle * 0.5f;
+            Vector3 spawnLocation = transform.position + new Vector3(offset.x, offset.y, 0);
 
             GameObject drop = Instantiate(dropPrefab, spawnLocation, transform.rotation);
             drop.GetComponent<ItemDrop>().Initialize(oreData.dropData);
@@ -51,12 +52,5 @@ public class OreNode : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private Vector3 RandomDropLocation()
-    {
-        float radius = 0.5f;
-        float randomX = transform.position.x + Random.Range(-radius, radius);
-        float randomY = transform.position.y + Random.Range(-radius, radius);
-
-        return new Vector3(randomX, randomY, 1);
-    }
+    
 }

@@ -21,4 +21,4 @@ MonoBehaviour:
   attackCooldown: 1
   knockbackResistance: 0
   dropData: {fileID: 11400000, guid: aa3341d291a97734a86ecb5c6ad5a35e, type: 2}
-  dropChance: 0
+  dropChance: 1

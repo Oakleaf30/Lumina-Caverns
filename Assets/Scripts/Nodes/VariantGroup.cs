@@ -9,6 +9,7 @@ public struct SpawnPool
     [Header("Size Variants")]
     public OreData smallVariant;
     public OreData largeVariant;
+    public OreData guaranteedVariant;
 
     [Header("Spawning Weights")]
     [Range(0f, 1f), Tooltip("Relative chance to spawn this specific ore type within a biome.")]

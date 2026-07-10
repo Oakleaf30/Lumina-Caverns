@@ -1,34 +1,34 @@
 fileFormatVersion: 2
-guid: aa2b32f07a5416a428f02caa27a03306
+guid: 0f1c6150f3475bc4b9e39d4df6537c82
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4782434301062614629
-    second: Breakable platform_0
+      213: 1620505313434328584
+    second: cobalt_0
   - first:
-      213: 4143682497643463488
-    second: Breakable platform_1
+      213: 7342474185363516939
+    second: cobalt_1
   - first:
-      213: -6166093135291873816
-    second: Breakable platform_2
+      213: 5431932831236089654
+    second: cobalt_2
   - first:
-      213: -1063450157915322273
-    second: Breakable platform_3
+      213: -4440935131939629323
+    second: cobalt_3
   - first:
-      213: 137145059545964355
-    second: Breakable platform_4
+      213: -1917121685417661804
+    second: cobalt_4
   - first:
-      213: 3665393132111346618
-    second: Breakable platform_5
+      213: 8751889633520640306
+    second: cobalt_5
   - first:
-      213: 150453192728308722
-    second: Breakable platform_6
+      213: -7040394756608155464
+    second: cobalt_6
   - first:
-      213: 2079797514789263667
-    second: Breakable platform_7
+      213: 6609286998603404364
+    second: cobalt_7
   - first:
-      213: -972163620187435426
-    second: Breakable platform_8
+      213: -2385673780422415144
+    second: cobalt_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -124,155 +124,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Breakable platform_0
+      name: cobalt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0005ffb57dd62204894f7910ed71e08f
+      internalID: 1908946185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cobalt_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37f9a4ee8254b3141837c97202712db2
+      internalID: -1011323670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cobalt_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c0fe222d2fd5ff44b047210fc050375
+      internalID: 1013081942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cobalt_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b4510ac5942a0147a8dc88344393ee8
+      internalID: 779733597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cobalt_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad1ee303aeae1844b5ce6370e81bfbb
+      internalID: -2063798829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cobalt_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 56e0b7c88ae9e5240800000000000000
-      internalID: 4782434301062614629
+      spriteID: c24f89ea95463b748aeebffaf0f99ec1
+      internalID: -1564101382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Breakable platform_1
+      name: cobalt_6
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed6f953cd2a0534aa16f42ab3fb3d21
+      internalID: -1855740440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cobalt_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3efc8d5b8d42e4f45a29635c098eaff6
+      internalID: -1359180690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cobalt_8
       rect:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 48
-        height: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 043ca060741518930800000000000000
-      internalID: 4143682497643463488
+      spriteID: c8438be8d563a4c45886a5b5a9615da2
+      internalID: 374609970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Breakable platform_2
+      name: cobalt_9
       rect:
         serializedVersion: 2
-        x: 96
+        x: 64
         y: 0
-        width: 48
-        height: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8e504fa76f2ad6aa0800000000000000
-      internalID: -6166093135291873816
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Breakable platform_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f58cf1d37bddd31f0800000000000000
-      internalID: -1063450157915322273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Breakable platform_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34fdfec74bc37e100800000000000000
-      internalID: 137145059545964355
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Breakable platform_5
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: abb37a132a71ed230800000000000000
-      internalID: 3665393132111346618
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Breakable platform_6
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2fbe4e3b164861200800000000000000
-      internalID: 150453192728308722
+      spriteID: 4b8583d8deee7be48b6c14dd3248a823
+      internalID: -692680182
       vertices: []
       indices: 
       edges: []
@@ -281,7 +347,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 96488245d67e86b43ae86b18ae1d9bcd
+    spriteID: 3c9dcab9297472c40a1c57e1ba9d2485
     internalID: 0
     vertices: []
     indices: 
@@ -291,13 +357,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Breakable platform_0: 4782434301062614629
-      Breakable platform_1: 4143682497643463488
-      Breakable platform_2: -6166093135291873816
-      Breakable platform_3: -1063450157915322273
-      Breakable platform_4: 137145059545964355
-      Breakable platform_5: 3665393132111346618
-      Breakable platform_6: 150453192728308722
+      cobalt_0: 1908946185
+      cobalt_1: -1011323670
+      cobalt_2: 1013081942
+      cobalt_3: 779733597
+      cobalt_4: -2063798829
+      cobalt_5: -1564101382
+      cobalt_6: -1855740440
+      cobalt_7: -1359180690
+      cobalt_8: 374609970
+      cobalt_9: -692680182
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

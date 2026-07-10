@@ -1,25 +1,37 @@
 fileFormatVersion: 2
-guid: 32e76c75eed010c4e84820033cd03389
+guid: 9e76712f3c2ea4b4492c57f7926c52fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7443457672625967507
-    second: Dart trap_0
+      213: -7481206151508033686
+    second: amethyst_0
   - first:
-      213: -4233698719927235758
-    second: Dart trap_1
+      213: -2917206439235503695
+    second: amethyst_1
   - first:
-      213: 4782138571982732760
-    second: Dart trap_2
+      213: 7017468041619739341
+    second: amethyst_2
   - first:
-      213: 1461833850459252314
-    second: Dart trap_3
+      213: 3582372775130035198
+    second: amethyst_3
   - first:
-      213: -2361603949294641064
-    second: Dart trap_4
+      213: -3593298685611286364
+    second: amethyst_4
   - first:
-      213: -6457341034875008585
-    second: Dart trap_5
+      213: 4078644532175459992
+    second: amethyst_5
+  - first:
+      213: -5608899291684426679
+    second: amethyst_6
+  - first:
+      213: 7698456310617105941
+    second: amethyst_7
+  - first:
+      213: -4354764778705110956
+    second: amethyst_8
+  - first:
+      213: 1785710053759485620
+    second: amethyst_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dart trap_0
+      name: amethyst_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 11
-        width: 9
-        height: 9
+        x: 1
+        y: 18
+        width: 13
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 391d68de0597c4760800000000000000
-      internalID: 7443457672625967507
+      spriteID: a6f75ef64aa6d2890800000000000000
+      internalID: -7481206151508033686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dart trap_1
+      name: amethyst_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 10
-        width: 9
-        height: 10
+        x: 18
+        y: 18
+        width: 13
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25b06b00271ee35c0800000000000000
-      internalID: -4233698719927235758
+      spriteID: 1b9b2e413300487d0800000000000000
+      internalID: -2917206439235503695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dart trap_2
+      name: amethyst_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 11
-        width: 9
-        height: 9
+        x: 34
+        y: 18
+        width: 13
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,63 +186,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8dd79b1c1b19d5240800000000000000
-      internalID: 4782138571982732760
+      spriteID: dc29663f00e036160800000000000000
+      internalID: 7017468041619739341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dart trap_3
+      name: amethyst_3
       rect:
         serializedVersion: 2
-        x: 52
+        x: 50
+        y: 18
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef3f7aa0f0527b130800000000000000
+      internalID: 3582372775130035198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: amethyst_4
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 15
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a0e24032e9022ec0800000000000000
+      internalID: -3593298685611286364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: amethyst_5
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 1
-        width: 9
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a56e341542a794410800000000000000
-      internalID: 1461833850459252314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dart trap_4
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 2
-        width: 11
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 850222e68b5e93fd0800000000000000
-      internalID: -2361603949294641064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dart trap_5
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 17
-        width: 7
+        width: 16
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -240,8 +252,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b9c8be8a8ae266a0800000000000000
-      internalID: -6457341034875008585
+      spriteID: 8965869a7914a9830800000000000000
+      internalID: 4078644532175459992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: amethyst_6
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ca53abfcf2922b0800000000000000
+      internalID: -5608899291684426679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: amethyst_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5166231f93966da60800000000000000
+      internalID: 7698456310617105941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: amethyst_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45836ec9184c093c0800000000000000
+      internalID: -4354764778705110956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: amethyst_9
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b68d2235dd18c810800000000000000
+      internalID: 1785710053759485620
       vertices: []
       indices: 
       edges: []
@@ -260,12 +360,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dart trap_0: 7443457672625967507
-      Dart trap_1: -4233698719927235758
-      Dart trap_2: 4782138571982732760
-      Dart trap_3: 1461833850459252314
-      Dart trap_4: -2361603949294641064
-      Dart trap_5: -6457341034875008585
+      amethyst_0: -7481206151508033686
+      amethyst_1: -2917206439235503695
+      amethyst_2: 7017468041619739341
+      amethyst_3: 3582372775130035198
+      amethyst_4: -3593298685611286364
+      amethyst_5: 4078644532175459992
+      amethyst_6: -5608899291684426679
+      amethyst_7: 7698456310617105941
+      amethyst_8: -4354764778705110956
+      amethyst_9: 1785710053759485620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

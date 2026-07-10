@@ -71,8 +71,14 @@ public class EnemyBase : MonoBehaviour
 
     private void Die()
     {
-        GameObject drop = Instantiate(dropPrefab, transform.position, transform.rotation);
-        drop.GetComponent<ItemDrop>().Initialize(data.dropData);
+        if (Random.value < data.dropChance)
+        {
+            Vector2 offset = Random.insideUnitCircle * 0.5f;
+            Vector3 spawnLocation = transform.position + new Vector3(offset.x, offset.y, 0);
+
+            GameObject drop = Instantiate(dropPrefab, spawnLocation, transform.rotation);
+            drop.GetComponent<ItemDrop>().Initialize(data.dropData);
+        }
 
         Destroy(gameObject);
     }

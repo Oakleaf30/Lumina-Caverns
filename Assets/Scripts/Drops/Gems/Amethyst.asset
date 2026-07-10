@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87187e606ddbf7c4083846d1cbaed593, type: 3}
-  m_Name: Slime
+  m_Name: Amethyst
   m_EditorClassIdentifier: 
-  itemId: slime
-  displayName: Slime
-  icon: {fileID: -7282886668606283007, guid: c4f88a7e86dc3054b87601080fc8d9cb, type: 3}
-  category: 2
+  itemId: amethyst
+  displayName: Amethyst
+  icon: {fileID: 1785710053759485620, guid: 9e76712f3c2ea4b4492c57f7926c52fa, type: 3}
+  category: 1
