@@ -2959,7 +2959,7 @@ MonoBehaviour:
     guaranteedVariant: {fileID: 0}
     selectionWeight: 0
     largeSizeChance: 0.1
-  - resourceName: Copper/Gem
+  - resourceName: Copper + Amethyst
     smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
     largeVariant: {fileID: 11400000, guid: 3d8d90d0e0a861647986df59c4f538f7, type: 2}
     guaranteedVariant: {fileID: 11400000, guid: b671984240efeea429d4523defc68eed, type: 2}
@@ -2975,8 +2975,26 @@ MonoBehaviour:
     smallVariant: {fileID: 11400000, guid: b671984240efeea429d4523defc68eed, type: 2}
     largeVariant: {fileID: 0}
     guaranteedVariant: {fileID: 11400000, guid: 7a4e7faaa71ebc743ac6e80c2e8fe0e0, type: 2}
-    selectionWeight: 1
+    selectionWeight: 0
     largeSizeChance: 0
+  - resourceName: Copper + Topaz
+    smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
+    largeVariant: {fileID: 11400000, guid: 3d8d90d0e0a861647986df59c4f538f7, type: 2}
+    guaranteedVariant: {fileID: 11400000, guid: f5f438f98be5e4f4898b418028a36ee3, type: 2}
+    selectionWeight: 0
+    largeSizeChance: 0
+  - resourceName: Topaz
+    smallVariant: {fileID: 11400000, guid: f5f438f98be5e4f4898b418028a36ee3, type: 2}
+    largeVariant: {fileID: 0}
+    guaranteedVariant: {fileID: 11400000, guid: bcd3f8e896575564186927a976e97780, type: 2}
+    selectionWeight: 0
+    largeSizeChance: 0
+  - resourceName: Coal
+    smallVariant: {fileID: 11400000, guid: 9bfc6407b474f1a45bd1014035fde117, type: 2}
+    largeVariant: {fileID: 11400000, guid: 58b95ccba2673ad4b99a40273c148a01, type: 2}
+    guaranteedVariant: {fileID: 0}
+    selectionWeight: 1
+    largeSizeChance: 0.1
   InteractablePrefab: {fileID: 8889572035499357333, guid: 239ed3ccc6794c241bffe33a48625672, type: 3}
   maxActiveAnchors: 4
   minNodesPerAnchor: 2
