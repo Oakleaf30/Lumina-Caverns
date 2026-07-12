@@ -195,8 +195,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5250f2634206c54983cc078d8547640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyNumbers:
+  - enemyNumber: 1
+    spawnChance: 1
   spawnMarker: {fileID: 11400000, guid: 2286d3c407bdf0444ad5bdc4219e4b61, type: 2}
   enemy: {fileID: 214236319870455436, guid: 0396fb1344ecaf54a9244d13d7301440, type: 3}
+  ladder: {fileID: 1595070568}
 --- !u!1001 &91284988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3127,7 +3131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
   ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
-  onNodeBreak: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
+  onLadderCheck: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
+  onEnemyLadder: {fileID: 11400000, guid: a12e5928341c39246a4e681709506d40, type: 2}
 --- !u!1 &1632181842
 GameObject:
   m_ObjectHideFlags: 0
