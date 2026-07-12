@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class LadderTile : MonoBehaviour
@@ -6,9 +5,13 @@ public class LadderTile : MonoBehaviour
     [SerializeField] private GameEvent OnLadderUsed;
     [SerializeField] private GameObject ladderPrefab;
 
-    [SerializeField] private Vector3Event onNodeBreak;
+    [SerializeField] private Vector3Event onLadderCheck;
     private int numberOfNodes = 0;
     private float ladderChance;
+    private float baseLadderChance = 0.02f;
+
+    private float numberOfEnemies = 0;
+    [SerializeField] private Vector3Event onEnemyLadder;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,13 +28,14 @@ public class LadderTile : MonoBehaviour
     private void OnEnable()
     {
         OnLadderUsed.Subscribe(LoadMines);
-        onNodeBreak.Subscribe(CheckLadderChance);
+        onLadderCheck.Subscribe(CheckLadderChance);
+        onEnemyLadder.Subscribe(EnemyLadderCheck);
     }
 
     private void OnDisable()
     {
         OnLadderUsed.Unsubscribe(LoadMines);
-        onNodeBreak.Unsubscribe(CheckLadderChance);
+        onLadderCheck.Unsubscribe(CheckLadderChance);
     }
 
     private void LoadMines()
@@ -47,28 +51,46 @@ public class LadderTile : MonoBehaviour
 
     private void CalculateLadderChance()
     {
-        ladderChance = MathF.Min(1f, 0.02f + (1f / numberOfNodes));
-        Debug.Log(numberOfNodes);
-        Debug.Log(ladderChance);
+        ladderChance = Mathf.Min(1f, baseLadderChance + (1f / numberOfNodes));
     }
 
-    private void CheckLadderChance(Vector3 nodeLocation)
+    private void CheckLadderChance(Vector3 nodePos)
     {
         CalculateLadderChance();
 
-        if (UnityEngine.Random.value < ladderChance)
+        if (Random.value < ladderChance)
         {
-            SpawnLadder(nodeLocation);
+            SpawnLadder(nodePos);
         } else
         {
             numberOfNodes--;
         }
     }
 
+    public void AddEnemies(int amount)
+    {
+        numberOfEnemies += amount;
+    }
+
+    private void EnemyLadderCheck(Vector3 enemyPos)
+    {
+        if (Random.value < 0.15f)
+        {
+            SpawnLadder(enemyPos);
+        }
+
+        CheckNoEnemies();
+    }
+
+    private void CheckNoEnemies()
+    {
+        numberOfEnemies--;
+        if (numberOfEnemies == 0) baseLadderChance += 0.04f;
+    }
+
     private void SpawnLadder(Vector3 position)
     {
         Instantiate(ladderPrefab, position, Quaternion.identity);
-        Debug.Log("Spawned");
     }
 }
 

@@ -7,6 +7,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected EnemyData data;
     [SerializeField] protected GameObject dropPrefab;
 
+    [SerializeField] protected Vector3Event onEnemyLadder;
+
     protected int currentHealth;
     protected SpriteRenderer spriteRenderer;
     protected Animator anim;
@@ -80,6 +82,7 @@ public class EnemyBase : MonoBehaviour
             drop.GetComponent<ItemDrop>().Initialize(data.dropData);
         }
 
+        onEnemyLadder.Raise(transform.position);
         Destroy(gameObject);
     }
 }

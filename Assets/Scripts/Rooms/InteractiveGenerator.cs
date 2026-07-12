@@ -31,8 +31,6 @@ public class InteractiveGenerator : MonoBehaviour
         // 1. Gather all possible spawn anchors placed in this room prefab
         SpawnAnchor[] allAnchors = anchorsContainer.GetComponentsInChildren<SpawnAnchor>();
 
-        if (allAnchors.Length == 0) return;
-
         // 2. Create a list to shuffle so we don't pick the same anchor twice
         List<SpawnAnchor> anchorPool = new List<SpawnAnchor>(allAnchors);
         ShuffleList(anchorPool);
