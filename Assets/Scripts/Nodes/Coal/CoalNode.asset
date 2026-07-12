@@ -15,7 +15,7 @@ MonoBehaviour:
   oreDisplayName: Coal
   hitboxSize: 0.25
   spaceRequired: 0.3
-  maxHitPoints: 2
+  maxHitPoints: 1
   dropData: {fileID: 11400000, guid: 20473505263554c42b72e576a1824fab, type: 2}
   minDropCount: 1
   maxDropCount: 3

@@ -14,8 +14,13 @@ public class InteractiveGenerator : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayers;
     [SerializeField] private int maxSpawnAttempts;
 
+    [SerializeField] private LadderTile ladder;
+    private int totalNodes = 0;
+
     public void GenerateInteractivity(Room room)
     {
+        totalNodes = 0;
+
         Transform anchorsContainer = room.transform.Find("Markers/Interaction Marker Container");
 
         if (anchorsContainer == null)
@@ -73,6 +78,8 @@ public class InteractiveGenerator : MonoBehaviour
                     // 6. Instantiate the ore at the verified position
                     if (foundSpot)
                     {
+                        totalNodes++;
+
                         GameObject interactable = Instantiate(InteractablePrefab, validSpawnPosition, Quaternion.identity, room.transform);
 
                         // Grab the OreNode component
@@ -88,6 +95,8 @@ public class InteractiveGenerator : MonoBehaviour
                 }
             }
         }
+
+        ladder.AddNodes(totalNodes);
     }
 
     private SpawnPool SelectWeightedPool()

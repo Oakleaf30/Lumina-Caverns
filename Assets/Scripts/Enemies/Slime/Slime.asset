@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Slime
   defaultSprite: {fileID: -4617798429402160762, guid: 0ed2cb19922a97349a9efda7ceb68cf8, type: 3}
   animatorController: {fileID: 9100000, guid: 879ab176847a69146b737ad45b90fd0a, type: 2}
-  maxHealth: 3
+  maxHealth: 1
   movementSpeed: 1
   contactDamage: 1
   attackCooldown: 1

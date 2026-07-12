@@ -3003,6 +3003,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxSpawnAttempts: 10
+  ladder: {fileID: 1595070568}
 --- !u!4 &1376388036
 Transform:
   m_ObjectHideFlags: 0
@@ -3125,6 +3126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
+  ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
+  onNodeBreak: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
 --- !u!1 &1632181842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3632,6 +3635,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3552447602973476430, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4363688841941322429, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_Name
       value: Player

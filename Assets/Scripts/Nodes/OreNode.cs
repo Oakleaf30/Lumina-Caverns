@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OreNode : MonoBehaviour
 {
-    [SerializeField] private GameEvent onOreMined;
+    [SerializeField] private Vector3Event onNodeBreak;
     [SerializeField] private GameObject dropPrefab;
 
     private CircleCollider2D circleCollider;
@@ -49,6 +49,7 @@ public class OreNode : MonoBehaviour
             drop.GetComponent<ItemDrop>().Initialize(oreData.dropData);
         }
 
+        onNodeBreak.Raise(transform.position);
         Destroy(gameObject);
     }
 

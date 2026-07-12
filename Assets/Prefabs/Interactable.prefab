@@ -137,6 +137,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1286b56ec542b964c9547fd19d562dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreData: {fileID: 0}
-  onOreMined: {fileID: 0}
+  onNodeBreak: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
   dropPrefab: {fileID: 3943490826253954512, guid: e9b3ded8042f33547a5fbe33d72ca958, type: 3}
