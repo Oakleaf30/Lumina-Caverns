@@ -14,8 +14,11 @@ public class PlayerMining : MonoBehaviour
     [SerializeField] private float strikeRadius = 0.4f;
     [SerializeField] private LayerMask resourceLayer;
     [SerializeField] private int pickaxeDamage = 1;
-    [SerializeField] private float strikeOffset = 0.5f;        // Distance projected forward
-    [SerializeField] private float verticalCenterOffset = 0.5f; // Shifts origin from feet to waist
+    [SerializeField] private float strikeOffset = 0.5f;
+    [SerializeField] private float verticalCenterOffset = 0.5f;
+
+    [SerializeField] private float maxPickaxeDurability;
+    [SerializeField] private float pickaxeDurability;
 
     private float lastSwingTime;
 
@@ -24,6 +27,8 @@ public class PlayerMining : MonoBehaviour
         anim = GetComponent<Animator>();
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
+
+        pickaxeDurability = maxPickaxeDurability;
     }
 
     void Update()
@@ -33,7 +38,7 @@ public class PlayerMining : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0) && Time.time >= lastSwingTime + swingCooldown && !anim.GetBool("IsSwimming"))
+        if (Input.GetMouseButton(0) && Time.time >= lastSwingTime + swingCooldown && pickaxeDurability > 0 && !anim.GetBool("IsSwimming"))
         {
             SwingPickaxe();
         }
@@ -71,6 +76,7 @@ public class PlayerMining : MonoBehaviour
         if (hit != null && hit.TryGetComponent<OreNode>(out OreNode node))
         {
             node.TakeDamage(pickaxeDamage);
+            pickaxeDurability--;
         }
     }
 
