@@ -4,11 +4,12 @@ using UnityEngine;
 public class InteractiveGenerator : MonoBehaviour
 {
     [Header("Spawning Setup")]
-    [SerializeField] private List<SpawnPool> SpawnPool;
     [SerializeField] private GameObject InteractablePrefab;
-    [SerializeField] private int maxActiveAnchors;
+    
     [SerializeField] private int minNodesPerAnchor;
     [SerializeField] private int maxNodesPerAnchor;
+    private int activeAnchors;
+    private List<SpawnPool> SpawnPool;
 
     [Header("Overlap Safety")]
     [SerializeField] private LayerMask obstacleLayers;
@@ -17,9 +18,29 @@ public class InteractiveGenerator : MonoBehaviour
     [SerializeField] private LadderTile ladder;
     private int totalNodes = 0;
 
-    public void GenerateInteractivity(Room room)
+    [SerializeField] private GameObject ladderPrefab;
+    private bool ladderFlag = true;
+    private bool hasSetupLadderFlag = false;
+
+    private void Setup(BiomeData biome)
     {
         totalNodes = 0;
+        activeAnchors = biome.activeAnchors;
+        SpawnPool = biome.spawnPools;
+
+        if (!hasSetupLadderFlag)
+        {
+            ladderFlag = biome.biomeName != "Coal";
+            hasSetupLadderFlag = true;
+        }
+    }
+
+    public void GenerateInteractivity(Room room, BiomeData biome)
+    {
+        if (biome.activeAnchors == 0)
+            return;
+
+        Setup(biome);
 
         Transform anchorsContainer = room.transform.Find("Markers/Interaction Marker Container");
 
@@ -36,12 +57,16 @@ public class InteractiveGenerator : MonoBehaviour
         ShuffleList(anchorPool);
 
         // 3. Determine how many anchors we will actually activate for this specific room execution
-        int anchorsToActivate = Mathf.Min(maxActiveAnchors, anchorPool.Count);
+        int anchorsToActivate = Mathf.Min(activeAnchors, anchorPool.Count);
 
         // 4. Loop ONLY through the chosen subset of anchors
         for (int a = 0; a < anchorsToActivate; a++)
         {
             SpawnAnchor chosenAnchor = anchorPool[a];
+
+            if (CheckLadder(chosenAnchor))
+                continue;
+
             SpawnPool clumpType = SelectWeightedPool();
             int numberOfNodes = Random.Range(minNodesPerAnchor, maxNodesPerAnchor + 1);
             bool guaranteedSpawned = false;
@@ -139,6 +164,20 @@ public class InteractiveGenerator : MonoBehaviour
             T temp = list[i];
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
+        }
+    }
+
+    private bool CheckLadder(SpawnAnchor anchor)
+    {
+        if (!ladderFlag)
+        {
+            Instantiate(ladderPrefab, anchor.transform.position, Quaternion.identity);
+            ladderFlag = true;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

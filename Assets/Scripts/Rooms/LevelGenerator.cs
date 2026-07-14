@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public Room[] roomPrefabs;
-    public int maxRooms = 12;
-    public float roomSize = 50f;
+    [SerializeField] private Room[] roomPrefabs;
+    [SerializeField] private int maxRooms;
+    [SerializeField] private float roomSize;
+    public BiomeData biomeData;
 
     [SerializeField] private InteractiveGenerator itemGenerator;
     [SerializeField] private EnemyGenerator enemyGenerator;
@@ -24,13 +25,15 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    void Start() => Generate();
+    void Awake() => Generate();
 
     void Generate()
     {
         int safetyLimit = 500; // Prevents an infinite loop if a valid configuration is mathematically impossible
         int attempts = 0;
         bool validLayoutFound = false;
+
+        if (TransitionState.ConsumePendingTransition(out var biome)) biomeData = biome;
 
         while (!validLayoutFound && attempts < safetyLimit)
         {
@@ -196,8 +199,8 @@ public class LevelGenerator : MonoBehaviour
                 Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity);
                 newRoom.InitializeRoom(req.RoomID);
 
-                itemGenerator.GenerateInteractivity(newRoom);
-                enemyGenerator.GenerateEnemies(newRoom);
+                itemGenerator.GenerateInteractivity(newRoom, biomeData);
+                enemyGenerator.GenerateEnemies(newRoom, biomeData);
 
                 spawnedRooms.Add(pos, newRoom);
                 return;

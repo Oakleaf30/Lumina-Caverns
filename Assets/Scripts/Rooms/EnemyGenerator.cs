@@ -4,25 +4,27 @@ using UnityEngine.Tilemaps;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    [System.Serializable]
-    public struct EnemyNumber
-    {
-        public int enemyNumber;
-
-        [Range(0f, 1f)]
-        public float spawnChance;
-    }
-
-    [SerializeField] private List<EnemyNumber> enemyNumbers;
     [SerializeField] private TileBase spawnMarker;
-    [SerializeField] private GameObject enemy;
+
+    private List<GameObject> enemies;
+    private List<EnemyNumber> enemyNumbers;
 
     private int totalEnemies = 0;
     [SerializeField] private LadderTile ladder;
 
-    public void GenerateEnemies(Room room)
+    private void Setup(BiomeData biome)
     {
         totalEnemies = 0;
+        enemies = biome.enemyPool;
+        enemyNumbers = biome.enemyCount;
+    }
+
+    public void GenerateEnemies(Room room, BiomeData biome)
+    {
+        if (biome.enemyPool.Count == 0)
+            return;
+
+        Setup(biome);
 
         int enemyNumber = SelectWeightedPool();
 
@@ -40,6 +42,7 @@ public class EnemyGenerator : MonoBehaviour
 
     private void SpawnEnemy(Vector3 spot, Room room)
     {
+        GameObject enemy = enemies[Random.Range(0, enemies.Count)];
         GameObject spawnedEnemy = Instantiate(enemy, spot, Quaternion.identity, room.transform);
 
         EnemyBase enemyBase = spawnedEnemy.GetComponent<EnemyBase>();

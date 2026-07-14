@@ -1,41 +1,56 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LadderTile : MonoBehaviour
 {
-    [SerializeField] private GameEvent OnLadderUsed;
+    [SerializeField] private GameEvent onLadderUsed;
     [SerializeField] private GameObject ladderPrefab;
 
     [SerializeField] private Vector3Event onLadderCheck;
     private int numberOfNodes = 0;
     private float ladderChance;
-    private float baseLadderChance = 0.02f;
+    [SerializeField] private float baseLadderChance = 0.02f;
 
     private float numberOfEnemies = 0;
     [SerializeField] private Vector3Event onEnemyLadder;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameEvent onShaftUsed;
+    [SerializeField] private GameObject shaftPrefab;
+    [SerializeField] private float defaultShaftChance;
+    private float shaftChance;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private BiomeData activeBiome;
+    [SerializeField] private BiomeData coalFloor;
+    [SerializeField] private BiomeData infestedFloor;
 
+    [SerializeField] LevelGenerator level;
+
+    private void Start()
+    {
+        activeBiome = level.biomeData;
+
+        if (activeBiome.biomeName == "Coal" || activeBiome.biomeName == "Infested")
+        {
+            shaftChance = 0;
+        } else
+        {
+            shaftChance = defaultShaftChance;
+        }
+    }
     private void OnEnable()
     {
-        OnLadderUsed.Subscribe(LoadMines);
+        onLadderUsed.Subscribe(LoadMines);
         onLadderCheck.Subscribe(CheckLadderChance);
         onEnemyLadder.Subscribe(EnemyLadderCheck);
+        onShaftUsed.Subscribe(JumpShaft);
     }
 
     private void OnDisable()
     {
-        OnLadderUsed.Unsubscribe(LoadMines);
+        onLadderUsed.Unsubscribe(LoadMines);
         onLadderCheck.Unsubscribe(CheckLadderChance);
+        onEnemyLadder.Unsubscribe(EnemyLadderCheck);
+        onShaftUsed.Unsubscribe(JumpShaft);
     }
 
     private void LoadMines()
@@ -74,23 +89,41 @@ public class LadderTile : MonoBehaviour
 
     private void EnemyLadderCheck(Vector3 enemyPos)
     {
-        if (Random.value < 0.15f)
+        if (Random.value < 0.15f && activeBiome.biomeName != "Infested")
         {
             SpawnLadder(enemyPos);
         }
 
-        CheckNoEnemies();
+        CheckNoEnemies(enemyPos);
     }
 
-    private void CheckNoEnemies()
+    private void CheckNoEnemies(Vector3 enemyPos)
     {
         numberOfEnemies--;
-        if (numberOfEnemies == 0) baseLadderChance += 0.04f;
+        if (numberOfEnemies == 0)
+        {
+            if (activeBiome.biomeName == "Infested")
+            {
+                SpawnLadder(enemyPos);
+            }
+            else
+            {
+                baseLadderChance += 0.04f;
+            }
+        }
     }
 
     private void SpawnLadder(Vector3 position)
     {
-        Instantiate(ladderPrefab, position, Quaternion.identity);
+        GameObject prefab = Random.value < shaftChance ? shaftPrefab : ladderPrefab;
+        Instantiate(prefab, position, Quaternion.identity);
+    }
+
+    private void JumpShaft()
+    {
+        BiomeData nextBiome = Random.value < 0.5f ? coalFloor : infestedFloor;
+
+        TransitionState.FloorTransition(activeBiome, nextBiome, SceneManager.GetActiveScene().name);
     }
 }
 

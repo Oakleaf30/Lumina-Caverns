@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512f23cd798be3d4a993fb8509ab2b0e, type: 3}
+  m_Name: Coal
+  m_EditorClassIdentifier: 
+  biomeName: Coal
+  spawnPools:
+  - resourceName: Coal
+    smallVariant: {fileID: 11400000, guid: 9bfc6407b474f1a45bd1014035fde117, type: 2}
+    largeVariant: {fileID: 11400000, guid: 58b95ccba2673ad4b99a40273c148a01, type: 2}
+    guaranteedVariant: {fileID: 0}
+    selectionWeight: 0
+    largeSizeChance: 0.1
+  activeAnchors: 4
+  enemyPool: []
+  enemyCount: []

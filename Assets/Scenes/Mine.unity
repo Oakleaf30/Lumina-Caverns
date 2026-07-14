@@ -195,11 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5250f2634206c54983cc078d8547640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyNumbers:
-  - enemyNumber: 1
-    spawnChance: 1
   spawnMarker: {fileID: 11400000, guid: 2286d3c407bdf0444ad5bdc4219e4b61, type: 2}
-  enemy: {fileID: 214236319870455436, guid: 0396fb1344ecaf54a9244d13d7301440, type: 3}
   ladder: {fileID: 1595070568}
 --- !u!1001 &91284988
 PrefabInstance:
@@ -2956,51 +2952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d83438b4c0cf449904eb7f8555b9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPool:
-  - resourceName: Copper
-    smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
-    largeVariant: {fileID: 11400000, guid: 3d8d90d0e0a861647986df59c4f538f7, type: 2}
-    guaranteedVariant: {fileID: 0}
-    selectionWeight: 0
-    largeSizeChance: 0.1
-  - resourceName: Copper + Amethyst
-    smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
-    largeVariant: {fileID: 11400000, guid: 3d8d90d0e0a861647986df59c4f538f7, type: 2}
-    guaranteedVariant: {fileID: 11400000, guid: b671984240efeea429d4523defc68eed, type: 2}
-    selectionWeight: 0
-    largeSizeChance: 0.1
-  - resourceName: Cobalt
-    smallVariant: {fileID: 11400000, guid: 53df1cff67f77a246bc8ddc0fd3748a0, type: 2}
-    largeVariant: {fileID: 11400000, guid: 0206f8cf558514c40aea371caf6341b4, type: 2}
-    guaranteedVariant: {fileID: 0}
-    selectionWeight: 0
-    largeSizeChance: 0.1
-  - resourceName: Amethyst
-    smallVariant: {fileID: 11400000, guid: b671984240efeea429d4523defc68eed, type: 2}
-    largeVariant: {fileID: 0}
-    guaranteedVariant: {fileID: 11400000, guid: 7a4e7faaa71ebc743ac6e80c2e8fe0e0, type: 2}
-    selectionWeight: 0
-    largeSizeChance: 0
-  - resourceName: Copper + Topaz
-    smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
-    largeVariant: {fileID: 11400000, guid: 3d8d90d0e0a861647986df59c4f538f7, type: 2}
-    guaranteedVariant: {fileID: 11400000, guid: f5f438f98be5e4f4898b418028a36ee3, type: 2}
-    selectionWeight: 0
-    largeSizeChance: 0
-  - resourceName: Topaz
-    smallVariant: {fileID: 11400000, guid: f5f438f98be5e4f4898b418028a36ee3, type: 2}
-    largeVariant: {fileID: 0}
-    guaranteedVariant: {fileID: 11400000, guid: bcd3f8e896575564186927a976e97780, type: 2}
-    selectionWeight: 0
-    largeSizeChance: 0
-  - resourceName: Coal
-    smallVariant: {fileID: 11400000, guid: 9bfc6407b474f1a45bd1014035fde117, type: 2}
-    largeVariant: {fileID: 11400000, guid: 58b95ccba2673ad4b99a40273c148a01, type: 2}
-    guaranteedVariant: {fileID: 0}
-    selectionWeight: 1
-    largeSizeChance: 0.1
   InteractablePrefab: {fileID: 8889572035499357333, guid: 239ed3ccc6794c241bffe33a48625672, type: 3}
-  maxActiveAnchors: 4
   minNodesPerAnchor: 2
   maxNodesPerAnchor: 4
   obstacleLayers:
@@ -3008,6 +2960,7 @@ MonoBehaviour:
     m_Bits: 64
   maxSpawnAttempts: 10
   ladder: {fileID: 1595070568}
+  ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
 --- !u!4 &1376388036
 Transform:
   m_ObjectHideFlags: 0
@@ -3129,10 +3082,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3f3122e37916f45b788de0dc28a8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
+  onLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
   ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
   onLadderCheck: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
+  baseLadderChance: 1
   onEnemyLadder: {fileID: 11400000, guid: a12e5928341c39246a4e681709506d40, type: 2}
+  onShaftUsed: {fileID: 11400000, guid: ff5432d2ed022c84ba136a04011451ed, type: 2}
+  shaftPrefab: {fileID: 2009227372848232830, guid: d1f538cadbdb9eb47b5c792aad2c0242, type: 3}
+  defaultShaftChance: 1
+  coalFloor: {fileID: 11400000, guid: 489f2abbd7bb9f34bb6ec6c50f42cce7, type: 2}
+  infestedFloor: {fileID: 11400000, guid: 31b5c8ed95f88c44f93e9c77c7542d60, type: 2}
+  level: {fileID: 1736561150}
 --- !u!1 &1632181842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,6 +3439,7 @@ MonoBehaviour:
   - {fileID: 8100108444406874278, guid: 94603331a95591d469ca663455b5a986, type: 3}
   maxRooms: 2
   roomSize: 20
+  biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}
   itemGenerator: {fileID: 1376388035}
   enemyGenerator: {fileID: 4377858}
 --- !u!4 &1736561151
@@ -3643,6 +3604,14 @@ PrefabInstance:
     - target: {fileID: 3552447602973476430, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: maxHealth
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: pickaxeDurability
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: maxPickaxeDurability
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4363688841941322429, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_Name
