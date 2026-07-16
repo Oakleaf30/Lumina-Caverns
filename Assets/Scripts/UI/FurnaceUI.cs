@@ -1,19 +1,23 @@
+using TMPro;
 using UnityEngine;
 
 public class FurnaceUI : StationUI
 {
+    BaseStorage storage => BaseStorage.Instance;
+
+    [SerializeField] private InventorySlotUI slot1;
+    [SerializeField] private InventorySlotUI slot2;
+    [SerializeField] private InventorySlotUI slot3;
+
     protected override void OpenMenu()
     {
-        // 1. Run the base code first (Sets panel active, pauses Time.timeScale)
         base.OpenMenu();
-
-        // 2. Run your unique Anvil logic
-        UpdateFurnaceDisplay();
     }
 
-    private void UpdateFurnaceDisplay()
+    public void SetResources(RecipeData recipe)
     {
-        Debug.Log("Checking player inventory for Coal...");
-        // Code to populate upgrades or tool repair costs goes here
+        slot1.Set(recipe.ingredients[0].item, storage.GetQuantity(recipe.ingredients[0].item));
+        slot2.Set(recipe.ingredients[1].item, storage.GetQuantity(recipe.ingredients[1].item));
+        slot3.Set(recipe.resultItem, storage.GetQuantity(recipe.resultItem));
     }
 }

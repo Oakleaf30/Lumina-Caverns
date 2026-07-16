@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "Tiles/Event Tile")]
+
 public class EventTile : Tile, IInteractable
 {
     public GameEvent interactionEvent;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "Tiles/Animated Event Tile")]
+
 public class AnimatedEventTile : AnimatedTile, IInteractable // Inherits AnimatedTile!
 {
     public Vector3IntEvent interactionEvent;
