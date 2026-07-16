@@ -1,23 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public readonly struct InventorySlot
-{
-    public readonly ItemData item;
-    public readonly int quantity;
-
-    public InventorySlot(ItemData item, int quantity)
-    {
-        this.item = item;
-        this.quantity = quantity;
-    }
-}
-
-
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : ItemContainer
 {
     [SerializeField] private GameEvent onInventoryOpen;
+    [SerializeField] private GameEvent onReturnBase;
 
     private void Update()
     {
@@ -25,34 +12,32 @@ public class PlayerInventory : MonoBehaviour
         {
             onInventoryOpen.Raise();
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            onReturnBase.Raise();
+            DepositAllTo(BaseStorage.Instance);
+            ScreenFader.Instance.TransitionToScene("Base");
+        }
     }
 
-    private Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
-
-    public void AddItem(ItemData item, int amount)
+    public void DepositAllTo(BaseStorage baseStorage)
     {
-        if (items.ContainsKey(item))
-            items[item] += amount;
-        else
-            items[item] = amount;
+        foreach (var kv in items)
+            baseStorage.AddItem(kv.Key, kv.Value);
+
+        items.Clear();
     }
 
-    public bool RemoveItem(ItemData item, int amount)
+    public void ApplyDeathPenalty(bool hasAmuletProtection)
     {
-        if (!items.ContainsKey(item) || items[item] < amount) return false;
-
-        items[item] -= amount;
-        if (items[item] <= 0) items.Remove(item);
-        return true;
-    }
-
-    public int GetQuantity(ItemData item) => items.TryGetValue(item, out int q) ? q : 0;
-
-    public List<InventorySlot> GetItemsByCategory(ItemCategory category)
-    {
-        return items
-            .Where(kv => kv.Key.category == category)
-            .Select(kv => new InventorySlot(kv.Key, kv.Value))
+        var toRemove = items.Keys
+            .Where(i => i.category == ItemCategory.Gem || i.category == ItemCategory.Ore)
             .ToList();
+
+        if (hasAmuletProtection)
+            toRemove = toRemove.Where(i => i.category != ItemCategory.Gem).ToList();
+
+        foreach (var item in toRemove) items.Remove(item);
     }
 }

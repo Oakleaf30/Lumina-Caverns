@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryUI : StationUI
 {
@@ -16,9 +17,23 @@ public class InventoryUI : StationUI
     private List<GameObject> dropSlotObjects = new List<GameObject>();
     private List<GameObject> miscSlotObjects = new List<GameObject>();
 
-    private void Awake()
+    private Dictionary<ItemCategory, Transform> categorySections;
+    private Dictionary<ItemCategory, List<GameObject>> sectionPools = new Dictionary<ItemCategory, List<GameObject>>();
+
+    void Awake()
     {
         playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
+
+        categorySections = new Dictionary<ItemCategory, Transform>
+    {
+        { ItemCategory.Ore, oreSection },
+        { ItemCategory.Gem, gemSection },
+        { ItemCategory.MonsterDrop, dropSection },
+        { ItemCategory.Misc, miscSection }
+    };
+
+        foreach (var category in categorySections.Keys)
+            sectionPools[category] = new List<GameObject>();
     }
 
     protected override void OpenMenu()
@@ -30,15 +45,13 @@ public class InventoryUI : StationUI
 
     void RefreshUI()
     {
-        var oreSlots = playerInventory.GetItemsByCategory(ItemCategory.Ore);
-        var gemSlots = playerInventory.GetItemsByCategory(ItemCategory.Gem);
-        var dropSlots = playerInventory.GetItemsByCategory(ItemCategory.MonsterDrop);
-        var miscSlots = playerInventory.GetItemsByCategory(ItemCategory.Misc);
+        ItemContainer targetContainer = SceneManager.GetActiveScene().name == "Base" ? BaseStorage.Instance : playerInventory;
 
-        BuildSection(oreSection, oreSlots, oreSlotObjects);
-        BuildSection(gemSection, gemSlots, gemSlotObjects);
-        BuildSection(dropSection, dropSlots, dropSlotObjects);
-        BuildSection(miscSection, miscSlots, miscSlotObjects);
+        foreach (var kv in categorySections)
+        {
+            var slots = targetContainer.GetItemsByCategory(kv.Key);
+            BuildSection(kv.Value, slots, sectionPools[kv.Key]);
+        }
     }
 
     void BuildSection(Transform sectionParent, List<InventorySlot> slots, List<GameObject> slotObjects)

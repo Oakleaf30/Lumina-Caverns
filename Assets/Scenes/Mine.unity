@@ -1792,6 +1792,50 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &826427605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826427607}
+  - component: {fileID: 826427606}
+  m_Layer: 0
+  m_Name: Base Storage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &826427606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826427605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc8abfe79fe6b64bb96679588b72ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &826427607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826427605}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.1598873, y: 0.464734, z: -0.028636495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826468397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3085,11 +3129,11 @@ MonoBehaviour:
   onLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
   ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
   onLadderCheck: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
-  baseLadderChance: 1
+  baseLadderChance: 0.02
   onEnemyLadder: {fileID: 11400000, guid: a12e5928341c39246a4e681709506d40, type: 2}
   onShaftUsed: {fileID: 11400000, guid: ff5432d2ed022c84ba136a04011451ed, type: 2}
   shaftPrefab: {fileID: 2009227372848232830, guid: d1f538cadbdb9eb47b5c792aad2c0242, type: 3}
-  defaultShaftChance: 1
+  defaultShaftChance: 0.2
   coalFloor: {fileID: 11400000, guid: 489f2abbd7bb9f34bb6ec6c50f42cce7, type: 2}
   infestedFloor: {fileID: 11400000, guid: 31b5c8ed95f88c44f93e9c77c7542d60, type: 2}
   level: {fileID: 1736561150}
@@ -3601,26 +3645,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3552447602973476430, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: maxHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: pickaxeDurability
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: maxPickaxeDurability
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 4363688841941322429, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8664313142872284355, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: onInventoryOpen
-      value: 
-      objectReference: {fileID: 11400000, guid: 0784bd1f373b5954486e0ea882c0166c, type: 2}
     - target: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -3683,3 +3711,4 @@ SceneRoots:
   - {fileID: 1659509532}
   - {fileID: 988638159}
   - {fileID: 1330562811}
+  - {fileID: 826427607}

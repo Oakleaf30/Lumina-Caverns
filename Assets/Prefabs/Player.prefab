@@ -161,7 +161,6 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
-  onInventoryOpen: {fileID: 0}
 --- !u!114 &6419296583060460920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +222,8 @@ MonoBehaviour:
   pickaxeDamage: 1
   strikeOffset: 0.5
   verticalCenterOffset: 0.1
+  maxPickaxeDurability: 1000
+  pickaxeDurability: 1000
 --- !u!114 &6002291323248252633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,3 +322,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dc85c9b6d6ec847afd33cf3a1a7e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onInventoryOpen: {fileID: 11400000, guid: 0784bd1f373b5954486e0ea882c0166c, type: 2}
+  onReturnBase: {fileID: 11400000, guid: 744ae010b9e263241968556775472a9c, type: 2}
