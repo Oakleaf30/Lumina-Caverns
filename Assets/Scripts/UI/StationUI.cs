@@ -2,10 +2,10 @@ using UnityEngine;
 
 public abstract class StationUI : MonoBehaviour
 {
-    [Header("Base UI Elements")]
+    [Header("UI Link")]
     [SerializeField] protected GameObject menuPanel;
 
-    [Header("Base Event Links")]
+    [Header("Game Events")]
     [SerializeField] private GameEvent onStationUsed;
     [SerializeField] private GameEvent onStationClosed;
 
