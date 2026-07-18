@@ -17,8 +17,9 @@ public class PlayerMining : MonoBehaviour
     [SerializeField] private float strikeOffset = 0.5f;
     [SerializeField] private float verticalCenterOffset = 0.5f;
 
-    [SerializeField] private float maxPickaxeDurability;
-    [SerializeField] private float pickaxeDurability;
+    public int maxPickaxeDurability;
+    public int pickaxeDurability;
+    public int durabilityDebt;
 
     private float lastSwingTime;
 
@@ -27,8 +28,6 @@ public class PlayerMining : MonoBehaviour
         anim = GetComponent<Animator>();
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
-
-        pickaxeDurability = maxPickaxeDurability;
     }
 
     void Update()
@@ -77,6 +76,7 @@ public class PlayerMining : MonoBehaviour
         {
             node.TakeDamage(pickaxeDamage);
             pickaxeDurability--;
+            durabilityDebt = Mathf.Min(durabilityDebt + 1, maxPickaxeDurability);
         }
     }
 

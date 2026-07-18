@@ -11,7 +11,7 @@ public class BaseStorage : ItemContainer
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        Instance.AddItem(copper, 10);
-        Instance.AddItem(coal, 2);
+        Instance.AddItem(copper, 100);
+        Instance.AddItem(coal, 20);
     }
 }
