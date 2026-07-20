@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6e7c87264ac594a83eb949ab3f1324, type: 3}
+  m_Name: CopperPickaxe
+  m_EditorClassIdentifier: 
+  itemId: copper_pickaxe
+  displayName: Copper Pickaxe
+  icon: {fileID: -7449457009028752915, guid: cb386a062b04c7842b6b89d4f601fb73, type: 3}
+  category: 4
+  tiers:
+  - tierName: Crude
+    damage: 1
+    maxDurability: 100
+    repairBar: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
+    magicOreCost: {fileID: 0}
+    gemCost: []
+    specialAbility: {fileID: 0}
+  - tierName: Refined
+    damage: 1
+    maxDurability: 100
+    repairBar: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
+    magicOreCost: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
+    gemCost: []
+    specialAbility: {fileID: 0}
+  - tierName: Flawless
+    damage: 1
+    maxDurability: 100
+    repairBar: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
+    magicOreCost: {fileID: 0}
+    gemCost:
+    - {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
+    - {fileID: 11400000, guid: 9757768cc32a0f441aa30f9d6123748f, type: 2}
+    specialAbility: {fileID: 11400000, guid: 697465a21fc751c4db60ea28450a0bfb, type: 2}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ItemCategory { Ore, Gem, MonsterDrop, Misc }
+public enum ItemCategory { Ore, Gem, MonsterDrop, Misc, Equipment }
 
 [CreateAssetMenu(fileName = "NewItemData", menuName = "Lumina Caverns/Item Data")]
 
