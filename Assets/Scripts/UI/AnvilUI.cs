@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class AnvilUI : StationUI
 {
     BaseStorage storage => BaseStorage.Instance;
-    private PlayerMining mining;
+    [SerializeField] private PlayerMining mining;
     private int durabilityRepaired;
     private int cost;
 
@@ -15,11 +15,6 @@ public class AnvilUI : StationUI
     [SerializeField] InventorySlotUI costSlot;
     [SerializeField] Button normal;
     [SerializeField] Button emergency;
-
-    private void Awake()
-    {
-        mining = GameObject.FindWithTag("Player").GetComponent<PlayerMining>();
-    }
 
     protected override void OpenMenu()
     {
@@ -32,6 +27,8 @@ public class AnvilUI : StationUI
 
     private void UpdateAnvilDisplay()
     {
+        durabilityPerBar = mining.tierIndex == 1 ? 30 : 20;
+
         durabilityRepaired = CalculateCost();
         preview.text = $"{mining.pickaxeDurability}/{mining.maxPickaxeDurability} > {mining.pickaxeDurability + durabilityRepaired}/{mining.maxPickaxeDurability}";
 

@@ -22,11 +22,6 @@ public class FurnaceUI : StationUI
     private RecipeData currentRecipe;
     private int quantity;
 
-    protected override void OpenMenu()
-    {
-        base.OpenMenu();
-    }
-
     public void SetResources(RecipeData recipe)
     {
         slotR1.Set(recipe.ingredients[0].item, storage.GetQuantity(recipe.ingredients[0].item));

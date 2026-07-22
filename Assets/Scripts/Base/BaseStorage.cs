@@ -4,6 +4,7 @@ public class BaseStorage : ItemContainer
 
     public ItemData copper;
     public ItemData coal;
+    public ItemData cobalt;
 
     void Awake()
     {
@@ -13,5 +14,6 @@ public class BaseStorage : ItemContainer
 
         Instance.AddItem(copper, 100);
         Instance.AddItem(coal, 20);
+        Instance.AddItem(cobalt, 20);
     }
 }

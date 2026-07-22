@@ -19,10 +19,10 @@ public class PlayerMining : MonoBehaviour
 
     public PickaxeData pickaxe;
     public int pickaxeIndex;
-    public PickaxeTier tier => pickaxe.tiers[tierIndex];
+    public PickaxeTier tier;
     public int tierIndex;
 
-    public int maxPickaxeDurability;
+    public int maxPickaxeDurability => tier.maxDurability;
     public int pickaxeDurability;
 
     private float lastSwingTime;
