@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6fded39c575ce42bcb00750bbc0807, type: 3}
   m_Name: MagnetiseDropsAbility
   m_EditorClassIdentifier: 
+  description: Attracts nearby drops to the player while mining

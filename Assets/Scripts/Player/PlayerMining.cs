@@ -64,7 +64,7 @@ public class PlayerMining : MonoBehaviour
         onPickaxeSwing.Raise();
     }
 
-    void DamageNode()
+    public void DamageNode()
     {
         // 1. Calculate the center origin (waist height instead of feet pivot)
         Vector3 centerOrigin = transform.position + new Vector3(0, verticalCenterOffset, 0);
@@ -80,6 +80,8 @@ public class PlayerMining : MonoBehaviour
         {
             node.TakeDamage(pickaxeDamage);
             pickaxeDurability--;
+
+            if (tierIndex == 2) pickaxe.specialAbility?.OnMine(this, node.transform.position);
         }
     }
 

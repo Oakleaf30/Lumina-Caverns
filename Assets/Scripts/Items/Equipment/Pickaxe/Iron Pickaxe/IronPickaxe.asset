@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6e7c87264ac594a83eb949ab3f1324, type: 3}
-  m_Name: CopperPickaxe
+  m_Name: IronPickaxe
   m_EditorClassIdentifier: 
-  itemId: copper_pickaxe
-  displayName: Copper Pickaxe
-  icon: {fileID: -7449457009028752915, guid: cb386a062b04c7842b6b89d4f601fb73, type: 3}
+  itemId: iron_pickaxe
+  displayName: Iron Pickaxe
+  icon: {fileID: 5582666928540549262, guid: 3a252aaf2201a984b84cec56d6e0a8e8, type: 3}
   category: 4
-  gemOptions:
-  - {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
-  - {fileID: 11400000, guid: 9757768cc32a0f441aa30f9d6123748f, type: 2}
-  specialAbility: {fileID: 11400000, guid: 697465a21fc751c4db60ea28450a0bfb, type: 2}
+  gemOptions: []
+  specialAbility: {fileID: 0}
   tiers:
   - tierName: Crude
     damage: 1

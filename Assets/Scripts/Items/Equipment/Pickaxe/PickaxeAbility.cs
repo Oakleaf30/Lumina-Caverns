@@ -2,6 +2,9 @@ using UnityEngine;
 
 public abstract class PickaxeAbility : ScriptableObject
 {
+    [TextArea]
+    public string description;
+
     public abstract void OnMine(PlayerMining player, Vector3 nodePosition);
 }
 

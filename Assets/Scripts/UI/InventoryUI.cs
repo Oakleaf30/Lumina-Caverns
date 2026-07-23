@@ -12,11 +12,6 @@ public class InventoryUI : StationUI
     [SerializeField] private Transform dropSection;
     [SerializeField] private Transform miscSection;
 
-    private List<GameObject> oreSlotObjects = new List<GameObject>();
-    private List<GameObject> gemSlotObjects = new List<GameObject>();
-    private List<GameObject> dropSlotObjects = new List<GameObject>();
-    private List<GameObject> miscSlotObjects = new List<GameObject>();
-
     private Dictionary<ItemCategory, Transform> categorySections;
     private Dictionary<ItemCategory, List<GameObject>> sectionPools = new Dictionary<ItemCategory, List<GameObject>>();
 

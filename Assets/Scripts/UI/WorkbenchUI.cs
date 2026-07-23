@@ -6,6 +6,8 @@ using static PickaxeUpgradeManager;
 
 public class WorkbenchUI : StationUI
 {
+
+    [Header("References")]
     [SerializeField] private PlayerMining mining;
     BaseStorage storage => BaseStorage.Instance;
 
@@ -15,10 +17,12 @@ public class WorkbenchUI : StationUI
 
     [SerializeField] private PickaxeUpgradeManager pickaxeUpgrade;
 
+    [Header("UI Elements")]
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private InventorySlotUI storageSlot;
     [SerializeField] private InventorySlotUI costSlot;
     [SerializeField] private Button button;
+    [SerializeField] private TextMeshProUGUI infoText;
 
     private ItemData displayItem;
 
@@ -33,8 +37,16 @@ public class WorkbenchUI : StationUI
 
         PopulateDropdown(isFlawless);
 
-        var tier = pickaxeUpgrade.GetNextUpgradeTier();
-        displayItem = isFlawless ? GetSelectedGem() : tier.costItem;
+        var nextTier = pickaxeUpgrade.GetNextUpgradeTier();
+        displayItem = isFlawless ? GetSelectedGem() : nextTier.costItem;
+
+        infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
+                $"Damage: {tier.damage} > {nextTier.damage}";
+
+        if (isFlawless)
+        {
+            infoText.text += $"\nNew Ability: {pickaxe.specialAbility.description}";
+        }
 
         storageSlot.Set(displayItem, storage.GetQuantity(displayItem));
         costSlot.Set(displayItem, tier.costAmount);

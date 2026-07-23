@@ -27,7 +27,7 @@ public class AnvilUI : StationUI
 
     private void UpdateAnvilDisplay()
     {
-        durabilityPerBar = mining.tierIndex == 1 ? 30 : 20;
+        durabilityPerBar = mining.tierIndex == 0 ? 20 : 30;
 
         durabilityRepaired = CalculateCost();
         preview.text = $"{mining.pickaxeDurability}/{mining.maxPickaxeDurability} > {mining.pickaxeDurability + durabilityRepaired}/{mining.maxPickaxeDurability}";
