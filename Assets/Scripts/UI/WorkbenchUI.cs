@@ -51,7 +51,7 @@ public class WorkbenchUI : StationUI
         storageSlot.Set(displayItem, storage.GetQuantity(displayItem));
         costSlot.Set(displayItem, tier.costAmount);
 
-        button.interactable = pickaxeUpgrade.CanAfford(displayItem, tier);
+        button.interactable = pickaxeUpgrade.CanAfford(displayItem, nextTier);
     }
 
     private void PopulateDropdown(bool isFlawless)
@@ -79,7 +79,9 @@ public class WorkbenchUI : StationUI
 
     public void DropdownChanged()
     {
+        var nextTier = pickaxeUpgrade.GetNextUpgradeTier();
         ItemData gem = GetSelectedGem();
+        button.interactable = pickaxeUpgrade.CanAfford(gem, nextTier);
         storageSlot.Set(gem, storage.GetQuantity(gem));
         costSlot.Set(gem, tier.costAmount);
     }

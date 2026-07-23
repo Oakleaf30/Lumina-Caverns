@@ -41,7 +41,8 @@ public class PickaxeUpgradeManager : MonoBehaviour
 
     public bool CanAfford(ItemData item, PickaxeTier tier)
     {
-        return storage.GetQuantity(item) >= tier.costAmount;
+        bool test = storage.GetQuantity(item) >= tier.costAmount;
+        return test;
     }
 
     public NextUpgradeInfo NextUpgrade
