@@ -1,22 +1,25 @@
 using System.Collections.Generic;
-using UnityEngine;
 
-[CreateAssetMenu(fileName = "RunState", menuName = "Scriptable Objects/RunState")]
-public class RunState : ScriptableObject
+[System.Serializable]
+public class RunState
 {
-    public Dictionary<string, int> oreCounts = new();
-    public Dictionary<string, int> gemCounts = new();
-    public List<string> activeEnchantmentIds = new();
+    public Dictionary<ItemData, int> inventory = new Dictionary<ItemData, int>();
+    public Dictionary<ItemData, int> storage = new Dictionary<ItemData, int>();
+    public int currentHealth;
+    public int pickaxeDurability;
+    public int currentFloor;
 
-    public float currentHealth;
-    public float pickaxeDurability;
+    public PickaxeData pickaxe;
+    public int pickaxeIndex;
+    public PickaxeTier tier;
+    public int tierIndex;
 
-    public void ResetForNewRun()
+    public void ResetForNewRun(int startingHealth = 3, int startingDurability = 100)
     {
-        oreCounts.Clear();
-        gemCounts.Clear();
-        activeEnchantmentIds.Clear();
-        currentHealth = 100f;
-        pickaxeDurability = 100f;
+        inventory.Clear();
+        storage.Clear();
+        currentHealth = startingHealth;
+        pickaxeDurability = startingDurability;
+        currentFloor = 0;
     }
 }

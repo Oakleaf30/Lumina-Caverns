@@ -3,13 +3,13 @@ using UnityEngine;
 public class PickaxeUpgradeManager : MonoBehaviour
 {
     [SerializeField] private PlayerMining mining;
-    BaseStorage storage => BaseStorage.Instance;
+    BaseStorage storage => BaseStorage.Current;
 
     public PickaxeData[] upgrades;
 
-    public PickaxeData pickaxe => mining.pickaxe;
-    public int pickaxeIndex => mining.pickaxeIndex;
-    public int tierIndex => mining.tierIndex;
+    public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
+    public int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
+    public int tierIndex => GameSession.Instance.runState.tierIndex;
 
     public enum UpgradeKind { None, TierUpgrade, NewType }
 
@@ -78,14 +78,14 @@ public class PickaxeUpgradeManager : MonoBehaviour
         switch (info.kind)
         {
             case UpgradeKind.TierUpgrade:
-                mining.tierIndex++;
-                mining.tier = pickaxe.tiers[tierIndex];
+                GameSession.Instance.runState.tierIndex++;
+                GameSession.Instance.runState.tier = pickaxe.tiers[tierIndex];
                 break;
 
             case UpgradeKind.NewType:
-                mining.pickaxeIndex++;
-                mining.pickaxe = upgrades[pickaxeIndex];
-                mining.tier = pickaxe.tiers[0];
+                GameSession.Instance.runState.pickaxeIndex++;
+                GameSession.Instance.runState.pickaxe = upgrades[pickaxeIndex];
+                GameSession.Instance.runState.tier = pickaxe.tiers[0];
                 break;
         }
     }

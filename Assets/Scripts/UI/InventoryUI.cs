@@ -40,7 +40,7 @@ public class InventoryUI : StationUI
 
     void RefreshUI()
     {
-        ItemContainer targetContainer = SceneManager.GetActiveScene().name == "Base" ? BaseStorage.Instance : playerInventory;
+        ItemContainer targetContainer = SceneManager.GetActiveScene().name == "Base" ? BaseStorage.Current : playerInventory;
 
         foreach (var kv in categorySections)
         {

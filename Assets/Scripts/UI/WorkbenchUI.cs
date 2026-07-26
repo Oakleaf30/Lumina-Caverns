@@ -9,11 +9,11 @@ public class WorkbenchUI : StationUI
 
     [Header("References")]
     [SerializeField] private PlayerMining mining;
-    BaseStorage storage => BaseStorage.Instance;
+    BaseStorage storage => BaseStorage.Current;
 
-    public PickaxeData pickaxe => mining.pickaxe;
-    public PickaxeTier tier => mining.tier;
-    public int tierIndex => mining.tierIndex;
+    public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
+    public PickaxeTier tier => GameSession.Instance.runState.tier;
+    public int tierIndex => GameSession.Instance.runState.tierIndex;
 
     [SerializeField] private PickaxeUpgradeManager pickaxeUpgrade;
 
@@ -33,7 +33,7 @@ public class WorkbenchUI : StationUI
 
         int nextTierIndex = tierIndex + 1;
         bool isFlawless = nextTierIndex == pickaxe.tiers.Length - 1
-                  && mining.pickaxe != pickaxeUpgrade.upgrades[0];
+                  && pickaxe != pickaxeUpgrade.upgrades[0];
 
         PopulateDropdown(isFlawless);
 

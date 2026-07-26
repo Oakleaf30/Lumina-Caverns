@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class FurnaceUI : StationUI
 {
-    BaseStorage storage => BaseStorage.Instance;
+    BaseStorage storage => BaseStorage.Current;
 
     [Header("Resource Section")]
     [SerializeField] private InventorySlotUI slotR1;

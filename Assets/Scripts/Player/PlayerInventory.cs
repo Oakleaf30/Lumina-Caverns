@@ -6,6 +6,11 @@ public class PlayerInventory : ItemContainer
     [SerializeField] private GameEvent onInventoryOpen;
     [SerializeField] private GameEvent onReturnBase;
 
+    private void Start()
+    {
+        items = GameSession.Instance.runState.inventory;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -16,7 +21,7 @@ public class PlayerInventory : ItemContainer
         if (Input.GetKeyDown(KeyCode.B))
         {
             onReturnBase.Raise();
-            DepositAllTo(BaseStorage.Instance);
+            DepositAllTo(BaseStorage.Current);
             ScreenFader.Instance.TransitionToScene("Base");
         }
     }

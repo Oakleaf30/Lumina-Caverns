@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class AnvilUI : StationUI
 {
-    BaseStorage storage => BaseStorage.Instance;
+    BaseStorage storage => BaseStorage.Current;
     [SerializeField] private PlayerMining mining;
     private int durabilityRepaired;
     private int cost;
@@ -27,7 +27,7 @@ public class AnvilUI : StationUI
 
     private void UpdateAnvilDisplay()
     {
-        durabilityPerBar = mining.tierIndex == 0 ? 20 : 30;
+        durabilityPerBar = GameSession.Instance.runState.tierIndex == 0 ? 20 : 30;
 
         durabilityRepaired = CalculateCost();
         preview.text = $"{mining.pickaxeDurability}/{mining.maxPickaxeDurability} > {mining.pickaxeDurability + durabilityRepaired}/{mining.maxPickaxeDurability}";

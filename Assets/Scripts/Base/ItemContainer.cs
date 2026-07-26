@@ -16,7 +16,7 @@ public readonly struct InventorySlot
 
 public class ItemContainer : MonoBehaviour
 {
-    protected Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
+    protected Dictionary<ItemData, int> items;
 
     public virtual void AddItem(ItemData item, int amount)
     {

@@ -17,10 +17,10 @@ public class PlayerMining : MonoBehaviour
     [SerializeField] private float strikeOffset = 0.5f;
     [SerializeField] private float verticalCenterOffset = 0.5f;
 
-    public PickaxeData pickaxe;
-    public int pickaxeIndex;
-    public PickaxeTier tier;
-    public int tierIndex;
+    public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
+    public int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
+    public PickaxeTier tier => GameSession.Instance.runState.tier;
+    public int tierIndex => GameSession.Instance.runState.tierIndex;
 
     public int maxPickaxeDurability => tier.maxDurability;
     public int pickaxeDurability;

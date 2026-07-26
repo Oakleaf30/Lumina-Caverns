@@ -1,19 +1,27 @@
 public class BaseStorage : ItemContainer
 {
-    public static BaseStorage Instance { get; private set; }
+    private static BaseStorage _current;
+
+    public static BaseStorage Current
+    {
+        get
+        {
+            if (_current == null)
+                _current = FindFirstObjectByType<BaseStorage>();
+            return _current;
+        }
+    }
 
     public ItemData copper;
     public ItemData coal;
     public ItemData cobalt;
 
-    void Awake()
+    void Start()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        items = GameSession.Instance.runState.storage;
 
-        Instance.AddItem(copper, 100);
-        Instance.AddItem(coal, 20);
-        Instance.AddItem(cobalt, 20);
+        AddItem(copper, 100);
+        AddItem(coal, 20);
+        AddItem(cobalt, 20);
     }
 }
