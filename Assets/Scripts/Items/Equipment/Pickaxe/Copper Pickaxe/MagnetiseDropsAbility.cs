@@ -22,7 +22,8 @@ public class MagnetiseDropsAbility : PickaxeAbility
 
     private IEnumerator PullTowardsPlayer(ItemDrop drop, Transform playerTransform)
     {
-        while (Vector3.Distance(drop.transform.position, playerTransform.position) > 0.2f)
+        while (drop != null && playerTransform != null &&
+               Vector3.Distance(drop.transform.position, playerTransform.position) > 0.2f)
         {
             drop.transform.position = Vector3.MoveTowards(
                 drop.transform.position,
