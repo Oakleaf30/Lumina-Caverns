@@ -26,7 +26,7 @@ public class PlayerInventory : ItemContainer
         }
     }
 
-    public void DepositAllTo(BaseStorage baseStorage)
+    private void DepositAllTo(BaseStorage baseStorage)
     {
         foreach (var kv in items)
             baseStorage.AddItem(kv.Key, kv.Value);

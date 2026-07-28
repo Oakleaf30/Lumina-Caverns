@@ -22,8 +22,30 @@ public class GameSession : MonoBehaviour
 
         runState = new RunState();
         runState.ResetForNewRun();
+
+        if (SaveManager.SaveExists())
+        {
+            var loaded = SaveManager.Load();
+            SaveConverter.ApplyToRunState(loaded, runState); // overwrites persistent fieldsa
+        }
+        else
+        {
+            SeedNewGameDefaults();
+        }
+    }
+
+    void SeedNewGameDefaults()
+    {
         // Temp
         runState.pickaxe = basePickaxe;
         runState.tier = basePickaxe.tiers[0];
     }
+
+    public void SaveGame()
+    {
+        var data = SaveConverter.ToSaveData(runState);
+        SaveManager.Save(data);
+    }
+
+
 }

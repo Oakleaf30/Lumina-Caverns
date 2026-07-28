@@ -720,6 +720,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185470704}
   m_CullTransparentMesh: 1
+--- !u!1 &202057596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202057598}
+  - component: {fileID: 202057597}
+  m_Layer: 0
+  m_Name: Base Storage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &202057597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202057596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc8abfe79fe6b64bb96679588b72ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copper: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
+  coal: {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
+  cobalt: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
+--- !u!4 &202057598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202057596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.1598873, y: 0.464734, z: -0.028636495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209107691
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,6 +3648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: registry
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
     - target: {fileID: 4363688841941322429, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3667,3 +3718,4 @@ SceneRoots:
   - {fileID: 1659509532}
   - {fileID: 988638159}
   - {fileID: 1330562811}
+  - {fileID: 202057598}

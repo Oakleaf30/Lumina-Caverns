@@ -2743,7 +2743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &141485979
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11542,7 +11542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1209821155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16333,20 +16333,10 @@ MonoBehaviour:
       costAmount: 0
     tierIndex: 0
   saveData:
-    dockPosition: 1
-    containerId: 
-    displayed: 0
-    id: 
-    index: -1
-    contents: 
-    floating: 0
-    collapsed: 0
-    snapOffset: {x: 0, y: 0}
-    snapOffsetDelta: {x: 0, y: 0}
-    snapCorner: 0
-    layout: 4
-    size: {x: 0, y: 0}
-    sizeOverridden: 0
+    storage: []
+    pickaxeIndex: 0
+    pickaxeTier: 0
+    pickaxeDurability: 0
   basePickaxe: {fileID: 11400000, guid: c65dc9eb3c5205946bd2d00fa38ff758, type: 2}
 --- !u!4 &1824044001
 Transform:
@@ -17665,10 +17655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mining: {fileID: 1039454527}
-  upgrades:
-  - {fileID: 11400000, guid: c65dc9eb3c5205946bd2d00fa38ff758, type: 2}
-  - {fileID: 11400000, guid: 36ca9afd11d854049a68d0db64f40028, type: 2}
-  - {fileID: 11400000, guid: c2588377b4230ef4b91d3a42980f7421, type: 2}
+  registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
 --- !u!4 &2065981306
 Transform:
   m_ObjectHideFlags: 0
@@ -18315,6 +18302,10 @@ PrefabInstance:
       propertyPath: pickaxe
       value: 
       objectReference: {fileID: 11400000, guid: c65dc9eb3c5205946bd2d00fa38ff758, type: 2}
+    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: registry
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
     - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: tier.damage
       value: 1

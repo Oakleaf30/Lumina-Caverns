@@ -12,9 +12,7 @@ public class ItemCountEntry
 public class SaveData
 {
     public List<ItemCountEntry> storage = new();
-    public List<ItemCountEntry> inventory = new();
+    public int pickaxeIndex;
     public int pickaxeTier;
-    public float currentHealth;
-    public float pickaxeDurability;
-    public int currentFloor;
+    public int pickaxeDurability;
 }
