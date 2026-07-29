@@ -9,6 +9,7 @@ public class AnvilUI : StationUI
     private int durabilityRepaired;
     private int cost;
 
+    [SerializeField] InventorySlotUI display;
     [SerializeField] private TextMeshProUGUI preview;
     [SerializeField] int durabilityPerBar;
     [SerializeField] ItemData bar;
@@ -27,6 +28,8 @@ public class AnvilUI : StationUI
 
     private void UpdateAnvilDisplay()
     {
+        display.Set(mining.pickaxe, mining.tierIndex);
+
         durabilityPerBar = GameSession.Instance.runState.tierIndex == 0 ? 20 : 30;
 
         durabilityRepaired = CalculateCost();
