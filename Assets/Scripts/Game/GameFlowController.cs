@@ -17,7 +17,6 @@ public class GameFlowController : MonoBehaviour
 
     private void HandlePlayerDeathSequence()
     {
-        GameSession.Instance.SaveGame();
-        ScreenFader.Instance.TransitionToScene("Base");
+        GameSession.Instance.ExitMines();
     }
 }

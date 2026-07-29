@@ -22,7 +22,7 @@ public class PlayerInventory : ItemContainer
         {
             onReturnBase.Raise();
             DepositAllTo(BaseStorage.Current);
-            ScreenFader.Instance.TransitionToScene("Base");
+            GameSession.Instance.ExitMines();
         }
     }
 

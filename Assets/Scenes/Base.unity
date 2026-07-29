@@ -16250,9 +16250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runState:
-    currentHealth: 0
     pickaxeDurability: 0
-    currentFloor: 0
     pickaxe: {fileID: 0}
     pickaxeIndex: 0
     tier:
@@ -16262,12 +16260,15 @@ MonoBehaviour:
       costItem: {fileID: 0}
       costAmount: 0
     tierIndex: 0
+    currentHealth: 0
+    currentFloor: 0
   saveData:
     storage: []
     pickaxeIndex: 0
     pickaxeTier: 0
     pickaxeDurability: 0
-  basePickaxe: {fileID: 11400000, guid: c65dc9eb3c5205946bd2d00fa38ff758, type: 2}
+  pickaxeRegistry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
+  autosaveInterval: 60
 --- !u!4 &1824044001
 Transform:
   m_ObjectHideFlags: 0

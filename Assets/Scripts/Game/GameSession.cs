@@ -1,5 +1,6 @@
 using UnityEditor.Overlays;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class GameSession : MonoBehaviour
     public RunState runState;
     public SaveData saveData;
 
-    public PickaxeData basePickaxe;
+    [SerializeField] private PickaxeRegistry pickaxeRegistry;
+
+    [SerializeField] private float autosaveInterval = 1f;
+    private float _autosaveTimer;
 
     void Awake()
     {
@@ -21,12 +25,19 @@ public class GameSession : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         runState = new RunState();
-        runState.ResetForNewRun();
+        runState.Initialise();
 
         if (SaveManager.SaveExists())
         {
             var loaded = SaveManager.Load();
-            SaveConverter.ApplyToRunState(loaded, runState); // overwrites persistent fieldsa
+            SaveConverter.ApplyToRunState(loaded, runState);
+
+            if (SaveManager.TempExists())
+            {
+                var tempLoaded = SaveManager.LoadTemp();
+                SaveConverter.ApplyTemp(tempLoaded, runState);
+                ScreenFader.Instance.TransitionToScene("Mine");
+            }
         }
         else
         {
@@ -36,9 +47,9 @@ public class GameSession : MonoBehaviour
 
     void SeedNewGameDefaults()
     {
-        // Temp
-        runState.pickaxe = basePickaxe;
-        runState.tier = basePickaxe.tiers[0];
+        runState.pickaxe = pickaxeRegistry.upgrades[0];
+        runState.tier = runState.pickaxe.tiers[0];
+        runState.pickaxeDurability = runState.tier.maxDurability;
     }
 
     public void SaveGame()
@@ -47,5 +58,29 @@ public class GameSession : MonoBehaviour
         SaveManager.Save(data);
     }
 
+    public void TempSave()
+    {
+        var data = SaveConverter.ToTempSave(runState);
+        SaveManager.TempSave(data);
+    }
 
+    void Update()
+    {
+        _autosaveTimer += Time.deltaTime;
+        if (_autosaveTimer >= autosaveInterval)
+        {
+            _autosaveTimer = 0f;
+
+            if (SceneManager.GetActiveScene().name == "Mine")
+            TempSave();
+        }
+    }
+
+    public void ExitMines()
+    {
+        SaveGame();
+        SaveManager.DeleteTempSave();
+        ScreenFader.Instance.TransitionToScene("Base");
+        runState.currentFloor = 0;
+    }
 }

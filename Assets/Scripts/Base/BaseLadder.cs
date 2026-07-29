@@ -17,5 +17,6 @@ public class BaseLadder : MonoBehaviour
     private void LoadMines()
     {
         ScreenFader.Instance.TransitionToScene("Mine");
+        GameSession.Instance.runState.currentFloor++;
     }
 }

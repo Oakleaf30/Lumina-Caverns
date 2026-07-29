@@ -56,6 +56,7 @@ public class LadderTile : MonoBehaviour
     private void LoadMines()
     {
         ScreenFader.Instance.TransitionToScene("Mine");
+        GameSession.Instance.runState.currentFloor++;
     }
 
     public void AddNodes(int amount)
@@ -121,6 +122,8 @@ public class LadderTile : MonoBehaviour
 
     private void JumpShaft()
     {
+        GameSession.Instance.runState.currentFloor++;
+
         BiomeData nextBiome = Random.value < 0.5f ? coalFloor : infestedFloor;
 
         TransitionState.FloorTransition(activeBiome, nextBiome, SceneManager.GetActiveScene().name);
