@@ -39,6 +39,25 @@ public class PickaxeUpgradeManager : MonoBehaviour
         return default;
     }
 
+    public PickaxeData GetNextPickaxe()
+    {
+        NextUpgradeInfo info = NextUpgrade;
+
+        switch (info.kind)
+        {
+            case UpgradeKind.TierUpgrade:
+                return pickaxe;
+
+            case UpgradeKind.NewType:
+                return info.newType;
+
+            case UpgradeKind.None:
+                return default;
+        }
+
+        return default;
+    }
+
     public bool CanAfford(ItemData item, PickaxeTier tier)
     {
         bool test = storage.GetQuantity(item) >= tier.costAmount;

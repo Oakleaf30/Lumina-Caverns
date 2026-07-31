@@ -4350,6 +4350,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287740794}
   m_CullTransparentMesh: 1
+--- !u!114 &290471377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7200600425340809317, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
+  m_PrefabInstance: {fileID: 196011330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ffdb2fb85b6d4bb4166f8fc04fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &305476902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14670,6 +14681,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6404752672125141045, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
   m_PrefabInstance: {fileID: 1661725941}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1661725943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7200600425340809317, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
+  m_PrefabInstance: {fileID: 1661725941}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ffdb2fb85b6d4bb4166f8fc04fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1667296821
 GameObject:
   m_ObjectHideFlags: 0
@@ -15645,11 +15667,13 @@ MonoBehaviour:
   onStationClosed: {fileID: 0}
   mining: {fileID: 1039454527}
   pickaxeUpgrade: {fileID: 2065981305}
-  dropdown: {fileID: 287740796}
   storageSlot: {fileID: 796933264}
   costSlot: {fileID: 1377362927}
   button: {fileID: 482277585}
   infoText: {fileID: 1473255054}
+  currentSlot: {fileID: 1661725943}
+  nextSlot: {fileID: 290471377}
+  dropdown: {fileID: 287740796}
 --- !u!114 &1768235568
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,12 +18,16 @@ public class WorkbenchUI : StationUI
 
     [SerializeField] private PickaxeUpgradeManager pickaxeUpgrade;
 
-    [Header("UI Elements")]
-    [SerializeField] private TMP_Dropdown dropdown;
+    [Header("General UI Elements")]
     [SerializeField] private InventorySlotUI storageSlot;
     [SerializeField] private InventorySlotUI costSlot;
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI infoText;
+
+    [Header("Pickaxe UI Elements")]
+    [SerializeField] private InventorySlotUI currentSlot;
+    [SerializeField] private InventorySlotUI nextSlot;
+    [SerializeField] private TMP_Dropdown dropdown;
 
     private ItemData displayItem;
 
@@ -48,6 +52,8 @@ public class WorkbenchUI : StationUI
         {
             infoText.text += $"\nNew Ability: {pickaxe.specialAbility.description}";
         }
+
+        RefreshContainers();
 
         storageSlot.Set(displayItem, storage.GetQuantity(displayItem));
         costSlot.Set(displayItem, tier.costAmount);
@@ -85,6 +91,21 @@ public class WorkbenchUI : StationUI
         button.interactable = pickaxeUpgrade.CanAfford(gem, nextTier);
         storageSlot.Set(gem, storage.GetQuantity(gem));
         costSlot.Set(gem, tier.costAmount);
+    }
+
+    protected override void OpenMenu()
+    {
+        base.OpenMenu();
+
+        RefreshContainers();
+    }
+
+    private void RefreshContainers()
+    {
+        var nextPickaxe = pickaxeUpgrade.GetNextPickaxe();
+        int nextTierIndex = tierIndex + 1 >= pickaxe.tiers.Length ? 0 : tierIndex + 1;
+        currentSlot.Set(mining.pickaxe, mining.tierIndex);
+        nextSlot.Set(nextPickaxe, nextTierIndex);
     }
 
 
