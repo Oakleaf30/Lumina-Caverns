@@ -222,8 +222,8 @@ MonoBehaviour:
   pickaxeDamage: 1
   strikeOffset: 0.5
   verticalCenterOffset: 0.1
-  maxPickaxeDurability: 1000
-  pickaxeDurability: 1000
+  registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
+  pickaxeDurability: 0
 --- !u!114 &6002291323248252633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSwordSwing: {fileID: 11400000, guid: 0c9238140dca01b479bb9c3376cdb1f9, type: 2}
+  registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   swingCooldown: 0.35
-  swordDamage: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPlayerDeath: {fileID: 11400000, guid: c5f85e852b07d9f4cb1fda685f4e6adc, type: 2}
-  maxHealth: 3
+  registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   iFrameDuration: 1
   flashInterval: 0.1
 --- !u!114 &4823664196062340702

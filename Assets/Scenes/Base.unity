@@ -16332,6 +16332,8 @@ MonoBehaviour:
     pickaxeIndex: 0
     pickaxeTier: 0
     pickaxeDurability: 0
+    armourIndex: 0
+    swordIndex: 0
   pickaxeRegistry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   autosaveInterval: 60
 --- !u!4 &1824044001
@@ -18465,50 +18467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3552447602973476430, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: registry
-      value: 
-      objectReference: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: pickaxe
-      value: 
-      objectReference: {fileID: 11400000, guid: c65dc9eb3c5205946bd2d00fa38ff758, type: 2}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: registry
-      value: 
-      objectReference: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: tier.damage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: tier.tierName
-      value: Base
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: durabilityDebt
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: pickaxeDurability
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: tier.maxDurability
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: maxPickaxeDurability
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 4363688841941322429, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6002291323248252633, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
-      propertyPath: registry
-      value: 
-      objectReference: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
     - target: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
