@@ -28,7 +28,7 @@ public class AnvilUI : StationUI
 
     private void UpdateAnvilDisplay()
     {
-        display.Set(mining.pickaxe, mining.tierIndex);
+        display.Set(mining.pickaxe, mining.tierIndex, SlotDisplayMode.Equipment);
 
         durabilityPerBar = GameSession.Instance.runState.tierIndex == 0 ? 20 : 30;
 

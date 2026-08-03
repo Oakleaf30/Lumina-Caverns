@@ -121,14 +121,14 @@ public class WorkbenchUI : StationUI
     {
         var nextPickaxe = pickaxeUpgrade.GetNextPickaxe();
         int nextTierIndex = tierIndex + 1 >= pickaxe.tiers.Length ? 0 : tierIndex + 1;
-        currentSlotP.Set(pickaxe, tierIndex);
-        nextSlotP.Set(nextPickaxe, nextTierIndex);
+        currentSlotP.Set(pickaxe, tierIndex, SlotDisplayMode.Equipment);
+        nextSlotP.Set(nextPickaxe, nextTierIndex, SlotDisplayMode.Equipment);
 
-        currentSlotA.Set(Armour, 0);
-        nextSlotA.Set(NextArmour, 0);
+        currentSlotA.Set(Armour, 0, SlotDisplayMode.Equipment);
+        nextSlotA.Set(NextArmour, 0, SlotDisplayMode.Equipment);
 
-        currentSlotS.Set(Sword, 0);
-        nextSlotS.Set(NextSword, 0);
+        currentSlotS.Set(Sword, 0, SlotDisplayMode.Equipment);
+        nextSlotS.Set(NextSword, 0, SlotDisplayMode.Equipment);
     }
 
     private void RefreshArmourDisplay()
