@@ -17,7 +17,7 @@ public class PlayerMining : MonoBehaviour
     [SerializeField] private float strikeOffset = 0.5f;
     [SerializeField] private float verticalCenterOffset = 0.5f;
 
-    [SerializeField] private PickaxeRegistry registry;
+    [SerializeField] private EquipmentRegistry registry;
 
     public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
     public int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
@@ -43,7 +43,7 @@ public class PlayerMining : MonoBehaviour
 
     private void ApplyPickaxeData()
     {
-        GameSession.Instance.runState.pickaxe = registry.upgrades[pickaxeIndex];
+        GameSession.Instance.runState.pickaxe = registry.pickaxes[pickaxeIndex];
         GameSession.Instance.runState.tier = pickaxe.tiers[tierIndex];
         pickaxeDurability = GameSession.Instance.runState.pickaxeDurability;
     }

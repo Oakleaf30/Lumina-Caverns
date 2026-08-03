@@ -17,15 +17,3 @@ public struct PickaxeTier
     public ItemData costItem;
     public int costAmount;
 }
-
-[CreateAssetMenu(menuName = "Items/Armour")]
-public class ArmourData : ItemData
-{
-    public int healthIncrease;
-}
-
-[CreateAssetMenu(menuName = "Items/Sword")]
-public class SwordData : ItemData
-{
-    public int damage;
-}

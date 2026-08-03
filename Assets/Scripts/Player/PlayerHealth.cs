@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameEvent onPlayerDeath;
+    [SerializeField] private EquipmentRegistry registry;
 
-    [Header("Health Settings")]
-    [SerializeField] private int maxHealth = 3;
     private int currentHealth;
 
     [Header("I-Frames Settings")]
@@ -19,17 +20,30 @@ public class PlayerHealth : MonoBehaviour
     private PlayerMovement playerMovement;
     private Animator anim;
 
-    // Optional: Hook into your decoupled event system
-    // [SerializeField] private GameEvent onPlayerDamaged;
-    // [SerializeField] private GameEvent onPlayerDeath;
-
     private void Awake()
     {
-        currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        ApplyHealth();
+    }
+
+    private void ApplyHealth()
+    {
+        GameSession.Instance.runState.armour = registry.armour[GameSession.Instance.runState.armourIndex];
+
+        if (SceneManager.GetActiveScene().name == "Base")
+        {
+            currentHealth = GameSession.Instance.runState.armour.maxHealth;
+        } else
+        {
+            currentHealth = GameSession.Instance.runState.currentHealth;
+        }
     }
 
     public void TakeDamage(int damageAmount)

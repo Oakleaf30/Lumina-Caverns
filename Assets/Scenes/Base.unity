@@ -8307,8 +8307,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 736155506}
-  - {fileID: 908229865}
   - {fileID: 1988770402}
+  - {fileID: 908229865}
   m_Father: {fileID: 1334288908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -8673,7 +8673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -295}
+  m_AnchoredPosition: {x: 0, y: -590}
   m_SizeDelta: {x: 540, y: 295}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &908229866
@@ -10576,6 +10576,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6404752672125141045, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
   m_PrefabInstance: {fileID: 1134914839}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1134914841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7200600425340809317, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
+  m_PrefabInstance: {fileID: 1134914839}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ffdb2fb85b6d4bb4166f8fc04fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1140104530
 GameObject:
   m_ObjectHideFlags: 0
@@ -13986,6 +13997,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6404752672125141045, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
   m_PrefabInstance: {fileID: 1552861168}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1552861170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7200600425340809317, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
+  m_PrefabInstance: {fileID: 1552861168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ffdb2fb85b6d4bb4166f8fc04fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1562993833
 GameObject:
   m_ObjectHideFlags: 0
@@ -15665,15 +15687,19 @@ MonoBehaviour:
   menuPanel: {fileID: 1334288907}
   onStationUsed: {fileID: 11400000, guid: 270b796692d15da49880346c78ddbcd3, type: 2}
   onStationClosed: {fileID: 0}
-  mining: {fileID: 1039454527}
   pickaxeUpgrade: {fileID: 2065981305}
+  equipmentUpgrade: {fileID: 2065981307}
   storageSlot: {fileID: 796933264}
   costSlot: {fileID: 1377362927}
   button: {fileID: 482277585}
   infoText: {fileID: 1473255054}
-  currentSlot: {fileID: 1661725943}
-  nextSlot: {fileID: 290471377}
+  currentSlotP: {fileID: 1661725943}
+  nextSlotP: {fileID: 290471377}
   dropdown: {fileID: 287740796}
+  currentSlotA: {fileID: 1134914841}
+  nextSlotA: {fileID: 1552861170}
+  currentSlotS: {fileID: 0}
+  nextSlotS: {fileID: 0}
 --- !u!114 &1768235568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16284,6 +16310,8 @@ MonoBehaviour:
       costItem: {fileID: 0}
       costAmount: 0
     tierIndex: 0
+    armour: {fileID: 0}
+    armourIndex: 0
     currentHealth: 0
     currentFloor: 0
   saveData:
@@ -17351,7 +17379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -590}
+  m_AnchoredPosition: {x: 0, y: -295}
   m_SizeDelta: {x: 540, y: 295}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1988770403
@@ -17413,13 +17441,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 833173471}
-        m_TargetAssemblyTypeName: FurnaceUI, Assembly-CSharp
-        m_MethodName: SetResources
-        m_Mode: 2
+      - m_Target: {fileID: 1768235567}
+        m_TargetAssemblyTypeName: WorkbenchUI, Assembly-CSharp
+        m_MethodName: OnArmourTabSelected
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1e0b0655c568e9243baa27626f431096, type: 2}
-          m_ObjectArgumentAssemblyTypeName: RecipeData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17721,8 +17749,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2065981306}
   - component: {fileID: 2065981305}
+  - component: {fileID: 2065981307}
   m_Layer: 0
-  m_Name: Pickaxe Manager
+  m_Name: Equipment Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17757,6 +17786,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2065981307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065981304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f21206b2b899541b92960e2789d2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
 --- !u!1 &2068310023
 GameObject:
   m_ObjectHideFlags: 0
@@ -18399,6 +18441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3552447602973476430, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: registry
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
     - target: {fileID: 3974108470434307861, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: pickaxe
       value: 

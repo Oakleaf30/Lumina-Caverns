@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e57f3b2e75924bb8981d142537340, type: 3}
+  m_Name: Copper Armour
+  m_EditorClassIdentifier: 
+  itemId: copper_armour
+  displayName: Copper Armour
+  icon: {fileID: 629277948805704512, guid: 537383deeb4146941921c10c2f39df5c, type: 3}
+  category: 4
+  costItem: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
+  costAmount: 5
+  maxHealth: 200

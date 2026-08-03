@@ -10,9 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fba25a41b07d774982b6a68fe910d53, type: 3}
-  m_Name: PickaxeRegistry
+  m_Name: EquipmentRegistry
   m_EditorClassIdentifier: 
-  upgrades:
+  pickaxes:
   - {fileID: 11400000, guid: c65dc9eb3c5205946bd2d00fa38ff758, type: 2}
   - {fileID: 11400000, guid: 36ca9afd11d854049a68d0db64f40028, type: 2}
   - {fileID: 11400000, guid: c2588377b4230ef4b91d3a42980f7421, type: 2}
+  armour:
+  - {fileID: 11400000, guid: 66302a34df7ff2041add6eb390539bc7, type: 2}
+  - {fileID: 11400000, guid: 7473db8e76296b948bf84f77da0ca84b, type: 2}
+  - {fileID: 11400000, guid: b5d6a37d9bb9c5748a129364a5762346, type: 2}
+  swords: []

@@ -10,6 +10,6 @@ public class InventorySlotUI : MonoBehaviour
     public void Set(ItemData item, int quantity)
     {
         icon.sprite = item.icon;
-        quantityText.text = quantity.ToString();
+        quantityText.text = quantity == 0 ? "" : quantity.ToString();
     }
 }

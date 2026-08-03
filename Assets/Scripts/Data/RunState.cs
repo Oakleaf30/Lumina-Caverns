@@ -11,11 +11,14 @@ public class RunState
     public PickaxeTier tier;
     public int tierIndex;
 
+    public ArmourData armour;
+    public int armourIndex;
+
     public Dictionary<ItemData, int> inventory = new Dictionary<ItemData, int>();
     public int currentHealth;
     public int currentFloor;
 
-    public void Initialise(int startingHealth = 3)
+    public void Initialise(int startingHealth = 100)
     {
         inventory.Clear();
         storage.Clear();

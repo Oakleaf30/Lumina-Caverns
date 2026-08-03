@@ -5,7 +5,7 @@ public class PickaxeUpgradeManager : MonoBehaviour
     [SerializeField] private PlayerMining mining;
     BaseStorage storage => BaseStorage.Current;
 
-    [SerializeField] private PickaxeRegistry registry;
+    [SerializeField] private EquipmentRegistry registry;
 
     public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
     public int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
@@ -73,8 +73,8 @@ public class PickaxeUpgradeManager : MonoBehaviour
                 return new NextUpgradeInfo { kind = UpgradeKind.TierUpgrade, tier = pickaxe.tiers[nextTierIndex] };
 
             int nextTypeIndex = pickaxeIndex + 1;
-            if (nextTypeIndex < registry.upgrades.Length)
-                return new NextUpgradeInfo { kind = UpgradeKind.NewType, newType = registry.upgrades[nextTypeIndex] };
+            if (nextTypeIndex < registry.pickaxes.Length)
+                return new NextUpgradeInfo { kind = UpgradeKind.NewType, newType = registry.pickaxes[nextTypeIndex] };
 
             // fell through both checks — no next tier, no next ore
             return new NextUpgradeInfo { kind = UpgradeKind.None };
@@ -103,7 +103,7 @@ public class PickaxeUpgradeManager : MonoBehaviour
 
             case UpgradeKind.NewType:
                 GameSession.Instance.runState.pickaxeIndex++;
-                GameSession.Instance.runState.pickaxe = registry.upgrades[pickaxeIndex];
+                GameSession.Instance.runState.pickaxe = registry.pickaxes[pickaxeIndex];
                 GameSession.Instance.runState.tier = pickaxe.tiers[0];
                 break;
         }

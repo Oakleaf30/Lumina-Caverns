@@ -6,9 +6,6 @@ using static PickaxeUpgradeManager;
 
 public class WorkbenchUI : StationUI
 {
-
-    [Header("References")]
-    [SerializeField] private PlayerMining mining;
     BaseStorage storage => BaseStorage.Current;
 
     private PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
@@ -16,7 +13,15 @@ public class WorkbenchUI : StationUI
     private PickaxeTier tier => GameSession.Instance.runState.tier;
     private int tierIndex => GameSession.Instance.runState.tierIndex;
 
+    private ArmourData armour => GameSession.Instance.runState.armour;
+    private int armourIndex => GameSession.Instance.runState.armourIndex;
+    private ArmourData NextArmour => equipmentUpgrade.ReturnNextArmour(armourIndex);
+
+
+
+
     [SerializeField] private PickaxeUpgradeManager pickaxeUpgrade;
+    [SerializeField] private EquipmentUpgradeManager equipmentUpgrade;
 
     [Header("General UI Elements")]
     [SerializeField] private InventorySlotUI storageSlot;
@@ -25,9 +30,17 @@ public class WorkbenchUI : StationUI
     [SerializeField] private TextMeshProUGUI infoText;
 
     [Header("Pickaxe UI Elements")]
-    [SerializeField] private InventorySlotUI currentSlot;
-    [SerializeField] private InventorySlotUI nextSlot;
+    [SerializeField] private InventorySlotUI currentSlotP;
+    [SerializeField] private InventorySlotUI nextSlotP;
     [SerializeField] private TMP_Dropdown dropdown;
+
+    [Header("Armour UI Elements")]
+    [SerializeField] private InventorySlotUI currentSlotA;
+    [SerializeField] private InventorySlotUI nextSlotA;
+
+    [Header("Sword UI Elements")]
+    [SerializeField] private InventorySlotUI currentSlotS;
+    [SerializeField] private InventorySlotUI nextSlotS;
 
     private ItemData displayItem;
 
@@ -104,12 +117,30 @@ public class WorkbenchUI : StationUI
     {
         var nextPickaxe = pickaxeUpgrade.GetNextPickaxe();
         int nextTierIndex = tierIndex + 1 >= pickaxe.tiers.Length ? 0 : tierIndex + 1;
-        currentSlot.Set(mining.pickaxe, mining.tierIndex);
-        nextSlot.Set(nextPickaxe, nextTierIndex);
+        currentSlotP.Set(pickaxe, tierIndex);
+        nextSlotP.Set(nextPickaxe, nextTierIndex);
+
+        currentSlotA.Set(armour, 0);
+        nextSlotA.Set(NextArmour, 0);
+    }
+
+    public void RefreshArmourDisplay()
+    {
+        infoText.text = $"Health Increaase: {armour.maxHealth} > {NextArmour.maxHealth}";
+
+        RefreshContainers();
+
+        var costItem = NextArmour.costItem;
+        storageSlot.Set(costItem, storage.GetQuantity(costItem));
+        costSlot.Set(costItem, NextArmour.costAmount);
+
+        button.interactable = equipmentUpgrade.CanAfford(costItem, NextArmour);
     }
 
 
     //======================================================================================================================================================
+
+
     public enum GearCategory { Pickaxe, Armour, Sword }
     private GearCategory currentCategory = GearCategory.Pickaxe;
 
@@ -139,7 +170,7 @@ public class WorkbenchUI : StationUI
                 RefreshPickaxeDisplay();
                 break;
             case GearCategory.Armour:
-                //RefreshArmourDisplay();
+                RefreshArmourDisplay();
                 break;
             case GearCategory.Sword:
                 //RefreshSwordDisplay();
@@ -156,7 +187,8 @@ public class WorkbenchUI : StationUI
                 RefreshPickaxeDisplay();
                 break;
             case GearCategory.Armour:
-                //RefreshArmourDisplay();
+                equipmentUpgrade.UpgradeArmour(NextArmour);
+                RefreshArmourDisplay();
                 break;
             case GearCategory.Sword:
                 //RefreshSwordDisplay();

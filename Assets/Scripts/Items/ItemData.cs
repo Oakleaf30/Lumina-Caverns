@@ -11,3 +11,9 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     public ItemCategory category;
 }
+
+public abstract class EquipmentData : ItemData
+{
+    public ItemData costItem;
+    public int costAmount;
+}

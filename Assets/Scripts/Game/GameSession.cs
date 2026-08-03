@@ -9,7 +9,7 @@ public class GameSession : MonoBehaviour
     public RunState runState;
     public SaveData saveData;
 
-    [SerializeField] private PickaxeRegistry pickaxeRegistry;
+    [SerializeField] private EquipmentRegistry pickaxeRegistry;
 
     [SerializeField] private float autosaveInterval = 1f;
     private float _autosaveTimer;
@@ -47,7 +47,7 @@ public class GameSession : MonoBehaviour
 
     void SeedNewGameDefaults()
     {
-        runState.pickaxe = pickaxeRegistry.upgrades[0];
+        runState.pickaxe = pickaxeRegistry.pickaxes[0];
         runState.tier = runState.pickaxe.tiers[0];
         runState.pickaxeDurability = runState.tier.maxDurability;
     }
