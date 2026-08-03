@@ -13,9 +13,13 @@ public class WorkbenchUI : StationUI
     private PickaxeTier tier => GameSession.Instance.runState.tier;
     private int tierIndex => GameSession.Instance.runState.tierIndex;
 
-    private ArmourData armour => GameSession.Instance.runState.armour;
-    private int armourIndex => GameSession.Instance.runState.armourIndex;
-    private ArmourData NextArmour => equipmentUpgrade.ReturnNextArmour(armourIndex);
+    private ArmourData Armour => GameSession.Instance.runState.armour;
+    private int ArmourIndex => GameSession.Instance.runState.armourIndex;
+    private ArmourData NextArmour => equipmentUpgrade.ReturnNextArmour(ArmourIndex);
+
+    private SwordData Sword => GameSession.Instance.runState.sword;
+    private int SwordIndex => GameSession.Instance.runState.swordIndex;
+    private SwordData NextSword => equipmentUpgrade.ReturnNextSword(SwordIndex);
 
 
 
@@ -120,13 +124,16 @@ public class WorkbenchUI : StationUI
         currentSlotP.Set(pickaxe, tierIndex);
         nextSlotP.Set(nextPickaxe, nextTierIndex);
 
-        currentSlotA.Set(armour, 0);
+        currentSlotA.Set(Armour, 0);
         nextSlotA.Set(NextArmour, 0);
+
+        currentSlotS.Set(Sword, 0);
+        nextSlotS.Set(NextSword, 0);
     }
 
-    public void RefreshArmourDisplay()
+    private void RefreshArmourDisplay()
     {
-        infoText.text = $"Health Increaase: {armour.maxHealth} > {NextArmour.maxHealth}";
+        infoText.text = $"Health Increaase: {Armour.maxHealth} > {NextArmour.maxHealth}";
 
         RefreshContainers();
 
@@ -135,6 +142,19 @@ public class WorkbenchUI : StationUI
         costSlot.Set(costItem, NextArmour.costAmount);
 
         button.interactable = equipmentUpgrade.CanAfford(costItem, NextArmour);
+    }
+
+    private void RefreshSwordDisplay()
+    {
+        infoText.text = $"Damage Increaase: {Sword.damage} > {NextSword.damage}";
+
+        RefreshContainers();
+
+        var costItem = NextSword.costItem;
+        storageSlot.Set(costItem, storage.GetQuantity(costItem));
+        costSlot.Set(costItem, NextSword.costAmount);
+
+        button.interactable = equipmentUpgrade.CanAfford(costItem, NextSword);
     }
 
 
@@ -173,7 +193,7 @@ public class WorkbenchUI : StationUI
                 RefreshArmourDisplay();
                 break;
             case GearCategory.Sword:
-                //RefreshSwordDisplay();
+                RefreshSwordDisplay();
                 break;
         }
     }
@@ -191,7 +211,8 @@ public class WorkbenchUI : StationUI
                 RefreshArmourDisplay();
                 break;
             case GearCategory.Sword:
-                //RefreshSwordDisplay();
+                equipmentUpgrade.UpgradeSword(NextSword);
+                RefreshSwordDisplay();
                 break;
         }
     }

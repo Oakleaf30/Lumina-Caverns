@@ -8735,13 +8735,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 833173471}
-        m_TargetAssemblyTypeName: FurnaceUI, Assembly-CSharp
-        m_MethodName: SetResources
-        m_Mode: 2
+      - m_Target: {fileID: 1768235567}
+        m_TargetAssemblyTypeName: WorkbenchUI, Assembly-CSharp
+        m_MethodName: OnSwordTabSelected
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1e0b0655c568e9243baa27626f431096, type: 2}
-          m_ObjectArgumentAssemblyTypeName: RecipeData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15698,8 +15698,8 @@ MonoBehaviour:
   dropdown: {fileID: 287740796}
   currentSlotA: {fileID: 1134914841}
   nextSlotA: {fileID: 1552861170}
-  currentSlotS: {fileID: 0}
-  nextSlotS: {fileID: 0}
+  currentSlotS: {fileID: 1894009693}
+  nextSlotS: {fileID: 1790852973}
 --- !u!114 &1768235568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16082,6 +16082,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083ffdb2fb85b6d4bb4166f8fc04fe8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1790852973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7200600425340809317, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
+  m_PrefabInstance: {fileID: 1743748614}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ffdb2fb85b6d4bb4166f8fc04fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1803189212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16312,6 +16323,8 @@ MonoBehaviour:
     tierIndex: 0
     armour: {fileID: 0}
     armourIndex: 0
+    sword: {fileID: 0}
+    swordIndex: 0
     currentHealth: 0
     currentFloor: 0
   saveData:
@@ -16444,6 +16457,17 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1894009693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7200600425340809317, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
+  m_PrefabInstance: {fileID: 557123539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ffdb2fb85b6d4bb4166f8fc04fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1898188199
 GameObject:
   m_ObjectHideFlags: 0
@@ -18481,6 +18505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6002291323248252633, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: registry
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
     - target: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5

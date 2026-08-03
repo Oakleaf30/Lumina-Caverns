@@ -20,4 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 66302a34df7ff2041add6eb390539bc7, type: 2}
   - {fileID: 11400000, guid: 7473db8e76296b948bf84f77da0ca84b, type: 2}
   - {fileID: 11400000, guid: b5d6a37d9bb9c5748a129364a5762346, type: 2}
-  swords: []
+  swords:
+  - {fileID: 11400000, guid: e62f3c32009b69449b1be0bda0467467, type: 2}
+  - {fileID: 11400000, guid: 68d27443a3ff0524dbdcc1b9a9a92dec, type: 2}
+  - {fileID: 11400000, guid: 99c43248d395e7c4d9cf85c50e870d61, type: 2}

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerSword : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameEvent onSwordSwing;
+    [SerializeField] private EquipmentRegistry registry;
 
     private Animator anim;
     private PlayerInteraction playerInteraction;
@@ -10,7 +12,6 @@ public class PlayerSword : MonoBehaviour
 
     [Header("Sword Setup")]
     [SerializeField] private float swingCooldown = 0.4f;
-    [SerializeField] private int swordDamage = 1;
     [SerializeField] private LayerMask enemyLayer;
 
     [Header("Hitbox Geometry")]
@@ -19,6 +20,8 @@ public class PlayerSword : MonoBehaviour
     [SerializeField] private float verticalCenterOffset = 0.5f; // NEW: Vertically shifts origin from feet to waist/chest
     [SerializeField] private float knockbackForce = 5f;
 
+    private SwordData sword => GameSession.Instance.runState.sword;
+
     private float lastSwingTime;
 
     private void Awake()
@@ -26,6 +29,11 @@ public class PlayerSword : MonoBehaviour
         anim = GetComponent<Animator>();
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
+    }
+
+    private void Start()
+    {
+        GameSession.Instance.runState.sword = registry.swords[GameSession.Instance.runState.swordIndex];
     }
 
     void Update()
@@ -74,7 +82,7 @@ public class PlayerSword : MonoBehaviour
                 Vector2 totalForce = knockbackDir * knockbackForce;
 
                 // Pass the damage AND the force vector
-                enemy.TakeDamage(swordDamage, totalForce);
+                enemy.TakeDamage(sword.damage, totalForce);
             }
         }
     }

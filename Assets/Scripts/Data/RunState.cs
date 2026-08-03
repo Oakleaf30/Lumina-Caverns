@@ -14,15 +14,18 @@ public class RunState
     public ArmourData armour;
     public int armourIndex;
 
+    public SwordData sword;
+    public int swordIndex;
+
+
     public Dictionary<ItemData, int> inventory = new Dictionary<ItemData, int>();
     public int currentHealth;
     public int currentFloor;
 
-    public void Initialise(int startingHealth = 100)
+    public void Initialise()
     {
         inventory.Clear();
         storage.Clear();
-        currentHealth = startingHealth;
 
         currentFloor = 0;
     }

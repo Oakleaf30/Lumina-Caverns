@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c730da0959100e4c9e0c0d34cf61cb5
+guid: 649d633755197e54d81099c2d875aed0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3287490791205287073
-    second: Dwarf_Sword_0
+      213: -139271414053232584
+    second: Steel_Falchion_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dwarf_Sword_0
+      name: Steel_Falchion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
+        width: 46
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a4b82ce4738f9d20800000000000000
-      internalID: 3287490791205287073
+      spriteID: 830adf50365311ef0800000000000000
+      internalID: -139271414053232584
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dwarf_Sword_0: 3287490791205287073
+      Steel_Falchion_0: -139271414053232584
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

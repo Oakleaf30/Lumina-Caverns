@@ -15,4 +15,7 @@ public class SaveData
     public int pickaxeIndex;
     public int pickaxeTier;
     public int pickaxeDurability;
+
+    public int armourIndex;
+    public int swordIndex;
 }

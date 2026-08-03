@@ -7,6 +7,9 @@ public static class SaveConverter
             pickaxeIndex = runState.pickaxeIndex,
             pickaxeTier = runState.tierIndex,
             pickaxeDurability = runState.pickaxeDurability,
+
+            armourIndex = runState.armourIndex,
+            swordIndex = runState.swordIndex,
         };
 
         foreach (var kvp in runState.storage)
@@ -20,6 +23,9 @@ public static class SaveConverter
         runState.pickaxeIndex = data.pickaxeIndex;
         runState.tierIndex = data.pickaxeTier;
         runState.pickaxeDurability = data.pickaxeDurability;
+
+        runState.armourIndex = data.armourIndex;
+        runState.swordIndex = data.swordIndex;
 
         runState.storage.Clear();
         foreach (var entry in data.storage)

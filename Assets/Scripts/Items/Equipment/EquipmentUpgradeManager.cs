@@ -27,5 +27,17 @@ public class EquipmentUpgradeManager : MonoBehaviour
         return test;
     }
 
+    public SwordData ReturnNextSword(int swordIndex)
+    {
+        int nextSwordIndex = swordIndex + 1;
+        return nextSwordIndex < registry.swords.Length ? registry.swords[nextSwordIndex] : null;
+    }
 
+    public void UpgradeSword(SwordData sword)
+    {
+        runState.swordIndex++;
+        runState.sword = registry.swords[runState.swordIndex];
+
+        storage.RemoveItem(sword.costItem, sword.costAmount);
+    }
 }
