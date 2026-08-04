@@ -26,7 +26,7 @@ public class AnvilUI : StationUI
         UpdateAnvilDisplay();
     }
 
-    private void UpdateAnvilDisplay()
+    public void UpdateAnvilDisplay()
     {
         display.Set(mining.pickaxe, mining.tierIndex, SlotDisplayMode.Equipment);
 
