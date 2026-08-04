@@ -38,20 +38,34 @@ public class OreNode : MonoBehaviour
 
     private void BreakNode()
     {
-        int amount = Random.Range(oreData.minDropCount, oreData.maxDropCount);
-
-        for (int i  = 0; i < amount; i++ )
-        {
-            Vector2 offset = Random.insideUnitCircle * 0.5f;
-            Vector3 spawnLocation = transform.position + new Vector3(offset.x, offset.y, 0);
-
-            GameObject drop = Instantiate(dropPrefab, spawnLocation, transform.rotation);
-            drop.GetComponent<ItemDrop>().Initialize(oreData.dropData);
-        }
+        CalculateDrops();
 
         onLadderCheck.Raise(transform.position);
         Destroy(gameObject);
     }
 
-    
+    private void CalculateDrops()
+    {
+        int amount = Random.Range(oreData.minDropCount, oreData.maxDropCount);
+
+        for (int i = 0; i < amount; i++)
+        {
+            SpawnDrop(oreData.dropData);
+        }
+
+        foreach (var optional in oreData.optionalDrops)
+        {
+            if (Random.value < optional.dropChance)
+                SpawnDrop(optional.dropData);
+        }
+    }
+
+    private void SpawnDrop(ItemData item)
+    {
+        Vector2 offset = Random.insideUnitCircle * 0.5f;
+        Vector3 spawnLocation = transform.position + new Vector3(offset.x, offset.y, 0);
+
+        GameObject drop = Instantiate(dropPrefab, spawnLocation, transform.rotation);
+        drop.GetComponent<ItemDrop>().Initialize(item);
+    }
 }

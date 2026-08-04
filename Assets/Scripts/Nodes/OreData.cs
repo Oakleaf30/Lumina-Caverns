@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "NewOreData", menuName = "Lumina Caverns/Ore Data")]
 public class OreData : ScriptableObject
@@ -15,6 +16,7 @@ public class OreData : ScriptableObject
     public ItemData dropData;
     public int minDropCount;
     public int maxDropCount;
+    public OptionalDrop[] optionalDrops;
 
     [Header("Visuals")]
     public Sprite[] nodeSprites;
