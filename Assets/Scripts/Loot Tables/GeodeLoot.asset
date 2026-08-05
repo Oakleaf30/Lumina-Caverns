@@ -15,5 +15,37 @@ MonoBehaviour:
   lootItems:
   - itemAmount:
       item: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
+      amount: 5
+    chance: 0.6
+  - itemAmount:
+      item: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
+      amount: 10
+    chance: 0.1
+  - itemAmount:
+      item: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
+      amount: 20
+    chance: 0.05
+  - itemAmount:
+      item: {fileID: 11400000, guid: 20473505263554c42b72e576a1824fab, type: 2}
+      amount: 5
+    chance: 0.1
+  - itemAmount:
+      item: {fileID: 11400000, guid: 26e5aee9210022b44876494c5a413a7e, type: 2}
+      amount: 10
+    chance: 0.1
+  - itemAmount:
+      item: {fileID: 11400000, guid: 208aaf311de2341478d0768f7d98a528, type: 2}
       amount: 1
-    chance: 1
+    chance: 0.024
+  - itemAmount:
+      item: {fileID: 11400000, guid: 6f54808d28ab91a4d9755fdb3c45fd8a, type: 2}
+      amount: 1
+    chance: 0.024
+  - itemAmount:
+      item: {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
+      amount: 1
+    chance: 0.001
+  - itemAmount:
+      item: {fileID: 11400000, guid: 9757768cc32a0f441aa30f9d6123748f, type: 2}
+      amount: 1
+    chance: 0.001

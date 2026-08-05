@@ -18,6 +18,9 @@ public class RunState
     public int swordIndex;
 
 
+    public int geodePity;
+
+
     public Dictionary<ItemData, int> inventory = new Dictionary<ItemData, int>();
     public int currentHealth;
     public int currentFloor;

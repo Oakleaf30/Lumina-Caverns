@@ -18,4 +18,6 @@ public class SaveData
 
     public int armourIndex;
     public int swordIndex;
+
+    public int geodePity;
 }

@@ -11,6 +11,7 @@ public struct ItemAmount
 public struct LootItem
 {
     public ItemAmount itemAmount;
+    public int maxAmount;
     [Range(0f, 1f)] public float chance;
 }
 
@@ -18,6 +19,10 @@ public struct LootItem
 public class LootTable : ScriptableObject
 {
     public LootItem[] lootItems;
+
+    public ItemData pityTargetItem;
+    public ItemAmount pityReward;
+    public int pityThreshold = 6;
 
     public ItemAmount GetRandomLoot()
     {
@@ -31,10 +36,23 @@ public class LootTable : ScriptableObject
         {
             cumulative += item.chance;
             if (roll <= cumulative)
-                return item.itemAmount;
+                return RollAmount(item);
         }
 
         // Fallback in case of floating point rounding at the boundary
-        return lootItems[lootItems.Length - 1].itemAmount;
+        return RollAmount(lootItems[lootItems.Length - 1]);
+    }
+
+    private ItemAmount RollAmount(LootItem lootItem)
+    {
+        int finalAmount = lootItem.maxAmount > lootItem.itemAmount.amount
+            ? Random.Range(lootItem.itemAmount.amount, lootItem.maxAmount + 1)
+            : lootItem.itemAmount.amount;
+
+        return new ItemAmount
+        {
+            item = lootItem.itemAmount.item,
+            amount = finalAmount
+        };
     }
 }

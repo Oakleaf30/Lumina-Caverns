@@ -10,6 +10,8 @@ public static class SaveConverter
 
             armourIndex = runState.armourIndex,
             swordIndex = runState.swordIndex,
+
+            geodePity = runState.geodePity,
         };
 
         foreach (var kvp in runState.storage)
@@ -26,6 +28,8 @@ public static class SaveConverter
 
         runState.armourIndex = data.armourIndex;
         runState.swordIndex = data.swordIndex;
+
+        runState.geodePity = data.geodePity;
 
         runState.storage.Clear();
         foreach (var entry in data.storage)

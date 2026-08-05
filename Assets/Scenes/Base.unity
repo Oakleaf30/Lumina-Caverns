@@ -8783,6 +8783,7 @@ MonoBehaviour:
   geode: {fileID: 11400000, guid: df60f6a832471d141b77772201674519, type: 2}
   slotG1: {fileID: 1752792295}
   button: {fileID: 1711569636}
+  buttonText: {fileID: 1367902077}
   slotPrefab: {fileID: 2250070269871057806, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
   lootContainer: {fileID: 487178724}
   lootInterval: 0.3
@@ -13797,7 +13798,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1209821158}
         m_TargetAssemblyTypeName: AnvilUI, Assembly-CSharp
         m_MethodName: NormalRepair
         m_Mode: 1
@@ -16318,7 +16319,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 884051210}
         m_TargetAssemblyTypeName: GeodeUI, Assembly-CSharp
         m_MethodName: ButtonClicked
         m_Mode: 1
@@ -20020,7 +20021,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1209821158}
         m_TargetAssemblyTypeName: AnvilUI, Assembly-CSharp
         m_MethodName: EmergencyRepair
         m_Mode: 1

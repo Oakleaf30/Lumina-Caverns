@@ -5,7 +5,7 @@ public class EquipmentUpgradeManager : MonoBehaviour
     [SerializeField] private EquipmentRegistry registry;
 
     BaseStorage storage => BaseStorage.Current;
-    RunState runState => GameSession.Instance.runState;
+    RunState RunState => GameSession.Instance.runState;
 
     public ArmourData ReturnNextArmour(int armourIndex)
     {
@@ -15,8 +15,8 @@ public class EquipmentUpgradeManager : MonoBehaviour
 
     public void UpgradeArmour(ArmourData armour)
     {
-        runState.armourIndex++;
-        runState.armour = registry.armour[runState.armourIndex];
+        RunState.armourIndex++;
+        RunState.armour = registry.armour[RunState.armourIndex];
 
         storage.RemoveItem(armour.costItem, armour.costAmount);
     }
@@ -35,8 +35,8 @@ public class EquipmentUpgradeManager : MonoBehaviour
 
     public void UpgradeSword(SwordData sword)
     {
-        runState.swordIndex++;
-        runState.sword = registry.swords[runState.swordIndex];
+        RunState.swordIndex++;
+        RunState.sword = registry.swords[RunState.swordIndex];
 
         storage.RemoveItem(sword.costItem, sword.costAmount);
     }

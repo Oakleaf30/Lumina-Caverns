@@ -7,6 +7,8 @@ public class PickaxeUpgradeManager : MonoBehaviour
 
     [SerializeField] private EquipmentRegistry registry;
 
+
+    private RunState RunState => GameSession.Instance.runState;
     public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
     public int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
     public int tierIndex => GameSession.Instance.runState.tierIndex;
@@ -97,14 +99,14 @@ public class PickaxeUpgradeManager : MonoBehaviour
         switch (info.kind)
         {
             case UpgradeKind.TierUpgrade:
-                GameSession.Instance.runState.tierIndex++;
-                GameSession.Instance.runState.tier = pickaxe.tiers[tierIndex];
+                RunState.tierIndex++;
+                RunState.tier = pickaxe.tiers[tierIndex];
                 break;
 
             case UpgradeKind.NewType:
-                GameSession.Instance.runState.pickaxeIndex++;
-                GameSession.Instance.runState.pickaxe = registry.pickaxes[pickaxeIndex];
-                GameSession.Instance.runState.tier = pickaxe.tiers[0];
+                RunState.pickaxeIndex++;
+                RunState.pickaxe = registry.pickaxes[pickaxeIndex];
+                RunState.tier = pickaxe.tiers[0];
                 break;
         }
     }
