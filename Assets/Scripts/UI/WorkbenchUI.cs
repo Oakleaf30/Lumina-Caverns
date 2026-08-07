@@ -62,13 +62,7 @@ public class WorkbenchUI : StationUI
         var nextTier = pickaxeUpgrade.GetNextUpgradeTier();
         displayItem = isFlawless ? GetSelectedGem() : nextTier.costItem;
 
-        infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
-                $"Damage: {tier.damage} > {nextTier.damage}";
-
-        if (isFlawless)
-        {
-            infoText.text += $"\nNew Ability: {pickaxe.specialAbility.description}";
-        }
+        UpdateInfoText(nextTier);
 
         RefreshContainers();
 
@@ -76,6 +70,32 @@ public class WorkbenchUI : StationUI
         costSlot.Set(displayItem, tier.costAmount);
 
         button.interactable = pickaxeUpgrade.CanAfford(displayItem, nextTier);
+    }
+
+    private void UpdateInfoText(PickaxeTier nextTier)
+    {
+        if (pickaxeIndex == 0)
+        {
+            infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
+                $"Damage: {tier.damage} > {nextTier.damage}";
+        } else
+        {
+            switch (tierIndex)
+            {
+                case 0:
+                    infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
+                    $"Durability per bar: 20 > 30";
+                    break;
+                case 1:
+                    infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
+                    $"New Ability: {pickaxe.specialAbility.description}";
+                    break;
+                case 2:
+                    infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
+                    $"Damage: {tier.damage} > {nextTier.damage}";
+                    break;
+            }
+        }
     }
 
     private void PopulateDropdown(bool isFlawless)
