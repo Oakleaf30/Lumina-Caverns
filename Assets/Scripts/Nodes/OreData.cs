@@ -1,11 +1,9 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "NewOreData", menuName = "Lumina Caverns/Ore Data")]
 public class OreData : ScriptableObject
 {
     [Header("Identity")]
-    public string oreDisplayName;
     public float hitboxSize;
     public float spaceRequired;
 

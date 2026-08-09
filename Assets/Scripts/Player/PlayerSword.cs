@@ -63,7 +63,7 @@ public class PlayerSword : MonoBehaviour
     }
 
     // Call this from your Animation Event timeline at the peak of your swing!
-    void CalculateMeleeHitbox()
+    public void CalculateMeleeHitbox()
     {
         Vector2 lookDirection = playerInteraction.GetLastDirection().normalized;
 
@@ -83,6 +83,11 @@ public class PlayerSword : MonoBehaviour
 
                 // Pass the damage AND the force vector
                 enemy.TakeDamage(sword.damage, totalForce);
+            }
+
+            if (targetCollider.TryGetComponent(out Barrel barrel))
+            {
+                barrel.TakeDamage(sword.damage);
             }
         }
     }

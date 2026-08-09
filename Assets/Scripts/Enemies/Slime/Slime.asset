@@ -22,3 +22,9 @@ MonoBehaviour:
   knockbackResistance: 0
   dropData: {fileID: 11400000, guid: aa3341d291a97734a86ecb5c6ad5a35e, type: 2}
   dropChance: 1
+  optionalDrops:
+  - {fileID: 11400000, guid: 520c6fdbf3b9d4643b102b388a2332c0, type: 2}
+  - {fileID: 11400000, guid: 13a2d6e0b45ce4941b0cc2c3f4d1c9ce, type: 2}
+  - {fileID: 11400000, guid: 2963fd93bab790a4bb9c4c7d6bf0465d, type: 2}
+  - {fileID: 11400000, guid: dbf1da2d8d6ac7c40b5655313446069f, type: 2}
+  - {fileID: 11400000, guid: b295dfb553d968a4bb419dc1fdaf6bec, type: 2}

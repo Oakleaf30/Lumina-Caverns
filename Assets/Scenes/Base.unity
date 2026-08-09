@@ -17729,6 +17729,7 @@ MonoBehaviour:
     armourIndex: 0
     sword: {fileID: 0}
     swordIndex: 0
+    geodePity: 0
     currentHealth: 0
     currentFloor: 0
   saveData:
@@ -17738,6 +17739,7 @@ MonoBehaviour:
     pickaxeDurability: 0
     armourIndex: 0
     swordIndex: 0
+    geodePity: 0
   pickaxeRegistry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   autosaveInterval: 60
 --- !u!4 &1824044001
@@ -20313,7 +20315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_LocalPosition.y

@@ -18,4 +18,5 @@ public class EnemyData : ScriptableObject
     [Header("Drop Tables")]
     public ItemData dropData;
     [Range(0f, 1f)] public float dropChance;
+    public OptionalDrop[] optionalDrops;
 }

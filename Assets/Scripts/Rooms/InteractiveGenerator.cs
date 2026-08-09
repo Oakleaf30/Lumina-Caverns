@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InteractiveGenerator : MonoBehaviour
 {
     [Header("Spawning Setup")]
-    [SerializeField] private GameObject InteractablePrefab;
+    [SerializeField] private GameObject NodePrefab;
+    [SerializeField] private GameObject BarrelPrefab;
     
     [SerializeField] private int minNodesPerAnchor;
     [SerializeField] private int maxNodesPerAnchor;
@@ -12,7 +14,8 @@ public class InteractiveGenerator : MonoBehaviour
     private List<SpawnPool> SpawnPool;
 
     [Header("Overlap Safety")]
-    [SerializeField] private LayerMask obstacleLayers;
+    [SerializeField] private LayerMask resourcesLayer;
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int maxSpawnAttempts;
 
     [SerializeField] private LadderTile ladder;
@@ -21,6 +24,8 @@ public class InteractiveGenerator : MonoBehaviour
     [SerializeField] private GameObject ladderPrefab;
     private bool ladderFlag = true;
     private bool hasSetupLadderFlag = false;
+
+    [SerializeField] BarrelData[] barrels;
 
     private void Setup(BiomeData biome)
     {
@@ -71,12 +76,28 @@ public class InteractiveGenerator : MonoBehaviour
             int numberOfNodes = Random.Range(minNodesPerAnchor, maxNodesPerAnchor + 1);
             bool guaranteedSpawned = false;
 
+            // Extra setup for barrels
+            bool isBarrel = clumpType.resourceName == "Barrel";
+            BarrelData barrelData = null;
+            OreData oreData = null;
+            float spaceRequired;
+
             // 5. Spawn the exact maximum number of nodes dedicated to this specific anchor radius
             for (int n = 0; n < numberOfNodes; n++)
             {
                 Vector2 validSpawnPosition = Vector2.zero;
                 bool foundSpot = false;
-                OreData data = ResolveVariant(clumpType, ref guaranteedSpawned);
+                
+
+                if (isBarrel)
+                {
+                    barrelData = barrels[Random.Range(0, barrels.Length)];
+                    spaceRequired = barrelData.spaceRequired;
+                } else
+                {
+                    oreData = ResolveVariant(clumpType, ref guaranteedSpawned);
+                    spaceRequired = oreData.spaceRequired;
+                }
 
                 for (int attempt = 0; attempt < maxSpawnAttempts; attempt++)
                 {
@@ -84,8 +105,9 @@ public class InteractiveGenerator : MonoBehaviour
                     Vector2 randomOffset = Random.insideUnitCircle * chosenAnchor.spawnRadius;
                     Vector2 potentialSpot = (Vector2)chosenAnchor.transform.position + randomOffset;
 
+                    LayerMask layer = isBarrel ? enemyLayer : resourcesLayer;
                     // Overlap Check: Avoid clipping walls or previously spawned nodes
-                    Collider2D hit = Physics2D.OverlapCircle(potentialSpot, data.spaceRequired, obstacleLayers);
+                    Collider2D hit = Physics2D.OverlapCircle(potentialSpot, spaceRequired, layer);
 
                     if (hit == null)
                     {
@@ -95,26 +117,31 @@ public class InteractiveGenerator : MonoBehaviour
                     }
                 }
 
-                // 6. Instantiate the ore at the verified position
                 if (foundSpot)
                 {
-                    // 6. Instantiate the ore at the verified position
-                    if (foundSpot)
+                    if (isBarrel)
+                    {
+                        GameObject interactable = Instantiate(BarrelPrefab, validSpawnPosition, Quaternion.identity, room.transform);
+
+                        Barrel barrelScript = interactable.GetComponent<Barrel>();
+
+                        barrelScript.InitialiseImmediate(barrelData);
+                    } else
                     {
                         totalNodes++;
 
-                        GameObject interactable = Instantiate(InteractablePrefab, validSpawnPosition, Quaternion.identity, room.transform);
+                        GameObject interactable = Instantiate(NodePrefab, validSpawnPosition, Quaternion.identity, room.transform);
 
                         // Grab the OreNode component
                         OreNode nodeScript = interactable.GetComponent<OreNode>();
 
                         // FIX 1: Tell the node to update its physical collider/scale RIGHT NOW
                         // (Ensure you implement this Initialize method in your OreNode script!)
-                        nodeScript.InitialiseImmediate(data);
-
-                        // FIX 2: Force Unity to register this new collider into the physics world space mid-frame
-                        Physics2D.SyncTransforms();
+                        nodeScript.InitialiseImmediate(oreData);
                     }
+
+                    // FIX 2: Force Unity to register this new collider into the physics world space mid-frame
+                    Physics2D.SyncTransforms();
                 }
             }
         }

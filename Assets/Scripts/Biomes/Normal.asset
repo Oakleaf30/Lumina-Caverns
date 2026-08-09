@@ -18,7 +18,7 @@ MonoBehaviour:
     smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
     largeVariant: {fileID: 11400000, guid: 3d8d90d0e0a861647986df59c4f538f7, type: 2}
     guaranteedVariant: {fileID: 0}
-    selectionWeight: 1
+    selectionWeight: 0
     largeSizeChance: 0.1
   - resourceName: Copper + Amethyst
     smallVariant: {fileID: 11400000, guid: 47af3bf1993736b4f87225f57ae9f038, type: 2}
@@ -56,6 +56,12 @@ MonoBehaviour:
     guaranteedVariant: {fileID: 0}
     selectionWeight: 0
     largeSizeChance: 0.1
+  - resourceName: Barrel
+    smallVariant: {fileID: 0}
+    largeVariant: {fileID: 0}
+    guaranteedVariant: {fileID: 0}
+    selectionWeight: 1
+    largeSizeChance: 0
   activeAnchors: 4
   enemyPool:
   - {fileID: 214236319870455436, guid: 0396fb1344ecaf54a9244d13d7301440, type: 3}

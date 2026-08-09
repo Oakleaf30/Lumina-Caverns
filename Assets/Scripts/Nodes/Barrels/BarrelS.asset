@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4575a8ee8eafa264b9c9f7c0af7c063d, type: 3}
+  m_Name: BarrelS
+  m_EditorClassIdentifier: 
+  hitboxSize: 0.3
+  spaceRequired: 0.1
+  maxHitPoints: 1
+  lootTable: {fileID: 11400000, guid: b1d1f67bcaf45774d9ff97ea35e4e20b, type: 2}
+  sprite: {fileID: -1896842210, guid: 758aeb0b81131c24dbb0085eb8a49607, type: 3}

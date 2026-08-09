@@ -78,6 +78,7 @@ public class PlayerMining : MonoBehaviour
         onPickaxeSwing.Raise();
     }
 
+    // Called via animation event
     public void DamageNode()
     {
         // 1. Calculate the center origin (waist height instead of feet pivot)

@@ -2999,15 +2999,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d83438b4c0cf449904eb7f8555b9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractablePrefab: {fileID: 8889572035499357333, guid: 239ed3ccc6794c241bffe33a48625672, type: 3}
+  NodePrefab: {fileID: 8889572035499357333, guid: 239ed3ccc6794c241bffe33a48625672, type: 3}
+  BarrelPrefab: {fileID: 1386025081501548609, guid: 312940e5bb7f8af45bd4d9c661954993, type: 3}
   minNodesPerAnchor: 2
   maxNodesPerAnchor: 4
-  obstacleLayers:
+  resourcesLayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   maxSpawnAttempts: 10
   ladder: {fileID: 1595070568}
   ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
+  barrels:
+  - {fileID: 11400000, guid: b20749be5b783324dbebd900dae73d6b, type: 2}
+  - {fileID: 11400000, guid: 3206db1ebaf0faa49acfb8aa351faf83, type: 2}
+  - {fileID: 11400000, guid: 4f94d6294bf3eff44ad9bbbeb2679786, type: 2}
 --- !u!4 &1376388036
 Transform:
   m_ObjectHideFlags: 0

@@ -75,14 +75,25 @@ public class EnemyBase : MonoBehaviour
     {
         if (Random.value < data.dropChance)
         {
-            Vector2 offset = Random.insideUnitCircle * 0.5f;
-            Vector3 spawnLocation = transform.position + new Vector3(offset.x, offset.y, 0);
+            SpawnDrop(data.dropData);
+        }
 
-            GameObject drop = Instantiate(dropPrefab, spawnLocation, transform.rotation);
-            drop.GetComponent<ItemDrop>().Initialize(data.dropData);
+        foreach (var optional in data.optionalDrops)
+        {
+            if (Random.value < optional.dropChance)
+                SpawnDrop(optional.dropData);
         }
 
         onEnemyLadder.Raise(transform.position);
         Destroy(gameObject);
+    }
+
+    private void SpawnDrop(ItemData item)
+    {
+        Vector2 offset = Random.insideUnitCircle * 0.5f;
+        Vector3 spawnLocation = transform.position + new Vector3(offset.x, offset.y, 0);
+
+        GameObject drop = Instantiate(dropPrefab, spawnLocation, transform.rotation);
+        drop.GetComponent<ItemDrop>().Initialize(item);
     }
 }
