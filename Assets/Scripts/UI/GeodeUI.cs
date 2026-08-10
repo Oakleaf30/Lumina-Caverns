@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GeodeUI : StationUI
+public class GeodeUI : MonoBehaviour
 {
     [SerializeField] private GeodeData geode;
     [SerializeField] private InventorySlotUI slotG1;
@@ -22,12 +22,6 @@ public class GeodeUI : StationUI
     }
 
     private bool showingOpen = true;
-
-    protected override void OpenMenu()
-    {
-        base.OpenMenu();
-        UpdateGeodeDisplay();
-    }
 
     public void UpdateGeodeDisplay()
     {
@@ -68,7 +62,7 @@ public class GeodeUI : StationUI
             slot.GetComponent<InventorySlotUI>().Set(loot.item, loot.amount);
             Storage.AddItem(loot.item, loot.amount);
 
-            yield return new WaitForSeconds(lootInterval);
+            yield return new WaitForSecondsRealtime(lootInterval);
         }
 
         SetButtonState(false);

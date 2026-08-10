@@ -3,24 +3,24 @@ using UnityEngine.UI;
 
 public class TabManager : StationUI
 {
-    [SerializeField] private AnvilUI repairUI;
-    [SerializeField] private GeodeUI geodeUI;
+    [SerializeField] private AnvilUI firstUI;
+    [SerializeField] private GeodeUI secondUI;
 
-    [SerializeField] private Button repairTabButton;
-    [SerializeField] private Button geodeTabButton;
+    [SerializeField] private Button firstTabButton;
+    [SerializeField] private Button secondTabButton;
 
-    public enum Tab { Repair, Geode }
-    private Tab tab = Tab.Repair;
+    public enum Tab { First, Second }
+    private Tab tab = Tab.First;
 
-    public void RepairTab()
+    public void FirstTab()
     {
-        tab = Tab.Repair;
+        tab = Tab.First;
         UpdateTab();
     }
 
-    public void GeodeTab()
+    public void SecondTab()
     {
-        tab = Tab.Geode;
+        tab = Tab.Second;
         UpdateTab();
     }
 
@@ -33,23 +33,23 @@ public class TabManager : StationUI
     public override void CloseMenu()
     {
         base.CloseMenu();
-        repairUI.gameObject.SetActive(false);
-        geodeUI.gameObject.SetActive(false);
+        firstUI.gameObject.SetActive(false);
+        secondUI.gameObject.SetActive(false);
     }
 
     private void UpdateTab()
     {
         switch (tab)
         {
-            case Tab.Repair:
-                repairUI.gameObject.SetActive(true);
-                geodeUI.gameObject.SetActive(false);
-                repairUI.UpdateAnvilDisplay();
+            case Tab.First:
+                firstUI.gameObject.SetActive(true);
+                secondUI.gameObject.SetActive(false);
+                firstUI.UpdateAnvilDisplay();
                 break;
-            case Tab.Geode:
-                repairUI.gameObject.SetActive(false);
-                geodeUI.gameObject.SetActive(true);
-                geodeUI.UpdateGeodeDisplay();
+            case Tab.Second:
+                firstUI.gameObject.SetActive(false);
+                secondUI.gameObject.SetActive(true);
+                secondUI.UpdateGeodeDisplay();
                 break;
         }
     }

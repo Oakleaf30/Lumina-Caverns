@@ -2919,10 +2919,10 @@ MonoBehaviour:
   menuPanel: {fileID: 1300637836}
   onStationUsed: {fileID: 11400000, guid: 9bf91183a48335d469ebe153787f2bb6, type: 2}
   onStationClosed: {fileID: 0}
-  repairUI: {fileID: 1209821158}
-  geodeUI: {fileID: 884051210}
-  repairTabButton: {fileID: 1783995619}
-  geodeTabButton: {fileID: 1991965029}
+  firstUI: {fileID: 1209821158}
+  secondUI: {fileID: 884051210}
+  firstTabButton: {fileID: 1783995619}
+  secondTabButton: {fileID: 1991965029}
 --- !u!1 &154381851
 GameObject:
   m_ObjectHideFlags: 0
@@ -8777,9 +8777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c3af779c8544b41aa4e237005c12c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuPanel: {fileID: 884051206}
-  onStationUsed: {fileID: 0}
-  onStationClosed: {fileID: 0}
   geode: {fileID: 11400000, guid: df60f6a832471d141b77772201674519, type: 2}
   slotG1: {fileID: 1752792295}
   button: {fileID: 1711569636}
@@ -12024,9 +12021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cead1b76a893539478d3b76c25832526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuPanel: {fileID: 1209821154}
-  onStationUsed: {fileID: 0}
-  onStationClosed: {fileID: 0}
   mining: {fileID: 1039454527}
   display: {fileID: 1841755346}
   preview: {fileID: 1667296823}
@@ -17305,7 +17299,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 141485985}
         m_TargetAssemblyTypeName: TabManager, Assembly-CSharp
-        m_MethodName: RepairTab
+        m_MethodName: FirstTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19099,7 +19093,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 141485985}
         m_TargetAssemblyTypeName: TabManager, Assembly-CSharp
-        m_MethodName: GeodeTab
+        m_MethodName: SecondTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

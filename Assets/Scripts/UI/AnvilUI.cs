@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnvilUI : StationUI
+public class AnvilUI : MonoBehaviour
 {
     BaseStorage storage => BaseStorage.Current;
     [SerializeField] private PlayerMining mining;
@@ -16,15 +16,6 @@ public class AnvilUI : StationUI
     [SerializeField] InventorySlotUI costSlot;
     [SerializeField] Button normal;
     [SerializeField] Button emergency;
-
-    protected override void OpenMenu()
-    {
-        // 1. Run the base code first (Sets panel active, pauses Time.timeScale)
-        base.OpenMenu();
-
-        // 2. Run your unique Anvil logic
-        UpdateAnvilDisplay();
-    }
 
     public void UpdateAnvilDisplay()
     {
