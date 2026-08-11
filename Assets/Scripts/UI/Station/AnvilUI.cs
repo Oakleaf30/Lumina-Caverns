@@ -2,22 +2,29 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnvilUI : MonoBehaviour
+public class AnvilUI : TabPanelUI
 {
     BaseStorage storage => BaseStorage.Current;
-    [SerializeField] private PlayerMining mining;
+    
     private int durabilityRepaired;
     private int cost;
 
+    [Header("Settings")]
+    [SerializeField] int durabilityPerBar;
+
+    [Header("UI References")]
     [SerializeField] InventorySlotUI display;
     [SerializeField] private TextMeshProUGUI preview;
-    [SerializeField] int durabilityPerBar;
-    [SerializeField] ItemData bar;
     [SerializeField] InventorySlotUI costSlot;
     [SerializeField] Button normal;
     [SerializeField] Button emergency;
 
-    public void UpdateAnvilDisplay()
+    [Header("References")]
+    [SerializeField] private PlayerMining mining;
+    [SerializeField] ItemData bar;
+
+
+    public override void UpdateDisplay()
     {
         display.Set(mining.pickaxe, mining.tierIndex, SlotDisplayMode.Equipment);
 
@@ -55,12 +62,12 @@ public class AnvilUI : MonoBehaviour
     {
         mining.pickaxeDurability += durabilityRepaired;
         storage.RemoveItem(bar, Mathf.Min(storage.GetQuantity(bar), cost));
-        UpdateAnvilDisplay();
+        UpdateDisplay();
     }
 
     public void EmergencyRepair()
     {
         mining.pickaxeDurability = 10;
-        UpdateAnvilDisplay();
+        UpdateDisplay();
     }
 }

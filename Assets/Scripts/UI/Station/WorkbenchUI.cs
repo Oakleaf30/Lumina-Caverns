@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static PickaxeUpgradeManager;
 
-public class WorkbenchUI : StationUI
+public class WorkbenchUI : TabPanelUI
 {
     BaseStorage storage => BaseStorage.Current;
 
@@ -48,7 +48,7 @@ public class WorkbenchUI : StationUI
 
     private ItemData displayItem;
 
-    public void RefreshPickaxeDisplay()
+    public override void UpdateDisplay()
     {
         if (pickaxeUpgrade.NextUpgrade.kind == UpgradeKind.None)
             return;
@@ -67,7 +67,7 @@ public class WorkbenchUI : StationUI
         RefreshContainers();
 
         storageSlot.Set(displayItem, storage.GetQuantity(displayItem));
-        costSlot.Set(displayItem, tier.costAmount);
+        costSlot.Set(displayItem, nextTier.costAmount);
 
         button.interactable = pickaxeUpgrade.CanAfford(displayItem, nextTier);
     }
@@ -128,13 +128,6 @@ public class WorkbenchUI : StationUI
         button.interactable = pickaxeUpgrade.CanAfford(gem, nextTier);
         storageSlot.Set(gem, storage.GetQuantity(gem));
         costSlot.Set(gem, tier.costAmount);
-    }
-
-    protected override void OpenMenu()
-    {
-        base.OpenMenu();
-
-        RefreshContainers();
     }
 
     private void RefreshContainers()
@@ -207,7 +200,7 @@ public class WorkbenchUI : StationUI
         switch (currentCategory)
         {
             case GearCategory.Pickaxe:
-                RefreshPickaxeDisplay();
+                UpdateDisplay();
                 break;
             case GearCategory.Armour:
                 RefreshArmourDisplay();
@@ -224,7 +217,7 @@ public class WorkbenchUI : StationUI
         {
             case GearCategory.Pickaxe:
                 pickaxeUpgrade.UpgradePickaxe(displayItem);
-                RefreshPickaxeDisplay();
+                UpdateDisplay();
                 break;
             case GearCategory.Armour:
                 equipmentUpgrade.UpgradeArmour(NextArmour);

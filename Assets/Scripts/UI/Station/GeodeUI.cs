@@ -3,15 +3,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GeodeUI : MonoBehaviour
+public class GeodeUI : TabPanelUI
 {
-    [SerializeField] private GeodeData geode;
+    [Header("UI Settings")]
+    [SerializeField] private float lootInterval = 0.3f;
+
+    [Header("UI References")]
     [SerializeField] private InventorySlotUI slotG1;
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform lootContainer;
-    [SerializeField] private float lootInterval = 0.3f;
+
+    [Header("References")]
+    [SerializeField] private GeodeData geode;
+    
 
     BaseStorage Storage => BaseStorage.Current;
     private int GeodeAmount => Storage.GetQuantity(geode);
@@ -23,7 +29,7 @@ public class GeodeUI : MonoBehaviour
 
     private bool showingOpen = true;
 
-    public void UpdateGeodeDisplay()
+    public override void UpdateDisplay()
     {
         slotG1.Set(geode, GeodeAmount);
 
@@ -67,13 +73,13 @@ public class GeodeUI : MonoBehaviour
 
         SetButtonState(false);
         Storage.RemoveItem(geode, GeodeAmount);
-        UpdateGeodeDisplay();
+        UpdateDisplay();
     }
 
     private void ClaimLoot()
     {
         SetButtonState(true);
-        UpdateGeodeDisplay();
+        UpdateDisplay();
         for (int i = lootContainer.childCount - 1; i >= 0; i--)
         {
             Destroy(lootContainer.GetChild(i).gameObject);

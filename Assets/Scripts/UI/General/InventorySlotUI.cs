@@ -2,6 +2,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SlotDisplayMode
+{
+    Resource,
+    Equipment
+}
+
 public class InventorySlotUI : MonoBehaviour
 {
     public Image icon;
@@ -13,5 +19,11 @@ public class InventorySlotUI : MonoBehaviour
         quantityText.text = mode == SlotDisplayMode.Resource
             ? quantity.ToString()
             : (quantity == 0 ? "" : quantity.ToString());
+    }
+
+    public void Clear()
+    {
+        icon.sprite = null;
+        quantityText.text = "";
     }
 }

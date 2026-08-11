@@ -28,6 +28,28 @@ public class ItemContainer : MonoBehaviour
 
     public bool RemoveItem(ItemData item, int amount)
     {
+        if (item.itemId == "monster_drops")
+        {
+            int available = 0;
+            foreach (var kvp in items)
+                if (kvp.Key.category == ItemCategory.MonsterDrop)
+                    available += kvp.Value;
+
+            if (available < amount) return false;
+
+            int remaining = amount;
+            foreach (var kvp in new List<KeyValuePair<ItemData, int>>(items))
+            {
+                if (kvp.Key.category != ItemCategory.MonsterDrop) continue;
+                int take = Mathf.Min(remaining, kvp.Value);
+                items[kvp.Key] -= take;
+                if (items[kvp.Key] <= 0) items.Remove(kvp.Key);
+                remaining -= take;
+                if (remaining <= 0) break;
+            }
+            return true;
+        }
+
         if (!items.ContainsKey(item) || items[item] < amount) return false;
 
         items[item] -= amount;
@@ -35,7 +57,19 @@ public class ItemContainer : MonoBehaviour
         return true;
     }
 
-    public int GetQuantity(ItemData item) => items.TryGetValue(item, out int q) ? q : 0;
+    public int GetQuantity(ItemData item)
+    {
+        if (item.itemId == "monster_drops")
+        {
+            int total = 0;
+            foreach (var kvp in items)
+                if (kvp.Key.category == ItemCategory.MonsterDrop)
+                    total += kvp.Value;
+            return total;
+        }
+
+        return items.TryGetValue(item, out int q) ? q : 0;
+    }
 
     public List<InventorySlot> GetItemsByCategory(ItemCategory category)
     {

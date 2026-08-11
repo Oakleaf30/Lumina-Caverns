@@ -16,11 +16,11 @@ MonoBehaviour:
   displayName: Pickaxe
   icon: {fileID: 5807921338739458136, guid: 33bff5bfb3d1f584ca446f379969921c, type: 3}
   category: 4
+  gemOptions: []
+  specialAbility: {fileID: 0}
   tiers:
   - tierName: Base
     damage: 1
     maxDurability: 100
-    repairBar: {fileID: 0}
-    magicOreCost: {fileID: 0}
-    gemCost: []
-    specialAbility: {fileID: 0}
+    costItem: {fileID: 0}
+    costAmount: 0

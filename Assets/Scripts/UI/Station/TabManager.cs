@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class TabManager : StationUI
 {
-    [SerializeField] private AnvilUI firstUI;
-    [SerializeField] private GeodeUI secondUI;
+    [SerializeField] private TabPanelUI firstUI;
+    [SerializeField] private TabPanelUI secondUI;
 
     [SerializeField] private Button firstTabButton;
     [SerializeField] private Button secondTabButton;
@@ -44,12 +44,12 @@ public class TabManager : StationUI
             case Tab.First:
                 firstUI.gameObject.SetActive(true);
                 secondUI.gameObject.SetActive(false);
-                firstUI.UpdateAnvilDisplay();
+                firstUI.UpdateDisplay();
                 break;
             case Tab.Second:
                 firstUI.gameObject.SetActive(false);
                 secondUI.gameObject.SetActive(true);
-                secondUI.UpdateGeodeDisplay();
+                secondUI.UpdateDisplay();
                 break;
         }
     }
