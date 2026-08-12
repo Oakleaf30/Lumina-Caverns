@@ -6,9 +6,14 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameEvent onPlayerDeath;
+    [SerializeField] private GameEvent onHealthChanged;
     [SerializeField] private EquipmentRegistry registry;
 
-    private int currentHealth;
+    private int CurrentHealth
+    {
+        get => GameSession.Instance.runState.currentHealth;
+        set => GameSession.Instance.runState.currentHealth = value;
+    }
 
     [Header("I-Frames Settings")]
     [SerializeField] private float iFrameDuration = 1.0f;
@@ -19,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
     private PlayerInteraction playerInteraction;
     private PlayerMovement playerMovement;
     private Animator anim;
+
+    private RunState RunState => GameSession.Instance.runState;
 
     private void Awake()
     {
@@ -35,15 +42,16 @@ public class PlayerHealth : MonoBehaviour
 
     private void ApplyHealth()
     {
-        GameSession.Instance.runState.armour = registry.armour[GameSession.Instance.runState.armourIndex];
+        RunState.armour = registry.armour[RunState.armourIndex];
 
         if (SceneManager.GetActiveScene().name == "Base")
         {
-            currentHealth = GameSession.Instance.runState.armour.maxHealth;
-        } else
-        {
-            currentHealth = GameSession.Instance.runState.currentHealth;
+            RunState.currentHealth = RunState.armour.maxHealth;
         }
+
+        CurrentHealth = RunState.currentHealth;
+
+        onHealthChanged.Raise();
     }
 
     public void TakeDamage(int damageAmount)
@@ -53,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
 
         ApplyHealthReduction(damageAmount);
 
-        if (currentHealth > 0)
+        if (CurrentHealth > 0)
         {
             // Gated by hit: Trigger i-frames and standard hit visual flashing
             StartCoroutine(TriggerIFrames());
@@ -71,16 +79,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void ApplyHealthReduction(int amount)
     {
-        currentHealth -= amount;
-        currentHealth = Mathf.Max(currentHealth, 0);
+        CurrentHealth -= amount;
+        CurrentHealth = Mathf.Max(CurrentHealth, 0);
 
-        // Broadcast to UI layer via your decoupled event system
-        // onPlayerHealthChanged?.Raise();
+        onHealthChanged.Raise();
 
-        if (currentHealth <= 0)
-        {
+        if (CurrentHealth <= 0)
             Die();
-        }
     }
 
     private IEnumerator TriggerIFrames()

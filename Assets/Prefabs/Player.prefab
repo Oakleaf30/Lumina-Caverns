@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPlayerDeath: {fileID: 11400000, guid: c5f85e852b07d9f4cb1fda685f4e6adc, type: 2}
+  onHealthChanged: {fileID: 11400000, guid: 4ef03c4627a2c514b9df28982db4a1b2, type: 2}
   registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   iFrameDuration: 1
   flashInterval: 0.1
