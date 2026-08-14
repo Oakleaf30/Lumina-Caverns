@@ -7,19 +7,18 @@ public abstract class StationUI : MonoBehaviour
 
     [Header("Game Events")]
     [SerializeField] private GameEvent onStationUsed;
-    [SerializeField] private GameEvent onStationClosed;
+    [SerializeField] private GameEvent onUIOpen;
+    [SerializeField] private GameEvent onUIClose;
 
     // Standard Unity lifecycle hooks handle the event setup automatically
     protected virtual void OnEnable()
     {
-        if (onStationUsed != null)
-            onStationUsed.Subscribe(OpenMenu);
+        onStationUsed.Subscribe(OpenMenu);
     }
 
     protected virtual void OnDisable()
     {
-        if (onStationUsed != null)
-            onStationUsed.Unsubscribe(OpenMenu);
+        onStationUsed.Unsubscribe(OpenMenu);
 
         CloseMenu();
     }
@@ -29,17 +28,14 @@ public abstract class StationUI : MonoBehaviour
     {
         if (menuPanel != null) menuPanel.SetActive(true);
         Time.timeScale = 0f;
+        onUIOpen.Raise();
     }
 
     // Closes the screen, unpauses the game, and notifies other systems
     public virtual void CloseMenu()
     {
-        if (menuPanel != null) menuPanel.SetActive(false);
+        menuPanel.SetActive(false);
         Time.timeScale = 1f;
-
-        if (onStationClosed != null)
-        {
-            onStationClosed.Raise();
-        }
+        onUIClose.Raise();
     }
 }
