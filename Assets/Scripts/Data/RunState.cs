@@ -17,6 +17,9 @@ public class RunState
     public SwordData sword;
     public int swordIndex;
 
+    public int potionCount => Storage.GetQuantity(ItemDatabase.GetById("potion"));
+    public int bombCount => Storage.GetQuantity(ItemDatabase.GetById("bomb"));
+    public bool amuletActive => Storage.GetQuantity(ItemDatabase.GetById("amulet")) == 1;
 
     public int geodePity;
 
@@ -32,4 +35,6 @@ public class RunState
 
         currentFloor = 0;
     }
+
+    BaseStorage Storage => BaseStorage.Current;
 }

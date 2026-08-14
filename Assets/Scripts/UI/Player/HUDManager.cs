@@ -5,7 +5,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameEvent onUIOpen;
     [SerializeField] private GameEvent onUIClose;
 
-    [SerializeField] private GameObject HUDContainer;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     private void OnEnable()
     {
@@ -19,13 +19,15 @@ public class HUDManager : MonoBehaviour
         onUIClose.Unsubscribe(Show);
     }
 
-    private void Hide()
+    public void Hide()
     {
-        HUDContainer.SetActive(false);
+        canvasGroup.alpha = 0f;
+        canvasGroup.blocksRaycasts = false;
     }
 
-    private void Show()
+    public void Show()
     {
-        HUDContainer.SetActive(true);
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
     }
 }

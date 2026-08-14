@@ -174,7 +174,7 @@ public class WorkbenchUI : TabPanelUI
     //======================================================================================================================================================
 
 
-    public enum GearCategory { Pickaxe, Armour, Sword }
+    private enum GearCategory { Pickaxe, Armour, Sword }
     private GearCategory currentCategory = GearCategory.Pickaxe;
 
     public void OnPickaxeTabSelected()

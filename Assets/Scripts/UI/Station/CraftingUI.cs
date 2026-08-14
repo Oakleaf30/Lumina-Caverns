@@ -12,15 +12,16 @@ public class CraftingUI : TabPanelUI
 
     [SerializeField] private Button button;
 
+    [Header("Event References")]
+    [SerializeField] private GameEvent onPotionCountChanged;
+    [SerializeField] private GameEvent onBombCountChanged;
+
     private RecipeData currentRecipe;
     private int itemCraftLimit;
 
-    public override void UpdateDisplay()
-    {
-        // SetResources() is the replacement in this UI
-    }
+    public override void UpdateDisplay() {} // SetResources() is the replacement in this UI
 
-    public void SetResources(RecipeData recipe)
+    private void SetResources(RecipeData recipe)
     {
         slot1.Set(recipe.ingredients[0].item, Storage.GetQuantity(recipe.ingredients[0].item));
 
@@ -39,18 +40,17 @@ public class CraftingUI : TabPanelUI
 
     private void SetItemLimit()
     {
-        switch (currentRecipe.resultItem.itemId)
+        switch (currentItem)
         {
-            case "potion":
+            case SelectedItem.Potion:
                 itemCraftLimit = 5;
                 break;
-            case "bomb":
+            case SelectedItem.Bomb:
                 itemCraftLimit = 3;
                 break;
-            case "amulet":
+            case SelectedItem.Amulet:
                 itemCraftLimit = 1;
                 break;
-
         }
     }
 
@@ -74,6 +74,42 @@ public class CraftingUI : TabPanelUI
             Storage.RemoveItem(currentRecipe.ingredients[1].item, currentRecipe.ingredients[1].requiredAmount);
         Storage.AddItem(currentRecipe.resultItem, 1);
 
+        CheckCraftedItem();
         SetResources(currentRecipe);
+    }
+
+    private void CheckCraftedItem()
+    {
+        switch (currentItem)
+        {
+            case SelectedItem.Potion:
+                onPotionCountChanged.Raise();
+                break;
+            case SelectedItem.Bomb:
+                onBombCountChanged.Raise();
+                break;
+        }
+    }
+
+
+    private enum SelectedItem { Potion, Bomb, Amulet }
+    private SelectedItem currentItem = SelectedItem.Potion;
+
+    public void OnPotionTabSelected(RecipeData recipe)
+    {
+        currentItem = SelectedItem.Potion;
+        SetResources(recipe);
+    }
+
+    public void OnBombTabSelected(RecipeData recipe)
+    {
+        currentItem = SelectedItem.Bomb;
+        SetResources(recipe);
+    }
+
+    public void OnAmuletTabSelected(RecipeData recipe)
+    {
+        currentItem = SelectedItem.Amulet;
+        SetResources(recipe);
     }
 }
