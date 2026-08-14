@@ -11,15 +11,15 @@ public class HealthUI : MonoBehaviour
 
     private void OnEnable()
     {
-        onHealthChanged.Subscribe(UpdateHealth);
+        onHealthChanged.Subscribe(UpdateHealthText);
     }
 
     private void OnDisable()
     {
-        onHealthChanged.Unsubscribe(UpdateHealth);
+        onHealthChanged.Unsubscribe(UpdateHealthText);
     }
 
-    private void UpdateHealth()
+    private void UpdateHealthText()
     {
         text.text = $"Health: {RunState.currentHealth}/{RunState.armour.maxHealth}";
     }

@@ -18,6 +18,7 @@ public class PlayerMining : MonoBehaviour
     [SerializeField] private float verticalCenterOffset = 0.5f;
 
     [SerializeField] private EquipmentRegistry registry;
+    [SerializeField] private GameEvent onDurabilityChanged;
 
     public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
     public int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
@@ -25,7 +26,12 @@ public class PlayerMining : MonoBehaviour
     public int tierIndex => GameSession.Instance.runState.tierIndex;
 
     public int maxPickaxeDurability => tier.maxDurability;
-    public int pickaxeDurability;
+
+    public int PickaxeDurability
+    {
+        get => GameSession.Instance.runState.pickaxeDurability;
+        set => GameSession.Instance.runState.pickaxeDurability = value;
+    }
 
     private float lastSwingTime;
 
@@ -45,7 +51,8 @@ public class PlayerMining : MonoBehaviour
     {
         GameSession.Instance.runState.pickaxe = registry.pickaxes[pickaxeIndex];
         GameSession.Instance.runState.tier = pickaxe.tiers[tierIndex];
-        pickaxeDurability = GameSession.Instance.runState.pickaxeDurability;
+        PickaxeDurability = GameSession.Instance.runState.pickaxeDurability;
+        onDurabilityChanged.Raise();
     }
 
     void Update()
@@ -55,7 +62,7 @@ public class PlayerMining : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0) && Time.time >= lastSwingTime + swingCooldown && pickaxeDurability > 0 && !anim.GetBool("IsSwimming"))
+        if (Input.GetMouseButton(0) && Time.time >= lastSwingTime + swingCooldown && PickaxeDurability > 0 && !anim.GetBool("IsSwimming"))
         {
             SwingPickaxe();
         }
@@ -94,7 +101,8 @@ public class PlayerMining : MonoBehaviour
         if (hit != null && hit.TryGetComponent<OreNode>(out OreNode node))
         {
             node.TakeDamage(pickaxeDamage);
-            pickaxeDurability--;
+            PickaxeDurability--;
+            onDurabilityChanged.Raise();
 
             if (tierIndex == 2) pickaxe.specialAbility?.OnMine(this, node.transform.position);
         }

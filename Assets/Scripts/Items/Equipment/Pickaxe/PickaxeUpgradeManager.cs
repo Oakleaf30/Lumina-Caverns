@@ -6,6 +6,7 @@ public class PickaxeUpgradeManager : MonoBehaviour
     BaseStorage storage => BaseStorage.Current;
 
     [SerializeField] private EquipmentRegistry registry;
+    [SerializeField] private GameEvent onDurabilityChanged;
 
 
     private RunState RunState => GameSession.Instance.runState;
@@ -109,6 +110,9 @@ public class PickaxeUpgradeManager : MonoBehaviour
                 RunState.tier = pickaxe.tiers[0];
                 break;
         }
+
+        RunState.pickaxeDurability = RunState.tier.maxDurability;
+        onDurabilityChanged.Raise();
     }
 }
 

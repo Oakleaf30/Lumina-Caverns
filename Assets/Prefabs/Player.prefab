@@ -223,6 +223,7 @@ MonoBehaviour:
   strikeOffset: 0.5
   verticalCenterOffset: 0.1
   registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
+  onDurabilityChanged: {fileID: 11400000, guid: 71c13da8611a51742afaf3880ea60c3a, type: 2}
   pickaxeDurability: 0
 --- !u!114 &6002291323248252633
 MonoBehaviour:

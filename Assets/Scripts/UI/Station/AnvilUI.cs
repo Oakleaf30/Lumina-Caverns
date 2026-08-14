@@ -21,7 +21,9 @@ public class AnvilUI : TabPanelUI
 
     [Header("References")]
     [SerializeField] private PlayerMining mining;
-    [SerializeField] ItemData bar;
+    [SerializeField] private ItemData bar;
+    [SerializeField] private GameEvent onDurabilityChanged;
+
 
 
     public override void UpdateDisplay()
@@ -31,14 +33,14 @@ public class AnvilUI : TabPanelUI
         durabilityPerBar = GameSession.Instance.runState.tierIndex == 0 ? 20 : 30;
 
         durabilityRepaired = CalculateCost();
-        preview.text = $"{mining.pickaxeDurability}/{mining.maxPickaxeDurability} > {mining.pickaxeDurability + durabilityRepaired}/{mining.maxPickaxeDurability}";
+        preview.text = $"{mining.PickaxeDurability}/{mining.maxPickaxeDurability} > {mining.PickaxeDurability + durabilityRepaired}/{mining.maxPickaxeDurability}";
 
         UpdateButtons();
     }
 
     private int CalculateCost()
     {
-        int neededDurability = mining.maxPickaxeDurability - mining.pickaxeDurability;
+        int neededDurability = mining.maxPickaxeDurability - mining.PickaxeDurability;
         cost = Mathf.CeilToInt((float)neededDurability / durabilityPerBar);
 
         costSlot.Set(bar, Mathf.Min(storage.GetQuantity(bar), cost));
@@ -54,20 +56,22 @@ public class AnvilUI : TabPanelUI
 
     private void UpdateButtons()
     {
-        normal.interactable = storage.GetQuantity(bar) > 0 && mining.pickaxeDurability != mining.maxPickaxeDurability;
-        emergency.interactable = storage.GetQuantity(bar) == 0 && mining.pickaxeDurability < 10;
+        normal.interactable = storage.GetQuantity(bar) > 0 && mining.PickaxeDurability != mining.maxPickaxeDurability;
+        emergency.interactable = storage.GetQuantity(bar) == 0 && mining.PickaxeDurability < 10;
     }
 
     public void NormalRepair()
     {
-        mining.pickaxeDurability += durabilityRepaired;
+        mining.PickaxeDurability += durabilityRepaired;
         storage.RemoveItem(bar, Mathf.Min(storage.GetQuantity(bar), cost));
         UpdateDisplay();
+        onDurabilityChanged.Raise();
     }
 
     public void EmergencyRepair()
     {
-        mining.pickaxeDurability = 10;
+        mining.PickaxeDurability = 10;
         UpdateDisplay();
+        onDurabilityChanged.Raise();
     }
 }
