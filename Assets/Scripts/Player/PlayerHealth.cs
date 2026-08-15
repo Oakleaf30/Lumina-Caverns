@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameEvent onPlayerDeath;
     [SerializeField] private GameEvent onHealthChanged;
     [SerializeField] private EquipmentRegistry registry;
+    [SerializeField] private ItemData potion;
+    [SerializeField] private GameEvent onPotionCountChanged;
 
     private int CurrentHealth
     {
@@ -20,12 +22,18 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float flashInterval = 0.1f;
     private bool isInvincible = false;
 
+    [Header("Heal Settings")]
+    [SerializeField] private float healPercentage = 0.3f;
+    [SerializeField] private float healInterval = 1f;
+    [SerializeField] private int healTicks = 10;
+
     private SpriteRenderer spriteRenderer;
     private PlayerInteraction playerInteraction;
     private PlayerMovement playerMovement;
     private Animator anim;
 
     private RunState RunState => GameSession.Instance.runState;
+    private BaseStorage Storage => BaseStorage.Current;
 
     private void Awake()
     {
@@ -38,6 +46,14 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         ApplyHealth();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UsePotion();
+        }
     }
 
     private void ApplyHealth()
@@ -116,5 +132,32 @@ public class PlayerHealth : MonoBehaviour
      void DeathAnimationCompleted()
     {
         onPlayerDeath.Raise();
+    }
+
+    private void UsePotion()
+    {
+        if (Storage.GetQuantity(potion) > 0 && RunState.currentHealth < RunState.armour.maxHealth)
+        {
+            StartCoroutine(Heal());
+            Storage.RemoveItem(potion, 1);
+            onPotionCountChanged.Raise();
+        }
+    }
+
+    IEnumerator Heal()
+    {
+        float totalHealAmount = RunState.armour.maxHealth * healPercentage;
+        float healAmount = totalHealAmount / healTicks;
+
+        for (int i = 0; i < healTicks; i++)
+        {
+            RunState.currentHealth = Mathf.Min(
+                RunState.currentHealth + Mathf.CeilToInt(healAmount),
+                RunState.armour.maxHealth
+            );
+            onHealthChanged.Raise();
+            yield return new WaitForSeconds(healInterval);
+        }
+        
     }
 }

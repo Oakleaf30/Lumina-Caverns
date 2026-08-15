@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CraftingUI : TabPanelUI
 {
-    BaseStorage Storage => BaseStorage.Current;
+    private BaseStorage Storage => BaseStorage.Current;
 
     [Header("UI References")]
     [SerializeField] private InventorySlotUI slot1;

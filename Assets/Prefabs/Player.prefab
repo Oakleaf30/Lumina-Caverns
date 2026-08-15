@@ -224,7 +224,6 @@ MonoBehaviour:
   verticalCenterOffset: 0.1
   registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   onDurabilityChanged: {fileID: 11400000, guid: 71c13da8611a51742afaf3880ea60c3a, type: 2}
-  pickaxeDurability: 0
 --- !u!114 &6002291323248252633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +261,12 @@ MonoBehaviour:
   onPlayerDeath: {fileID: 11400000, guid: c5f85e852b07d9f4cb1fda685f4e6adc, type: 2}
   onHealthChanged: {fileID: 11400000, guid: 4ef03c4627a2c514b9df28982db4a1b2, type: 2}
   registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
+  potion: {fileID: 11400000, guid: 7a84b182bc47ee44385be59733ebda09, type: 2}
   iFrameDuration: 1
   flashInterval: 0.1
+  healPercentage: 0.3
+  healInterval: 1
+  healTicks: 10
 --- !u!114 &4823664196062340702
 MonoBehaviour:
   m_ObjectHideFlags: 0
