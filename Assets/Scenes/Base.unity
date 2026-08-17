@@ -3711,6 +3711,9 @@ MonoBehaviour:
   onUIOpen: {fileID: 11400000, guid: af09b3817cacbe445bd9a4efd9e0f8f6, type: 2}
   onUIClose: {fileID: 11400000, guid: c9ab04e9814cf274a8156c8d13c71ec3, type: 2}
   canvasGroup: {fileID: 222023333}
+  onPotionCountChanged: {fileID: 11400000, guid: 453550468e1cc4148967571383caa0d7, type: 2}
+  onBombCountChanged: {fileID: 11400000, guid: 6574395ea9a69bf4bb070fb2f8c531d2, type: 2}
+  onStorageReady: {fileID: 11400000, guid: 321ab8795bfde5e469608d3d66110c76, type: 2}
 --- !u!225 &222023333
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -19102,6 +19105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc8abfe79fe6b64bb96679588b72ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStorageReady: {fileID: 11400000, guid: 321ab8795bfde5e469608d3d66110c76, type: 2}
   copper: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
   coal: {fileID: 11400000, guid: df60f6a832471d141b77772201674519, type: 2}
   cobalt: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
@@ -21746,6 +21750,7 @@ MonoBehaviour:
     geodePity: 0
     currentHealth: 0
     currentFloor: 0
+    cauldronFloorTracker: 0
   saveData:
     storage: []
     pickaxeIndex: 0

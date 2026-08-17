@@ -10,6 +10,8 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] private InteractiveGenerator itemGenerator;
     [SerializeField] private EnemyGenerator enemyGenerator;
+    [SerializeField] private Cauldron cauldron;
+    private bool cauldronSpawnable = false;
 
     private Dictionary<Vector2Int, RoomRequirements> layout = new Dictionary<Vector2Int, RoomRequirements>();
     private Dictionary<Vector2Int, Room> spawnedRooms = new Dictionary<Vector2Int, Room>();
@@ -171,9 +173,13 @@ public class LevelGenerator : MonoBehaviour
 
     void SpawnRooms()
     {
+        int roomCounter = 0;
+
         foreach (var kvp in layout)
         {
+            cauldronSpawnable = cauldron.RoomCheck(roomCounter, layout.Count);
             PlaceBestRoom(kvp.Key, kvp.Value);
+            roomCounter++;
         }
     }
 
@@ -196,11 +202,16 @@ public class LevelGenerator : MonoBehaviour
                 prefab.hasRightDoor == req.right)
             {
                 Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
-                Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity);
+                Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity, transform);
                 newRoom.InitializeRoom(req.RoomID);
 
                 itemGenerator.GenerateInteractivity(newRoom, biomeData);
                 enemyGenerator.GenerateEnemies(newRoom, biomeData);
+
+                if (cauldronSpawnable)
+                    cauldron.SpawnCauldron(newRoom);
+
+                cauldronSpawnable = false;
 
                 spawnedRooms.Add(pos, newRoom);
                 return;

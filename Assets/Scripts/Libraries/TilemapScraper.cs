@@ -46,4 +46,20 @@ public static class TilemapScraper
 
         return points;
     }
+
+    public static Vector3 FindSpawnPoint(Room room, TileBase marker, string markerLayer)
+    {
+        Tilemap map = room.transform.Find(markerLayer)?.GetComponent<Tilemap>();
+
+        if (map == null)
+            return Vector3.zero;
+
+        foreach (var pos in map.cellBounds.allPositionsWithin)
+        {
+            if (map.HasTile(pos) && map.GetTile(pos) == marker)
+                return map.GetCellCenterWorld(pos);
+        }
+
+        return Vector3.zero;
+    }
 }

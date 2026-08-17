@@ -1,5 +1,8 @@
+using UnityEngine;
+
 public class BaseStorage : ItemContainer
 {
+    [SerializeField] private GameEvent onStorageReady;
     private static BaseStorage _current;
 
     public static BaseStorage Current
@@ -23,5 +26,7 @@ public class BaseStorage : ItemContainer
         AddItem(copper, 100);
         AddItem(coal, 9);
         AddItem(cobalt, 20);
+
+        onStorageReady.Raise();
     }
 }

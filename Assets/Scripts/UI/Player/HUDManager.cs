@@ -7,10 +7,22 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] private CanvasGroup canvasGroup;
 
+    [SerializeField] private GameEvent onPotionCountChanged;
+    [SerializeField] private GameEvent onBombCountChanged;
+
+    [SerializeField] private GameEvent onStorageReady;
+
+    private void UpdateHUD()
+    {
+        onPotionCountChanged.Raise();
+        onBombCountChanged.Raise();
+    }
+
     private void OnEnable()
     {
         onUIOpen.Subscribe(Hide);
         onUIClose.Subscribe(Show);
+        onStorageReady.Subscribe(UpdateHUD);
     }
 
     private void OnDisable()
