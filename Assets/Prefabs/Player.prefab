@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4823664196062340702}
   - component: {fileID: 2355928638980333209}
   - component: {fileID: 8664313142872284355}
+  - component: {fileID: 7962918176575475579}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -262,6 +263,7 @@ MonoBehaviour:
   onHealthChanged: {fileID: 11400000, guid: 4ef03c4627a2c514b9df28982db4a1b2, type: 2}
   registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   potion: {fileID: 11400000, guid: 7a84b182bc47ee44385be59733ebda09, type: 2}
+  onPotionCountChanged: {fileID: 11400000, guid: 453550468e1cc4148967571383caa0d7, type: 2}
   iFrameDuration: 1
   flashInterval: 0.1
   healPercentage: 0.3
@@ -329,3 +331,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onInventoryOpen: {fileID: 11400000, guid: 0784bd1f373b5954486e0ea882c0166c, type: 2}
   onReturnBase: {fileID: 11400000, guid: 744ae010b9e263241968556775472a9c, type: 2}
+--- !u!114 &7962918176575475579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363688841941322429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9842171ad931d4d9b08a953339ddaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeOffset: 0.5
+  verticalCenterOffset: 0.2
+  bomb: {fileID: 11400000, guid: e39db8b108aef164da18e09137d42c87, type: 2}
+  bombPrefab: {fileID: 4754166981462837525, guid: 77be9909335fe264abad0c79c8173c6f, type: 3}
+  onBombCountChanged: {fileID: 11400000, guid: 6574395ea9a69bf4bb070fb2f8c531d2, type: 2}

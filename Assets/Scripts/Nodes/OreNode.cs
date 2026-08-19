@@ -36,7 +36,7 @@ public class OreNode : MonoBehaviour
         }
     }
 
-    private void BreakNode()
+    public void BreakNode()
     {
         CalculateDrops();
 

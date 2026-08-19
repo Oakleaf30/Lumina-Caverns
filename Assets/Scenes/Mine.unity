@@ -3051,8 +3051,8 @@ MonoBehaviour:
   onShaftUsed: {fileID: 11400000, guid: ff5432d2ed022c84ba136a04011451ed, type: 2}
   marker: {fileID: 11400000, guid: c430302c922647e4d9f06051fa531a8f, type: 2}
   cauldron: {fileID: 2937284900805894332, guid: a2d11ff90da2d6b488696af77bfc44c7, type: 3}
-  minFloor: 0
-  baseChance: 1
+  minFloor: 5
+  baseChance: 0.5
   chancePerFloor: 0.1
 --- !u!1 &935095488
 GameObject:
@@ -4626,7 +4626,7 @@ MonoBehaviour:
   onLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
   ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
   onLadderCheck: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
-  baseLadderChance: 1
+  baseLadderChance: 0.02
   onEnemyLadder: {fileID: 11400000, guid: a12e5928341c39246a4e681709506d40, type: 2}
   onShaftUsed: {fileID: 11400000, guid: ff5432d2ed022c84ba136a04011451ed, type: 2}
   shaftPrefab: {fileID: 2009227372848232830, guid: d1f538cadbdb9eb47b5c792aad2c0242, type: 3}

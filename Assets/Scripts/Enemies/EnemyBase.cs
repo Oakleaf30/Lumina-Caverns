@@ -71,7 +71,7 @@ public class EnemyBase : MonoBehaviour
         rb.AddForce(finalForce, ForceMode2D.Impulse);
     }
 
-    private void Die()
+    public void Die()
     {
         if (Random.value < data.dropChance)
         {

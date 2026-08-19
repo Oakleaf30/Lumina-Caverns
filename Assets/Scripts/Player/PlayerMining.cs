@@ -92,13 +92,13 @@ public class PlayerMining : MonoBehaviour
         Vector3 centerOrigin = transform.position + new Vector3(0, verticalCenterOffset, 0);
 
         // 2. Get player look direction and project the strike position forward smoothly
-        Vector2 lookDir = playerMovement != null ? playerInteraction.GetLastDirection() : Vector2.down;
+        Vector2 lookDir = playerInteraction != null ? playerInteraction.GetLastDirection() : Vector2.down;
         Vector3 strikeWorldPosition = centerOrigin + (Vector3)(lookDir * strikeOffset);
 
         // 3. Fluid overlap check (completely detached from the grid)
         Collider2D hit = Physics2D.OverlapCircle(strikeWorldPosition, strikeRadius, resourceLayer);
 
-        if (hit != null && hit.TryGetComponent<OreNode>(out OreNode node))
+        if (hit != null && hit.TryGetComponent(out OreNode node))
         {
             node.TakeDamage(pickaxeDamage);
             PickaxeDurability--;
@@ -115,7 +115,7 @@ public class PlayerMining : MonoBehaviour
         Vector3 centerOrigin = transform.position + new Vector3(0, verticalCenterOffset, 0);
 
         // Grab look direction safely if the game isn't running yet, fallback to down
-        Vector2 lookDir = playerMovement != null ? playerInteraction.GetLastDirection() : Vector2.down;
+        Vector2 lookDir = playerInteraction != null ? playerInteraction.GetLastDirection() : Vector2.down;
         Vector3 strikeWorldPosition = centerOrigin + (Vector3)(lookDir * strikeOffset);
 
         // Draw the look origin (waist point)
