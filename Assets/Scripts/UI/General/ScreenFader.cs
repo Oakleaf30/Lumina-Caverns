@@ -23,25 +23,24 @@ public class ScreenFader : MonoBehaviour
 
     public IEnumerator FadeRoutine(System.Action onBlack)
     {
-        // Fade to black
         while (group.alpha < 1)
         {
-            group.alpha += Time.deltaTime * 2;
+            group.alpha += Time.unscaledDeltaTime * 2;
             yield return null;
         }
 
-        onBlack.Invoke(); // Move the player now!
+        onBlack.Invoke();
 
-        // Fade to clear
         while (group.alpha > 0)
         {
-            group.alpha -= Time.deltaTime * 2;
+            group.alpha -= Time.unscaledDeltaTime * 2;
             yield return null;
         }
     }
 
     public void TransitionToScene(string sceneName)
     {
+        Debug.Log("1");
         StartCoroutine(FadeRoutine(() =>
         {
             SceneManager.LoadScene(sceneName);

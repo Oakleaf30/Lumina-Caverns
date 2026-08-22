@@ -5,10 +5,16 @@ public class PlayerInventory : ItemContainer
 {
     [SerializeField] private GameEvent onInventoryOpen;
     [SerializeField] private GameEvent onReturnBase;
+    [SerializeField] private GameEvent onPlayerDeath;
+    [SerializeField] private ItemData amulet;
+
+    private RunState RunState => GameSession.Instance.runState;
+    private BaseStorage Storage => BaseStorage.Current;
+
 
     private void Start()
     {
-        items = GameSession.Instance.runState.inventory;
+        items = RunState.inventory;
     }
 
     private void Update()
@@ -18,31 +24,44 @@ public class PlayerInventory : ItemContainer
             onInventoryOpen.Raise();
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && RunState.currentHealth > 0)
         {
-            onReturnBase.Raise();
-            DepositAllTo(BaseStorage.Current);
-            GameSession.Instance.ExitMines();
+            ReturnToBase();
         }
     }
 
-    private void DepositAllTo(BaseStorage baseStorage)
+    private void ReturnToBase()
+    {
+        onReturnBase.Raise();
+        DepositItems();
+        GameSession.Instance.ExitMines();
+    }
+
+    private void DepositItems()
     {
         foreach (var kv in items)
-            baseStorage.AddItem(kv.Key, kv.Value);
+            Storage.AddItem(kv.Key, kv.Value);
 
         items.Clear();
     }
 
-    public void ApplyDeathPenalty(bool hasAmuletProtection)
+    private void OnEnable()
     {
-        var toRemove = items.Keys
-            .Where(i => i.category == ItemCategory.Gem || i.category == ItemCategory.Ore)
-            .ToList();
+        onPlayerDeath.Subscribe(ApplyDeathPenalty);
+    }
 
-        if (hasAmuletProtection)
-            toRemove = toRemove.Where(i => i.category != ItemCategory.Gem).ToList();
+    private void OnDisable()
+    {
+        onPlayerDeath.Unsubscribe(ApplyDeathPenalty);
+    }
 
-        foreach (var item in toRemove) items.Remove(item);
+    public void ApplyDeathPenalty()
+    {
+        if (RunState.amuletActive)
+            Storage.RemoveItem(amulet, 1);
+        else
+            items.Clear();
+
+        ReturnToBase();
     }
 }

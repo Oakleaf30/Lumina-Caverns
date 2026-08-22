@@ -331,6 +331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onInventoryOpen: {fileID: 11400000, guid: 0784bd1f373b5954486e0ea882c0166c, type: 2}
   onReturnBase: {fileID: 11400000, guid: 744ae010b9e263241968556775472a9c, type: 2}
+  onPlayerDeath: {fileID: 11400000, guid: c5f85e852b07d9f4cb1fda685f4e6adc, type: 2}
+  amulet: {fileID: 11400000, guid: b42e88f96e050ea4aa924962aa56c55e, type: 2}
 --- !u!114 &7962918176575475579
 MonoBehaviour:
   m_ObjectHideFlags: 0
