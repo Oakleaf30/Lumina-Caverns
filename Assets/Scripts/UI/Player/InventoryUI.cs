@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InventoryUI : StationUI
+public class InventoryUI : TabPanelUI
 {
     private PlayerInventory playerInventory;
     [SerializeField] private GameObject slotPrefab;
@@ -31,14 +31,7 @@ public class InventoryUI : StationUI
             sectionPools[category] = new List<GameObject>();
     }
 
-    protected override void OpenMenu()
-    {
-        base.OpenMenu();
-
-        RefreshUI();
-    }
-
-    void RefreshUI()
+    public override void UpdateDisplay()
     {
         ItemContainer targetContainer = SceneManager.GetActiveScene().name == "Base" ? BaseStorage.Current : playerInventory;
 

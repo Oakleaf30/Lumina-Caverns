@@ -7,6 +7,7 @@ public class PlayerInventory : ItemContainer
     [SerializeField] private GameEvent onReturnBase;
     [SerializeField] private GameEvent onPlayerDeath;
     [SerializeField] private ItemData amulet;
+    [SerializeField] private GameEvent onUIOpen;
 
     private RunState RunState => GameSession.Instance.runState;
     private BaseStorage Storage => BaseStorage.Current;
@@ -22,6 +23,7 @@ public class PlayerInventory : ItemContainer
         if (Input.GetKeyDown(KeyCode.E))
         {
             onInventoryOpen.Raise();
+            onUIOpen.Raise();
         }
 
         if (Input.GetKeyDown(KeyCode.B) && RunState.currentHealth > 0)

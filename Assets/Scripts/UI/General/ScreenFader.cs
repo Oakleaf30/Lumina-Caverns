@@ -40,7 +40,6 @@ public class ScreenFader : MonoBehaviour
 
     public void TransitionToScene(string sceneName)
     {
-        Debug.Log("1");
         StartCoroutine(FadeRoutine(() =>
         {
             SceneManager.LoadScene(sceneName);
