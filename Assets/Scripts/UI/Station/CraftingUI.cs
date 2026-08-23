@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CraftingUI : TabPanelUI
@@ -11,6 +12,7 @@ public class CraftingUI : TabPanelUI
     [SerializeField] private InventorySlotUI slot3;
 
     [SerializeField] private Button button;
+    [SerializeField] private TextMeshProUGUI infoText;
 
     [Header("Event References")]
     [SerializeField] private GameEvent onPotionCountChanged;
@@ -34,6 +36,7 @@ public class CraftingUI : TabPanelUI
 
         currentRecipe = recipe;
         SetItemLimit();
+        UpdateText();
 
         button.interactable = CanCraft();
     }
@@ -50,6 +53,27 @@ public class CraftingUI : TabPanelUI
                 break;
             case SelectedItem.Amulet:
                 itemCraftLimit = 1;
+                break;
+        }
+    }
+
+    private void UpdateText()
+    {
+        switch (currentItem)
+        {
+            case SelectedItem.Potion:
+                infoText.text = "Restores 30% max health over 10 seconds\n" +
+                                "Max carry capacity of 5\n" +
+                                "Press 1 to drink";
+                break;
+            case SelectedItem.Bomb:
+                infoText.text = "Destroys nodes in a small radius\n" +
+                                "Max carry capacity of 3\n" +
+                                "Press 2 to drink";
+                break;
+            case SelectedItem.Amulet:
+                infoText.text = "Prevents you from losing items when you die\n" +
+                                "Breaks upon use\n";
                 break;
         }
     }

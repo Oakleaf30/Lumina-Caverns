@@ -5163,6 +5163,7 @@ MonoBehaviour:
   slot2: {fileID: 1508601843}
   slot3: {fileID: 1083097347}
   button: {fileID: 2104307805}
+  infoText: {fileID: 1342409415}
   onPotionCountChanged: {fileID: 11400000, guid: 453550468e1cc4148967571383caa0d7, type: 2}
   onBombCountChanged: {fileID: 11400000, guid: 6574395ea9a69bf4bb070fb2f8c531d2, type: 2}
 --- !u!1001 &305476902
