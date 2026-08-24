@@ -5,12 +5,10 @@ using UnityEngine.UI;
 public class AnvilUI : TabPanelUI
 {
     BaseStorage storage => BaseStorage.Current;
+    private int DurabilityPerBar => GameSession.Instance.runState.durabilityPerBar;
     
     private int durabilityRepaired;
     private int cost;
-
-    [Header("Settings")]
-    [SerializeField] int durabilityPerBar;
 
     [Header("UI References")]
     [SerializeField] InventorySlotUI display;
@@ -30,7 +28,6 @@ public class AnvilUI : TabPanelUI
     {
         display.Set(mining.pickaxe, mining.tierIndex, SlotDisplayMode.Equipment);
 
-        durabilityPerBar = GameSession.Instance.runState.tierIndex == 0 ? 20 : 30;
 
         durabilityRepaired = CalculateCost();
         preview.text = $"{mining.PickaxeDurability}/{mining.maxPickaxeDurability} > {mining.PickaxeDurability + durabilityRepaired}/{mining.maxPickaxeDurability}";
@@ -41,13 +38,13 @@ public class AnvilUI : TabPanelUI
     private int CalculateCost()
     {
         int neededDurability = mining.maxPickaxeDurability - mining.PickaxeDurability;
-        cost = Mathf.CeilToInt((float)neededDurability / durabilityPerBar);
+        cost = Mathf.CeilToInt((float)neededDurability / DurabilityPerBar);
 
         costSlot.Set(bar, Mathf.Min(storage.GetQuantity(bar), cost));
 
         if (storage.GetQuantity(bar) < cost)
         {
-            return storage.GetQuantity(bar) * durabilityPerBar;
+            return storage.GetQuantity(bar) * DurabilityPerBar;
         } else
         {
             return neededDurability;

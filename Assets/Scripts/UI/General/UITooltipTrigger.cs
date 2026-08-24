@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UITooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private string header;
     [TextArea][SerializeField] private string body;

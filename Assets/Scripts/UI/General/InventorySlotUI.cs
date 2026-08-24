@@ -12,9 +12,11 @@ public class InventorySlotUI : MonoBehaviour
 {
     public Image icon;
     public TextMeshProUGUI quantityText;
+    public ItemData item;
 
     public void Set(ItemData item, int quantity, SlotDisplayMode mode = SlotDisplayMode.Resource)
     {
+        this.item = item;
         icon.sprite = item.icon;
         quantityText.text = mode == SlotDisplayMode.Resource
             ? quantity.ToString()

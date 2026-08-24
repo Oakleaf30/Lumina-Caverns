@@ -7,18 +7,20 @@ using static PickaxeUpgradeManager;
 public class WorkbenchUI : TabPanelUI
 {
     BaseStorage storage => BaseStorage.Current;
+    private RunState RunState => GameSession.Instance.runState;
 
-    private PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
-    private int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
-    private PickaxeTier tier => GameSession.Instance.runState.tier;
-    private int tierIndex => GameSession.Instance.runState.tierIndex;
+    private PickaxeData pickaxe => RunState.pickaxe;
+    private int pickaxeIndex => RunState.pickaxeIndex;
+    private PickaxeTier tier => RunState.tier;
+    private int tierIndex => RunState.tierIndex;
+    private PickaxeData NextPickaxe => pickaxeUpgrade.GetNextPickaxe();
 
-    private ArmourData Armour => GameSession.Instance.runState.armour;
-    private int ArmourIndex => GameSession.Instance.runState.armourIndex;
+    private ArmourData Armour => RunState.armour;
+    private int ArmourIndex => RunState.armourIndex;
     private ArmourData NextArmour => equipmentUpgrade.ReturnNextArmour(ArmourIndex);
 
-    private SwordData Sword => GameSession.Instance.runState.sword;
-    private int SwordIndex => GameSession.Instance.runState.swordIndex;
+    private SwordData Sword => RunState.sword;
+    private int SwordIndex => RunState.swordIndex;
     private SwordData NextSword => equipmentUpgrade.ReturnNextSword(SwordIndex);
 
 
@@ -74,25 +76,21 @@ public class WorkbenchUI : TabPanelUI
 
     private void UpdateInfoText(PickaxeTier nextTier)
     {
-        if (pickaxeIndex == 0)
+        if (tierIndex == pickaxe.tiers.Length - 1)
         {
             infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
-                $"Damage: {tier.damage} > {nextTier.damage}";
+                $"Damage: {pickaxe.damage} > {NextPickaxe.damage}";
         } else
         {
             switch (tierIndex)
             {
                 case 0:
                     infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
-                    $"Durability per bar: 20 > 30";
+                    $"Durability repaired per bar: {RunState.durabilityPerBar} > {pickaxe.durabilityPerBar}";
                     break;
                 case 1:
                     infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
                     $"New Ability: {pickaxe.specialAbility.description}";
-                    break;
-                case 2:
-                    infoText.text = $"Durability: {tier.maxDurability} > {nextTier.maxDurability}\n" +
-                    $"Damage: {tier.damage} > {nextTier.damage}";
                     break;
             }
         }
@@ -132,10 +130,9 @@ public class WorkbenchUI : TabPanelUI
 
     private void RefreshContainers()
     {
-        var nextPickaxe = pickaxeUpgrade.GetNextPickaxe();
         int nextTierIndex = tierIndex + 1 >= pickaxe.tiers.Length ? 0 : tierIndex + 1;
         currentSlotP.Set(pickaxe, tierIndex, SlotDisplayMode.Equipment);
-        nextSlotP.Set(nextPickaxe, nextTierIndex, SlotDisplayMode.Equipment);
+        nextSlotP.Set(NextPickaxe, nextTierIndex, SlotDisplayMode.Equipment);
 
         currentSlotA.Set(Armour, 0, SlotDisplayMode.Equipment);
         nextSlotA.Set(NextArmour, 0, SlotDisplayMode.Equipment);

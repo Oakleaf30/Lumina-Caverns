@@ -12,8 +12,10 @@ public class ItemData : ScriptableObject
     public ItemCategory category;
 }
 
+public enum EquipmentCategory { Pickaxe, Sword, Armour }
 public abstract class EquipmentData : ItemData
 {
     public ItemData costItem;
     public int costAmount;
+    public EquipmentCategory type;
 }

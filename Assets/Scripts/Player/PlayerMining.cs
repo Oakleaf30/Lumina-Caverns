@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerMining : MonoBehaviour
 {
+    private RunState RunState => GameSession.Instance.runState;
+
     [SerializeField] private GameEvent onPickaxeSwing;
 
     private Animator anim;
@@ -20,17 +22,17 @@ public class PlayerMining : MonoBehaviour
     [SerializeField] private EquipmentRegistry registry;
     [SerializeField] private GameEvent onDurabilityChanged;
 
-    public PickaxeData pickaxe => GameSession.Instance.runState.pickaxe;
-    public int pickaxeIndex => GameSession.Instance.runState.pickaxeIndex;
-    public PickaxeTier tier => GameSession.Instance.runState.tier;
-    public int tierIndex => GameSession.Instance.runState.tierIndex;
+    public PickaxeData pickaxe => RunState.pickaxe;
+    public int pickaxeIndex => RunState.pickaxeIndex;
+    public PickaxeTier tier => RunState.tier;
+    public int tierIndex => RunState.tierIndex;
 
     public int maxPickaxeDurability => tier.maxDurability;
 
     public int PickaxeDurability
     {
-        get => GameSession.Instance.runState.pickaxeDurability;
-        set => GameSession.Instance.runState.pickaxeDurability = value;
+        get => RunState.pickaxeDurability;
+        set => RunState.pickaxeDurability = value;
     }
 
     private float lastSwingTime;
@@ -49,10 +51,11 @@ public class PlayerMining : MonoBehaviour
 
     private void ApplyPickaxeData()
     {
-        GameSession.Instance.runState.pickaxe = registry.pickaxes[pickaxeIndex];
-        GameSession.Instance.runState.tier = pickaxe.tiers[tierIndex];
-        PickaxeDurability = GameSession.Instance.runState.pickaxeDurability;
+        RunState.pickaxe = registry.pickaxes[pickaxeIndex];
+        RunState.tier = pickaxe.tiers[tierIndex];
+        PickaxeDurability = RunState.pickaxeDurability;
         onDurabilityChanged.Raise();
+        RunState.durabilityPerBar = pickaxe.durabilityPerBar;
     }
 
     void Update()

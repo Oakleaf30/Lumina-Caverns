@@ -10,6 +10,7 @@ public class RunState
     public int pickaxeIndex;
     public PickaxeTier tier;
     public int tierIndex;
+    public int durabilityPerBar;
 
     public ArmourData armour;
     public int armourIndex;
