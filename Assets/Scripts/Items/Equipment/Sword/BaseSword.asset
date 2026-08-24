@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: base_sword
   displayName: Base Sword
   icon: {fileID: -5403313552589219517, guid: c3b19242e782f93489578c3ff6ec9726, type: 3}
-  category: 4
+  category: 5
   costItem: {fileID: 0}
   costAmount: 0
   damage: 1

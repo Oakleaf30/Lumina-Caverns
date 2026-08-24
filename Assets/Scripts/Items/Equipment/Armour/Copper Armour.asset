@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: copper_armour
   displayName: Copper Armour
   icon: {fileID: 629277948805704512, guid: 537383deeb4146941921c10c2f39df5c, type: 3}
-  category: 4
+  category: 6
   costItem: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
   costAmount: 5
   maxHealth: 200

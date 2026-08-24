@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: copper_sword
   displayName: Copper Sword
   icon: {fileID: 3287490791205287073, guid: 8c730da0959100e4c9e0c0d34cf61cb5, type: 3}
-  category: 4
+  category: 5
   costItem: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
   costAmount: 5
   damage: 2

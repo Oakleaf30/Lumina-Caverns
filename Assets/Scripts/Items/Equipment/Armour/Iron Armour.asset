@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: iron_armour
   displayName: Iron Armour
   icon: {fileID: -2618351205393471495, guid: 6c46a538615a93a4aa23e46713f028d8, type: 3}
-  category: 4
+  category: 6
   costItem: {fileID: 11400000, guid: c4b828fb7b6643849a40c0f683a5b52a, type: 2}
   costAmount: 5
   maxHealth: 300

@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: iron_sword
   displayName: Iron Sword
   icon: {fileID: -139271414053232584, guid: 649d633755197e54d81099c2d875aed0, type: 3}
-  category: 4
+  category: 5
   costItem: {fileID: 11400000, guid: c4b828fb7b6643849a40c0f683a5b52a, type: 2}
   costAmount: 5
   damage: 3

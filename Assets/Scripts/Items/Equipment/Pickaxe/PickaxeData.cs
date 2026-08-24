@@ -9,7 +9,7 @@ public class PickaxeData : ItemData
     public PickaxeAbility specialAbility;
     public ItemData[] gemOptions;
 
-    [Space(20)]
+    [Space(10)]
     public PickaxeTier[] tiers; // Crude, Refined, Flawless
 }
 

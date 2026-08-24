@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: base_armour
   displayName: Base Armour
   icon: {fileID: -8601422093798320819, guid: 24d5cc158eb902242b57576e47416fb3, type: 3}
-  category: 4
+  category: 6
   costItem: {fileID: 0}
   costAmount: 0
   maxHealth: 150

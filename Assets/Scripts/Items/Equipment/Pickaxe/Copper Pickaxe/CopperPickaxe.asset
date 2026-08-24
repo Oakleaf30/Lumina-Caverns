@@ -16,23 +16,22 @@ MonoBehaviour:
   displayName: Copper Pickaxe
   icon: {fileID: -7449457009028752915, guid: cb386a062b04c7842b6b89d4f601fb73, type: 3}
   category: 4
+  damage: 2
+  durabilityPerBar: 30
+  specialAbility: {fileID: 11400000, guid: 697465a21fc751c4db60ea28450a0bfb, type: 2}
   gemOptions:
   - {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
   - {fileID: 11400000, guid: 9757768cc32a0f441aa30f9d6123748f, type: 2}
-  specialAbility: {fileID: 11400000, guid: 697465a21fc751c4db60ea28450a0bfb, type: 2}
   tiers:
   - tierName: Crude
-    damage: 1
     maxDurability: 120
     costItem: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
     costAmount: 1
   - tierName: Refined
-    damage: 1
     maxDurability: 150
     costItem: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
     costAmount: 1
   - tierName: Flawless
-    damage: 1
     maxDurability: 200
     costItem: {fileID: 0}
     costAmount: 1
