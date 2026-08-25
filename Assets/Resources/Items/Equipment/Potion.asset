@@ -16,3 +16,9 @@ MonoBehaviour:
   displayName: Health Potion
   icon: {fileID: 4710149859679376421, guid: b6cf7b852bc7136459f8f8e21c6da62d, type: 3}
   category: 4
+  info: 'Restores 30% max health over 10 seconds
+
+    Max carry capacity of 5
+
+    Press
+    1 to drink'

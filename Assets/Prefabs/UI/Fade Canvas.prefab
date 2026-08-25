@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 4402270794725619213}
   - component: {fileID: 3963656383757327194}
   - component: {fileID: 8104857205201125043}
-  - component: {fileID: 8439641544387768054}
-  - component: {fileID: 6729057917727040831}
   m_Layer: 5
   m_Name: Fade Overlay
   m_TagString: Untagged
@@ -77,30 +75,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &8439641544387768054
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4455414180236608219}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
---- !u!114 &6729057917727040831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4455414180236608219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d5bef50a218524e82674e207642276, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5197864121525102194
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,6 +87,8 @@ GameObject:
   - component: {fileID: 9204648947111944449}
   - component: {fileID: 1586542744230656748}
   - component: {fileID: 5090753334527382291}
+  - component: {fileID: 4150955033802497323}
+  - component: {fileID: 5339252455081033450}
   m_Layer: 5
   m_Name: Fade Canvas
   m_TagString: Untagged
@@ -203,3 +179,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &4150955033802497323
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197864121525102194}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &5339252455081033450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197864121525102194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d5bef50a218524e82674e207642276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

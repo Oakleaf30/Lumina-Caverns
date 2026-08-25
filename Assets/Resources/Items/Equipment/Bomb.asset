@@ -16,3 +16,9 @@ MonoBehaviour:
   displayName: Bomb
   icon: {fileID: -1483665779731714255, guid: 8b99bb72f3fa27b4c95e8ce398ea5aff, type: 3}
   category: 4
+  info: 'Destroys nodes in a small radius
+
+    Max carry capacity of 3
+
+    Press
+    2 to drink'

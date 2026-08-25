@@ -13,7 +13,16 @@ public class TooltipManager : MonoBehaviour
     [SerializeField] private RectTransform panelRect;  // the tooltip panel's own RectTransform
     [SerializeField] private float maxWidth = 550f;
 
-    private void Awake() => Instance = this;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void Show(string header, string body, Vector2 screenPos)
     {

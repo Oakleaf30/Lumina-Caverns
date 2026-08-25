@@ -16,4 +16,5 @@ MonoBehaviour:
   displayName: Geode
   icon: {fileID: -4351138029691242335, guid: ec22389c5f02c054b8637d991639503e, type: 3}
   category: 0
+  info: Open it at the anvil to see what's inside
   lootTable: {fileID: 11400000, guid: 8c37297205d0005478283ad6c2957d6b, type: 2}

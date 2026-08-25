@@ -16,3 +16,6 @@ MonoBehaviour:
   displayName: Ring of Protection
   icon: {fileID: 830669507320524706, guid: f7cf8bb458e740448afb5ac703c76201, type: 3}
   category: 4
+  info: 'Prevents you from losing items when you die
+
+    Breaks upon use'

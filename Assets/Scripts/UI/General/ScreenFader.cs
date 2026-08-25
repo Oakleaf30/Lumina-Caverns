@@ -16,7 +16,7 @@ public class ScreenFader : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(transform.root.gameObject);
+        DontDestroyOnLoad(gameObject);
 
         group = GetComponent<CanvasGroup>();
     }
