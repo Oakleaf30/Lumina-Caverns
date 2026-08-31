@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af51d3ae9291ca47892dd053561d096, type: 3}
   m_Name: TopazNode
   m_EditorClassIdentifier: 
-  oreDisplayName: Topaz
   hitboxSize: 0.25
   spaceRequired: 0.3
-  maxHitPoints: 5
+  maxHitPoints: 1
   dropData: {fileID: 11400000, guid: 6f54808d28ab91a4d9755fdb3c45fd8a, type: 2}
   minDropCount: 1
   maxDropCount: 3
+  optionalDrops: []
   nodeSprites:
   - {fileID: -7722730715110249228, guid: cd06f8893ee64484898af942e52718d4, type: 3}
   - {fileID: 6818088048561499811, guid: cd06f8893ee64484898af942e52718d4, type: 3}
