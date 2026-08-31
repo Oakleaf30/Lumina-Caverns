@@ -51,7 +51,7 @@ MonoBehaviour:
   - itemAmount:
       item: {fileID: 11400000, guid: 215e47f7458465348a6e80e896d5b02c, type: 2}
       amount: 1
-    maxAmount: 1
+    maxAmount: 0
     chance: 0.05
   pityTargetItem: {fileID: 0}
   pityReward:

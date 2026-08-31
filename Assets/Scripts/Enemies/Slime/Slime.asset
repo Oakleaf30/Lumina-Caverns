@@ -17,7 +17,7 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: 879ab176847a69146b737ad45b90fd0a, type: 2}
   maxHealth: 1
   movementSpeed: 1
-  contactDamage: 150
+  contactDamage: 30
   attackCooldown: 1
   knockbackResistance: 0
   dropData: {fileID: 11400000, guid: aa3341d291a97734a86ecb5c6ad5a35e, type: 2}

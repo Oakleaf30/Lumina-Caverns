@@ -1356,6 +1356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRadius: 0.6
+  onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}
 --- !u!1 &1592701802208069582
 GameObject:
   m_ObjectHideFlags: 0
@@ -6037,6 +6038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRadius: 0.6
+  onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}
 --- !u!1 &6377964232594920710
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,6 +6162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRadius: 0.6
+  onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}
 --- !u!1 &6481382368017585402
 GameObject:
   m_ObjectHideFlags: 0
@@ -7511,3 +7514,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRadius: 0.6
+  onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}

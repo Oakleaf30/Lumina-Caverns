@@ -1344,6 +1344,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6971375613074004691, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971375613074004691, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971375613074004691, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971375613074004691, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127377937562881983, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127377937562881983, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127377937562881983, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127377937562881983, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3024,7 +3056,7 @@ GameObject:
   - component: {fileID: 1595070568}
   m_Layer: 0
   m_Name: Ladder Listener
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3063,10 +3095,13 @@ MonoBehaviour:
   onEnemyLadder: {fileID: 11400000, guid: a12e5928341c39246a4e681709506d40, type: 2}
   onShaftUsed: {fileID: 11400000, guid: ff5432d2ed022c84ba136a04011451ed, type: 2}
   shaftPrefab: {fileID: 2009227372848232830, guid: d1f538cadbdb9eb47b5c792aad2c0242, type: 3}
-  defaultShaftChance: 1
+  defaultShaftChance: 0.2
   coalFloor: {fileID: 11400000, guid: 489f2abbd7bb9f34bb6ec6c50f42cce7, type: 2}
   infestedFloor: {fileID: 11400000, guid: 31b5c8ed95f88c44f93e9c77c7542d60, type: 2}
+  onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}
   level: {fileID: 1736561150}
+  chestPrefab: {fileID: 7298821199132620371, guid: 6fdf4b1899316064488420c1fee7e1ad, type: 3}
+  smallChest: {fileID: 11400000, guid: 0898e46cbf582a24188e87901126beef, type: 2}
 --- !u!1 &1649358333
 GameObject:
   m_ObjectHideFlags: 0
