@@ -14,6 +14,9 @@ public class PlayerBomb : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private GameEvent onBombCountChanged;
 
+    public GameObject chestPrefab;
+    public ChestData smallChest;
+
 
     private PlayerInteraction playerInteraction;
 
@@ -29,6 +32,11 @@ public class PlayerBomb : MonoBehaviour
         {
             PlaceBomb();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && Storage.GetQuantity(bomb) > 0)
+        {
+            Test();
+        }
     }
 
     private void PlaceBomb()
@@ -42,5 +50,11 @@ public class PlayerBomb : MonoBehaviour
         Instantiate(bombPrefab, spawnPosition, Quaternion.identity);
         Storage.RemoveItem(bomb, 1);
         onBombCountChanged.Raise();
+    }
+
+    private void Test()
+    {
+        GameObject chest = Instantiate(chestPrefab, transform.position, Quaternion.identity);
+        chest.GetComponent<Chest>().InitialiseImmediate(smallChest);
     }
 }

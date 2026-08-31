@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class LadderTile : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class LadderTile : MonoBehaviour
     private BiomeData activeBiome;
     [SerializeField] private BiomeData coalFloor;
     [SerializeField] private BiomeData infestedFloor;
+
+    [SerializeField] private GameEvent onLastEnemyDefeated;
 
     [SerializeField] LevelGenerator level;
 
@@ -105,7 +108,12 @@ public class LadderTile : MonoBehaviour
         {
             if (activeBiome.biomeName == "Infested")
             {
+                transform.position = enemyPos;
                 SpawnLadder(enemyPos);
+                onLastEnemyDefeated.Raise();
+
+                GameObject chest = Instantiate(chestPrefab, closestAnchor, Quaternion.identity);
+                chest.GetComponent<Chest>().InitialiseImmediate(smallChest);
             }
             else
             {
@@ -127,6 +135,23 @@ public class LadderTile : MonoBehaviour
         BiomeData nextBiome = Random.value < 0.5f ? coalFloor : infestedFloor;
 
         TransitionState.FloorTransition(activeBiome, nextBiome, SceneManager.GetActiveScene().name);
+    }
+
+    [Header("Chest References")]
+    [SerializeField] private GameObject chestPrefab;
+    [SerializeField] private ChestData smallChest;
+
+    private Vector3 closestAnchor;
+    private float closestDist = float.MaxValue;
+
+    public void CompareDistances(Vector3 anchorPos)
+    {
+        float sqrDist = (anchorPos - transform.position).sqrMagnitude;
+        if (sqrDist < closestDist)
+        {
+            closestDist = sqrDist;
+            closestAnchor = anchorPos;
+        }
     }
 }
 
