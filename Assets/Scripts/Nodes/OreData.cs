@@ -14,7 +14,7 @@ public class OreData : ScriptableObject
     public ItemData dropData;
     public int minDropCount;
     public int maxDropCount;
-    public OptionalDrop[] optionalDrops;
+    public OptionalDrop[] optionalDrops = new OptionalDrop[0];
 
     [Header("Visuals")]
     public Sprite[] nodeSprites;
