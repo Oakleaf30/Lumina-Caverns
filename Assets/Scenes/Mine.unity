@@ -3357,12 +3357,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefabs:
   - {fileID: 5445048937391416824, guid: fc5509da6d049c24eb3474f801cb4f49, type: 3}
-  - {fileID: 8100108444406874278, guid: 94603331a95591d469ca663455b5a986, type: 3}
-  maxRooms: 2
+  - {fileID: 175943057605686693, guid: 5fec2363d0c714545b3d1fe074516190, type: 3}
+  - {fileID: 8332233484710083568, guid: 10ff0941de257a3439ddb1cb62200370, type: 3}
+  maxRooms: 3
   roomSize: 20
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}
-  dungeonChance: 0
-  dungeonBiomeData: {fileID: 0}
+  dungeonChance: 1
+  dungeonBiomeData: {fileID: 11400000, guid: 489f2abbd7bb9f34bb6ec6c50f42cce7, type: 2}
   itemGenerator: {fileID: 1376388035}
   enemyGenerator: {fileID: 4377858}
   cauldron: {fileID: 882703437}
