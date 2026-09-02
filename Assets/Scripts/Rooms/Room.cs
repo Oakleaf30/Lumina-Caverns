@@ -16,6 +16,7 @@ public class Room : MonoBehaviour
     public Door rightDoor;
 
     public int RoomID { get; private set; }
+    public bool isDungeon;
 
     public void InitializeRoom(int id)
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxSize: 0.25
   spaceRequired: 0.3
-  maxHitPoints: 1
+  maxHitPoints: 5
   dropData: {fileID: 11400000, guid: 6f54808d28ab91a4d9755fdb3c45fd8a, type: 2}
   minDropCount: 1
   maxDropCount: 3

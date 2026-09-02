@@ -1,23 +1,24 @@
 //using System.Collections.Generic;
 //using UnityEngine;
 
-//public class LevelGeneratorCopy : MonoBehaviour
+//public class LevelGenerator : MonoBehaviour
 //{
-//    public Room[] roomPrefabs;
-//    public int maxRooms = 12;
-//    public float roomSize = 50f;
+//    [SerializeField] private Room[] roomPrefabs;
+//    [SerializeField] private int maxRooms;
+//    [SerializeField] private float roomSize;
+//    public BiomeData biomeData;
 
 //    [SerializeField] private InteractiveGenerator itemGenerator;
 //    [SerializeField] private EnemyGenerator enemyGenerator;
+//    [SerializeField] private Cauldron cauldron;
+//    private bool cauldronSpawnable = false;
 
-//    // This tracks exactly what doors each grid coordinate NEEDS
 //    private Dictionary<Vector2Int, RoomRequirements> layout = new Dictionary<Vector2Int, RoomRequirements>();
 //    private Dictionary<Vector2Int, Room> spawnedRooms = new Dictionary<Vector2Int, Room>();
 
 //    private class RoomRequirements
 //    {
 //        public bool top, bottom, left, right;
-
 //        public int RoomID;
 
 //        public RoomRequirements(int id)
@@ -26,54 +27,99 @@
 //        }
 //    }
 
-//    void Start() => Generate();
+//    void Awake() => Generate();
 
 //    void Generate()
 //    {
-//        Vector2Int startPos = Vector2Int.zero;
+//        int safetyLimit = 500; // Prevents an infinite loop if a valid configuration is mathematically impossible
+//        int attempts = 0;
+//        bool validLayoutFound = false;
 
-//        // Start our counter at 0. This will serve as both our ID and our maxRooms limiter.
-//        int roomsPlaced = 0;
+//        if (TransitionState.ConsumePendingTransition(out var biome)) biomeData = biome;
 
-//        // Assign ID 0 to the starting room
-//        layout.Add(startPos, new RoomRequirements(roomsPlaced));
-//        Queue<Vector2Int> checkQueue = new Queue<Vector2Int>();
-//        checkQueue.Enqueue(startPos);
-
-//        // Increment immediately so the next room placed gets ID 1
-//        roomsPlaced++;
-
-//        while (checkQueue.Count > 0 && roomsPlaced < maxRooms)
+//        while (!validLayoutFound && attempts < safetyLimit)
 //        {
-//            Vector2Int currentPos = checkQueue.Dequeue();
+//            attempts++;
+//            layout.Clear();
+//            spawnedRooms.Clear();
 
-//            foreach (Vector2Int dir in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right })
+//            Vector2Int startPos = Vector2Int.zero;
+//            int roomsPlaced = 0;
+
+//            // Assign ID 0 to the starting room
+//            layout.Add(startPos, new RoomRequirements(roomsPlaced));
+//            Queue<Vector2Int> checkQueue = new Queue<Vector2Int>();
+//            checkQueue.Enqueue(startPos);
+
+//            roomsPlaced++;
+
+//            while (checkQueue.Count > 0 && roomsPlaced < maxRooms)
 //            {
-//                Vector2Int neighborPos = currentPos + dir;
+//                Vector2Int currentPos = checkQueue.Dequeue();
 
-//                if (roomsPlaced < maxRooms && !layout.ContainsKey(neighborPos) && Random.value < 0.5f)
+//                foreach (Vector2Int dir in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right })
 //                {
-//                    // Isaac Rule: Only place if it has exactly 1 neighbor (prevents clumping)
-//                    if (CountNeighbors(neighborPos) == 1)
-//                    {
-//                        // Pass the current counter value as the unique ID for this new room
-//                        layout.Add(neighborPos, new RoomRequirements(roomsPlaced));
-//                        Connect(currentPos, neighborPos, dir);
-//                        checkQueue.Enqueue(neighborPos);
+//                    Vector2Int neighborPos = currentPos + dir;
 
-//                        // Increment the counter/ID for the next iteration
-//                        roomsPlaced++;
+//                    if (roomsPlaced < maxRooms && !layout.ContainsKey(neighborPos) && Random.value < 0.5f)
+//                    {
+//                        if (CountNeighbors(neighborPos) == 1)
+//                        {
+//                            layout.Add(neighborPos, new RoomRequirements(roomsPlaced));
+//                            Connect(currentPos, neighborPos, dir);
+//                            checkQueue.Enqueue(neighborPos);
+//                            roomsPlaced++;
+//                        }
 //                    }
 //                }
+
+//                if (checkQueue.Count == 0 && roomsPlaced < maxRooms)
+//                    checkQueue.Enqueue(new List<Vector2Int>(layout.Keys)[Random.Range(0, layout.Count)]);
 //            }
-//            // If we run out of steam, re-add a random room to keep growing
-//            if (checkQueue.Count == 0 && roomsPlaced < maxRooms)
-//                checkQueue.Enqueue(new List<Vector2Int>(layout.Keys)[Random.Range(0, layout.Count)]);
+
+//            // Verify if every single data requirement we just mapped out has a matching physical asset
+//            if (ValidateLayout())
+//            {
+//                validLayoutFound = true;
+//            }
 //        }
 
-//        SpawnRooms();
+//        if (!validLayoutFound)
+//        {
+//            Debug.LogError($"Level Generator gave up after {safetyLimit} attempts! Ensure you haven't completely bottlenecked your layout options.");
+//            return;
+//        }
 
+//        // We have a 100% verified, perfectly matchable blueprint. Now build it physically!
+//        SpawnRooms();
 //        LinkAllDoors();
+//    }
+
+//    // New helper method that double-checks the your scriptable/prefab asset compatibility
+//    bool ValidateLayout()
+//    {
+//        foreach (var req in layout.Values)
+//        {
+//            bool matchFound = false;
+//            foreach (Room prefab in roomPrefabs)
+//            {
+//                if (prefab.hasTopDoor == req.top &&
+//                    prefab.hasBottomDoor == req.bottom &&
+//                    prefab.hasLeftDoor == req.left &&
+//                    prefab.hasRightDoor == req.right)
+//                {
+//                    matchFound = true;
+//                    break;
+//                }
+//            }
+
+//            // If even ONE room requirement layout cannot be satisfied, fail the validation immediately
+//            if (!matchFound)
+//            {
+//                return false;
+//            }
+//        }
+//        return true;
 //    }
 
 //    void LinkAllDoors()
@@ -83,28 +129,24 @@
 //            Vector2Int pos = kvp.Key;
 //            Room current = kvp.Value;
 
-//            // Link North neighbor
 //            if (spawnedRooms.TryGetValue(pos + Vector2Int.up, out Room northNeighbor))
 //            {
 //                if (current.topDoor != null && northNeighbor.bottomDoor != null)
 //                    current.topDoor.connectedDoor = northNeighbor.bottomDoor;
 //            }
 
-//            // Link South neighbor
 //            if (spawnedRooms.TryGetValue(pos + Vector2Int.down, out Room southNeighbor))
 //            {
 //                if (current.bottomDoor != null && southNeighbor.topDoor != null)
 //                    current.bottomDoor.connectedDoor = southNeighbor.topDoor;
 //            }
 
-//            // Link East neighbor
 //            if (spawnedRooms.TryGetValue(pos + Vector2Int.right, out Room eastNeighbor))
 //            {
 //                if (current.rightDoor != null && eastNeighbor.leftDoor != null)
 //                    current.rightDoor.connectedDoor = eastNeighbor.leftDoor;
 //            }
 
-//            // Link West neighbor
 //            if (spawnedRooms.TryGetValue(pos + Vector2Int.left, out Room westNeighbor))
 //            {
 //                if (current.leftDoor != null && westNeighbor.rightDoor != null)
@@ -131,15 +173,18 @@
 
 //    void SpawnRooms()
 //    {
+//        int roomCounter = 0;
+
 //        foreach (var kvp in layout)
 //        {
+//            cauldronSpawnable = cauldron.RoomCheck(roomCounter, layout.Count);
 //            PlaceBestRoom(kvp.Key, kvp.Value);
+//            roomCounter++;
 //        }
 //    }
 
 //    void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
 //    {
-//        // 1. Shuffle the prefabs so we get visual variety if multiple rooms have the same door layout
 //        List<Room> shuffledPrefabs = new List<Room>(roomPrefabs);
 //        for (int i = 0; i < shuffledPrefabs.Count; i++)
 //        {
@@ -149,7 +194,6 @@
 //            shuffledPrefabs[r] = temp;
 //        }
 
-//        // 2. Find the perfect match
 //        foreach (Room prefab in shuffledPrefabs)
 //        {
 //            if (prefab.hasTopDoor == req.top &&
@@ -158,41 +202,22 @@
 //                prefab.hasRightDoor == req.right)
 //            {
 //                Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
-//                Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity);
+//                Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity, transform);
 //                newRoom.InitializeRoom(req.RoomID);
 
-//                itemGenerator.GenerateInteractivity(newRoom);
-//                enemyGenerator.GenerateEnemies(newRoom);
+//                itemGenerator.GenerateInteractivity(newRoom, biomeData);
+//                enemyGenerator.GenerateEnemies(newRoom, biomeData);
 
-//                // Save the reference to the room we just made
+//                if (cauldronSpawnable)
+//                    cauldron.SpawnCauldron(newRoom);
+
+//                cauldronSpawnable = false;
+
 //                spawnedRooms.Add(pos, newRoom);
 //                return;
 //            }
 //        }
 
-//        // 3. Fallback warning
-//        // If you forget to make one of the 15 possible door combinations, this will tell you exactly which one is missing!
 //        Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right}");
 //    }
-
-//    //void PlaceBestRoom(Vector2Int pos, RoomRequirements req)
-//    //{
-//    //    foreach (Room prefab in roomPrefabs)
-//    //    {
-//    //        for (int rot = 0; rot < 4; rot++)
-//    //        {
-//    //            // MATCHING LOGIC: Prefab must have DOORS where layout says YES
-//    //            // and NO DOORS where layout says NO.
-//    //            if (prefab.HasDoor("Top", rot) == req.top &&
-//    //                prefab.HasDoor("Bottom", rot) == req.bottom &&
-//    //                prefab.HasDoor("Left", rot) == req.left &&
-//    //                prefab.HasDoor("Right", rot) == req.right)
-//    //            {
-//    //                Vector3 worldPos = new Vector3(pos.x * roomSize, pos.y * roomSize, 0);
-//    //                Room spawned = Instantiate(prefab, worldPos, Quaternion.Euler(0, 0, -90 * rot));
-//    //                return;
-//    //            }
-//    //        }
-//    //    }
-//    //}
 //}

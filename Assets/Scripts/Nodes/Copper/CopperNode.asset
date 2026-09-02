@@ -15,7 +15,7 @@ MonoBehaviour:
   hitboxSize: 0.25
   spaceRequired: 0.3
   maxHitPoints: 1
-  dropData: {fileID: 11400000, guid: 215e47f7458465348a6e80e896d5b02c, type: 2}
+  dropData: {fileID: 11400000, guid: 26e5aee9210022b44876494c5a413a7e, type: 2}
   minDropCount: 1
   maxDropCount: 3
   optionalDrops:

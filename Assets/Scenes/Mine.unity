@@ -1260,9 +1260,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1031616809759282327, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031616809759282327, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031616809759282327, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031616809759282327, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3117005279537364583, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
       propertyPath: m_Name
       value: HUD Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562930256714136057, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562930256714136057, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562930256714136057, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562930256714136057, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5590579907528744594, guid: 31f8031beab80ca48a0b4d3d078b6856, type: 3}
       propertyPath: m_Pivot.x
@@ -3329,6 +3361,8 @@ MonoBehaviour:
   maxRooms: 2
   roomSize: 20
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}
+  dungeonChance: 0
+  dungeonBiomeData: {fileID: 0}
   itemGenerator: {fileID: 1376388035}
   enemyGenerator: {fileID: 4377858}
   cauldron: {fileID: 882703437}
