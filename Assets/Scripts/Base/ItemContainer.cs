@@ -16,6 +16,9 @@ public readonly struct InventorySlot
 
 public class ItemContainer : MonoBehaviour
 {
+    [SerializeField] private GameEvent onPotionCountChanged;
+    [SerializeField] private GameEvent onBombCountChanged;
+
     protected Dictionary<ItemData, int> items;
 
     public virtual void AddItem(ItemData item, int amount)
@@ -24,6 +27,12 @@ public class ItemContainer : MonoBehaviour
             items[item] += amount;
         else
             items[item] = amount;
+
+        if (item.itemId == "potion")
+            onPotionCountChanged.Raise();
+
+        if (item.itemId == "bomb")
+            onBombCountChanged.Raise();
     }
 
     public bool RemoveItem(ItemData item, int amount)
@@ -54,6 +63,13 @@ public class ItemContainer : MonoBehaviour
 
         items[item] -= amount;
         if (items[item] <= 0) items.Remove(item);
+
+        if (item.itemId == "potion")
+            onPotionCountChanged.Raise();
+
+        if (item.itemId == "bomb")
+            onBombCountChanged.Raise();
+
         return true;
     }
 

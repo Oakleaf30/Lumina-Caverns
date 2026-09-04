@@ -8,11 +8,15 @@ public class Chest : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private ChestData chestData;
+    [SerializeField] private ChestData overrideChestData;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        if (overrideChestData != null)
+            InitialiseImmediate(overrideChestData);
     }
 
     public void InitialiseImmediate(ChestData data)

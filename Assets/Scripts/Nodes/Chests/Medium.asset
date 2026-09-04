@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2489f7f9c1376c044a2d5308413f2f53, type: 3}
+  m_Name: Medium
+  m_EditorClassIdentifier: 
+  loot: {fileID: 11400000, guid: 63a1f88204c19534394d4c61488d95db, type: 2}
+  sprite: {fileID: 4014636494305765866, guid: 54d461e34e935b5499f79a88ef84936a, type: 3}
+  openAnimation: {fileID: 7400000, guid: 5a2a15db686a92b4baee6a6574b5c67f, type: 2}

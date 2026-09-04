@@ -608,6 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc8abfe79fe6b64bb96679588b72ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPotionCountChanged: {fileID: 11400000, guid: 453550468e1cc4148967571383caa0d7, type: 2}
+  onBombCountChanged: {fileID: 11400000, guid: 6574395ea9a69bf4bb070fb2f8c531d2, type: 2}
   onStorageReady: {fileID: 11400000, guid: 321ab8795bfde5e469608d3d66110c76, type: 2}
   copper: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
   coal: {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
@@ -3325,7 +3327,6 @@ MonoBehaviour:
   button: {fileID: 191630880}
   recipe: {fileID: 11400000, guid: 4a14b4e876a2d8048846178c41fd0939, type: 2}
   inventory: {fileID: 2077010003}
-  onPotionCountChanged: {fileID: 11400000, guid: 453550468e1cc4148967571383caa0d7, type: 2}
 --- !u!1 &1736561149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3359,6 +3360,7 @@ MonoBehaviour:
   - {fileID: 5445048937391416824, guid: fc5509da6d049c24eb3474f801cb4f49, type: 3}
   - {fileID: 175943057605686693, guid: 5fec2363d0c714545b3d1fe074516190, type: 3}
   - {fileID: 8332233484710083568, guid: 10ff0941de257a3439ddb1cb62200370, type: 3}
+  - {fileID: 3903119502829507710, guid: 50bcd5f066d64e44bbeafd27ca850092, type: 3}
   maxRooms: 3
   roomSize: 20
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}

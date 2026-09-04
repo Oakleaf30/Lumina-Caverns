@@ -11,7 +11,6 @@ public class CauldronUI : StationUI
     [Header("References")]
     [SerializeField] private RecipeData recipe;
     [SerializeField] private PlayerInventory inventory;
-    [SerializeField] private GameEvent onPotionCountChanged;
 
     private BaseStorage Storage => BaseStorage.Current;
 
@@ -36,7 +35,6 @@ public class CauldronUI : StationUI
     {
         inventory.RemoveItem(recipe.ingredients[0].item, recipe.ingredients[0].requiredAmount);
         Storage.AddItem(recipe.resultItem, 1);
-        onPotionCountChanged.Raise();
 
         UpdateDisplay();
     }

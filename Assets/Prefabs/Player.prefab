@@ -329,6 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dc85c9b6d6ec847afd33cf3a1a7e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPotionCountChanged: {fileID: 11400000, guid: 453550468e1cc4148967571383caa0d7, type: 2}
+  onBombCountChanged: {fileID: 11400000, guid: 6574395ea9a69bf4bb070fb2f8c531d2, type: 2}
   onInventoryOpen: {fileID: 11400000, guid: 0784bd1f373b5954486e0ea882c0166c, type: 2}
   onReturnBase: {fileID: 11400000, guid: 744ae010b9e263241968556775472a9c, type: 2}
   onPlayerDeath: {fileID: 11400000, guid: c5f85e852b07d9f4cb1fda685f4e6adc, type: 2}
@@ -351,4 +353,3 @@ MonoBehaviour:
   verticalCenterOffset: 0.2
   bomb: {fileID: 11400000, guid: e39db8b108aef164da18e09137d42c87, type: 2}
   bombPrefab: {fileID: 4754166981462837525, guid: 77be9909335fe264abad0c79c8173c6f, type: 3}
-  onBombCountChanged: {fileID: 11400000, guid: 6574395ea9a69bf4bb070fb2f8c531d2, type: 2}

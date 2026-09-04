@@ -22,7 +22,10 @@ public class ItemDrop : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerInventory>().AddItem(itemData, 1);
+            if (itemData.itemId == "bomb")
+                BaseStorage.Current.AddItem(itemData, 1);
+            else
+                collision.GetComponent<PlayerInventory>().AddItem(itemData, 1);
 
             Destroy(gameObject);
         }

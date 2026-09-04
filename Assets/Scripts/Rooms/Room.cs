@@ -17,6 +17,7 @@ public class Room : MonoBehaviour
 
     public int RoomID { get; private set; }
     public bool isDungeon;
+    public bool isChestRoom;
 
     public void InitializeRoom(int id)
     {

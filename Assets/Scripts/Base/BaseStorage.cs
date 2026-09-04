@@ -23,9 +23,9 @@ public class BaseStorage : ItemContainer
     {
         items = GameSession.Instance.runState.storage;
 
-        AddItem(copper, 100);
-        AddItem(coal, 9);
-        AddItem(cobalt, 20);
+        //AddItem(copper, 100);
+        //AddItem(coal, 9);
+        //AddItem(cobalt, 20);
 
         onStorageReady.Raise();
     }

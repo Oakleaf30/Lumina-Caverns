@@ -10,49 +10,54 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43bab4a0a01cdf640b8e2291a22afbdc, type: 3}
-  m_Name: SmallChest
+  m_Name: MediumChest
   m_EditorClassIdentifier: 
   lootItems:
   - itemAmount:
       item: {fileID: 11400000, guid: df60f6a832471d141b77772201674519, type: 2}
-      amount: 1
-    maxAmount: 2
-    chance: 0.1
-  - itemAmount:
-      item: {fileID: 11400000, guid: 20473505263554c42b72e576a1824fab, type: 2}
-      amount: 4
-    maxAmount: 7
-    chance: 0.18
-  - itemAmount:
-      item: {fileID: 11400000, guid: 26e5aee9210022b44876494c5a413a7e, type: 2}
-      amount: 4
-    maxAmount: 7
-    chance: 0.15
-  - itemAmount:
-      item: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
-      amount: 1
+      amount: 2
     maxAmount: 3
     chance: 0.1
   - itemAmount:
+      item: {fileID: 11400000, guid: 20473505263554c42b72e576a1824fab, type: 2}
+      amount: 7
+    maxAmount: 15
+    chance: 0.05
+  - itemAmount:
+      item: {fileID: 11400000, guid: 26e5aee9210022b44876494c5a413a7e, type: 2}
+      amount: 10
+    maxAmount: 20
+    chance: 0.05
+  - itemAmount:
+      item: {fileID: 11400000, guid: f7b237baadbf2cb41bd445e41d4f1348, type: 2}
+      amount: 3
+    maxAmount: 5
+    chance: 0.1
+  - itemAmount:
       item: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
-      amount: 5
-    maxAmount: 10
+      amount: 7
+    maxAmount: 15
+    chance: 0.1
+  - itemAmount:
+      item: {fileID: 11400000, guid: e39db8b108aef164da18e09137d42c87, type: 2}
+      amount: 1
+    maxAmount: 0
     chance: 0.1
   - itemAmount:
       item: {fileID: 11400000, guid: 208aaf311de2341478d0768f7d98a528, type: 2}
       amount: 1
-    maxAmount: 0
-    chance: 0.2
+    maxAmount: 3
+    chance: 0.25
   - itemAmount:
       item: {fileID: 11400000, guid: 6f54808d28ab91a4d9755fdb3c45fd8a, type: 2}
       amount: 1
-    maxAmount: 0
-    chance: 0.2
+    maxAmount: 3
+    chance: 0.25
   - itemAmount:
       item: {fileID: 11400000, guid: 215e47f7458465348a6e80e896d5b02c, type: 2}
       amount: 1
     maxAmount: 0
-    chance: 0.02
+    chance: 0.05
   pityTargetItem: {fileID: 0}
   pityReward:
     item: {fileID: 0}

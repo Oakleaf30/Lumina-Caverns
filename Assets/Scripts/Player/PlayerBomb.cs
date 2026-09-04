@@ -12,7 +12,6 @@ public class PlayerBomb : MonoBehaviour
     [Header("References")]
     [SerializeField] private ItemData bomb;
     [SerializeField] private GameObject bombPrefab;
-    [SerializeField] private GameEvent onBombCountChanged;
 
     private PlayerInteraction playerInteraction;
 
@@ -40,6 +39,5 @@ public class PlayerBomb : MonoBehaviour
 
         Instantiate(bombPrefab, spawnPosition, Quaternion.identity);
         Storage.RemoveItem(bomb, 1);
-        onBombCountChanged.Raise();
     }
 }

@@ -80,15 +80,15 @@ SpriteRenderer:
   m_SortingLayerID: 508205989
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7389924080637964641, guid: 54d461e34e935b5499f79a88ef84936a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.125, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!114 &2222742701876542624
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onChestOpen: {fileID: 11400000, guid: 7185f3b64a8efe148aa6b421bbbc78ae, type: 2}
   dropPrefab: {fileID: 3943490826253954512, guid: e9b3ded8042f33547a5fbe33d72ca958, type: 3}
+  overrideChestData: {fileID: 0}
 --- !u!95 &4253417290662233113
 Animator:
   serializedVersion: 7
@@ -178,8 +179,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.125, y: 1}
+    newSize: {x: 1.125, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

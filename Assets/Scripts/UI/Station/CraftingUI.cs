@@ -98,21 +98,7 @@ public class CraftingUI : TabPanelUI
             Storage.RemoveItem(currentRecipe.ingredients[1].item, currentRecipe.ingredients[1].requiredAmount);
         Storage.AddItem(currentRecipe.resultItem, 1);
 
-        CheckCraftedItem();
         SetResources(currentRecipe);
-    }
-
-    private void CheckCraftedItem()
-    {
-        switch (currentItem)
-        {
-            case SelectedItem.Potion:
-                onPotionCountChanged.Raise();
-                break;
-            case SelectedItem.Bomb:
-                onBombCountChanged.Raise();
-                break;
-        }
     }
 
 

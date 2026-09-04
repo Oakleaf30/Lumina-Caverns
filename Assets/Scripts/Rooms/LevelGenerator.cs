@@ -24,6 +24,7 @@ public class LevelGenerator : MonoBehaviour
     private Dictionary<Vector2Int, Room> spawnedRooms = new Dictionary<Vector2Int, Room>();
 
     private bool hasDungeonRoom = false;
+    private bool dungeonRoomIsChest = false;
     private Vector2Int dungeonRoomPos;
 
     private class RoomRequirements
@@ -109,32 +110,56 @@ public class LevelGenerator : MonoBehaviour
     }
 
     // Rolls once per floor generation for a single dungeon room, picked from positions
-    // whose door requirements are actually satisfiable by an isDungeon-flagged prefab
+    // whose door requirements are actually satisfiable by an isDungeon-flagged prefab.
+    // Also rolls 50/50 for chest vs risky subtype, falling back to whichever subtype
+    // actually has a matching prefab if the first choice doesn't fit this layout.
     void RollDungeonRoom()
     {
         hasDungeonRoom = false;
 
         if (Random.value >= dungeonChance) return;
 
-        List<Vector2Int> eligiblePositions = new List<Vector2Int>();
-        foreach (var kvp in layout)
+        bool wantsChest = Random.value < 0.5f;
+        List<Vector2Int> eligiblePositions = GetEligiblePositions(wantsChest);
+
+        if (eligiblePositions.Count == 0)
         {
-            if (HasDungeonPrefabMatch(kvp.Value))
-                eligiblePositions.Add(kvp.Key);
+            bool fallbackChest = !wantsChest;
+            List<Vector2Int> fallbackPositions = GetEligiblePositions(fallbackChest);
+
+            if (fallbackPositions.Count == 0)
+            {
+                // Neither subtype fits anywhere in this layout - skip dungeon room this floor
+                return;
+            }
+
+            Debug.Log($"Dungeon room: wanted {(wantsChest ? "chest" : "risky")} room but no matching prefab fit this layout's door shapes. Falling back to {(fallbackChest ? "chest" : "risky")} room instead - consider adding more prefab variety for the {(wantsChest ? "chest" : "risky")} type.");
+            wantsChest = fallbackChest;
+            eligiblePositions = fallbackPositions;
         }
 
-        // No dungeon prefab fits any room in this layout - skip for this floor
-        if (eligiblePositions.Count == 0) return;
-
         hasDungeonRoom = true;
+        dungeonRoomIsChest = wantsChest;
         dungeonRoomPos = eligiblePositions[Random.Range(0, eligiblePositions.Count)];
     }
 
-    bool HasDungeonPrefabMatch(RoomRequirements req)
+    List<Vector2Int> GetEligiblePositions(bool wantsChest)
+    {
+        List<Vector2Int> eligiblePositions = new List<Vector2Int>();
+        foreach (var kvp in layout)
+        {
+            if (HasDungeonPrefabMatch(kvp.Value, wantsChest))
+                eligiblePositions.Add(kvp.Key);
+        }
+        return eligiblePositions;
+    }
+
+    bool HasDungeonPrefabMatch(RoomRequirements req, bool wantsChest)
     {
         foreach (Room prefab in roomPrefabs)
         {
             if (prefab.isDungeon &&
+                prefab.isChestRoom == wantsChest &&
                 prefab.hasTopDoor == req.top &&
                 prefab.hasBottomDoor == req.bottom &&
                 prefab.hasLeftDoor == req.left &&
@@ -231,6 +256,7 @@ public class LevelGenerator : MonoBehaviour
             cauldronSpawnable = cauldron.RoomCheck(roomCounter, layout.Count);
 
             bool isDungeonRoom = hasDungeonRoom && kvp.Key == dungeonRoomPos;
+            bool isChestRoom = isDungeonRoom && dungeonRoomIsChest;
 
             // Dungeon room and cauldron room are mutually exclusive - dungeon takes priority
             if (isDungeonRoom && cauldronSpawnable)
@@ -238,12 +264,12 @@ public class LevelGenerator : MonoBehaviour
                 cauldronSpawnable = false;
             }
 
-            PlaceBestRoom(kvp.Key, kvp.Value, isDungeonRoom);
+            PlaceBestRoom(kvp.Key, kvp.Value, isDungeonRoom, isChestRoom);
             roomCounter++;
         }
     }
 
-    void PlaceBestRoom(Vector2Int pos, RoomRequirements req, bool isDungeonRoom)
+    void PlaceBestRoom(Vector2Int pos, RoomRequirements req, bool isDungeonRoom, bool isChestRoom)
     {
         List<Room> shuffledPrefabs = new List<Room>(roomPrefabs);
         for (int i = 0; i < shuffledPrefabs.Count; i++)
@@ -257,6 +283,7 @@ public class LevelGenerator : MonoBehaviour
         foreach (Room prefab in shuffledPrefabs)
         {
             if (prefab.isDungeon == isDungeonRoom &&
+                prefab.isChestRoom == isChestRoom &&
                 prefab.hasTopDoor == req.top &&
                 prefab.hasBottomDoor == req.bottom &&
                 prefab.hasLeftDoor == req.left &&
@@ -281,6 +308,6 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right} Dungeon:{isDungeonRoom}");
+        Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right} Dungeon:{isDungeonRoom} Chest:{isChestRoom}");
     }
 }
