@@ -6,7 +6,6 @@ public class EnemyData : ScriptableObject
     [Header("Base Identity")]
     public string enemyName;
     public Sprite defaultSprite;
-    public RuntimeAnimatorController animatorController;
 
     [Header("Combat Stats")]
     public int maxHealth;

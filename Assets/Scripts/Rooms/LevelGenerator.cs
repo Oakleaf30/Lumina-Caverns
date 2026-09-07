@@ -15,6 +15,9 @@ public class LevelGenerator : MonoBehaviour
     [Tooltip("BiomeData used for the dungeon room's items/enemies instead of the normal biomeData.")]
     [SerializeField] private BiomeData dungeonBiomeData;
 
+    [Range(0f, 1f)]
+    [SerializeField] private float dungeonChestRoomChance = 0.5f;
+
     [SerializeField] private InteractiveGenerator itemGenerator;
     [SerializeField] private EnemyGenerator enemyGenerator;
     [SerializeField] private Cauldron cauldron;
@@ -119,7 +122,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (Random.value >= dungeonChance) return;
 
-        bool wantsChest = Random.value < 0.5f;
+        bool wantsChest = Random.value < dungeonChestRoomChance;
         List<Vector2Int> eligiblePositions = GetEligiblePositions(wantsChest);
 
         if (eligiblePositions.Count == 0)

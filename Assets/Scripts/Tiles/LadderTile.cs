@@ -3,31 +3,35 @@ using UnityEngine.SceneManagement;
 
 public class LadderTile : MonoBehaviour
 {
-    [SerializeField] private GameEvent onLadderUsed;
-    [SerializeField] private GameObject ladderPrefab;
 
-    [SerializeField] private Vector3Event onLadderCheck;
-    private int numberOfNodes = 0;
-    private float ladderChance;
+    [Header("Settings")]
     [SerializeField] private float baseLadderChance = 0.02f;
+    [SerializeField] private float defaultShaftChance;
 
-    private float numberOfEnemies = 0;
-    private float dungeonEnemies = 0;
+    [Header("Events")]
+    [SerializeField] private GameEvent onLadderUsed;
+    [SerializeField] private Vector3Event onLadderCheck;
     [SerializeField] private Vector3Event onEnemyLadder;
+    [SerializeField] private GameEvent onShaftUsed;
+    [SerializeField] private GameEvent onLastEnemyDefeated;
     [SerializeField] private GameEvent onDungeonEnemyDeath;
 
-    [SerializeField] private GameEvent onShaftUsed;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject ladderPrefab;
     [SerializeField] private GameObject shaftPrefab;
-    [SerializeField] private float defaultShaftChance;
-    private float shaftChance;
+    [SerializeField] private LevelGenerator level;
 
-    private BiomeData activeBiome;
+    [Header("Biomes")]
     [SerializeField] private BiomeData coalFloor;
     [SerializeField] private BiomeData infestedFloor;
 
-    [SerializeField] private GameEvent onLastEnemyDefeated;
+    private int numberOfNodes = 0;
+    private float ladderChance;
+    private float shaftChance;
+    private float numberOfEnemies = 0;
+    private float dungeonEnemies = 0;
+    private BiomeData activeBiome;
 
-    [SerializeField] LevelGenerator level;
 
     private void Start()
     {
@@ -151,14 +155,14 @@ public class LadderTile : MonoBehaviour
         if (dungeonEnemies == 0)
         {
             var anchorPos = GameObject.FindGameObjectWithTag("ChestAnchor").transform.position;
-            SpawnChest(anchorPos, mediumChest);
+            SpawnChest(anchorPos, largeChest);
         }
     }
 
     [Header("Chest References")]
     [SerializeField] private GameObject chestPrefab;
     [SerializeField] private ChestData smallChest;
-    [SerializeField] private ChestData mediumChest;
+    [SerializeField] private ChestData largeChest;
 
 
     private Vector3 closestAnchor;

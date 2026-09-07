@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2489f7f9c1376c044a2d5308413f2f53, type: 3}
-  m_Name: Medium
+  m_Name: Large
   m_EditorClassIdentifier: 
-  loot: {fileID: 11400000, guid: 63a1f88204c19534394d4c61488d95db, type: 2}
-  itemAmount: 2
-  sprite: {fileID: 1175201254971265051, guid: 64f035d4900810a4c83905f4b417ec04, type: 3}
-  openAnimation: {fileID: 7400000, guid: 5a2a15db686a92b4baee6a6574b5c67f, type: 2}
+  loot: {fileID: 11400000, guid: fa25eac4e376bc2429048ae182795f20, type: 2}
+  itemAmount: 1
+  sprite: {fileID: 4014636494305765866, guid: 54d461e34e935b5499f79a88ef84936a, type: 3}
+  openAnimation: {fileID: 7400000, guid: 1a2913e765a91d8448f3522fc7e46f91, type: 2}

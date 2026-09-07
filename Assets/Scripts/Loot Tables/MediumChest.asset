@@ -46,12 +46,12 @@ MonoBehaviour:
   - itemAmount:
       item: {fileID: 11400000, guid: 208aaf311de2341478d0768f7d98a528, type: 2}
       amount: 1
-    maxAmount: 3
+    maxAmount: 2
     chance: 0.25
   - itemAmount:
       item: {fileID: 11400000, guid: 6f54808d28ab91a4d9755fdb3c45fd8a, type: 2}
       amount: 1
-    maxAmount: 3
+    maxAmount: 2
     chance: 0.25
   - itemAmount:
       item: {fileID: 11400000, guid: 215e47f7458465348a6e80e896d5b02c, type: 2}

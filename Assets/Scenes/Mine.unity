@@ -3122,20 +3122,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3f3122e37916f45b788de0dc28a8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
-  ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
-  onLadderCheck: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
   baseLadderChance: 0.02
+  defaultShaftChance: 0.2
+  onLadderUsed: {fileID: 11400000, guid: 264b8076b12374347b5c244067056474, type: 2}
+  onLadderCheck: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
   onEnemyLadder: {fileID: 11400000, guid: a12e5928341c39246a4e681709506d40, type: 2}
   onShaftUsed: {fileID: 11400000, guid: ff5432d2ed022c84ba136a04011451ed, type: 2}
+  onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}
+  onDungeonEnemyDeath: {fileID: 11400000, guid: 0ad0edd07219eac489ae7a5386ecad10, type: 2}
+  ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
   shaftPrefab: {fileID: 2009227372848232830, guid: d1f538cadbdb9eb47b5c792aad2c0242, type: 3}
-  defaultShaftChance: 0.2
+  level: {fileID: 1736561150}
   coalFloor: {fileID: 11400000, guid: 489f2abbd7bb9f34bb6ec6c50f42cce7, type: 2}
   infestedFloor: {fileID: 11400000, guid: 31b5c8ed95f88c44f93e9c77c7542d60, type: 2}
-  onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}
-  level: {fileID: 1736561150}
   chestPrefab: {fileID: 7298821199132620371, guid: 6fdf4b1899316064488420c1fee7e1ad, type: 3}
   smallChest: {fileID: 11400000, guid: 0898e46cbf582a24188e87901126beef, type: 2}
+  largeChest: {fileID: 11400000, guid: 26158fb63d1c0774a98a362f624943c4, type: 2}
 --- !u!1 &1649358333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,7 +3367,8 @@ MonoBehaviour:
   roomSize: 20
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}
   dungeonChance: 1
-  dungeonBiomeData: {fileID: 11400000, guid: 489f2abbd7bb9f34bb6ec6c50f42cce7, type: 2}
+  dungeonBiomeData: {fileID: 11400000, guid: 1ee21cd787c20274cb8bae0aa0cbc1c4, type: 2}
+  dungeonChestRoomChance: 1
   itemGenerator: {fileID: 1376388035}
   enemyGenerator: {fileID: 4377858}
   cauldron: {fileID: 882703437}

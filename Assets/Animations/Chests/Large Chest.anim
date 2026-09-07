@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Medium Chest
+  m_Name: Large Chest
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 4033722290052552153, guid: 64f035d4900810a4c83905f4b417ec04, type: 3}
+      value: {fileID: -7389924080637964641, guid: 54d461e34e935b5499f79a88ef84936a, type: 3}
     - time: 0.083333336
-      value: {fileID: 1528983188708848437, guid: 64f035d4900810a4c83905f4b417ec04, type: 3}
+      value: {fileID: 79411096202221798, guid: 54d461e34e935b5499f79a88ef84936a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 4033722290052552153, guid: 64f035d4900810a4c83905f4b417ec04, type: 3}
-    - {fileID: 1528983188708848437, guid: 64f035d4900810a4c83905f4b417ec04, type: 3}
+    - {fileID: -7389924080637964641, guid: 54d461e34e935b5499f79a88ef84936a, type: 3}
+    - {fileID: 79411096202221798, guid: 54d461e34e935b5499f79a88ef84936a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

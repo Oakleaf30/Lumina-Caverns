@@ -22,16 +22,17 @@ public class Chest : MonoBehaviour
     public void InitialiseImmediate(ChestData data)
     {
         chestData = data;
-        spriteRenderer.sprite = chestData.sprite;
+
+        animator.enabled = false;
 
         AnimatorOverrideController overrideController =
-        new AnimatorOverrideController(animator.runtimeAnimatorController);
+            new AnimatorOverrideController(animator.runtimeAnimatorController);
 
         overrideController["Placeholder"] = chestData.openAnimation;
 
         animator.runtimeAnimatorController = overrideController;
 
-        animator.enabled = false;
+        spriteRenderer.sprite = chestData.sprite;
     }
 
     private void OnEnable()
@@ -51,7 +52,7 @@ public class Chest : MonoBehaviour
 
     public void SpawnLoot()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < chestData.itemAmount; i++)
         {
             var loot = chestData.loot.GetRandomLoot();
 

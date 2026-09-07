@@ -52,4 +52,4 @@ MonoBehaviour:
   pityReward:
     item: {fileID: 0}
     amount: 0
-  pityThreshold: 6
+  pityThreshold: 0

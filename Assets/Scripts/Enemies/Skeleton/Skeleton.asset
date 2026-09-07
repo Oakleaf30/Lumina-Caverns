@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797d09e1b34be24459f93bedcea55366, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: 
+  enemyName: Skeleton
+  defaultSprite: {fileID: 4354231566380549168, guid: c5baa3437c95f824592817e0778775a9, type: 3}
+  maxHealth: 1
+  movementSpeed: 2
+  contactDamage: 10
+  attackCooldown: 1
+  knockbackResistance: 0.3
+  dropData: {fileID: 11400000, guid: 88c641905ba3e084c84ef3ec1101d1ae, type: 2}
+  dropChance: 1
+  optionalDrops: []

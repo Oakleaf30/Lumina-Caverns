@@ -22,6 +22,8 @@ public class EnemyGenerator : MonoBehaviour
 
     public void GenerateEnemies(Room room, BiomeData biome)
     {
+        dungeonEnemies = 0;
+
         if (biome.enemyPool.Count == 0)
             return;
 

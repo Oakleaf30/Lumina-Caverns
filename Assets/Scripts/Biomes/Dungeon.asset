@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: Dungeon
   m_EditorClassIdentifier: 
   biomeName: 
-  spawnPools: []
-  activeAnchors: 0
-  enemyPool: []
-  enemyCount: []
+  spawnPools:
+  - resourceName: Barrel
+    smallVariant: {fileID: 0}
+    largeVariant: {fileID: 0}
+    guaranteedVariant: {fileID: 0}
+    selectionWeight: 0
+    largeSizeChance: 0
+  activeAnchors: 2
+  enemyPool:
+  - {fileID: 7623270418682877866, guid: c2935557b5e17c444b98e75b082048d4, type: 3}
+  enemyCount:
+  - enemyNumber: 3
+    spawnChance: 1

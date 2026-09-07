@@ -18,6 +18,8 @@ public class EnemyBase : MonoBehaviour
     protected int roomID;
 
     protected bool frozen = false;
+
+    [Header("Dungeon Settings")]
     public bool isDungeonType;
     [SerializeField] protected GameEvent onDungeonEnemyDeath;
 
@@ -50,7 +52,6 @@ public class EnemyBase : MonoBehaviour
 
         currentHealth = data.maxHealth;
         spriteRenderer.sprite = data.defaultSprite;
-        anim.runtimeAnimatorController = data.animatorController;
         this.roomID = roomID;
     }
 

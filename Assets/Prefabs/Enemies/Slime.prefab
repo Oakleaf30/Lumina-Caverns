@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 627757988419378977}
   - component: {fileID: 3420840714700737486}
   - component: {fileID: 5266319837671352425}
-  - component: {fileID: 1749215366215954150}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
@@ -107,6 +106,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 184178f5d22505d47bdc8fe6807fe95a, type: 2}
   dropPrefab: {fileID: 3943490826253954512, guid: e9b3ded8042f33547a5fbe33d72ca958, type: 3}
   onEnemyLadder: {fileID: 11400000, guid: a12e5928341c39246a4e681709506d40, type: 2}
+  isDungeonType: 0
+  onDungeonEnemyDeath: {fileID: 0}
 --- !u!50 &3420840714700737486
 Rigidbody2D:
   serializedVersion: 5
@@ -170,28 +171,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.05598584}
   m_Radius: 0.3588399
---- !u!95 &1749215366215954150
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214236319870455436}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9100215827213972628
 GameObject:
   m_ObjectHideFlags: 0

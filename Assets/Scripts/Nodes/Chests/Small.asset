@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Small
   m_EditorClassIdentifier: 
   loot: {fileID: 11400000, guid: e21d38d9b0cb58342ac36afeb9bdb58c, type: 2}
+  itemAmount: 3
   sprite: {fileID: -7214768529178889248, guid: cf719c6fba4dbd4498162b3cc9c614ab, type: 3}
   openAnimation: {fileID: 7400000, guid: 74808e6ef7df9c84485b019742be33be, type: 2}
