@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class LadderTile : MonoBehaviour
 {
@@ -13,7 +12,9 @@ public class LadderTile : MonoBehaviour
     [SerializeField] private float baseLadderChance = 0.02f;
 
     private float numberOfEnemies = 0;
+    private float dungeonEnemies = 0;
     [SerializeField] private Vector3Event onEnemyLadder;
+    [SerializeField] private GameEvent onDungeonEnemyDeath;
 
     [SerializeField] private GameEvent onShaftUsed;
     [SerializeField] private GameObject shaftPrefab;
@@ -46,6 +47,7 @@ public class LadderTile : MonoBehaviour
         onLadderCheck.Subscribe(CheckLadderChance);
         onEnemyLadder.Subscribe(EnemyLadderCheck);
         onShaftUsed.Subscribe(JumpShaft);
+        onDungeonEnemyDeath.Subscribe(DungeonEnemyCheck);
     }
 
     private void OnDisable()
@@ -54,6 +56,7 @@ public class LadderTile : MonoBehaviour
         onLadderCheck.Unsubscribe(CheckLadderChance);
         onEnemyLadder.Unsubscribe(EnemyLadderCheck);
         onShaftUsed.Unsubscribe(JumpShaft);
+        onDungeonEnemyDeath.Unsubscribe(DungeonEnemyCheck);
     }
 
     private void LoadMines()
@@ -86,9 +89,10 @@ public class LadderTile : MonoBehaviour
         }
     }
 
-    public void AddEnemies(int amount)
+    public void AddEnemies(int enemies, int dungeonEnemies)
     {
-        numberOfEnemies += amount;
+        numberOfEnemies += enemies;
+        this.dungeonEnemies += dungeonEnemies;
     }
 
     private void EnemyLadderCheck(Vector3 enemyPos)
@@ -108,18 +112,22 @@ public class LadderTile : MonoBehaviour
         {
             if (activeBiome.biomeName == "Infested")
             {
-                transform.position = enemyPos;
-                SpawnLadder(enemyPos);
-                onLastEnemyDefeated.Raise();
-
-                GameObject chest = Instantiate(chestPrefab, closestAnchor, Quaternion.identity);
-                chest.GetComponent<Chest>().InitialiseImmediate(smallChest);
+                SpawnInfestedReward(enemyPos);
             }
             else
             {
                 baseLadderChance += 0.04f;
             }
         }
+    }
+
+    private void SpawnInfestedReward(Vector3 enemyPos)
+    {
+        transform.position = enemyPos;
+        SpawnLadder(enemyPos);
+        onLastEnemyDefeated.Raise();
+
+        SpawnChest(closestAnchor, smallChest);
     }
 
     private void SpawnLadder(Vector3 position)
@@ -137,9 +145,21 @@ public class LadderTile : MonoBehaviour
         TransitionState.FloorTransition(activeBiome, nextBiome, SceneManager.GetActiveScene().name);
     }
 
+    private void DungeonEnemyCheck()
+    {
+        dungeonEnemies--;
+        if (dungeonEnemies == 0)
+        {
+            var anchorPos = GameObject.FindGameObjectWithTag("ChestAnchor").transform.position;
+            SpawnChest(anchorPos, mediumChest);
+        }
+    }
+
     [Header("Chest References")]
     [SerializeField] private GameObject chestPrefab;
     [SerializeField] private ChestData smallChest;
+    [SerializeField] private ChestData mediumChest;
+
 
     private Vector3 closestAnchor;
     private float closestDist = float.MaxValue;
@@ -152,6 +172,12 @@ public class LadderTile : MonoBehaviour
             closestDist = sqrDist;
             closestAnchor = anchorPos;
         }
+    }
+
+    private void SpawnChest(Vector3 pos, ChestData data)
+    {
+        GameObject chest = Instantiate(chestPrefab, pos, Quaternion.identity);
+        chest.GetComponent<Chest>().InitialiseImmediate(data);
     }
 }
 

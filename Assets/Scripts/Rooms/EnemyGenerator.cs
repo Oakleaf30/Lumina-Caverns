@@ -10,6 +10,7 @@ public class EnemyGenerator : MonoBehaviour
     private List<EnemyNumber> enemyNumbers;
 
     private int totalEnemies = 0;
+    private int dungeonEnemies = 0;
     [SerializeField] private LadderTile ladder;
 
     private void Setup(BiomeData biome)
@@ -37,7 +38,7 @@ public class EnemyGenerator : MonoBehaviour
             SpawnEnemy(spawnPoints[e], room);
         }
 
-        ladder.AddEnemies(totalEnemies);
+        ladder.AddEnemies(totalEnemies, dungeonEnemies);
     }
 
     private void SpawnEnemy(Vector3 spot, Room room)
@@ -48,7 +49,10 @@ public class EnemyGenerator : MonoBehaviour
         EnemyBase enemyBase = spawnedEnemy.GetComponent<EnemyBase>();
         enemyBase.InitializeEnemy(room.RoomID);
 
-        totalEnemies++;
+        if (enemyBase.isDungeonType)
+            dungeonEnemies++;
+        else
+            totalEnemies++;
     }
 
     private int SelectWeightedPool()

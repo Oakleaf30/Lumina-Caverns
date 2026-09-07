@@ -1,5 +1,5 @@
-using TreeEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -18,6 +18,9 @@ public class EnemyBase : MonoBehaviour
     protected int roomID;
 
     protected bool frozen = false;
+    public bool isDungeonType;
+    [SerializeField] protected GameEvent onDungeonEnemyDeath;
+
 
     // 2. Changed to protected virtual so Slime can run its own Awake code if needed
     protected virtual void Awake()
@@ -84,7 +87,11 @@ public class EnemyBase : MonoBehaviour
                 SpawnDrop(optional.dropData);
         }
 
-        onEnemyLadder.Raise(transform.position);
+        if (isDungeonType)
+            onDungeonEnemyDeath.Raise();
+        else
+            onEnemyLadder.Raise(transform.position);
+
         Destroy(gameObject);
     }
 
