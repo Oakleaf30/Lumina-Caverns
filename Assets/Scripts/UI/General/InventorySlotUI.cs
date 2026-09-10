@@ -23,6 +23,13 @@ public class InventorySlotUI : MonoBehaviour
             : (quantity == 0 ? "" : quantity.ToString());
     }
 
+    public void SetRequired(ItemData item, int amount)
+    {
+        this.item = item;
+        icon.sprite = item.icon;
+        quantityText.text = $"{BaseStorage.Current.GetQuantity(item)}/{amount}";
+    }
+
     public void Clear()
     {
         icon.sprite = null;

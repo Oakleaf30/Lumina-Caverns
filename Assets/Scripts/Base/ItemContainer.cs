@@ -87,6 +87,11 @@ public class ItemContainer : MonoBehaviour
         return items.TryGetValue(item, out int q) ? q : 0;
     }
 
+    public int GetQuantity(string itemId)
+    {
+        return GetQuantity(ItemDatabase.GetById(itemId));
+    }
+
     public List<InventorySlot> GetItemsByCategory(ItemCategory category)
     {
         return items

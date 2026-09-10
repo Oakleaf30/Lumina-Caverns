@@ -16,3 +16,4 @@ MonoBehaviour:
   displayName: Diamond
   icon: {fileID: -7241490130566105674, guid: 3f450660deea86843a87c7123f8866a5, type: 3}
   category: 1
+  info: Can substitute any gem for enchanting
