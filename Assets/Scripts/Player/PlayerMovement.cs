@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalInput { get; private set; }
     public float verticalInput { get; private set; }
 
-    [SerializeField] private float baseMoveSpeed = 5.0f;
+    [SerializeField] private float baseMoveSpeed;
     private float currentMoveSpeed;
 
     public int CurrentRoomID { get; private set; } = -1;

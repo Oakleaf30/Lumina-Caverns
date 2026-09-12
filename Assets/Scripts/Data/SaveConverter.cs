@@ -7,9 +7,16 @@ public static class SaveConverter
             pickaxeIndex = runState.pickaxeIndex,
             pickaxeTier = runState.tierIndex,
             pickaxeDurability = runState.pickaxeDurability,
+            pickaxeEnchantId = runState.pickaxeEnchant.enchantId,
+            pickaxeEnchantCounter = runState.pickaxeEnchantCounter,
 
             armourIndex = runState.armourIndex,
+            armourEnchantId = runState.armourEnchant.enchantId,
+            armourEnchantCounter = runState.armourEnchantCounter,
+
             swordIndex = runState.swordIndex,
+            swordEnchantId = runState.swordEnchant.enchantId,
+            swordEnchantCounter = runState.swordEnchantCounter,
 
             geodePity = runState.geodePity,
         };
@@ -25,9 +32,16 @@ public static class SaveConverter
         runState.pickaxeIndex = data.pickaxeIndex;
         runState.tierIndex = data.pickaxeTier;
         runState.pickaxeDurability = data.pickaxeDurability;
+        runState.pickaxeEnchant = EnchantDatabase.GetById(data.pickaxeEnchantId);
+        runState.pickaxeEnchantCounter = data.pickaxeEnchantCounter;
 
         runState.armourIndex = data.armourIndex;
+        runState.armourEnchant = EnchantDatabase.GetById(data.armourEnchantId);
+        runState.armourEnchantCounter = data.armourEnchantCounter;
+
         runState.swordIndex = data.swordIndex;
+        runState.swordEnchant = EnchantDatabase.GetById(data.swordEnchantId);
+        runState.swordEnchantCounter = data.swordEnchantCounter;
 
         runState.geodePity = data.geodePity;
 

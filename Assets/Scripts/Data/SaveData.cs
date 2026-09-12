@@ -15,9 +15,16 @@ public class SaveData
     public int pickaxeIndex;
     public int pickaxeTier;
     public int pickaxeDurability;
+    public string pickaxeEnchantId;
+    public int pickaxeEnchantCounter;
 
     public int armourIndex;
+    public string armourEnchantId;
+    public int armourEnchantCounter;
+
     public int swordIndex;
+    public string swordEnchantId;
+    public int swordEnchantCounter;
 
     public int geodePity;
 }

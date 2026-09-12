@@ -15,7 +15,6 @@ public class EnchanterUI : StationUI
 
     [Header("References")]
     [SerializeField] private ItemData[] gems;
-    [SerializeField] private EnchantRegistry registry;
     
 
     private BaseStorage Storage => BaseStorage.Current;
@@ -42,13 +41,13 @@ public class EnchanterUI : StationUI
 
     private void UpdateDisplay(ItemData gem)
     {
-        enchant = registry.GetEnchant(selectedSlot, gem);
+        enchant = EnchantDatabase.GetEnchant(selectedSlot, gem);
 
         oreSlot.SetRequired(enchant.requiredMagicOre, enchant.magicOreAmount);
         gemSlot.SetRequired(gem, 1);
 
         infoText.text = enchant.description;
-        button.interactable = CanCraft();
+        button.interactable = CanEnchant();
         diamondButton.interactable = CanUseDiamond();
     }
 
@@ -57,7 +56,7 @@ public class EnchanterUI : StationUI
         UpdateDisplay(gems[dropdown.value]);
     }
 
-    private bool CanCraft()
+    private bool CanEnchant()
     {
         if (Storage.GetQuantity(enchant.requiredMagicOre) < enchant.magicOreAmount)
             return false;

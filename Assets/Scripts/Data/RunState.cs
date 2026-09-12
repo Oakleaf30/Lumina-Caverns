@@ -11,12 +11,18 @@ public class RunState
     public PickaxeTier tier;
     public int tierIndex;
     public int durabilityPerBar;
+    public EnchantData pickaxeEnchant;
+    public int pickaxeEnchantCounter;
 
     public ArmourData armour;
     public int armourIndex;
+    public EnchantData armourEnchant;
+    public int armourEnchantCounter;
 
     public SwordData sword;
     public int swordIndex;
+    public EnchantData swordEnchant;
+    public int swordEnchantCounter;
 
     public int potionCount => Storage.GetQuantity("potion");
     public int bombCount => Storage.GetQuantity("bomb");
