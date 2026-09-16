@@ -12,6 +12,7 @@ public class PlayerMining : MonoBehaviour
     private PlayerMovement playerMovement;
 
     [Header("Mining Mechanics")]
+    [SerializeField] private float baseSwingSpeed = 0.75f;
     [SerializeField] private float swingCooldown = 0.4f;
     [SerializeField] private float strikeRadius = 0.4f;
     [SerializeField] private LayerMask resourceLayer;
@@ -56,6 +57,12 @@ public class PlayerMining : MonoBehaviour
         PickaxeDurability = RunState.pickaxeDurability;
         onDurabilityChanged.Raise();
         RunState.durabilityPerBar = pickaxe.durabilityPerBar;
+
+        float speed = baseSwingSpeed;
+        if (GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Pickaxe, "swift_pick", out var enchant))
+            speed = enchant.value;
+
+        anim.SetFloat("SwingSpeed", speed);
     }
 
     void Update()

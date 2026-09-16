@@ -7,22 +7,22 @@ public static class SaveConverter
             pickaxeIndex = runState.pickaxeIndex,
             pickaxeTier = runState.tierIndex,
             pickaxeDurability = runState.pickaxeDurability,
-            pickaxeEnchantId = runState.pickaxeEnchant.enchantId,
-            pickaxeEnchantCounter = runState.pickaxeEnchantCounter,
-
-            armourIndex = runState.armourIndex,
-            armourEnchantId = runState.armourEnchant.enchantId,
-            armourEnchantCounter = runState.armourEnchantCounter,
-
-            swordIndex = runState.swordIndex,
-            swordEnchantId = runState.swordEnchant.enchantId,
-            swordEnchantCounter = runState.swordEnchantCounter,
 
             geodePity = runState.geodePity,
         };
 
         foreach (var kvp in runState.storage)
             data.storage.Add(new ItemCountEntry { itemId = kvp.Key.itemId, count = kvp.Value });
+
+        foreach (var kvp in runState.equippedEnchants)
+        {
+            data.enchants.Add(new EnchantSaveEntry
+            {
+                slot = kvp.Key,
+                enchantId = kvp.Value.data.enchantId,
+                runsRemaining = kvp.Value.runsRemaining
+            });
+        }
 
         return data;
     }
@@ -32,16 +32,9 @@ public static class SaveConverter
         runState.pickaxeIndex = data.pickaxeIndex;
         runState.tierIndex = data.pickaxeTier;
         runState.pickaxeDurability = data.pickaxeDurability;
-        runState.pickaxeEnchant = EnchantDatabase.GetById(data.pickaxeEnchantId);
-        runState.pickaxeEnchantCounter = data.pickaxeEnchantCounter;
 
         runState.armourIndex = data.armourIndex;
-        runState.armourEnchant = EnchantDatabase.GetById(data.armourEnchantId);
-        runState.armourEnchantCounter = data.armourEnchantCounter;
-
         runState.swordIndex = data.swordIndex;
-        runState.swordEnchant = EnchantDatabase.GetById(data.swordEnchantId);
-        runState.swordEnchantCounter = data.swordEnchantCounter;
 
         runState.geodePity = data.geodePity;
 
@@ -50,6 +43,20 @@ public static class SaveConverter
         {
             var item = ItemDatabase.GetById(entry.itemId);
             if (item != null) runState.storage[item] = entry.count;
+        }
+
+        runState.equippedEnchants.Clear();
+        foreach (var entry in data.enchants)
+        {
+            var enchantData = EnchantDatabase.GetById(entry.enchantId);
+            if (enchantData != null)
+            {
+                runState.equippedEnchants[entry.slot] = new ActiveEnchant
+                {
+                    data = enchantData,
+                    runsRemaining = entry.runsRemaining
+                };
+            }
         }
     }
 

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132e68baba215b246b9d848748c2a817, type: 3}
   m_Name: NodeHunter
   m_EditorClassIdentifier: 
+  enchantId: node_hunter
   description: Chance to reveal nearby nodes after mining one
   requiredGem: {fileID: 11400000, guid: 9757768cc32a0f441aa30f9d6123748f, type: 2}
   requiredMagicOre: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
   magicOreAmount: 10
+  slot: 0

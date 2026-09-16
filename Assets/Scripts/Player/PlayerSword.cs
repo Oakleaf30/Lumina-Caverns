@@ -81,8 +81,21 @@ public class PlayerSword : MonoBehaviour
                 Vector2 knockbackDir = ((Vector2)enemy.transform.position - centerOrigin).normalized;
                 Vector2 totalForce = knockbackDir * knockbackForce;
 
+
+                HitInfo hit = new HitInfo
+                {
+                    damage = sword.damage,
+                    knockback = knockbackDir * knockbackForce
+                };
+
+                if (GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Sword, "stun", out var enchant) && Random.value <= enchant.procChance)
+                {
+                    hit.isStun = true;
+                    hit.stunDuration = enchant.value;
+                }
+
                 // Pass the damage AND the force vector
-                enemy.TakeDamage(sword.damage, totalForce);
+                enemy.TakeDamage(sword.damage, totalForce, hit);
             }
 
             if (targetCollider.TryGetComponent(out Barrel barrel))
@@ -106,4 +119,12 @@ public class PlayerSword : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackOrigin, attackRadius);
     }
+}
+
+public struct HitInfo
+{
+    public float damage;
+    public Vector2 knockback;
+    public bool isStun;
+    public float stunDuration;
 }

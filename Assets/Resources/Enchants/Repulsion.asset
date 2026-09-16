@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132e68baba215b246b9d848748c2a817, type: 3}
   m_Name: Repulsion
   m_EditorClassIdentifier: 
+  enchantId: repulsion
   description: Periodically release a damaging wave after being hit that pushes back
     enemies
   requiredGem: {fileID: 11400000, guid: 9757768cc32a0f441aa30f9d6123748f, type: 2}

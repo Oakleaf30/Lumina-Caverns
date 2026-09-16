@@ -10,6 +10,8 @@ public class EnchantData : ScriptableObject
     public ItemData requiredGem;
     public ItemData requiredMagicOre;
     public int magicOreAmount;
-
+    public int runsPerEnchant;
+    [Range(0f, 1f)] public float procChance;
+    public float value;
     public EnchantSlot slot;
 }

@@ -35,13 +35,15 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentMoveSpeed = baseMoveSpeed;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Armour, "fleet_foot", out var enchant))
+            baseMoveSpeed = enchant.value;
+
+        currentMoveSpeed = baseMoveSpeed;
     }
 
     // Update is called once per frame

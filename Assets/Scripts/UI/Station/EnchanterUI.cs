@@ -72,6 +72,29 @@ public class EnchanterUI : StationUI
         return !button.interactable && Storage.GetQuantity("diamond") > 0;
     }
 
+    public void NormalEnchant()
+    {
+        Storage.RemoveItem(enchant.requiredGem, 1);
+        Enchant();
+    }
+
+    public void UseDiamond()
+    {
+        Storage.RemoveItem("diamond", 1);
+        Enchant();
+    }
+
+    private void Enchant()
+    {
+        Storage.RemoveItem(enchant.requiredMagicOre, enchant.magicOreAmount); // Since requires magic ore either way
+        GameSession.Instance.runState.equippedEnchants[selectedSlot] = new ActiveEnchant
+        {
+            data = enchant,
+            runsRemaining = enchant.runsPerEnchant
+        };
+        UpdateDisplay(enchant.requiredGem);
+    }
+
     public void OnPickaxeTabSelected()
     {
         selectedSlot = EnchantSlot.Pickaxe;

@@ -5752,57 +5752,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6404752672125141045, guid: 34623cf48c20fca44a20a3615ca81c12, type: 3}
   m_PrefabInstance: {fileID: 355040807}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &371300046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 371300047}
-  - component: {fileID: 371300048}
-  m_Layer: 0
-  m_Name: Enchant Registry
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &371300047
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371300046}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1103872014}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &371300048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371300046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d8cf3c28acd93f48b744c22c487be7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allEnchants:
-  - {fileID: 11400000, guid: 836eaddaa64574048aa3a87a7bf2073d, type: 2}
-  - {fileID: 11400000, guid: a7eaf8d6de5df27459cbe6fcbbeeb86e, type: 2}
-  - {fileID: 11400000, guid: 9c8bd71f44ec451479784820f7dce961, type: 2}
-  - {fileID: 11400000, guid: bb634657795e63f44be330f9e4f0efeb, type: 2}
-  - {fileID: 11400000, guid: 5f7b2a46e4b0dd94abda7765454cbd54, type: 2}
-  - {fileID: 11400000, guid: 847b568cb4b255c4f933342ed1b14684, type: 2}
 --- !u!1 &388699836
 GameObject:
   m_ObjectHideFlags: 0
@@ -10691,9 +10640,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WorkbenchUI, Assembly-CSharp
-        m_MethodName: CraftUpgrade
+      - m_Target: {fileID: 1155943431}
+        m_TargetAssemblyTypeName: EnchanterUI, Assembly-CSharp
+        m_MethodName: NormalEnchant
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15795,39 +15744,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1103872013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1103872014}
-  m_Layer: 0
-  m_Name: Registries
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1103872014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103872013}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 770.4501, y: 569.3346, z: 3.4013603}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2065981306}
-  - {fileID: 371300047}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106071098
 GameObject:
   m_ObjectHideFlags: 0
@@ -16754,7 +16670,6 @@ MonoBehaviour:
   gems:
   - {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
   - {fileID: 11400000, guid: 9757768cc32a0f441aa30f9d6123748f, type: 2}
-  registry: {fileID: 371300048}
 --- !u!1 &1157142390
 GameObject:
   m_ObjectHideFlags: 0
@@ -17279,9 +17194,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WorkbenchUI, Assembly-CSharp
-        m_MethodName: CraftUpgrade
+      - m_Target: {fileID: 1155943431}
+        m_TargetAssemblyTypeName: EnchanterUI, Assembly-CSharp
+        m_MethodName: UseDiamond
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23672,22 +23587,20 @@ MonoBehaviour:
       costAmount: 0
     tierIndex: 0
     durabilityPerBar: 0
+    pickaxeEnchant: {fileID: 0}
+    pickaxeEnchantCounter: 0
     armour: {fileID: 0}
     armourIndex: 0
+    armourEnchant: {fileID: 0}
+    armourEnchantCounter: 0
     sword: {fileID: 0}
     swordIndex: 0
+    swordEnchant: {fileID: 0}
+    swordEnchantCounter: 0
     geodePity: 0
     currentHealth: 0
     currentFloor: 0
     cauldronFloorTracker: 0
-  saveData:
-    storage: []
-    pickaxeIndex: 0
-    pickaxeTier: 0
-    pickaxeDurability: 0
-    armourIndex: 0
-    swordIndex: 0
-    geodePity: 0
   pickaxeRegistry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   autosaveInterval: 60
 --- !u!4 &1824044001
@@ -25504,11 +25417,11 @@ Transform:
   m_GameObject: {fileID: 2065981304}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 714.9873, y: -402.51038, z: -4.650046}
+  m_LocalPosition: {x: 1485.4374, y: 166.82422, z: -1.2486856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1103872014}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2065981307
 MonoBehaviour:
@@ -27167,7 +27080,7 @@ SceneRoots:
   - {fileID: 509519}
   - {fileID: 5832372150944288408}
   - {fileID: 1659607703}
-  - {fileID: 1103872014}
+  - {fileID: 2065981306}
   - {fileID: 1824044001}
   - {fileID: 1088611108}
   - {fileID: 6847322944963192372}

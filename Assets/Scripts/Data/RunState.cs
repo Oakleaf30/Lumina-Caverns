@@ -24,6 +24,8 @@ public class RunState
     public EnchantData swordEnchant;
     public int swordEnchantCounter;
 
+    public Dictionary<EnchantSlot, ActiveEnchant> equippedEnchants = new();
+
     public int potionCount => Storage.GetQuantity("potion");
     public int bombCount => Storage.GetQuantity("bomb");
     public bool amuletActive => Storage.GetQuantity("amulet") == 1;
@@ -42,6 +44,33 @@ public class RunState
         storage.Clear();
 
         currentFloor = 0;
+    }
+
+    public bool TryGetEnchant(EnchantSlot slot, string enchantId, out EnchantData data)
+    {
+        if (equippedEnchants.TryGetValue(slot, out var active) && active.data.enchantId == enchantId)
+        {
+            data = active.data;
+            return true;
+        }
+
+        data = null;
+        return false;
+    }
+
+    public void OnRunEnded()
+    {
+        var expiredSlots = new List<EnchantSlot>();
+
+        foreach (var kvp in equippedEnchants)
+        {
+            kvp.Value.runsRemaining--;
+            if (kvp.Value.runsRemaining <= 0)
+                expiredSlots.Add(kvp.Key);
+        }
+
+        foreach (var slot in expiredSlots)
+            equippedEnchants.Remove(slot);
     }
 
     BaseStorage Storage => BaseStorage.Current;

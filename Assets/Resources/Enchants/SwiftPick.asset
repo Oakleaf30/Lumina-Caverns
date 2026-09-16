@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132e68baba215b246b9d848748c2a817, type: 3}
   m_Name: SwiftPick
   m_EditorClassIdentifier: 
+  enchantId: swift_pick
   description: Increase pickaxe swing speed
   requiredGem: {fileID: 11400000, guid: d5dc2e1fd51cbab4aacdd4aac1535754, type: 2}
   requiredMagicOre: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
   magicOreAmount: 10
+  slot: 0

@@ -73,6 +73,12 @@ public class ItemContainer : MonoBehaviour
         return true;
     }
 
+    public void RemoveItem(string itemId, int amount)
+    {
+        var item = ItemDatabase.GetById(itemId);
+        RemoveItem(item, amount);
+    }
+
     public int GetQuantity(ItemData item)
     {
         if (item.itemId == "monster_drops")

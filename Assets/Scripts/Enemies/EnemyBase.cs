@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,7 +18,9 @@ public class EnemyBase : MonoBehaviour
     protected PlayerMovement player;
     protected int roomID;
 
-    protected bool frozen = false;
+    protected bool roomFrozen;
+    protected bool stunFrozen;
+    public bool frozen => roomFrozen || stunFrozen;
 
     [Header("Dungeon Settings")]
     public bool isDungeonType;
@@ -36,14 +39,7 @@ public class EnemyBase : MonoBehaviour
     // 3. Changed to protected virtual so Slime can have its own movement logic in Update/FixedUpdate
     protected virtual void Update()
     {
-        if (player.CurrentRoomID != roomID)
-        {
-            frozen = true;
-        }
-        else
-        {
-            frozen = false;
-        }
+        roomFrozen = player.CurrentRoomID != roomID;
     }
 
     public void InitializeEnemy(int roomID)
@@ -55,9 +51,12 @@ public class EnemyBase : MonoBehaviour
         this.roomID = roomID;
     }
 
-    public void TakeDamage(int amount, Vector2 knockbackVector)
+    public void TakeDamage(int amount, Vector2 knockbackVector, HitInfo hitInfo)
     {
         currentHealth -= amount;
+
+        if (hitInfo.isStun)
+            StartCoroutine(ApplyStun(hitInfo.stunDuration));
 
         if (currentHealth <= 0)
         {
@@ -73,6 +72,13 @@ public class EnemyBase : MonoBehaviour
         Vector2 finalForce = knockbackVector * forceModifier;
 
         rb.AddForce(finalForce, ForceMode2D.Impulse);
+    }
+
+    private IEnumerator ApplyStun(float duration)
+    {
+        stunFrozen = true;
+        yield return new WaitForSeconds(duration);
+        stunFrozen = false;
     }
 
     public void Die()

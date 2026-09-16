@@ -6,7 +6,6 @@ public class GameSession : MonoBehaviour
     public static GameSession Instance { get; private set; }
 
     public RunState runState;
-    public SaveData saveData;
 
     [SerializeField] private EquipmentRegistry pickaxeRegistry;
 

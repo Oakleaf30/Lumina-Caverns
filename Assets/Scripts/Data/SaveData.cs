@@ -9,22 +9,25 @@ public class ItemCountEntry
 }
 
 [Serializable]
+public class EnchantSaveEntry
+{
+    public EnchantSlot slot;
+    public string enchantId;
+    public int runsRemaining;
+}
+
+[Serializable]
 public class SaveData
 {
     public List<ItemCountEntry> storage = new();
     public int pickaxeIndex;
     public int pickaxeTier;
     public int pickaxeDurability;
-    public string pickaxeEnchantId;
-    public int pickaxeEnchantCounter;
 
     public int armourIndex;
-    public string armourEnchantId;
-    public int armourEnchantCounter;
-
     public int swordIndex;
-    public string swordEnchantId;
-    public int swordEnchantCounter;
+
+    public List<EnchantSaveEntry> enchants = new();
 
     public int geodePity;
 }
