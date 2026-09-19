@@ -5,6 +5,7 @@ public class PlayerSword : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameEvent onSwordSwing;
     [SerializeField] private EquipmentRegistry registry;
+    [SerializeField] private GameObject explosionPrefab;
 
     private Animator anim;
     private PlayerInteraction playerInteraction;
@@ -77,10 +78,7 @@ public class PlayerSword : MonoBehaviour
         {
             if (targetCollider.TryGetComponent(out EnemyBase enemy))
             {
-                // Fix: Calculate knockback away from the player's actual shift center point, not their feet
                 Vector2 knockbackDir = ((Vector2)enemy.transform.position - centerOrigin).normalized;
-                Vector2 totalForce = knockbackDir * knockbackForce;
-
 
                 HitInfo hit = new HitInfo
                 {
@@ -88,14 +86,22 @@ public class PlayerSword : MonoBehaviour
                     knockback = knockbackDir * knockbackForce
                 };
 
-                if (GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Sword, "stun", out var enchant) && Random.value <= enchant.procChance)
+                if (GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Sword, "sword_stun", out var stun) && Random.value <= stun.procChance)
                 {
                     hit.isStun = true;
-                    hit.stunDuration = enchant.value;
+                    hit.stunDuration = stun.value;
                 }
 
-                // Pass the damage AND the force vector
-                enemy.TakeDamage(sword.damage, totalForce, hit);
+                bool wasAlive = enemy.currentHealth > 0;
+                enemy.TakeDamage(sword.damage, hit);
+
+                if (wasAlive && enemy.currentHealth <= 0
+                    && GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Sword, "demolitionist", out var explode)
+                    && Random.value <= explode.procChance)
+                {
+                    var bomb = Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+                    bomb.GetComponent<Bomb>().Init(0, 1f, 0, false);
+                }
             }
 
             if (targetCollider.TryGetComponent(out Barrel barrel))

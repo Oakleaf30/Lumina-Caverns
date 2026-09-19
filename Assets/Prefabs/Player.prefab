@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPickaxeSwing: {fileID: 11400000, guid: a7f389e2b1868274e8ee3364c41d83d0, type: 2}
+  baseSwingSpeed: 0.75
   swingCooldown: 0.35
   strikeRadius: 0.2
   resourceLayer:
@@ -239,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSwordSwing: {fileID: 11400000, guid: 0c9238140dca01b479bb9c3376cdb1f9, type: 2}
   registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
+  explosionPrefab: {fileID: 4754166981462837525, guid: 77be9909335fe264abad0c79c8173c6f, type: 3}
   swingCooldown: 0.35
   enemyLayer:
     serializedVersion: 2

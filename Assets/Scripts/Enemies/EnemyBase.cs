@@ -10,7 +10,7 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField] protected Vector3Event onEnemyLadder;
 
-    protected int currentHealth;
+    public int currentHealth;
     protected SpriteRenderer spriteRenderer;
     protected Animator anim;
     protected Rigidbody2D rb;
@@ -51,7 +51,7 @@ public class EnemyBase : MonoBehaviour
         this.roomID = roomID;
     }
 
-    public void TakeDamage(int amount, Vector2 knockbackVector, HitInfo hitInfo)
+    public void TakeDamage(int amount, HitInfo hitInfo)
     {
         currentHealth -= amount;
 
@@ -63,7 +63,7 @@ public class EnemyBase : MonoBehaviour
             Die();
         }
 
-        ApplyKnockback(knockbackVector);
+        ApplyKnockback(hitInfo.knockback);
     }
 
     void ApplyKnockback(Vector2 knockbackVector)

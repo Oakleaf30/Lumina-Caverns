@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,12 +15,22 @@ public class Bomb : MonoBehaviour
     [SerializeField] private Sprite explosionSprite;
     [SerializeField] private float fadeDuration = 3f;
 
+    private bool isBomb = true;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(Explode());
+    }
+
+    public void Init(float delay, float radius, int damage, bool isBomb)
+    {
+        explosionDelay = delay;
+        explosionRadius = radius;
+        explosionDamage = damage;
+        this.isBomb = isBomb;
     }
 
     private IEnumerator Explode()

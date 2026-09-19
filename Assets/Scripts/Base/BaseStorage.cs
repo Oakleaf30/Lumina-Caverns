@@ -25,7 +25,7 @@ public class BaseStorage : ItemContainer
 
         //AddItem(copper, 100);
         //AddItem(coal, 9);
-        //AddItem(cobalt, 20);
+        AddItem(cobalt, 20);
 
         onStorageReady.Raise();
     }
