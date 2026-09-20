@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: -8217574778255028986}
   m_Layer: 7
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 241a3582b76ab704c9b208e571810d6e, type: 2}
   dropPrefab: {fileID: 3943490826253954512, guid: e9b3ded8042f33547a5fbe33d72ca958, type: 3}
   onEnemyLadder: {fileID: 0}
+  currentHealth: 0
   isDungeonType: 1
   onDungeonEnemyDeath: {fileID: 11400000, guid: 0ad0edd07219eac489ae7a5386ecad10, type: 2}
   decisionInterval: 0.3

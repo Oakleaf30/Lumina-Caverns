@@ -20,5 +20,5 @@ MonoBehaviour:
   magicOreAmount: 10
   runsPerEnchant: 2
   procChance: 1
-  value: 0
+  value: 1
   slot: 1

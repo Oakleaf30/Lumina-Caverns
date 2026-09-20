@@ -86,14 +86,14 @@ public class PlayerSword : MonoBehaviour
                     knockback = knockbackDir * knockbackForce
                 };
 
-                if (GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Sword, "sword_stun", out var stun) && Random.value <= stun.procChance)
+                if (GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Sword, "stun", out var stun) && Random.value <= stun.procChance)
                 {
                     hit.isStun = true;
                     hit.stunDuration = stun.value;
                 }
 
                 bool wasAlive = enemy.currentHealth > 0;
-                enemy.TakeDamage(sword.damage, hit);
+                enemy.TakeDamage(hit);
 
                 if (wasAlive && enemy.currentHealth <= 0
                     && GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Sword, "demolitionist", out var explode)
@@ -129,7 +129,7 @@ public class PlayerSword : MonoBehaviour
 
 public struct HitInfo
 {
-    public float damage;
+    public int damage;
     public Vector2 knockback;
     public bool isStun;
     public float stunDuration;

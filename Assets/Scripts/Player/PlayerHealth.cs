@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private EquipmentRegistry registry;
     [SerializeField] private ItemData potion;
     [SerializeField] private GameEvent onPotionCountChanged;
+    [SerializeField] private GameObject shockwavePrefab;
 
     private int CurrentHealth
     {
@@ -20,7 +21,6 @@ public class PlayerHealth : MonoBehaviour
     [Header("I-Frames Settings")]
     [SerializeField] private float iFrameDuration = 1.0f;
     [SerializeField] private float flashInterval = 0.1f;
-    private bool isInvincible = false;
 
     [Header("Heal Settings")]
     [SerializeField] private float healPercentage = 0.3f;
@@ -31,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
     private PlayerInteraction playerInteraction;
     private PlayerMovement playerMovement;
     private Animator anim;
+
+    private bool isInvincible = false;
+    private float shockwaveCooldown = 10f;
+    private bool shockwaveOnCooldown = false;
+
 
     private RunState RunState => GameSession.Instance.runState;
     private BaseStorage Storage => BaseStorage.Current;
@@ -79,8 +84,12 @@ public class PlayerHealth : MonoBehaviour
 
         if (CurrentHealth > 0)
         {
-            // Gated by hit: Trigger i-frames and standard hit visual flashing
             StartCoroutine(TriggerIFrames());
+
+            if (RunState.TryGetEnchant(EnchantSlot.Armour, "repulsion", out var repulsion) && !shockwaveOnCooldown) {
+                Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
+                StartCoroutine(ShockwaveCooldown());
+            }
         }
     }
 
@@ -159,5 +168,12 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(healInterval);
         }
         
+    }
+
+    private IEnumerator ShockwaveCooldown()
+    {
+        shockwaveOnCooldown = true;
+        yield return new WaitForSeconds(shockwaveCooldown);
+        shockwaveOnCooldown = false;
     }
 }

@@ -51,9 +51,9 @@ public class EnemyBase : MonoBehaviour
         this.roomID = roomID;
     }
 
-    public void TakeDamage(int amount, HitInfo hitInfo)
+    public void TakeDamage(HitInfo hitInfo)
     {
-        currentHealth -= amount;
+        currentHealth -= hitInfo.damage;
 
         if (hitInfo.isStun)
             StartCoroutine(ApplyStun(hitInfo.stunDuration));

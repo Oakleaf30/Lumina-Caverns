@@ -266,6 +266,7 @@ MonoBehaviour:
   registry: {fileID: 11400000, guid: 0ae36b4c5d0c50b4aa2db3baada6a9fe, type: 2}
   potion: {fileID: 11400000, guid: 7a84b182bc47ee44385be59733ebda09, type: 2}
   onPotionCountChanged: {fileID: 11400000, guid: 453550468e1cc4148967571383caa0d7, type: 2}
+  shockwavePrefab: {fileID: 1315867953425648608, guid: 0538aa992bedb9347981e98e8429fcfc, type: 3}
   iFrameDuration: 1
   flashInterval: 0.1
   healPercentage: 0.3
