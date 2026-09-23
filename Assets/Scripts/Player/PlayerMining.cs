@@ -22,6 +22,7 @@ public class PlayerMining : MonoBehaviour
 
     [SerializeField] private EquipmentRegistry registry;
     [SerializeField] private GameEvent onDurabilityChanged;
+    [SerializeField] private GameObject nodeHunterWave;
 
     public PickaxeData pickaxe => RunState.pickaxe;
     public int pickaxeIndex => RunState.pickaxeIndex;
@@ -110,9 +111,15 @@ public class PlayerMining : MonoBehaviour
 
         if (hit != null && hit.TryGetComponent(out OreNode node))
         {
+            bool wasUnbroken = node.currentHitPoints > 0;
             node.TakeDamage(pickaxeDamage);
             PickaxeDurability--;
             onDurabilityChanged.Raise();
+
+            if (wasUnbroken && node.currentHitPoints <= 0
+                && GameSession.Instance.runState.TryGetEnchant(EnchantSlot.Pickaxe, "node_hunter", out var reveal)
+                && Random.value <= reveal.procChance)
+                    Instantiate(nodeHunterWave, transform.position, Quaternion.identity);
 
             if (tierIndex == 2) pickaxe.specialAbility?.OnMine(this, node.transform.position);
         }

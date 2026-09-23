@@ -9,7 +9,7 @@ public class OreNode : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private OreData oreData;
 
-    private int currentHitPoints;
+    public int currentHitPoints;
 
     private void Awake()
     {

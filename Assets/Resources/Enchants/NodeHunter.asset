@@ -18,6 +18,6 @@ MonoBehaviour:
   requiredMagicOre: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
   magicOreAmount: 10
   runsPerEnchant: 2
-  procChance: 0
+  procChance: 0.1
   value: 0
   slot: 0
