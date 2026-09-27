@@ -65,6 +65,9 @@ MonoBehaviour:
   activeAnchors: 4
   enemyPool:
   - {fileID: 214236319870455436, guid: 0396fb1344ecaf54a9244d13d7301440, type: 3}
+  - {fileID: 8924418266996078138, guid: ccfb2acf37e562a4ea7d3606074feac9, type: 3}
   enemyCount:
   - enemyNumber: 1
-    spawnChance: 1
+    spawnChance: 0.5
+  - enemyNumber: 2
+    spawnChance: 0.5

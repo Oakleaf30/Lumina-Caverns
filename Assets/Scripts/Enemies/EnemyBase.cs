@@ -63,6 +63,7 @@ public class EnemyBase : MonoBehaviour
             Die();
         }
 
+        StartCoroutine(Flash());
         ApplyKnockback(hitInfo.knockback);
     }
 
@@ -109,5 +110,16 @@ public class EnemyBase : MonoBehaviour
 
         GameObject drop = Instantiate(dropPrefab, spawnLocation, transform.rotation);
         drop.GetComponent<ItemDrop>().Initialize(item);
+    }
+
+    private IEnumerator Flash()
+    {
+        Color originalColor = spriteRenderer.color;
+
+        spriteRenderer.color = Color.red;
+
+        yield return new WaitForSeconds(0.15f);
+
+        spriteRenderer.color = originalColor;
     }
 }

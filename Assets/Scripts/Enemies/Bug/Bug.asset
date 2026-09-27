@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 797d09e1b34be24459f93bedcea55366, type: 3}
-  m_Name: Slime
+  m_Name: Bug
   m_EditorClassIdentifier: 
-  enemyName: Slime
-  defaultSprite: {fileID: -4617798429402160762, guid: 0ed2cb19922a97349a9efda7ceb68cf8, type: 3}
-  maxHealth: 3
+  enemyName: Bug
+  defaultSprite: {fileID: 6710978388883721089, guid: 335172fca8ae6ab46bdae3d7f803d810, type: 3}
+  maxHealth: 2
   movementSpeed: 1
-  contactDamage: 30
+  contactDamage: 20
   attackCooldown: 0
-  knockbackResistance: 0
-  dropData: {fileID: 11400000, guid: aa3341d291a97734a86ecb5c6ad5a35e, type: 2}
+  knockbackResistance: 1
+  dropData: {fileID: 11400000, guid: f27d095ccc37ccd4490ee4efa51ade30, type: 2}
   dropChance: 1
   optionalDrops:
   - {fileID: 11400000, guid: 520c6fdbf3b9d4643b102b388a2332c0, type: 2}
