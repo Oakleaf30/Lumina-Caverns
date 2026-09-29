@@ -5610,6 +5610,7 @@ MonoBehaviour:
   leftDoor: {fileID: 0}
   rightDoor: {fileID: 0}
   isDungeon: 0
+  isChestRoom: 0
 --- !u!61 &4790970828002992067
 BoxCollider2D:
   m_ObjectHideFlags: 0

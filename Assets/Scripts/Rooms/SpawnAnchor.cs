@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpawnAnchor : MonoBehaviour
 {
     public float spawnRadius = 2f;
+    public int pairGroup = -1; // -1 = standalone anchor. Anchors sharing the same non-negative value are alternates of each other.
 
     private void OnDrawGizmos()
     {

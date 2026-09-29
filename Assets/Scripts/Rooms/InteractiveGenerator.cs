@@ -57,17 +57,39 @@ public class InteractiveGenerator : MonoBehaviour
         // 1. Gather all possible spawn anchors placed in this room prefab
         SpawnAnchor[] allAnchors = anchorsContainer.GetComponentsInChildren<SpawnAnchor>();
 
-        // 2. Create a list to shuffle so we don't pick the same anchor twice
-        List<SpawnAnchor> anchorPool = new List<SpawnAnchor>(allAnchors);
-        ShuffleList(anchorPool);
+        // 2. Group anchors: anchors sharing a pairGroup are alternates; -1 anchors stand alone
+        List<List<SpawnAnchor>> anchorGroups = new List<List<SpawnAnchor>>();
+        Dictionary<int, List<SpawnAnchor>> groupedByPair = new Dictionary<int, List<SpawnAnchor>>();
 
-        // 3. Determine how many anchors we will actually activate for this specific room execution
-        int anchorsToActivate = Mathf.Min(activeAnchors, anchorPool.Count);
-
-        // 4. Loop ONLY through the chosen subset of anchors
-        for (int a = 0; a < anchorsToActivate; a++)
+        foreach (var anchor in allAnchors)
         {
-            SpawnAnchor chosenAnchor = anchorPool[a];
+            if (anchor.pairGroup < 0)
+            {
+                anchorGroups.Add(new List<SpawnAnchor> { anchor });
+            }
+            else
+            {
+                if (!groupedByPair.TryGetValue(anchor.pairGroup, out var group))
+                {
+                    group = new List<SpawnAnchor>();
+                    groupedByPair[anchor.pairGroup] = group;
+                }
+                group.Add(anchor);
+            }
+        }
+        anchorGroups.AddRange(groupedByPair.Values);
+
+        // 3. Shuffle groups, not individual anchors, so which slots activate varies per run
+        ShuffleList(anchorGroups);
+
+        // 4. activeAnchors now means "how many slots/groups", not raw anchor count
+        int groupsToActivate = Mathf.Min(activeAnchors, anchorGroups.Count);
+
+        // 5. Pick one random member from each chosen group
+        for (int a = 0; a < groupsToActivate; a++)
+        {
+            List<SpawnAnchor> group = anchorGroups[a];
+            SpawnAnchor chosenAnchor = group[Random.Range(0, group.Count)];
 
             if (CheckLadder(chosenAnchor))
                 continue;

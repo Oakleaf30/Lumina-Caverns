@@ -23,4 +23,20 @@ public class Room : MonoBehaviour
     {
         RoomID = id;
     }
+
+    public Vector2 size = new Vector2(17f, 17f);
+    public Vector2 centerOffset = Vector2.zero;
+    private Color gizmoColor = Color.green;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmoColor;
+
+        Matrix4x4 oldMatrix = Gizmos.matrix;
+        Gizmos.matrix = transform.localToWorldMatrix;
+
+        Gizmos.DrawWireCube(centerOffset, size);
+
+        Gizmos.matrix = oldMatrix;
+    }
 }
