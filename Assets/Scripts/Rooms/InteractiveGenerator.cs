@@ -98,6 +98,11 @@ public class InteractiveGenerator : MonoBehaviour
             int numberOfNodes = Random.Range(minNodesPerAnchor, maxNodesPerAnchor + 1);
             bool guaranteedSpawned = false;
 
+            // Make sure this anchor can reveal its children as one clump
+            ClumpReveal reveal = chosenAnchor.GetComponent<ClumpReveal>();
+            if (reveal == null)
+                reveal = chosenAnchor.gameObject.AddComponent<ClumpReveal>();
+
             // Extra setup for barrels
             bool isBarrel = clumpType.resourceName == "Barrel";
             BarrelData barrelData = null;
@@ -143,7 +148,7 @@ public class InteractiveGenerator : MonoBehaviour
                 {
                     if (isBarrel)
                     {
-                        GameObject interactable = Instantiate(BarrelPrefab, validSpawnPosition, Quaternion.identity, room.transform);
+                        GameObject interactable = Instantiate(BarrelPrefab, validSpawnPosition, Quaternion.identity, chosenAnchor.transform);
 
                         Barrel barrelScript = interactable.GetComponent<Barrel>();
 
@@ -152,7 +157,7 @@ public class InteractiveGenerator : MonoBehaviour
                     {
                         totalNodes++;
 
-                        GameObject interactable = Instantiate(NodePrefab, validSpawnPosition, Quaternion.identity, room.transform);
+                        GameObject interactable = Instantiate(NodePrefab, validSpawnPosition, Quaternion.identity, chosenAnchor.transform);
 
                         // Grab the OreNode component
                         OreNode nodeScript = interactable.GetComponent<OreNode>();
@@ -166,6 +171,7 @@ public class InteractiveGenerator : MonoBehaviour
                     Physics2D.SyncTransforms();
                 }
             }
+            reveal.Refresh();
         }
 
         ladder.AddNodes(totalNodes);

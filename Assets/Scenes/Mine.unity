@@ -3555,7 +3555,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7697361072251285724, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: baseRadius
-      value: 5
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697361072251285724, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: baseIntensity
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697361072251285724, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: baseFalloffStrength
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_LocalPosition.x

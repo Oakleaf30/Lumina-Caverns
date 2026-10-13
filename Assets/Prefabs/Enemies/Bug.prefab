@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1151302403385409899}
   - component: {fileID: 1981010407452803892}
   - component: {fileID: 2183345382513449909}
+  - component: {fileID: -6765051700031800054}
   m_Layer: 7
   m_Name: Bug
   m_TagString: Enemy
@@ -276,3 +277,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-6765051700031800054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924418266996078138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6b07efb4fa39b4b927e0e2f701d076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  revealFraction: 0.9
+  fadeSpeed: 6
