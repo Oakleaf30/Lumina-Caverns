@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8225571983585334062}
   - component: {fileID: 3987105012773969923}
   - component: {fileID: 4228486635198297448}
+  - component: {fileID: 136890624941924543}
   m_Layer: 6
   m_Name: Node
   m_TagString: Untagged
@@ -140,3 +141,18 @@ MonoBehaviour:
   onLadderCheck: {fileID: 11400000, guid: c690024fe75201e43b9fcdc65627d22e, type: 2}
   dropPrefab: {fileID: 3943490826253954512, guid: e9b3ded8042f33547a5fbe33d72ca958, type: 3}
   currentHitPoints: 0
+--- !u!114 &136890624941924543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889572035499357333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6b07efb4fa39b4b927e0e2f701d076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 8225571983585334062}
+  revealFraction: 0.9
+  fadeSpeed: 6

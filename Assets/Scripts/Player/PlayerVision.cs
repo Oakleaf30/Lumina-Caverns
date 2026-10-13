@@ -9,10 +9,15 @@ public class PlayerVision : MonoBehaviour
     [SerializeField] private float baseIntensity = 1f;
     [SerializeField] private float baseFalloffStrength = 0.5f; // soft edge amount
 
+    public static PlayerVision Instance { get; private set; }
+
+    public float Radius => visionLight.pointLightOuterRadius;
+
     private Light2D visionLight;
 
     private void Awake()
     {
+        Instance = this;
         visionLight = GetComponent<Light2D>();
         ApplyBaseValues();
     }
@@ -34,5 +39,10 @@ public class PlayerVision : MonoBehaviour
     public void SetIntensity(float newIntensity)
     {
         visionLight.intensity = newIntensity;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 }

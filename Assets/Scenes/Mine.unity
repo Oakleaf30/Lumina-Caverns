@@ -1452,7 +1452,7 @@ MonoBehaviour:
   m_Intensity: 0.1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 000000005520ac255b10d230b59aeefca59b4a1ee136322277cef69b1f0240bd
+  m_ApplyToSortingLayers: 000000005520ac255b10d230b59aeefce136322277cef69b1f0240bda59b4a1e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3544,6 +3544,14 @@ PrefabInstance:
     - target: {fileID: 4363688841941322429, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381516429692380326, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381516429692380326, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7697361072251285724, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
       propertyPath: baseRadius
