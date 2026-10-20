@@ -49,6 +49,9 @@ TagManager:
   - name: Ground
     uniqueID: 632037461
     locked: 0
+  - name: Hidden
+    uniqueID: 4049345575
+    locked: 0
   - name: WalkInFront
     uniqueID: 819073115
     locked: 0
