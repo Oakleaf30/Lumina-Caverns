@@ -1147,7 +1147,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 23
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1788,8 +1788,8 @@ Tilemap:
     m_Data: {fileID: -1897010291, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -1907189452, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1343522091, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 1273575466, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 2
@@ -1824,8 +1824,8 @@ Tilemap:
     m_Data: {fileID: -567398132, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 535821502, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1343522091, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 425147564, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 1
@@ -6663,14 +6663,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e62673dd6154f94e8fc4806ab885ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasTopDoor: 1
-  hasBottomDoor: 1
-  hasLeftDoor: 1
-  hasRightDoor: 1
   topDoor: {fileID: 0}
   bottomDoor: {fileID: 0}
   leftDoor: {fileID: 0}
   rightDoor: {fileID: 0}
+  isDungeon: 0
+  isChestRoom: 0
+  size: {x: 17, y: 17}
+  centerOffset: {x: 0, y: 0}
 --- !u!114 &4708232530424797974
 MonoBehaviour:
   m_ObjectHideFlags: 0

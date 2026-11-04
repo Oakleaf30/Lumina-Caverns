@@ -49,9 +49,6 @@ TagManager:
   - name: Ground
     uniqueID: 632037461
     locked: 0
-  - name: Hidden
-    uniqueID: 4049345575
-    locked: 0
   - name: WalkInFront
     uniqueID: 819073115
     locked: 0
@@ -63,6 +60,9 @@ TagManager:
     locked: 0
   - name: WalkBehind
     uniqueID: 573716193
+    locked: 0
+  - name: Void
+    uniqueID: 4049345575
     locked: 0
   - name: Decoration
     uniqueID: 2616643191
