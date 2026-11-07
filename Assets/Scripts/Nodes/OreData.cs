@@ -1,4 +1,12 @@
+using System;
 using UnityEngine;
+
+[Serializable]
+public struct OptionalDrop
+{
+    public ItemData dropData;
+    [Range(0f, 1f)] public float dropChance;
+}
 
 [CreateAssetMenu(fileName = "NewOreData", menuName = "Lumina Caverns/Ore Data")]
 public class OreData : ScriptableObject

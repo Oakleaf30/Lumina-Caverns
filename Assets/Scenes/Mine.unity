@@ -2815,8 +2815,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodePrefab: {fileID: 8889572035499357333, guid: 239ed3ccc6794c241bffe33a48625672, type: 3}
   BarrelPrefab: {fileID: 1386025081501548609, guid: 312940e5bb7f8af45bd4d9c661954993, type: 3}
-  minNodesPerAnchor: 2
-  maxNodesPerAnchor: 4
+  minNodesPerAnchor: 3
+  maxNodesPerAnchor: 5
   resourcesLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -3359,9 +3359,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefabs:
+  - {fileID: 8124815624619229804, guid: 3f17e2dff6b64f64fb2b5f673a34c0e4, type: 3}
+  - {fileID: 242823263307667554, guid: 1b253716f10db0244850830bf8471b24, type: 3}
+  - {fileID: 1036134548932596475, guid: fcae9bf581404c447b0a842d87b76b0d, type: 3}
+  - {fileID: 399989491319965859, guid: 62681dfb2593839408c9218442311d98, type: 3}
   - {fileID: 5965236353342394689, guid: 59b4ad4033ead974ab544488cf82f94e, type: 3}
-  - {fileID: 8209337642376700402, guid: 77a36445573d2ed4da0138973bcf51ac, type: 3}
   - {fileID: 3000154201919808645, guid: c0ccb792f98966444b13f06ccc03e4be, type: 3}
+  - {fileID: 8209337642376700402, guid: 77a36445573d2ed4da0138973bcf51ac, type: 3}
+  - {fileID: 5208476799886121019, guid: 7e3b70a99569baf448eaaa6249cbab0f, type: 3}
+  - {fileID: 7620143094258117488, guid: e07b49a75bbd12d469c3f677996e5266, type: 3}
+  - {fileID: 6267724515635419610, guid: 5b1c88c73c1c78442a5f3528f0dffbd1, type: 3}
   maxRooms: 3
   roomSize: 20
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}

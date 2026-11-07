@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af51d3ae9291ca47892dd053561d096, type: 3}
   m_Name: CoalNode
   m_EditorClassIdentifier: 
-  oreDisplayName: Coal
   hitboxSize: 0.25
   spaceRequired: 0.3
   maxHitPoints: 1
   dropData: {fileID: 11400000, guid: 20473505263554c42b72e576a1824fab, type: 2}
   minDropCount: 1
   maxDropCount: 3
+  optionalDrops:
+  - dropData: {fileID: 11400000, guid: 20473505263554c42b72e576a1824fab, type: 2}
+    dropChance: 0.1
   nodeSprites:
   - {fileID: -999040249, guid: 524e0d7b0c361b54aa68f31864668c64, type: 3}
   - {fileID: 680028306, guid: 524e0d7b0c361b54aa68f31864668c64, type: 3}

@@ -18,7 +18,11 @@ MonoBehaviour:
   dropData: {fileID: 11400000, guid: 26e5aee9210022b44876494c5a413a7e, type: 2}
   minDropCount: 2
   maxDropCount: 6
-  optionalDrops: []
+  optionalDrops:
+  - dropData: {fileID: 11400000, guid: 20473505263554c42b72e576a1824fab, type: 2}
+    dropChance: 0.05
+  - dropData: {fileID: 11400000, guid: df60f6a832471d141b77772201674519, type: 2}
+    dropChance: 0.05
   nodeSprites:
   - {fileID: -3304253531636517484, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
   - {fileID: 4312774026939199897, guid: 913763288ff55114392c8d85d847f1a8, type: 3}
