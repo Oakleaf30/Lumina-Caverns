@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af51d3ae9291ca47892dd053561d096, type: 3}
   m_Name: CobaltNodeL
   m_EditorClassIdentifier: 
-  oreDisplayName: CobaltL
   hitboxSize: 0.4
   spaceRequired: 0.4
-  maxHitPoints: 7
+  maxHitPoints: 5
   dropData: {fileID: 11400000, guid: 74fb11370d0faf14b82b2456a3881676, type: 2}
   minDropCount: 2
   maxDropCount: 6
+  optionalDrops: []
   nodeSprites:
   - {fileID: -1564101382, guid: 0f1c6150f3475bc4b9e39d4df6537c82, type: 3}
   - {fileID: -1855740440, guid: 0f1c6150f3475bc4b9e39d4df6537c82, type: 3}
