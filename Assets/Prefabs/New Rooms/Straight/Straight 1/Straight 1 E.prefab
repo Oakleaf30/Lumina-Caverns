@@ -118,8 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topDoor: {fileID: 0}
   bottomDoor: {fileID: 0}
-  leftDoor: {fileID: 0}
-  rightDoor: {fileID: 0}
+  leftDoor: {fileID: 541428078852557608}
+  rightDoor: {fileID: 2058945389298087574}
   isDungeon: 0
   isChestRoom: 0
   size: {x: 16, y: 16}
@@ -7681,7 +7681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6060643525868291059
 Transform:
   m_ObjectHideFlags: 0
@@ -7691,7 +7691,7 @@ Transform:
   m_GameObject: {fileID: 5062056017294926099}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.77, y: -2.89, z: 0}
+  m_LocalPosition: {x: 8, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9878,7 +9878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2465458690272681116
 Transform:
   m_ObjectHideFlags: 0
@@ -9888,7 +9888,7 @@ Transform:
   m_GameObject: {fileID: 8075026177554357266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.52, y: -1.34, z: 0}
+  m_LocalPosition: {x: -8.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

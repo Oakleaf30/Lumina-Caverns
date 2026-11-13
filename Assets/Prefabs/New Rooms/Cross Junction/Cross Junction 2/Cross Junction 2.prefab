@@ -5583,10 +5583,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e62673dd6154f94e8fc4806ab885ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topDoor: {fileID: 0}
-  bottomDoor: {fileID: 0}
-  leftDoor: {fileID: 0}
-  rightDoor: {fileID: 0}
+  topDoor: {fileID: 3521172182087995324}
+  bottomDoor: {fileID: 5420603950947550277}
+  leftDoor: {fileID: 8588357601002213412}
+  rightDoor: {fileID: 5982838701040848170}
   isDungeon: 0
   isChestRoom: 0
   size: {x: 16, y: 16}
