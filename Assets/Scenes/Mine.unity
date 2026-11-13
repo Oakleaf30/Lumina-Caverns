@@ -3359,18 +3359,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefabs:
+  - {fileID: 4310669932235947697, guid: 6c72a004d379aa84b9061aae6d33d21a, type: 3}
   - {fileID: 8124815624619229804, guid: 3f17e2dff6b64f64fb2b5f673a34c0e4, type: 3}
+  - {fileID: 7714514437791699880, guid: f9291ed590e310f4e99f04ad2ac3ae2d, type: 3}
   - {fileID: 242823263307667554, guid: 1b253716f10db0244850830bf8471b24, type: 3}
+  - {fileID: 5875597107966353416, guid: a462803130deb874cb07243f3749dbff, type: 3}
   - {fileID: 1036134548932596475, guid: fcae9bf581404c447b0a842d87b76b0d, type: 3}
+  - {fileID: 6065052307294144792, guid: 14c619fb2f1c8634db58038e963303aa, type: 3}
   - {fileID: 399989491319965859, guid: 62681dfb2593839408c9218442311d98, type: 3}
+  - {fileID: 2325181335640946784, guid: e04eef382b481f048b1731af5b11691b, type: 3}
+  - {fileID: 3375031079767815539, guid: 97a6b9ac3459e01419349ea52723ea25, type: 3}
+  - {fileID: 2488512496884700686, guid: 1dc330cc12fe22d46954b80fdca2dcff, type: 3}
   - {fileID: 5965236353342394689, guid: 59b4ad4033ead974ab544488cf82f94e, type: 3}
+  - {fileID: 7289913525730873666, guid: 1858714f53ade364eb0e38bdf83808ab, type: 3}
+  - {fileID: 8480628662826472581, guid: 9229af9e9c9d58845813757aab077b71, type: 3}
+  - {fileID: 6219214038309655434, guid: 86213b223606a1e4cb8464c8d85fa633, type: 3}
   - {fileID: 3000154201919808645, guid: c0ccb792f98966444b13f06ccc03e4be, type: 3}
+  - {fileID: 3564669883928072420, guid: 2732e67ed0c3c3046bba61e4a5b3b1ac, type: 3}
   - {fileID: 8209337642376700402, guid: 77a36445573d2ed4da0138973bcf51ac, type: 3}
+  - {fileID: 5107572349967784662, guid: 0cbca0bc124d2ac4ca688edad850abd8, type: 3}
   - {fileID: 5208476799886121019, guid: 7e3b70a99569baf448eaaa6249cbab0f, type: 3}
+  - {fileID: 1972748880627148802, guid: abd422bf2d805344a83eefef97767ada, type: 3}
   - {fileID: 7620143094258117488, guid: e07b49a75bbd12d469c3f677996e5266, type: 3}
+  - {fileID: 8996712205869426543, guid: cc8b6d34264813b4a8a410f01a5e24f2, type: 3}
   - {fileID: 6267724515635419610, guid: 5b1c88c73c1c78442a5f3528f0dffbd1, type: 3}
-  maxRooms: 3
-  roomSize: 20
+  maxRooms: 6
+  roomSize: 30
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}
   dungeonChance: 1
   dungeonBiomeData: {fileID: 11400000, guid: 1ee21cd787c20274cb8bae0aa0cbc1c4, type: 2}

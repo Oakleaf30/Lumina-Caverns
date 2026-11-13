@@ -1465,7 +1465,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 19
+      m_TileSpriteIndex: 25
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2486,8 +2486,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: -106233457, guid: 6f14624c55a15b8468632a98cd97d465, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1894131257, guid: 6f14624c55a15b8468632a98cd97d465, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 350829720, guid: 6f14624c55a15b8468632a98cd97d465, type: 3}
   - m_RefCount: 1
@@ -2498,8 +2498,8 @@ Tilemap:
     m_Data: {fileID: -2042668598, guid: 6f14624c55a15b8468632a98cd97d465, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1879407439, guid: 6f14624c55a15b8468632a98cd97d465, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1894131257, guid: 6f14624c55a15b8468632a98cd97d465, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1565902417, guid: 6f14624c55a15b8468632a98cd97d465, type: 3}
   - m_RefCount: 1
@@ -3397,7 +3397,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -4431,7 +4431,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1678324105
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -6132,7 +6132,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1678324105
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

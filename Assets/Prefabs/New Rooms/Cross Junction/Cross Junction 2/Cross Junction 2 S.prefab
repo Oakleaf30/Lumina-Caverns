@@ -7149,7 +7149,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -8421,7 +8421,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9686,8 +9686,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 1922301279, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 321854053, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 1
@@ -9706,8 +9706,8 @@ Tilemap:
     m_Data: {fileID: -567398132, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -1897010291, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1922301279, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -1907189452, guid: 3b931edbc44ef5742a71fbc4d48d8c73, type: 3}
   - m_RefCount: 1
