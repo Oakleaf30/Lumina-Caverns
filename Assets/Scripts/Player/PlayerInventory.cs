@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 
 public class PlayerInventory : ItemContainer
 {
@@ -14,6 +13,18 @@ public class PlayerInventory : ItemContainer
     private BaseStorage Storage => BaseStorage.Current;
 
 
+    private void OnEnable()
+    {
+        onReturnBase.Subscribe(ReturnToBase);
+        onPlayerDeath.Subscribe(ApplyDeathPenalty);
+    }
+
+    private void OnDisable()
+    {
+        onReturnBase.Unsubscribe(ReturnToBase);
+        onPlayerDeath.Unsubscribe(ApplyDeathPenalty);
+    }
+
     private void Start()
     {
         items = RunState.inventory;
@@ -26,16 +37,10 @@ public class PlayerInventory : ItemContainer
             onInventoryOpen.Raise();
             onUIOpen.Raise();
         }
-
-        if (Input.GetKeyDown(KeyCode.B) && RunState.currentHealth > 0)
-        {
-            ReturnToBase();
-        }
     }
 
     private void ReturnToBase()
     {
-        onReturnBase.Raise();
         DepositItems();
         GameSession.Instance.ExitMines();
     }
@@ -53,16 +58,6 @@ public class PlayerInventory : ItemContainer
             Storage.AddItem(kv.Key, kv.Value);
 
         items.Clear();
-    }
-
-    private void OnEnable()
-    {
-        onPlayerDeath.Subscribe(ApplyDeathPenalty);
-    }
-
-    private void OnDisable()
-    {
-        onPlayerDeath.Unsubscribe(ApplyDeathPenalty);
     }
 
     public void ApplyDeathPenalty()

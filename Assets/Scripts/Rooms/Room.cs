@@ -17,14 +17,17 @@ public class Room : MonoBehaviour
     public int RoomID { get; private set; }
 
     [Header("Room Settings")]
+    public bool isLadderRoom;
     public bool isDungeon;
     public bool isChestRoom;
+
 
     public void InitializeRoom(int id)
     {
         RoomID = id;
     }
 
+    [Space(10)]
     public Vector2 size = new Vector2(17f, 17f);
     public Vector2 centerOffset = Vector2.zero;
     private Color gizmoColor = Color.green;

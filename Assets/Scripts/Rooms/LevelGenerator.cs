@@ -29,6 +29,7 @@ public class LevelGenerator : MonoBehaviour
     private bool hasDungeonRoom = false;
     private bool dungeonRoomIsChest = false;
     private Vector2Int dungeonRoomPos;
+    private Vector2Int ladderRoomPos = Vector2Int.zero;
 
     private class RoomRequirements
     {
