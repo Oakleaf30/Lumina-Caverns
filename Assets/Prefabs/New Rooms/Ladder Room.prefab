@@ -2944,7 +2944,7 @@ GameObject:
   - component: {fileID: 1246297747966697467}
   - component: {fileID: 2781653693651581988}
   - component: {fileID: 2751680077544537610}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Exit Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

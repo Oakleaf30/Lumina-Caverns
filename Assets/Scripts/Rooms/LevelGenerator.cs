@@ -29,7 +29,9 @@ public class LevelGenerator : MonoBehaviour
     private bool hasDungeonRoom = false;
     private bool dungeonRoomIsChest = false;
     private Vector2Int dungeonRoomPos;
-    private Vector2Int ladderRoomPos = Vector2Int.zero;
+
+    // The ladder room is always the starting room at the origin
+    private readonly Vector2Int ladderRoomPos = Vector2Int.zero;
 
     private class RoomRequirements
     {
@@ -58,15 +60,22 @@ public class LevelGenerator : MonoBehaviour
             layout.Clear();
             spawnedRooms.Clear();
 
-            Vector2Int startPos = Vector2Int.zero;
+            Vector2Int startPos = ladderRoomPos;
             int roomsPlaced = 0;
 
-            // Assign ID 0 to the starting room
+            // Ladder room is always ID 0 and always the start
             layout.Add(startPos, new RoomRequirements(roomsPlaced));
-            Queue<Vector2Int> checkQueue = new Queue<Vector2Int>();
-            checkQueue.Enqueue(startPos);
-
             roomsPlaced++;
+
+            // Ladder room only has a bottom door, so force its single connection downwards
+            Vector2Int firstPos = startPos + Vector2Int.down;
+            layout.Add(firstPos, new RoomRequirements(roomsPlaced));
+            Connect(startPos, firstPos, Vector2Int.down);
+            roomsPlaced++;
+
+            // Only the room below is queued, so the ladder room never gets another connection
+            Queue<Vector2Int> checkQueue = new Queue<Vector2Int>();
+            checkQueue.Enqueue(firstPos);
 
             while (checkQueue.Count > 0 && roomsPlaced < maxRooms)
             {
@@ -89,7 +98,12 @@ public class LevelGenerator : MonoBehaviour
                 }
 
                 if (checkQueue.Count == 0 && roomsPlaced < maxRooms)
-                    checkQueue.Enqueue(new List<Vector2Int>(layout.Keys)[Random.Range(0, layout.Count)]);
+                {
+                    // Never pick the ladder room as a parent
+                    List<Vector2Int> candidates = new List<Vector2Int>(layout.Keys);
+                    candidates.Remove(ladderRoomPos);
+                    checkQueue.Enqueue(candidates[Random.Range(0, candidates.Count)]);
+                }
             }
 
             // Verify if every single data requirement we just mapped out has a matching physical asset
@@ -152,6 +166,9 @@ public class LevelGenerator : MonoBehaviour
         List<Vector2Int> eligiblePositions = new List<Vector2Int>();
         foreach (var kvp in layout)
         {
+            // The ladder room can never be a dungeon room
+            if (kvp.Key == ladderRoomPos) continue;
+
             if (HasDungeonPrefabMatch(kvp.Value, wantsChest))
                 eligiblePositions.Add(kvp.Key);
         }
@@ -178,12 +195,16 @@ public class LevelGenerator : MonoBehaviour
     // New helper method that double-checks the your scriptable/prefab asset compatibility
     bool ValidateLayout()
     {
-        foreach (var req in layout.Values)
+        foreach (var kvp in layout)
         {
+            RoomRequirements req = kvp.Value;
+            bool isLadder = kvp.Key == ladderRoomPos;
             bool matchFound = false;
+
             foreach (Room prefab in roomPrefabs)
             {
-                if (prefab.hasTopDoor == req.top &&
+                if (prefab.isLadderRoom == isLadder &&
+                    prefab.hasTopDoor == req.top &&
                     prefab.hasBottomDoor == req.bottom &&
                     prefab.hasLeftDoor == req.left &&
                     prefab.hasRightDoor == req.right)
@@ -257,7 +278,12 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (var kvp in layout)
         {
+            bool isLadderRoom = kvp.Key == ladderRoomPos;
+
             cauldronSpawnable = cauldron.RoomCheck(roomCounter, layout.Count);
+
+            // Ladder room never gets a cauldron
+            if (isLadderRoom) cauldronSpawnable = false;
 
             bool isDungeonRoom = hasDungeonRoom && kvp.Key == dungeonRoomPos;
             bool isChestRoom = isDungeonRoom && dungeonRoomIsChest;
@@ -268,12 +294,12 @@ public class LevelGenerator : MonoBehaviour
                 cauldronSpawnable = false;
             }
 
-            PlaceBestRoom(kvp.Key, kvp.Value, isDungeonRoom, isChestRoom);
+            PlaceBestRoom(kvp.Key, kvp.Value, isDungeonRoom, isChestRoom, isLadderRoom);
             roomCounter++;
         }
     }
 
-    void PlaceBestRoom(Vector2Int pos, RoomRequirements req, bool isDungeonRoom, bool isChestRoom)
+    void PlaceBestRoom(Vector2Int pos, RoomRequirements req, bool isDungeonRoom, bool isChestRoom, bool isLadderRoom)
     {
         List<Room> shuffledPrefabs = new List<Room>(roomPrefabs);
         for (int i = 0; i < shuffledPrefabs.Count; i++)
@@ -286,7 +312,8 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (Room prefab in shuffledPrefabs)
         {
-            if (prefab.isDungeon == isDungeonRoom &&
+            if (prefab.isLadderRoom == isLadderRoom &&
+                prefab.isDungeon == isDungeonRoom &&
                 prefab.isChestRoom == isChestRoom &&
                 prefab.hasTopDoor == req.top &&
                 prefab.hasBottomDoor == req.bottom &&
@@ -297,13 +324,17 @@ public class LevelGenerator : MonoBehaviour
                 Room newRoom = Instantiate(prefab, worldPos, Quaternion.identity, transform);
                 newRoom.InitializeRoom(req.RoomID);
 
-                BiomeData dataForRoom = isDungeonRoom ? dungeonBiomeData : biomeData;
+                // Ladder room is left empty: no interactives, enemies or cauldron
+                if (!isLadderRoom)
+                {
+                    BiomeData dataForRoom = isDungeonRoom ? dungeonBiomeData : biomeData;
 
-                itemGenerator.GenerateInteractivity(newRoom, dataForRoom);
-                enemyGenerator.GenerateEnemies(newRoom, dataForRoom);
+                    itemGenerator.GenerateInteractivity(newRoom, dataForRoom);
+                    enemyGenerator.GenerateEnemies(newRoom, dataForRoom);
 
-                if (cauldronSpawnable)
-                    cauldron.SpawnCauldron(newRoom);
+                    if (cauldronSpawnable)
+                        cauldron.SpawnCauldron(newRoom);
+                }
 
                 cauldronSpawnable = false;
 
@@ -312,6 +343,6 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right} Dungeon:{isDungeonRoom} Chest:{isChestRoom}");
+        Debug.LogWarning($"No prefab found for room at {pos}! Needs -> Top:{req.top} Bottom:{req.bottom} Left:{req.left} Right:{req.right} Dungeon:{isDungeonRoom} Chest:{isChestRoom} Ladder:{isLadderRoom}");
     }
 }
