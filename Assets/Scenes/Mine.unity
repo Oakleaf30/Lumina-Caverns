@@ -3384,11 +3384,26 @@ MonoBehaviour:
   - {fileID: 8996712205869426543, guid: cc8b6d34264813b4a8a410f01a5e24f2, type: 3}
   - {fileID: 6267724515635419610, guid: 5b1c88c73c1c78442a5f3528f0dffbd1, type: 3}
   - {fileID: 6977479474792517941, guid: df98db2575efcb449bd996c43b0faa16, type: 3}
+  - {fileID: 20743297806917892, guid: 6edd6e1ab9dac3b409d149e18e5e2380, type: 3}
+  - {fileID: 8981712267261813337, guid: 814f2660a463b82458f1adace622cfcf, type: 3}
+  - {fileID: 7869005094823669274, guid: 4dbe4b7b7ae2ee0498aa63245a9bc1fc, type: 3}
+  - {fileID: 7013596838018762913, guid: ed9bb1450aebad04ca8c511df66cf4c8, type: 3}
+  - {fileID: 2217644204798210992, guid: 3f44c4cce075dfa4c9e5a5e844ee6db3, type: 3}
+  - {fileID: 4518864574880241849, guid: 8aee1091f96139c4fb400cd78b2b07f2, type: 3}
+  - {fileID: 7954230220458279649, guid: 4451908e42b94d046bcc986b744f62bb, type: 3}
+  - {fileID: 8506822252129288371, guid: a94690ea6d83fa34397c39bb6bda2ced, type: 3}
+  - {fileID: 6061929938298815614, guid: 3090308db789da94c8ac65c8d5195512, type: 3}
+  - {fileID: 5687089771673620464, guid: 69f1670e32f1c564aa6a254f8bd17b04, type: 3}
+  - {fileID: 1831790368508905043, guid: ec10d0dc73809d64fa002c1f9d3d6141, type: 3}
+  - {fileID: 4742974132694238558, guid: 59670ab4123179d4e8dec0d083409ec5, type: 3}
   maxRooms: 7
   roomSize: 30
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}
   dungeonChance: 1
   dungeonBiomeData: {fileID: 11400000, guid: 1ee21cd787c20274cb8bae0aa0cbc1c4, type: 2}
+  dungeonEntranceReach: 3
+  dungeonPathTile: {fileID: 11400000, guid: cce860e1e0f13934f84fa7d3fdd4e7e9, type: 2}
+  dungeonWallTopTile: {fileID: 11400000, guid: 82cd34676d1c3fe4f98c3e543924d3b6, type: 2}
   dungeonChestRoomChance: 1
   itemGenerator: {fileID: 1376388035}
   enemyGenerator: {fileID: 4377858}

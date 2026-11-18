@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float dungeonChance = 0.05f;
     [Tooltip("BiomeData used for the dungeon room's items/enemies instead of the normal biomeData.")]
     [SerializeField] private BiomeData dungeonBiomeData;
+    [SerializeField] private int dungeonEntranceReach = 3;
+    [SerializeField] private TileBase dungeonPathTile;
+    [SerializeField] private TileBase dungeonWallTopTile;
 
     [Range(0f, 1f)]
     [SerializeField] private float dungeonChestRoomChance = 0.5f;
@@ -125,6 +129,7 @@ public class LevelGenerator : MonoBehaviour
         // We have a 100% verified, perfectly matchable blueprint. Now build it physically!
         SpawnRooms();
         LinkAllDoors();
+        MarkDungeonDoors();
     }
 
     // Rolls once per floor generation for a single dungeon room, picked from positions
@@ -145,13 +150,9 @@ public class LevelGenerator : MonoBehaviour
             bool fallbackChest = !wantsChest;
             List<Vector2Int> fallbackPositions = GetEligiblePositions(fallbackChest);
 
-            if (fallbackPositions.Count == 0)
-            {
-                // Neither subtype fits anywhere in this layout - skip dungeon room this floor
-                return;
-            }
+            // Neither subtype fits anywhere in this layout - skip dungeon room this floor
+            if (fallbackPositions.Count == 0) return;
 
-            Debug.Log($"Dungeon room: wanted {(wantsChest ? "chest" : "risky")} room but no matching prefab fit this layout's door shapes. Falling back to {(fallbackChest ? "chest" : "risky")} room instead - consider adding more prefab variety for the {(wantsChest ? "chest" : "risky")} type.");
             wantsChest = fallbackChest;
             eligiblePositions = fallbackPositions;
         }
@@ -159,6 +160,21 @@ public class LevelGenerator : MonoBehaviour
         hasDungeonRoom = true;
         dungeonRoomIsChest = wantsChest;
         dungeonRoomPos = eligiblePositions[Random.Range(0, eligiblePositions.Count)];
+    }
+
+    void MarkDungeonDoors()
+    {
+        if (!hasDungeonRoom) return;
+        if (!spawnedRooms.TryGetValue(dungeonRoomPos, out Room dungeon)) return;
+
+        foreach (Door door in new[] { dungeon.topDoor, dungeon.bottomDoor, dungeon.leftDoor, dungeon.rightDoor })
+        {
+            if (door == null || door.connectedDoor == null) continue;
+
+            Door normalDoor = door.connectedDoor;
+            Room normalRoom = normalDoor.GetComponentInParent<Room>();
+            normalRoom.ApplyDungeonEntrance(normalDoor.transform.position, dungeonEntranceReach, dungeonPathTile, dungeonWallTopTile);
+        }
     }
 
     List<Vector2Int> GetEligiblePositions(bool wantsChest)
@@ -329,8 +345,12 @@ public class LevelGenerator : MonoBehaviour
                 {
                     BiomeData dataForRoom = isDungeonRoom ? dungeonBiomeData : biomeData;
 
-                    itemGenerator.GenerateInteractivity(newRoom, dataForRoom);
-                    enemyGenerator.GenerateEnemies(newRoom, dataForRoom);
+                    // Chest room is just the chest: no spawn anchors, so skip interactives
+                    if (!isChestRoom)
+                    {
+                        itemGenerator.GenerateInteractivity(newRoom, dataForRoom);
+                        enemyGenerator.GenerateEnemies(newRoom, dataForRoom);
+                    }
 
                     if (cauldronSpawnable)
                         cauldron.SpawnCauldron(newRoom);

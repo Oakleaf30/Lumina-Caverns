@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour
 {
@@ -42,5 +43,32 @@ public class Room : MonoBehaviour
         Gizmos.DrawWireCube(centerOffset, size);
 
         Gizmos.matrix = oldMatrix;
+    }
+
+
+    private Tilemap pathMap;
+    private Tilemap wallTopMap;
+
+    void Awake()
+    {
+        pathMap = transform.Find("Floor 2").GetComponent<Tilemap>();
+        wallTopMap = transform.Find("Wall Extras/Ghost Wall Top").GetComponent<Tilemap>();
+    }
+
+    public void ApplyDungeonEntrance(Vector3 doorWorldPos, int reach, TileBase pathTile, TileBase wallTile)
+    {
+        Vector3Int center = pathMap.WorldToCell(doorWorldPos);
+
+        for (int x = -reach; x <= reach; x++)
+            for (int y = -reach; y <= reach; y++)
+            {
+                Vector3Int cell = center + new Vector3Int(x, y, 0);
+
+                if (pathMap.GetTile(cell) != null)
+                    pathMap.SetTile(cell, pathTile);
+
+                if (wallTopMap.GetTile(cell) != null)
+                    wallTopMap.SetTile(cell, wallTile);
+            }
     }
 }

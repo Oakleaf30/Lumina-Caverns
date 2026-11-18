@@ -4362,7 +4362,7 @@ MonoBehaviour:
   leftDoor: {fileID: 0}
   rightDoor: {fileID: 6895185068723696021}
   isLadderRoom: 0
-  isDungeon: 0
+  isDungeon: 1
   isChestRoom: 1
   size: {x: 16, y: 16}
   centerOffset: {x: -0.5, y: -0.5}

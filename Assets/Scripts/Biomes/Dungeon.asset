@@ -18,7 +18,7 @@ MonoBehaviour:
     smallVariant: {fileID: 0}
     largeVariant: {fileID: 0}
     guaranteedVariant: {fileID: 0}
-    selectionWeight: 0
+    selectionWeight: 1
     largeSizeChance: 0
   activeAnchors: 2
   enemyPool:
