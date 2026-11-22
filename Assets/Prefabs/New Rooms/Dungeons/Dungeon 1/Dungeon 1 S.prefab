@@ -11541,9 +11541,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6346251041237984296}
   - component: {fileID: 377134360759010204}
-  - component: {fileID: 4518864574880241849}
-  - component: {fileID: 6267039195607804369}
   - component: {fileID: -2311126477703025627}
+  - component: {fileID: 6267039195607804369}
   m_Layer: 0
   m_Name: Dungeon 1 S
   m_TagString: Untagged
@@ -11589,7 +11588,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &4518864574880241849
+--- !u!114 &-2311126477703025627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11598,7 +11597,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8437808123149085627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e62673dd6154f94e8fc4806ab885ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: 68c27f85d1d90394da4b6c04055eda73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topDoor: {fileID: 5960254479296774646}
@@ -11611,6 +11610,7 @@ MonoBehaviour:
   size: {x: 16, y: 16}
   centerOffset: {x: -0.5, y: -0.5}
   onDungeonCleared: {fileID: 11400000, guid: 987365fa6f686474f90140e58d9d4e3b, type: 2}
+  entrance: {fileID: 5562234322556098560}
 --- !u!61 &6267039195607804369
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11657,18 +11657,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 16, y: 16}
   m_EdgeRadius: 0
---- !u!114 &-2311126477703025627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8437808123149085627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c27f85d1d90394da4b6c04055eda73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8573228033134354648
 GameObject:
   m_ObjectHideFlags: 0
@@ -12450,6 +12438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entrance
       objectReference: {fileID: 0}
+    - target: {fileID: 6035687610836164643, guid: 5124223f2a5d38543b9ddd2eba3766f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6247926201111263627, guid: 5124223f2a5d38543b9ddd2eba3766f5, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -12470,6 +12462,11 @@ PrefabInstance:
 --- !u!4 &2381148520726845837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4609890192159039918, guid: 5124223f2a5d38543b9ddd2eba3766f5, type: 3}
+  m_PrefabInstance: {fileID: 2229870338448865315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5562234322556098560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6035687610836164643, guid: 5124223f2a5d38543b9ddd2eba3766f5, type: 3}
   m_PrefabInstance: {fileID: 2229870338448865315}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3634204483395146690

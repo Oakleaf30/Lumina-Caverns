@@ -181,8 +181,9 @@ public class LevelGenerator : MonoBehaviour
     void BlockDungeonDoors()
     {
         if (!hasDungeonRoom || dungeonRoomIsChest) return;
-        if (!spawnedRooms.TryGetValue(dungeonRoomPos, out Room dungeon)) return;
+        if (!spawnedRooms.TryGetValue(dungeonRoomPos, out Room room)) return;
 
+        var dungeon = (DungeonRoom)room;
         dungeon.BlockDungeonDoors();
     }
 

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -47,8 +46,8 @@ public class Room : MonoBehaviour
     }
 
 
-    private Tilemap pathMap;
-    private Tilemap wallTopMap;
+    protected Tilemap pathMap;
+    protected Tilemap wallTopMap;
 
     void Awake()
     {
@@ -71,33 +70,5 @@ public class Room : MonoBehaviour
                 if (wallTopMap.GetTile(cell) != null)
                     wallTopMap.SetTile(cell, wallTile);
             }
-    }
-
-    public void BlockDungeonDoors()
-    {
-        wallTopMap.AddComponent<TilemapCollider2D>();
-    }
-
-    [SerializeField] private GameEvent onDungeonCleared;
-
-    private void OnEnable()
-    {
-        if (onDungeonCleared != null)
-        {
-            onDungeonCleared.Subscribe(OpenDoor); 
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (onDungeonCleared != null)
-        {
-            onDungeonCleared.Unsubscribe(OpenDoor); 
-        }
-    }
-
-    private void OpenDoor()
-    {
-        wallTopMap.GetComponent<TilemapCollider2D>().enabled = false;
     }
 }
