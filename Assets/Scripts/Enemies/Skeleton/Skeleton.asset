@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Skeleton
   defaultSprite: {fileID: 4354231566380549168, guid: c5baa3437c95f824592817e0778775a9, type: 3}
-  maxHealth: 5
+  maxHealth: 1
   movementSpeed: 2
   contactDamage: 40
   attackCooldown: 0

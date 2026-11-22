@@ -3130,6 +3130,7 @@ MonoBehaviour:
   onShaftUsed: {fileID: 11400000, guid: ff5432d2ed022c84ba136a04011451ed, type: 2}
   onLastEnemyDefeated: {fileID: 11400000, guid: 28e697dbd2e990747a39b40ecb1a216b, type: 2}
   onDungeonEnemyDeath: {fileID: 11400000, guid: 0ad0edd07219eac489ae7a5386ecad10, type: 2}
+  onDungeonCleared: {fileID: 11400000, guid: 987365fa6f686474f90140e58d9d4e3b, type: 2}
   ladderPrefab: {fileID: 651520307166357887, guid: afd9e9121622af645aee30a646b44445, type: 3}
   shaftPrefab: {fileID: 2009227372848232830, guid: d1f538cadbdb9eb47b5c792aad2c0242, type: 3}
   level: {fileID: 1736561150}
@@ -3404,7 +3405,7 @@ MonoBehaviour:
   dungeonEntranceReach: 3
   dungeonPathTile: {fileID: 11400000, guid: cce860e1e0f13934f84fa7d3fdd4e7e9, type: 2}
   dungeonWallTopTile: {fileID: 11400000, guid: 82cd34676d1c3fe4f98c3e543924d3b6, type: 2}
-  dungeonChestRoomChance: 1
+  dungeonChestRoomChance: 0
   itemGenerator: {fileID: 1376388035}
   enemyGenerator: {fileID: 4377858}
   cauldron: {fileID: 882703437}

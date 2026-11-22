@@ -130,6 +130,7 @@ public class LevelGenerator : MonoBehaviour
         SpawnRooms();
         LinkAllDoors();
         MarkDungeonDoors();
+        BlockDungeonDoors();
     }
 
     // Rolls once per floor generation for a single dungeon room, picked from positions
@@ -175,6 +176,14 @@ public class LevelGenerator : MonoBehaviour
             Room normalRoom = normalDoor.GetComponentInParent<Room>();
             normalRoom.ApplyDungeonEntrance(normalDoor.transform.position, dungeonEntranceReach, dungeonPathTile, dungeonWallTopTile);
         }
+    }
+
+    void BlockDungeonDoors()
+    {
+        if (!hasDungeonRoom || dungeonRoomIsChest) return;
+        if (!spawnedRooms.TryGetValue(dungeonRoomPos, out Room dungeon)) return;
+
+        dungeon.BlockDungeonDoors();
     }
 
     List<Vector2Int> GetEligiblePositions(bool wantsChest)

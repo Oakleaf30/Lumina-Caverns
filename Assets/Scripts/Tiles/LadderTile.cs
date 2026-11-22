@@ -15,6 +15,7 @@ public class LadderTile : MonoBehaviour
     [SerializeField] private GameEvent onShaftUsed;
     [SerializeField] private GameEvent onLastEnemyDefeated;
     [SerializeField] private GameEvent onDungeonEnemyDeath;
+    [SerializeField] private GameEvent onDungeonCleared;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject ladderPrefab;
@@ -156,6 +157,7 @@ public class LadderTile : MonoBehaviour
         {
             var anchorPos = GameObject.FindGameObjectWithTag("ChestAnchor").transform.position;
             SpawnChest(anchorPos, largeChest);
+            onDungeonCleared.Raise();
         }
     }
 

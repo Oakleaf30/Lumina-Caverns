@@ -1317,6 +1317,7 @@ GameObject:
   - component: {fileID: 7479787881654135126}
   - component: {fileID: 6061929938298815614}
   - component: {fileID: 6487086875256840107}
+  - component: {fileID: 374649462817665367}
   m_Layer: 0
   m_Name: Dungeon 2 E
   m_TagString: Untagged
@@ -1383,6 +1384,7 @@ MonoBehaviour:
   isChestRoom: 0
   size: {x: 16, y: 16}
   centerOffset: {x: -0.5, y: -0.5}
+  onDungeonCleared: {fileID: 11400000, guid: 987365fa6f686474f90140e58d9d4e3b, type: 2}
 --- !u!61 &6487086875256840107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1429,6 +1431,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 16, y: 16}
   m_EdgeRadius: 0
+--- !u!114 &374649462817665367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805573815556915580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c27f85d1d90394da4b6c04055eda73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2020869728449827069
 GameObject:
   m_ObjectHideFlags: 0
