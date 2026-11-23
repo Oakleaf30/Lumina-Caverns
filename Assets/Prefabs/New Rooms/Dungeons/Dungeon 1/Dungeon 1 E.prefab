@@ -9622,6 +9622,7 @@ MonoBehaviour:
   size: {x: 16, y: 16}
   centerOffset: {x: -0.5, y: -0.5}
   onDungeonCleared: {fileID: 11400000, guid: 987365fa6f686474f90140e58d9d4e3b, type: 2}
+  entrance: {fileID: 0}
 --- !u!61 &704911481444536187
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12374,6 +12375,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4147175673234279696}
   - component: {fileID: 5664101102093499319}
+  - component: {fileID: 8267925859069887108}
+  - component: {fileID: 5031054929963677688}
   m_Layer: 0
   m_Name: Exit Point
   m_TagString: Untagged
@@ -12442,6 +12445,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8267925859069887108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159541588862773154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade729144f5a4424fa5d4928042011ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 4147175673234279696}
+--- !u!114 &5031054929963677688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159541588862773154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a857384901c1346b7fffaf6f5d544b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2793953524474998207
 PrefabInstance:
   m_ObjectHideFlags: 0

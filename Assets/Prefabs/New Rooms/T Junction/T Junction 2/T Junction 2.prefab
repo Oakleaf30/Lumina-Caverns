@@ -598,6 +598,7 @@ MonoBehaviour:
   bottomDoor: {fileID: 7808278528235996125}
   leftDoor: {fileID: 0}
   rightDoor: {fileID: 2878254435040875174}
+  isLadderRoom: 0
   isDungeon: 0
   isChestRoom: 0
   size: {x: 16, y: 16}
@@ -8704,6 +8705,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4474284690573129662}
   - component: {fileID: 2793698451240500100}
+  - component: {fileID: 547700488317783400}
+  - component: {fileID: 3073985378721180149}
   m_Layer: 0
   m_Name: Exit Point
   m_TagString: Untagged
@@ -8772,6 +8775,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &547700488317783400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733967898209164665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade729144f5a4424fa5d4928042011ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 4474284690573129662}
+--- !u!114 &3073985378721180149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733967898209164665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a857384901c1346b7fffaf6f5d544b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6796087043884749253
 GameObject:
   m_ObjectHideFlags: 0
