@@ -12,6 +12,7 @@ public class EnemyGenerator : MonoBehaviour
     private int totalEnemies = 0;
     private int dungeonEnemies = 0;
     [SerializeField] private LadderTile ladder;
+    [SerializeField] private DungeonCounterUI dungeonCounter;
 
     private void Setup(BiomeData biome)
     {
@@ -41,6 +42,7 @@ public class EnemyGenerator : MonoBehaviour
         }
 
         ladder.AddEnemies(totalEnemies, dungeonEnemies);
+        dungeonCounter.AddEnemies(dungeonEnemies);
     }
 
     private void SpawnEnemy(Vector3 spot, Room room)

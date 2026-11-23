@@ -6,6 +6,7 @@ public class DungeonRoom : Room
 {
     [Header("Dungeon References")]
     [SerializeField] private GameEvent onDungeonCleared;
+    [SerializeField] private GameEvent OnDungeonEntered;
     [SerializeField] private GameObject entrance;
 
     
@@ -38,7 +39,13 @@ public class DungeonRoom : Room
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && entrance != null)
-            entrance.SetActive(true);
+        if (other.CompareTag("Player"))
+        {
+            OnDungeonEntered.Raise();
+
+            if (entrance != null)
+                entrance.SetActive(true);
+        }
+            
     }
 }

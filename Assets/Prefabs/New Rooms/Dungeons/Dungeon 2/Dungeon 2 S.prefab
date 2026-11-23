@@ -1717,6 +1717,7 @@ MonoBehaviour:
   size: {x: 16, y: 16}
   centerOffset: {x: -0.5, y: -0.5}
   onDungeonCleared: {fileID: 11400000, guid: 987365fa6f686474f90140e58d9d4e3b, type: 2}
+  OnDungeonEntered: {fileID: 11400000, guid: e005067af13f2694194a34fcc2e6d6a2, type: 2}
   entrance: {fileID: 8563512166525118879}
 --- !u!61 &2809919653163908210
 BoxCollider2D:

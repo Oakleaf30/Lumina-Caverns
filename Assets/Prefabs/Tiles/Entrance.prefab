@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onDungeonCleared: {fileID: 11400000, guid: 987365fa6f686474f90140e58d9d4e3b, type: 2}
+  OnDungeonEntered: {fileID: 11400000, guid: e005067af13f2694194a34fcc2e6d6a2, type: 2}
 --- !u!61 &3399906879507292946
 BoxCollider2D:
   m_ObjectHideFlags: 0
