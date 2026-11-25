@@ -150,6 +150,7 @@ Transform:
   m_Children:
   - {fileID: 1595070567}
   - {fileID: 882703436}
+  - {fileID: 1292727592}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4377856
@@ -2770,6 +2771,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ee3c81a8a668fd42aba8dbe1ab0e192, type: 3}
+--- !u!1 &1292727591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1292727592}
+  - component: {fileID: 1292727593}
+  m_Layer: 0
+  m_Name: Spike Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1292727592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292727591}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 509519}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1292727593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292727591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df7131dc6db68345b8223be339995b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFeet: {fileID: 2077010004}
+  frames:
+  - {fileID: 11400000, guid: dcf13a85cb1bd034091474a623fb1784, type: 2}
+  - {fileID: 11400000, guid: 481c5d27b42651540a2e1de6095a677f, type: 2}
+  - {fileID: 11400000, guid: 9227abb02735acb4ab4f5fa101c836cf, type: 2}
+  - {fileID: 11400000, guid: 9227abb02735acb4ab4f5fa101c836cf, type: 2}
+  - {fileID: 11400000, guid: 9227abb02735acb4ab4f5fa101c836cf, type: 2}
+  - {fileID: 11400000, guid: 5c9db7de79ac04a408eee3a2f2b5fea1, type: 2}
+  - {fileID: 11400000, guid: 444c5c06443caca4fb872632113b0fa5, type: 2}
+  - {fileID: 11400000, guid: d76153740d44edd488753bb634d6d9e7, type: 2}
+  downTime: 1
+  frameTime: 0.1
+  dangerStart: 2
+  dangerEnd: 5
+  damage: 10
+  hitCooldown: 0.5
 --- !u!1 &1330562810
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,6 +3788,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dc85c9b6d6ec847afd33cf3a1a7e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2077010004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9155568507573545017, guid: 20d4aa518f0c1ca45a1e1075bf72f9d9, type: 3}
+  m_PrefabInstance: {fileID: 2077010002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

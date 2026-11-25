@@ -17,6 +17,9 @@ public class DungeonRoom : Room
         {
             onDungeonCleared.Subscribe(OpenDoor);
         }
+
+        var map = transform.Find("Props/Spikes")?.GetComponent<Tilemap>();
+        SpikeManager.Instance.SetMap(map);   // null if this room has no spikes
     }
 
     private void OnDisable()
@@ -25,6 +28,9 @@ public class DungeonRoom : Room
         {
             onDungeonCleared.Unsubscribe(OpenDoor);
         }
+
+        if (SpikeManager.Instance != null)
+            SpikeManager.Instance.SetMap(null);
     }
 
     public void BlockDungeonDoors()
