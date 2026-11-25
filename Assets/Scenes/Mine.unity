@@ -3474,7 +3474,7 @@ MonoBehaviour:
   - {fileID: -8813935547416477039, guid: 69f1670e32f1c564aa6a254f8bd17b04, type: 3}
   - {fileID: -8977139821394578935, guid: ec10d0dc73809d64fa002c1f9d3d6141, type: 3}
   - {fileID: -866718497087941791, guid: 59670ab4123179d4e8dec0d083409ec5, type: 3}
-  maxRooms: 7
+  maxRooms: 6
   roomSize: 30
   biomeData: {fileID: 11400000, guid: 34dd8d811ff68fe419dfb739915db8e8, type: 2}
   dungeonChance: 1

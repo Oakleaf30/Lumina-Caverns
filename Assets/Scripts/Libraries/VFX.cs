@@ -43,6 +43,44 @@ namespace Lumina.VisualFX
             transform.rotation = startRot * Quaternion.Euler(0, 0, totalRotation);
         }
 
+        public static IEnumerator SpinCentre(SpriteRenderer sr, float duration, float spins)
+        {
+            Transform tf = sr.transform;
+
+            float totalRotation = spins * 360f;
+            Quaternion startRot = tf.rotation;
+
+            // Visual centre of the sprite in the transform's local space
+            Vector3 localCentre = sr.sprite.bounds.center;
+
+            // Where that centre is in the world right now. This is the point we spin around
+            Vector3 centreWorld = tf.TransformPoint(localCentre);
+
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+
+                ApplyRotation(tf, startRot, totalRotation * t, localCentre, centreWorld);
+
+                yield return null;
+            }
+
+            // Ensure it finishes exactly on the final angle
+            ApplyRotation(tf, startRot, totalRotation, localCentre, centreWorld);
+        }
+
+        private static void ApplyRotation(Transform tf, Quaternion startRot, float angle,
+                                          Vector3 localCentre, Vector3 centreWorld)
+        {
+            tf.rotation = startRot * Quaternion.Euler(0f, 0f, angle);
+
+            // Shift the transform so the sprite's centre stays at centreWorld
+            tf.position += centreWorld - tf.TransformPoint(localCentre);
+        }
+
         public static IEnumerator MoveToTarget(Transform transform, Vector3 targetPosition, float duration)
         {
             Vector3 startPos = transform.position;

@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameEvent onRespawn;
 
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
 
     public bool isFrozen = false;
     private bool isFalling = false;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -120,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
         DisableMovement();
         StartCoroutine(VFX.ChangeSize(transform, duration, transform.localScale, Vector3.zero));
-        StartCoroutine(VFX.Spin(transform, duration, finalSpins));
+        StartCoroutine(VFX.SpinCentre(sr, duration, finalSpins));
 
         yield return new WaitForSeconds(duration);
 
